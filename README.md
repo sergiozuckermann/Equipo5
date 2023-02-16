@@ -12,12 +12,6 @@ Repositorio para guardar los archivos que habra en el proyecto de videojuego.
 
 ### Executing program
 
-* How to run the program
-* Step-by-step bullets
-```
-code blocks for commands
-```
-
 ## Help
 
 Any advise for common problems or issues.
