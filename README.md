@@ -26,13 +26,19 @@ command to run if program contains helper info
 ```
 
 ## Authors
-
-Francisco Martinez Gallardo \n
-Domingo Mora\n
-Sergio Zuckerman\n
-Santiago tena \n
-Rafael Blanga\n
-Ian Holander\n
+<p>
+Francisco Martinez Gallardo 
+  </p><p>
+Domingo Mora
+  </p><p>
+Sergio Zuckerman
+  </p><p>
+Santiago tena 
+  </p><p>
+Rafael Blanga
+  </p><p>
+Ian Holander
+  </p>
 
 ## Version History
 
