@@ -1,4 +1,4 @@
-# **Game Name Here**
+# **The Zazacrifice of Shaggy**
 
 ## _Game Design Document_
 
@@ -46,7 +46,7 @@
 
 ### **Summary**
 
-Sum up your game idea in 2 sentences. A kind of elevator pitch. Keep it simple!
+The Zazacrifice of Shaggy is a turn based rpg based on 16-Bit Jrpgs of the 90's. In the game you are submerged in a sudden adventure between where the protagonist Shaggy must fight his way trough a tower. 
 
 ### **Gameplay**
 
@@ -59,11 +59,10 @@ What kind of mindset do you want to provoke in the player? Do you want them to f
 ## _Technical_
 
 ---
-
 ### **Screens**
 
 1. Title Screen
-    1. Options
+    1. Menu
 2. Level Select
 3. Game
     1. Inventory
