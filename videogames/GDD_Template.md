@@ -63,11 +63,10 @@ What kind of mindset do you want to provoke in the player? Do you want them to f
 
 1. Title Screen
     1. Menu
-2. Level Select
 3. Game
     1. Inventory
     2. Map
-    3. Gandalf store 
+    3. Gandalf´s store 
 4. End Credits
 
 _(example)_
@@ -193,7 +192,7 @@ _(example)_
     1. NPCVillager (both average NPC women/men)
     2. NPChobbit 
     3. NPCSethRogan
-    4.
+    
 
 4. Visual
     1. VisualHouseRug
