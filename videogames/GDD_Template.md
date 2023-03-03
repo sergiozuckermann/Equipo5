@@ -74,7 +74,25 @@ _(example)_
 ### **Controls**
 
 How will the player interact with the game? Will they be able to choose the controls? What kind of in-game events are they going to be able to trigger, and how? (e.g. pressing buttons, opening doors, etc.)
+we will have 2 different gaming options:
 
+Option A (gamer type):
+controls:
+"W" = forward
+"D" = right.
+"S" = backwards
+"A" = Left.
+"Q" = Interact (open doors, confirm purchases, drink potions)
+"ESC" = Menu.
+
+Option B (Modern type):
+controls:
+"Up arrow" = forward
+"Right arrow" = right.
+"Down arrow" = backwards
+"Left Arrow" = Left.
+"Q" = Interact (open doors, confirm purchases, drink potions)
+"ESC" = Menu.
 ### **Mechanics**
 
 Are there any interesting mechanics? If so, how are you going to accomplish them? Physics, algorithms, etc.
