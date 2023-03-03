@@ -66,7 +66,8 @@ What kind of mindset do you want to provoke in the player? Do you want them to f
 2. Level Select
 3. Game
     1. Inventory
-    2. Assessment / Next Level
+    2. Map
+    3. Gandalf store 
 4. End Credits
 
 _(example)_
@@ -136,8 +137,14 @@ _(example)_
     1. BasePlayer
     2. BaseEnemy
     3. BaseObject
+    4. BaseCombactObject
+    5. BaseNPC
+
+
 2. BaseObstacle
+3. Visual
 3. BaseInteractable
+
 
 _(example)_
 
@@ -145,22 +152,59 @@ _(example)_
 
 1. BasePlayer
     1. PlayerMain
-    2. PlayerUnlockable
+        1. Light player 
+        2. Middle player 
+        3. Heavy player 
+
 2. BaseEnemy
-    1. EnemyWolf
-    2. EnemyGoblin
-    3. EnemyGuard (may drop key)
-    4. EnemyGiantRat
-    5. EnemyPrisoner
+    1. EnemyZabush (33% of chances to drop Berries)
+    2. EnemyWizzards 
+    3. EnemyZaclon
+    4. EnemyGiantZanaZana (semi-boss, drop key for final boss)
+    5. EnemyLordZA (final boss)
+
 3. BaseObject
-    1. ObjectRock (pick-up-able, throwable)
-    2. ObjectChest (pick-up-able, throwable, spits gold coins with key)
+    1. ObjectBerrie (heals 3 hp each)
+    2. ObjectChest (spits random item)
     3. ObjectGoldCoin (cha-ching!)
-    4. ObjectKey (pick-up-able, throwable)
-4. BaseObstacle
-    1. ObstacleWindow (destroyed with rock)
+    4. ObjectKey (for accesing the final boss (inside the castle))
+    5. ObjectRock (pickable, throwable)
+    6. ObjectPotion 
+        1. HealPotion (may acces to it in Gandalf´s Zastore)
+        2. DefensePotion (may acces to it in Gandalf´s Zastore)
+        3. AttackPotion (may acces to it in Gandalf´s Zastore)
+
+2. BaseObstacle
+    1. ObstacleHouseWindow
     2. ObstacleWall
-    3. ObstacleGate (watches to see if certain buttons are pressed)
+    3. ObstacleHouseCouch 
+    4. ObstacleHouseBed
+    5. ObstacleHouseTable 
+    6. ObstacleHouseCupboard
+    7. ObstacleHouseMailbox
+    8. ObstacleBush
+    9. OsbactleTree
+    10. ObstacleForestRock (not the same rock as ObjectRock nor ObstacleCastleRock)
+    10. ObstacleGate (watches to see if certain buttons are pressed)
+    11. ObstacleCastleRock (ot the same rock as ObjectRock nor ObstacleForestRock)
+    12. ObstacleCastlePillar 
+
+3. BaseNPC
+    1. NPCVillager (both average NPC women/men)
+    2. NPChobbit 
+    3. NPCSethRogan
+    4.
+
+4. Visual
+    1. VisualHouseRug
+    1. VisualGrass
+    2. VisualBird
+    4. VisualWind (**NOTA PARA QEUIPO: les gustaria que se vieran como ondas de viento??, en caso de que no quieran borrar el punto 4**)
+    5. VisualForestGround
+    6. VisualCastleGround 
+    
+
+
 5. BaseInteractable
     1. InteractableButton
 
