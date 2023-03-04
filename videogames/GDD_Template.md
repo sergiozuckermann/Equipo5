@@ -95,7 +95,28 @@ controls:
 "ESC" = Menu.
 ### **Mechanics**
 
-Are there any interesting mechanics? If so, how are you going to accomplish them? Physics, algorithms, etc.
+General
+-The player can choose between three classes (light, medium, heavy) that will affect their statistics in combat
+-The player will be able to obtain or buy equipment that alters his statistics
+-The player will also get consumables to regenerate HP and MP or key items by completing battles or side-quests
+
+Stats
+-HP (Life Points)
+-MP (Magic points to use special attacks)
+-STR (How strong the attacks will be)
+-DEF (How much will resist enemy attacks)
+-LUC (What is the probability of making a critical attack)
+-SPE (The character with the most SPE points will attack first)
+-CHR (It will allow you to get discounts in the store and better rewards)
+
+Combat:
+-The combat will be in turns and will end when the character or the opponent no longer has HP
+
+-During combat you can choose to use normal attacks, magic attacks (consumes MP), use a consumable or run away from the battle
+
+-If the match is won if it has a slight increase in stats and the player is rewarded with money or items
+
+-There is a chance to receive or deal a critical attack that does 200% more damage
 
 ## _Level Design_
 
