@@ -118,6 +118,10 @@ Combat:
 
 -There is a chance to receive or deal a critical attack that does 200% more damage
 
+-If enemies notice main character they´ll run forward after him, in case of colappsing (with main character) the battle will begin with enemie´s having the first attack
+
+-If main charcater hits enemie´s back, the battle will begin with main character having the first attack
+
 ## _Level Design_
 
 ---
