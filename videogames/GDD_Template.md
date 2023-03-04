@@ -111,7 +111,6 @@ Stats
 -STR (How strong the attacks will be)
 -DEF (How much will resist enemy attacks)
 -LUC (What is the probability of making a critical attack)
--SPE (The character with the most SPE points will attack first)
 -CHR (It will allow you to get discounts in the store and better rewards)
 
 Combat:
