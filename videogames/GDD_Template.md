@@ -68,6 +68,7 @@ The ideal mindset we strive for in this game is the following: We want the user 
 
 1. Title Screen
     1. Menu
+    2. options 
 3. Game
     1. Inventory
     2. Map
@@ -88,6 +89,7 @@ controls:
 "S" = backwards
 "A" = Left.
 "Q" = Interact (open doors, confirm purchases, drink potions)
+"I" = Inventory/Bag
 "ESC" = Menu.
 
 Option B (Modern type):
@@ -97,6 +99,7 @@ controls:
 "Down arrow" = backwards
 "Left Arrow" = Left.
 "Q" = Interact (open doors, confirm purchases, drink potions)
+"I" = Inventory/Bag
 "ESC" = Menu.
 ### **Mechanics**
 
@@ -111,17 +114,16 @@ Stats
 -STR (How strong the attacks will be)
 -DEF (How much will resist enemy attacks)
 -LUC (What is the probability of making a critical attack)
--SPE (The character with the most SPE points will attack first)
 -CHR (It will allow you to get discounts in the store and better rewards)
 
 Combat:
--The combat will be in turns and will end when the character or the opponent no longer has HP
+-The combat will be in turns until the main character or the opponent no longer has HP 
 
 -During combat you can choose to use normal attacks, magic attacks (consumes MP), use a consumable or run away from the battle
 
--If the match is won if it has a slight increase in stats and the player is rewarded with money or items
+-If the match is won the player is rewarded with money
 
--There is a chance to receive or deal a critical attack that does 200% more damage
+-There is a chance to receive or deal a critical attack that does 200% more damage, dependign of your luck you can have more porcentage of giving this attack (remember if enemies have a very high Luck Stat they can deal the crittical attack)
 
 -If enemies notice main character they´ll run forward after him, in case of colappsing (with main character) the battle will begin with enemie´s having the first attack
 
@@ -187,7 +189,6 @@ _(example)_
     1. BasePlayer
     2. BaseEnemy
     3. BaseObject
-    4. BaseCombactObject
     5. BaseNPC
 
 
@@ -276,25 +277,11 @@ _(example)_
             5. Basic zaza (heals small ammount of MP)
             6. Middle zaza (Heals normal ammount of MP )
             7. Heavy zaza (Heals a really good ammount of MP)
-       7.  Potion 
+        7.  Potion 
             1. HealPotion 
             2. DefensePotion 
             3. AttackPotion 
 
-2. BaseObstacle
-    1. ObstacleHouseWindow
-    2. ObstacleWall
-    3. ObstacleHouseCouch 
-    4. ObstacleHouseBed
-    5. ObstacleHouseTable 
-    6. ObstacleHouseCupboard
-    7. ObstacleHouseMailbox
-    8. ObstacleBush
-    9. OsbactleTree
-    10. ObstacleForestRock (not the same rock as ObjectRock nor ObstacleCastleRock)
-    10. ObstacleGate (watches to see if certain buttons are pressed)
-    11. ObstacleCastleRock (ot the same rock as ObjectRock nor ObstacleForestRock)
-    12. ObstacleCastlePillar 
 
 3. BaseNPC
     1. NPCVillager (both average NPC women/men)
@@ -348,7 +335,7 @@ Well-designed feedback, both good (e.g. leveling up) and bad (e.g. being hit), a
         2. Wizzards (Idle, attacking)
         3. Zaclon (Idle, attacking)
         4. Giant Zana Zana (Idle, attacking)
-        5. Lord ZA (Idle, attacking)
+        5. LordZAggy (Idle, attacking)
 2. Blocks
     1. Dirt
     2. Dirt/Grass
@@ -368,7 +355,7 @@ Well-designed feedback, both good (e.g. leveling up) and bad (e.g. being hit), a
     2. EnemyWizzards 
     3. EnemyZaclon
     4. EnemyGiantZanaZana (semi-boss, drop key for final boss)
-    5. EnemyLordZA (final boss)
+    5. EnemyLordZAggy (final boss)
 
 4. ObjectS
     1. ObjectBerrie (heals 3 hp each)
