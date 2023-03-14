@@ -322,21 +322,40 @@ Well-designed feedback, both good (e.g. leveling up) and bad (e.g. being hit), a
 ### **Graphics Needed**
 
 1. Characters
-    1. Human-like
+    1. Playable character
         1. Shaggy (idle, walking, magic attack, weapon attack)
-        2. Guard (idle, walking, attacking)
-        3. Prisoner (walking, running)
-        4. NPC Villager male (idle)
-        5. NPC Villager female (idle)
-        6. NPC Hobbit (idle)
-        7. NPC Seth Rogan (idle)
-    2. Other
-        1. Zabush (Idle, attacking)
-        2. Wizzards (Idle, attacking)
-        3. Zaclon (Idle, attacking)
-        4. Giant Zana Zana (Idle, attacking)
-        5. LordZAggy (Idle, attacking)
-2. Blocks
+    2. NPC's
+        1. Guard (idle, walking, attacking)
+        2. Prisoner (walking, running)
+        3. NPC Villager male (idle)
+        4. NPC Villager female (idle)
+        5. NPC Hobbit (idle)
+        6. NPC Seth Rogan (idle)
+    3. Mobs
+        1. Base enemy
+            1. Zabush (Idle, attacking)
+            2. Wizzards (Idle, attacking)
+            3. Zaclon (Idle, attacking)
+        2. Semi boss
+            1. Giant Zana Zana (Idle, attacking)
+        3. Final boss
+            1. LordZAggy (Idle, attacking)
+
+2. Weapons
+   1. Satff
+   2. Dagger
+   3. Sword
+   4. Long Sword
+   5. Black shield
+   6. Crusader shield
+   7. Wooden club
+   8. Mace
+   9. Waraxe
+   10. Rapier
+   12. Machete
+   13. Katana
+
+3. Blocks
     1. Dirt
     2. Dirt/Grass
     3. Stone Block
@@ -345,7 +364,7 @@ Well-designed feedback, both good (e.g. leveling up) and bad (e.g. being hit), a
     6. Weathered Stone Block
     7. Weathered Stone Bricks
 
-3. Other
+4. Other
     1. Chest
     2. Door (matching Stone Bricks)
     3. Gate
@@ -357,7 +376,7 @@ Well-designed feedback, both good (e.g. leveling up) and bad (e.g. being hit), a
     4. EnemyGiantZanaZana (semi-boss, drop key for final boss)
     5. EnemyLordZAggy (final boss)
 
-4. ObjectS
+5. ObjectS
     1. ObjectBerrie (heals 3 hp each)
     2. ObjectChest (spits random item)
     3. ObjectGoldCoin (cha-ching!)
@@ -368,8 +387,7 @@ Well-designed feedback, both good (e.g. leveling up) and bad (e.g. being hit), a
         2. DefensePotion (may acces to it in Gandalf´s Zastore)
         3. AttackPotion (may acces to it in Gandalf´s Zastore)
 
-
-5. Visual
+6. Visual
     1. Window
     2. Wall
     3. House Couch 
@@ -400,7 +418,40 @@ Well-designed feedback, both good (e.g. leveling up) and bad (e.g. being hit), a
     25. Bird
     26. Forest Ground
     27. Catle Ground
-
+    14. Old furniture
+    15. Torches
+    16. Suits of armor
+    17. Locked doors
+    18. Grass
+    19. ObjectBerrie (heals 3 hp each)
+    20. Chest (spits random item)
+    21. Gold Coin 
+    22. Key (for accesing the final boss (inside the castle))
+    23. Rock 
+    24. ObjectPotion 
+        1. HealPotion (may acces to it in Gandalf´s Zastore)
+        2. DefensePotion (may acces to it in Gandalf´s Zastore)
+        3. AttackPotion (may acces to it in Gandalf´s Zastore)
+    25. Bird
+    26. Forest Ground
+    27. Catle Ground
+    14. Old furniture
+    15. Torches
+    16. Suits of armor
+    17. Locked doors
+    18. Grass
+    19. ObjectBerrie (heals 3 hp each)
+    20. Chest (spits random item)
+    21. Gold Coin 
+    22. Key (for accesing the final boss (inside the castle))
+    23. Rock 
+    24. ObjectPotion 
+        1. HealPotion (may acces to it in Gandalf´s Zastore)
+        2. DefensePotion (may acces to it in Gandalf´s Zastore)
+        3. AttackPotion (may acces to it in Gandalf´s Zastore)
+    25. Bird
+    26. Forest Ground
+    27. Catle Ground
 
 ## _Sounds/Music_
 
