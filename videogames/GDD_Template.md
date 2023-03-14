@@ -135,40 +135,33 @@ Combat:
 
 ## _Level Design_
 
----
-
-_(Note : These sections can safely be skipped if they&#39;re not relevant, or you&#39;d rather go about it another way. For most games, at least one of them should be useful. But I&#39;ll understand if you don&#39;t want to use them. It&#39;ll only hurt my feelings a little bit.)_
-
 ### **Themes**
 
 1. Forest
     1. Mood
-        1. Dark, calm, foreboding, misterious
+        1. Green, calm, foreboding
   2. Objects
         1. _Ambient_
-            1. Rocks
-            2. Trees
+            1. Fireflies
+            2. Beams of moonlight
             3. Tall grass
-    
+            
         2. _Interactive_
-            1. NPC
-            2. Chests
-            3. Store
-            4. Enemies
-         
+            1. Apple
+            2. Berries
+
 2. Castle
     1. Mood
         1. Dangerous, tense, active
     2. Objects
         1. _Ambient_
-            1. Old furniture
+            1. Rodents
             2. Torches
             3. Suits of armor
         2. _Interactive_
-            1. NPC
-            2. Enemies
+            1. Guards
+            2. Giant rats
             3. Chests
-            4. Locked doors
 
 _(example)_
 
@@ -201,9 +194,6 @@ _(example)_
 2. BaseObstacle
 3. Visual
 3. BaseInteractable
-
-
-_(example)_
 
 ### **Derived Classes / Component Compositions**
 
