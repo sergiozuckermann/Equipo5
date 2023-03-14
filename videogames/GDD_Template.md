@@ -320,21 +320,38 @@ Well-designed feedback, both good (e.g. leveling up) and bad (e.g. being hit), a
 ### **Graphics Needed**
 
 1. Characters
-    1. Human-like
+    1. Playable charachter
         1. Shaggy (idle, walking, magic attack, weapon attack)
-        2. Guard (idle, walking, attacking)
-        3. Prisoner (walking, running)
-        4. NPC Villager male (idle)
-        5. NPC Villager female (idle)
-        6. NPC Hobbit (idle)
+            1. Sprite light class (dagger)
+            2. Sprite medium class (sword)
+            3. Sprite heavy class (mace)
+    2. NPC's
+        1. Guard (idle, walking, attacking)
+        2. Prisoner (walking, running)
+        3. NPC Villager male (idle)
+        4. NPC Villager female (idle)
+        5. NPC Hobbit (idle)
         7. NPC Seth Rogan (idle)
-    2. Other
+    2. Mobs
         1. Zabush (Idle, attacking)
         2. Wizzards (Idle, attacking)
         3. Zaclon (Idle, attacking)
-        4. Giant Zana Zana (Idle, attacking)
+        4. Giant ZanaZana (Idle, attacking)
         5. Lord ZA (Idle, attacking)
-2. Blocks
+2. Weapons
+   1. Satff
+   2. Dagger
+   3. Sword
+   4. Long Sword
+   5. Black shield
+   6. Crusader shield
+   7. Wooden club
+   8. Mace
+   9. Waraxe
+   10. Rapier
+   12. Machete
+   13. Katana
+3. Blocks
     1. Dirt
     2. Dirt/Grass
     3. Stone Block
@@ -342,8 +359,7 @@ Well-designed feedback, both good (e.g. leveling up) and bad (e.g. being hit), a
     5. Tiled Floor
     6. Weathered Stone Block
     7. Weathered Stone Bricks
-
-3. Other
+4. Other
     1. Chest
     2. Door (matching Stone Bricks)
     3. Gate
@@ -354,8 +370,7 @@ Well-designed feedback, both good (e.g. leveling up) and bad (e.g. being hit), a
     3. EnemyZaclon
     4. EnemyGiantZanaZana (semi-boss, drop key for final boss)
     5. EnemyLordZA (final boss)
-
-4. ObjectS
+5. ObjectS
     1. ObjectBerrie (heals 3 hp each)
     2. ObjectChest (spits random item)
     3. ObjectGoldCoin (cha-ching!)
@@ -365,9 +380,7 @@ Well-designed feedback, both good (e.g. leveling up) and bad (e.g. being hit), a
         1. HealPotion (may acces to it in Gandalf´s Zastore)
         2. DefensePotion (may acces to it in Gandalf´s Zastore)
         3. AttackPotion (may acces to it in Gandalf´s Zastore)
-
-
-5. Visual
+6. Visual
     1. Window
     2. Wall
     3. House Couch 
