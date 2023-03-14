@@ -127,6 +127,12 @@ Combat:
 
 -If main charcater hits enemie´s back, the battle will begin with main character having the first attack
 
+-The enemies stats will be determined by the total sum of shaggys stats. The total sum will be multipled by a number which is unique to each enemy and then will be distributed equally between the enemy's stats. for example: The weakest enemies will have a very low multiplier aproximately of .30, so 30% of Shaggy total sum of stats will be distribuited in the foes stats. Next the 25% of Shaggy's total sum will be given to a random stat of the enemy for example: An enemy will get a boost in atack or resistance. This is to make the combat dynamic and non glued to EXP conventions, the boost will be shown in a text For example "Wow, this wizard has a lot of strenght +25 STR".
+
+-In the overworld the player can see their current health and magic points in the down left corner.
+
+- The pause screen will show resume, quit and backpack. The backpack is the main hub of the game, a menu, showing the screen in four quarters the first one  (upper left) will show three option which will be shown in the second quarter (upper right). SThe options are ITEM, GEAR and MOVES, the player's possesions in will be shown in the second quarter depending on which category they are. The third quarte will show haggy's current stats (down left). The fourth one (down right) will show the current selection in the second quarter with an image and description of the selection. 
+
 ## _Level Design_
 
 ---
@@ -137,28 +143,32 @@ _(Note : These sections can safely be skipped if they&#39;re not relevant, or yo
 
 1. Forest
     1. Mood
-        1. Dark, calm, foreboding
+        1. Dark, calm, foreboding, misterious
   2. Objects
         1. _Ambient_
-            1. Fireflies
-            2. Beams of moonlight
+            1. Rocks
+            2. Trees
             3. Tall grass
+    
         2. _Interactive_
-            1. Wolves
-            2. Goblins
-            3. Rocks
+            1. NPC
+            2. Chests
+            3. Store
+            4. Enemies
+         
 2. Castle
     1. Mood
         1. Dangerous, tense, active
     2. Objects
         1. _Ambient_
-            1. Rodents
+            1. Old furniture
             2. Torches
             3. Suits of armor
         2. _Interactive_
-            1. Guards
-            2. Giant rats
+            1. NPC
+            2. Enemies
             3. Chests
+            4. Locked doors
 
 _(example)_
 
@@ -211,15 +221,60 @@ _(example)_
     5. EnemyLordZA (final boss)
 
 3. BaseObject
-    1. ObjectBerrie (heals 3 hp each)
-    2. ObjectChest (spits random item)
-    3. ObjectGoldCoin (cha-ching!)
-    4. ObjectKey (for accesing the final boss (inside the castle))
-    5. ObjectRock (pickable, throwable)
-    6. ObjectPotion 
+     1. Window
+    2. Wall
+    3. House Couch 
+    4. House Bed
+    5. House Table 
+    6. House Cupboard
+    7. House Mail box
+    8. Bush
+    9. Tree
+    10. Rock 
+    11. Gate 
+    12. ObstacleCastleRock 
+    13. ObstacleCastlePillar 
+    14. Old furniture
+    15. Torches
+    16. Suits of armor
+    17. Locked doors
+    18. Grass
+    19. ObjectBerrie (heals 3 hp each)
+    20. Chest (spits random item)
+    21. Gold Coin 
+    22. Key (for accesing the final boss (inside the castle))
+    23. Rock 
+    24. ObjectPotion 
         1. HealPotion (may acces to it in Gandalf´s Zastore)
         2. DefensePotion (may acces to it in Gandalf´s Zastore)
         3. AttackPotion (may acces to it in Gandalf´s Zastore)
+    25. Bird
+    26. Forest Ground
+    27. Catle Ground
+    28. Gandalfs item (Light class)
+        1. Light class
+            1. Middle Staff Upgrade
+            2. Perfect Wizzard Staff Upgrade
+        2. Middle class
+            1. Refined iron sword
+            2. Perfect Santoroyu Sword Upgrade 
+        3. Heavy class  
+            1. Mace/mallot Upgrade  
+            2. Perfect War Axe Upgrade 
+        4. Lucky items 
+            1. Elden ring 
+            2. Rabit foot 
+            3. Garlic
+        5. Charimsa items 
+            1. Silly jokes book
+            2. GetdaRizz
+            3. Apples&Bananas
+        6. Consumibles
+            1. Berries 
+            2. Apple
+            3. Meat
+            4. Fish
+            5. Basic zaza (heals HP and MP)
 
 2. BaseObstacle
     1. ObstacleHouseWindow
@@ -246,7 +301,7 @@ _(example)_
     1. VisualHouseRug
     1. VisualGrass
     2. VisualBird
-    4. VisualWind (**NOTA PARA QEUIPO: les gustaria que se vieran como ondas de viento??, en caso de que no quieran borrar el punto 4**)
+    4. VisualWind (*NOTA PARA QEUIPO: les gustaria que se vieran como ondas de viento??, en caso de que no quieran borrar el punto 4*)
     5. VisualForestGround
     6. VisualCastleGround 
     
@@ -254,6 +309,9 @@ _(example)_
 
 5. BaseInteractable
     1. InteractableButton
+
+   
+   
 
 _(example)_
 
@@ -273,12 +331,19 @@ Well-designed feedback, both good (e.g. leveling up) and bad (e.g. being hit), a
 
 1. Characters
     1. Human-like
-        1. Goblin (idle, walking, throwing)
-        2. Guard (idle, walking, stabbing)
+        1. Shaggy (idle, walking, magic attack, weapon attack)
+        2. Guard (idle, walking, attacking)
         3. Prisoner (walking, running)
+        4. NPC Villager male (idle)
+        5. NPC Villager female (idle)
+        6. NPC Hobbit (idle)
+        7. NPC Seth Rogan (idle)
     2. Other
-        1. Wolf (idle, walking, running)
-        2. Giant Rat (idle, scurrying)
+        1. Zabush (Idle, attacking)
+        2. Wizzards (Idle, attacking)
+        3. Zaclon (Idle, attacking)
+        4. Giant Zana Zana (Idle, attacking)
+        5. Lord ZA (Idle, attacking)
 2. Blocks
     1. Dirt
     2. Dirt/Grass
@@ -287,20 +352,62 @@ Well-designed feedback, both good (e.g. leveling up) and bad (e.g. being hit), a
     5. Tiled Floor
     6. Weathered Stone Block
     7. Weathered Stone Bricks
-3. Ambient
-    1. Tall Grass
-    2. Rodent (idle, scurrying)
-    3. Torch
-    4. Armored Suit
-    5. Chains (matching Weathered Stone Bricks)
-    6. Blood stains (matching Weathered Stone Bricks)
-4. Other
+
+3. Other
     1. Chest
     2. Door (matching Stone Bricks)
     3. Gate
     4. Button (matching Weathered Stone Bricks)
+    2. BaseEnemy
+    1. EnemyZabush (33% of chances to drop Berries)
+    2. EnemyWizzards 
+    3. EnemyZaclon
+    4. EnemyGiantZanaZana (semi-boss, drop key for final boss)
+    5. EnemyLordZA (final boss)
 
-_(example)_
+4. ObjectS
+    1. ObjectBerrie (heals 3 hp each)
+    2. ObjectChest (spits random item)
+    3. ObjectGoldCoin (cha-ching!)
+    4. ObjectKey (for accesing the final boss (inside the castle))
+    5. ObjectRock (pickable, throwable)
+    6. ObjectPotion 
+        1. HealPotion (may acces to it in Gandalf´s Zastore)
+        2. DefensePotion (may acces to it in Gandalf´s Zastore)
+        3. AttackPotion (may acces to it in Gandalf´s Zastore)
+
+
+5. Visual
+    1. Window
+    2. Wall
+    3. House Couch 
+    4. House Bed
+    5. House Table 
+    6. House Cupboard
+    7. House Mail box
+    8. Bush
+    9. Tree
+    10. Rock 
+    11. Gate 
+    12. ObstacleCastleRock 
+    13. ObstacleCastlePillar 
+    14. Old furniture
+    15. Torches
+    16. Suits of armor
+    17. Locked doors
+    18. Grass
+    19. ObjectBerrie (heals 3 hp each)
+    20. Chest (spits random item)
+    21. Gold Coin 
+    22. Key (for accesing the final boss (inside the castle))
+    23. Rock 
+    24. ObjectPotion 
+        1. HealPotion (may acces to it in Gandalf´s Zastore)
+        2. DefensePotion (may acces to it in Gandalf´s Zastore)
+        3. AttackPotion (may acces to it in Gandalf´s Zastore)
+    25. Bird
+    26. Forest Ground
+    27. Catle Ground
 
 
 ## _Sounds/Music_
