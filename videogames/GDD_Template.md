@@ -205,12 +205,24 @@ Combat:
 ### **Game Flow**
 
 1. Player starts in Village
-2. NPC calls shaggy and gives him his first task (selecting your class and having your first element)
+2. NPC calls shaggy and gives him his first task (Here the user selects class and first element)
+3. Game tells you to go to the forest
 3. Shaggy leaves village 
-4. Shaggy encounters forest and castle 
-5. Shaggy must find the bandits that stole first NPC weapon and element. 
-6. Shaggy must find other semi-bosses protecting elemental chest and NPC´s storytellers
-7. … etc.
+4. Shaggy enters the forest
+5. Shaggy explores forest, having encounters with NPC's as well as having chances of collecting consumables to help the user later on
+6. Shaggy experiences an event where he experiences a flashback of that night
+8. Shaggy finds semi-bosses protecting the forest; elemental chest are earned in the chance of victory, recieving new elements as well as a fragment of story-telling by a hostage NPC
+7. The Hostage NPC with each semi-boss will give the user more context as of who he will encounter further on so 'Shaggy' can plan accordingly (Sneak-peak of bosses)
+9. Shaggy also will also enconter lower-rank enemies as he adventures in the forest
+
+9. Shaggy must find the castle location, which can be found beyond the forest
+
+8. Once "Shaggy" has collected all elements he experiences an event were he will now know where to go next (Exit the Forest)
+9. Shaggy finds a Story-telling NPC in the outskirts of the castle where he must use & try-out new elements by completing mundane tasks such as freezing a river.
+10. Shaggy will then be able to go to the castle and find the castle's main room
+11. Once shaggy enters the castle's main room he will enconter & fight a low-ranking enemies protecting a Red-Room
+12. Shaggy will then be able to go to the Red-Room, & fight the final boss 
+
 
 _(example)_
 
