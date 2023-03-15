@@ -52,13 +52,15 @@ Dive into an exciting adventure with The Zazacrifice of Shaggy, a turn-based RPG
 
 Shaggy, as he attempts to rescue his furry companion, Scooby, who was abducted by a mysterious gang. A homeless man who witnessed the abduction gives Shaggy information about the gang’s whereabouts in exchange for the recovery of some heavily sedating potions that the gang stole from him.
 
-Arm yourself with a selection of weapons to prepare yourself for the battles ahead. The homeless man offers Shaggy three types of weapons; these will determine the set of attacks and statistics available throughout the game. Shaggy must be prepared for the enemies he will encounter on his journey. He also begins with a selection of potions with basic uses, including Rage, Health Boost, Endurance Boost, and Special Powers. As he progresses, he may find other potions, spells and abilities to help him along the way.
+Arm yourself with a selection of weapons to prepare yourself for the battles ahead. The homeless man offers Shaggy three types of weapons; these will determine the set of attacks and statistics available throughout the game. Shaggy must be prepared for the enemies he will encounter on his journey.  There will be semi-bosses protecting an elemental chest and a NPC storyteller, after deafiting the Semi-boss Shaggy will unlock a new element and the NPC Storyteller will tell Shaggy a fragment of scooby´s mistery. He also begins with a selection of items with basic uses, including Rage, Health Boost, Endurance Boost, and Special Powers. As he progresses, he may find other potions, spells and abilities to help him along the way.
 
-The gameplay of The Zazacrifice of Shaggy is designed to be an adventurous game with PvP battles against NPCs and level bosses. Solve tricky puzzles and search for hidden secrets as you battle your way through intense boss battles and difficult dungeons. Unlock new abilities, customize your character with a variety of weapons and armor as you make your way to the top of the tower and uncover the truth behind the Zazacrifice. An unforgettable journey awaits in The Zazacrifice of Shaggy
+The gameplay of The Zazacrifice of Shaggy is designed to be an adventurous game with PvP battles against NPCs and level bosses. Search for hidden secrets as you battle your way through intense boss battles and difficult dungeons. Unlock new abilities, customize your character with a variety of weapons,armor  and elements as you make your way to the top of the tower and uncover the truth behind the Zazacrifice. An unforgettable journey awaits in The Zazacrifice of Shaggy
+
+
 
 ### **Mindset**
 
-The ideal mindset we strive for in this game is the following: We want the user to feel a sense of wonder at the start of the game as he is being told the story of the game. When the user has chosen his battle abilities and has a bit more of context as well as power, we want the player to feel powerful and excited for this new adventure. To provoke the player even more we plan on adding NPC’s whose purpose is to slow the player down and have his statistics decrease, so the salvation of his furry companion doesn't come that easy. This will provoke the player to prepare and strategically play his way into the castle. 
+The ideal mindset we strive for in this game is the following: We want the user to feel a sense of wonder at the start of the game as he is being told the story of the game. When the user has chosen his battle abilities and has a bit more of context as well as power, we want the player to feel powerful and excited for this new adventure. To provoke the player even more we plan on adding NPC’s whose purpose is to slow the player down (MOB´s), so the salvation of his furry companion doesn't come that easy. This will provoke the player to prepare and strategically play his way into the castle. 
 
 
 ## _Technical_
@@ -85,46 +87,54 @@ we will have 2 different gaming options:
 
 Option A (gamer type):
 controls:
-"W" = forward
-"D" = right.
-"S" = backwards
-"A" = Left.
-"Q" = Interact (open doors, confirm purchases, drink potions)
-"I" = Inventory/Bag
-"ESC" = Menu.
+1. "W" = forward
+2. "D" = right.
+3. "S" = backwards
+4. "A" = Left.
+5. "Q" = Interact (open doors, confirm purchases, drink potions)
+6. "I" = Inventory/Bag
+7. "ESC" = Menu.
 
 Option B (Modern type):
 controls:
-"Up arrow" = forward
-"Right arrow" = right.
-"Down arrow" = backwards
-"Left Arrow" = Left.
-"Q" = Interact (open doors, confirm purchases, drink potions)
-"I" = Inventory/Bag
-"ESC" = Menu.
+1. "Up arrow" = forward
+2. "Right arrow" = right.
+3. "Down arrow" = backwards
+4. "Left Arrow" = Left.
+5. "Q" = Interact (open doors, confirm purchases, drink potions)
+6. "I" = Inventory/Bag
+7. "ESC" = Menu.
 ### **Mechanics**
 
 General
--The player can choose between three classes (light, medium, heavy) that will affect their statistics in combat
+
+-The player can choose between three classes (light, medium, heavy) that will affect their statistics in combat, 
+-The player will be given a random element after selecting its class (fire, water, ground, electric, wind)
+-After selecting your class youll have the task of finding a semi-boss in the forest  that is protecting an elemental chest and an NPC storyteller, inside this chest youll be given the correspondent element and the storyteller will give you a fragment of scooby´s mistery. 
 -The player will be able to obtain or buy equipment that alters his statistics
 -The player will also get consumables to regenerate HP and MP or key items by completing battles or side-quests.
 
-Stats
--HP (Life Points)
--MP (Magic points to use special attacks)
--STR (How strong the attacks will be)
--DEF (How much will resist enemy attacks)
--LUC (What is the probability of making a critical attack)
--CHR (It will allow you to get discounts in the store and better rewards)
+Stats:
+
+1. -HP (Life Points)
+2. -MP (Magic points to use special attacks)
+3. -STR (How strong the attacks will be)
+4. -DEF (How much will resist enemy attacks)
+5. -LUC (Increases probability of making a critical attack)
+6. -CHR (It will allow you to get discounts in the store and better rewards but enemies have a chance of calling a new mob)
+
+
 
 Combat:
+
 -The combat will be in turns until the main character or the opponent no longer has HP 
 
--During combat you can choose to use normal attacks, magic attacks (consumes MP), use a consumable or run away from the battle
+-During combat you can choose to use normal attacks, magic attacks (consumes MP), use a consumable, change element  or run away from the battle
 
 -If the match is won the player is rewarded with money
 
 -There is a chance to receive or deal a critical attack that does 200% more damage, dependign of your luck you can have more porcentage of giving this attack (remember if enemies have a very high Luck Stat they can deal the crittical attack)
+
 
 -If enemies notice main character they´ll run forward after him, in case of colappsing (with main character) the battle will begin with enemie´s having the first attack
 
@@ -134,7 +144,7 @@ Combat:
 
 -In the overworld the player can see their current health and magic points in the down left corner.
 
-- The pause screen will show resume, quit and backpack. The backpack is the main hub of the game, a menu, showing the screen in four quarters the first one  (upper left) will show three option which will be shown in the second quarter (upper right). SThe options are ITEM, GEAR and MOVES, the player's possesions in will be shown in the second quarter depending on which category they are. The third quarte will show haggy's current stats (down left). The fourth one (down right) will show the current selection in the second quarter with an image and description of the selection. 
+-The pause screen will show resume, quit and backpack. The backpack is the main hub of the game, a menu, showing the screen in four quarters the first one  (upper left) will show three option which will be shown in the second quarter (upper right). SThe options are ITEM, GEAR and MOVES, the player's possesions in will be shown in the second quarter depending on which category they are. The third quarte will show haggy's current stats (down left). The fourth one (down right) will show the current selection in the second quarter with an image and description of the selection. 
 
 ## _Level Design_
 
@@ -194,12 +204,12 @@ Combat:
 
 ### **Game Flow**
 
-1. Player starts in forest
-2. Pond to the left, must move right
-3. To the right is a hill, player jumps to traverse it (&quot;jump&quot; taught)
-4. Player encounters castle - door&#39;s shut and locked
-5. There&#39;s a window within jump height, and a rock on the ground
-6. Player picks up rock and throws at glass (&quot;throw&quot; taught)
+1. Player starts in Village
+2. NPC calls shaggy and gives him his first task (selecting your class and having your first element)
+3. Shaggy leaves village 
+4. Shaggy encounters forest and castle 
+5. Shaggy must find the bandits that stole first NPC weapon and element. 
+6. Shaggy must find other semi-bosses protecting elemental chest and NPC´s storytellers
 7. … etc.
 
 _(example)_
