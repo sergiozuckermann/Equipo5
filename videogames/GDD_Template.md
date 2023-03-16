@@ -512,6 +512,9 @@ _Examples:_
 ### World Assets:
 ![World Assets](Images/trees-and-bushes.png)
 
+### Example of in Game Gameplay:
+![Gameplay](Images/Gameplay.png)
+
 ### Dungeon Assets:
 ![Dungeon Assets](Images/dungeon_tiles.png)
 
