@@ -123,6 +123,20 @@ Stats:
 5. -LUC (Increases probability of making a critical attack)
 6. -CHR (It will allow you to get discounts in the store and better rewards but enemies have a chance of calling a new mob)
 
+Elements types:
+
+1. Fire 
+2. Electric 
+3. Ground 
+4. Water 
+5. Wind
+
+Elements Rules: 
+1. Fire>Wind 
+2. Water>Fire
+3. Electric>Water 
+4. Ground> Electric
+5. Wind> Ground
 
 
 Combat:
