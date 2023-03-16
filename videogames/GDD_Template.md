@@ -501,45 +501,63 @@ Well-designed feedback, both good (e.g. leveling up) and bad (e.g. being hit), a
     26. Forest Ground
     27. Catle Ground
 
+_Examples:_
+
+### Main Menu:
+![Main Menu](Images/Menu.png)
+
+### Main Character and NPC:
+![Main Characters](Images/Personajes.png)
+
+### World Assets:
+![World Assets](Images/trees-and-bushes.png)
+
+### Dungeon Assets:
+![Dungeon Assets](Images/dungeon_tiles.png)
+
+### Sprite Sheet:
+![Example of Sprite Sheet](zazacrife/Assets/Sprites/Shaggy/shaggyMace.png)
+
 ## _Sounds/Music_
 
 ---
 
 ### **Style Attributes**
 
-Again, consistency is key. Define that consistency here. What kind of instruments do you want to use in your music? Any particular tempo, key? Influences, genre? Mood?
+We are aiming to have a cohesive game expierence across the game, and of course the music and sound efects are no exception. We want the music to inspire mystery and a sense of adventure to get the player into the same type of mood we were in while creating this game. 
 
-Stylistically, what kind of sound effects are you looking for? Do you want to exaggerate actions with lengthy, cartoony sounds (e.g. mario&#39;s jump), or use just enough to let the player know something happened (e.g. mega man&#39;s landing)? Going for realism? You can use the music style as a bit of a reference too.
+Across the game the player will be experiencing music heavily carried by synthesizers in order to get this mystical feeling we have been talking about. The songs will be changing depending on what the player is doing, for example there will be one specific song as our main theme that the player will be able to hear while in the menu called _Gandalf pack_ by the artist _xac_. On the other hand, playable sceneries will have different soundtracks like the fores, Gandalf&#39;s store, the tower, and everytime you fight an enemy. 
 
- Remember, auditory feedback should stand out from the music and other sound effects so the player hears it well. Volume, panning, and frequency/pitch are all important aspects to consider in both music _and_ sounds - so plan accordingly!
+Regarding the sound effects, these will be reactive to the player&#39;s actions, like the sound of the steps depending on the surface, or wether the player is opening a chest or a door. All of these sound effects will be in a 8 or a 16 bit style.
+
 
 ### **Sounds Needed**
 
 1. Effects
     1. Soft Footsteps (dirt floor)
     2. Sharper Footsteps (stone floor)
-    3. Soft Landing (low vertical velocity)
-    4. Hard Landing (high vertical velocity)
-    5. Glass Breaking
-    6. Chest Opening
-    7. Door Opening
+    3. Chest Opening
+    4. Door Opening
+    5. Mob sound
+    6. NPC gibberish
+    7. Hit sound (in battle)
+
 2. Feedback
     1. Relieved &quot;Ahhhh!&quot; (health)
     2. Shocked &quot;Ooomph!&quot; (attacked)
     3. Happy chime (extra life)
     4. Sad chime (died)
 
-_(example)_
 
 ### **Music Needed**
 
 1. Slow-paced, nerve-racking &quot;forest&quot; track
-2. Exciting &quot;castle&quot; track
+2. Synthwave, reverbed, slow-paced track
 3. Creepy, slow &quot;dungeon&quot; track
-4. Happy ending credits track
-5. Rick Astley&#39;s hit #1 single &quot;Never Gonna Give You Up&quot;
+4. Sad ending credits track
+5. Fast-paced, accelerated-paced, mob, semiboss and final boss track
 
-_(example)_
+_(example: https://youtu.be/ZxRHXC2SB4E Gandalf Pack by Xac)_
 
 
 ## _Schedule_
