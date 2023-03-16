@@ -196,8 +196,9 @@ Combat:
             3. Apples
             4. Enemy Zabush
             5. Enemy Wizzard
-            6. Golden Coins
-            7. EnemyGiantZanaZana
+            7. EnemyZaclon
+            8. Golden Coins
+            9. EnemyGiantZanaZana (semi-boss, each semi-boss)
 
 2. Castle
     1. Mood
@@ -213,7 +214,7 @@ Combat:
             3. Doors
             4. EnemyZaguards
             5. EnemyZaclon
-            6. EnemyLordZA 
+            6. EnemyLordZAggy
             7. Golden Coins
 
 ### **Game Flow**
