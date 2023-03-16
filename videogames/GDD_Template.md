@@ -210,7 +210,6 @@ Combat:
             3. Suits of armor
         2. _Interactive_
             1. Chest
-            2. Key
             3. Doors
             4. EnemyZaguards
             5. EnemyZaclon
