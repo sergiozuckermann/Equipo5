@@ -71,14 +71,12 @@ The ideal mindset we strive for in this game is the following: We want the user 
 1. Title Screen
     1. Menu
     2. options 
-2. Level Select
-3. Game
+2. Game
     1. Inventory
     2. Map
     3. Gandalf´s store 
-4. End Credits
-
-_(example)_
+    4. Playable
+3. End Credits
 
 ### **Controls**
 
@@ -110,12 +108,13 @@ _Combat System_:
 
  The main mechanic of the game will be the combat system, this system will be based on the following stats:
  
-1. -HP (Life Points)
-2. -MP (Magic points to use special attacks)
-3. -STR (How strong the attacks will be)
-4. -DEF (How much will resist enemy attacks)
-5. -LUC (Increases probability of making a critical attack)
-6. -CHR (It will allow you to get discounts in the store and better rewards but enemies have a chance of calling a new mob)
+    1. -HP (Life Points)
+    2. -MP (Magic points to use special attacks)
+    3. -STR (How strong the attacks will be)
+    4. -DEF (How much will resist enemy attacks)
+    5. -LUC (Increases probability of making a critical attack)
+    6. -AGL (Decreases probability of getting a critical attack)
+    7. -CHR (It will allow you to get discounts in the store and better rewards but enemies have a chance of calling a new mob)
 
 The combat will have the following rules and characteristics:
 - On a combat you´ll be able to fight between 1 and 5 enemies. 
@@ -131,19 +130,18 @@ The combat will have the following rules and characteristics:
 - The character will have one of three classes (light, medium, heavy), that will affect their statistics.
 
 - Character will have an element when the combat starts. This elements are the following:
-
-1. Fire 
-2. Electric 
-3. Ground 
-4. Water 
-5. Wind
+    1. Fire 
+    2. Electric 
+    3. Ground 
+    4. Water 
+    5. Wind
 
 - Elements will have advantage against another element as the following:
-1. Fire > Wind 
-2. Water > Fire
-3. Electric > Water 
-4. Ground > Electric
-5. Wind> Ground
+    1. Fire > Wind 
+    2. Water > Fire
+    3. Electric > Water 
+    4. Ground > Electric
+    5. Wind> Ground
 
 - If the an character attacks a character where it's element has an advantage over the other the attack will deal 2x, and if the element has a disadvantage it will deal 0.5x.
 
@@ -183,30 +181,57 @@ explore to move freely on the designated zone of the map. The movements and expl
 
 - In the overworld the player can see their current health and magic points in the down left corner.
 
-_Other_:
+_Other_ :
 
-- The pause screen will show resume, quit and backpack. The backpack is the main hub of the game, a menu, showing the screen in four quarters the first one  (upper left) will show three option which will be shown in the second quarter (upper right). SThe options are ITEM, GEAR and MOVES, the player's possesions in will be shown in the second quarter depending on which category they are. The third quarte will show haggy's current stats (down left). The fourth one (down right) will show the current selection in the second quarter with an image and description of the selection. 
+- The pause screen will show resume, quit and backpack. The backpack is the main hub of the game, a menu, showing the screen in four quarters the first one  (upper left) will show three option which will be shown in the second quarter (upper right). SThe options are ITEM, GEAR and MOVES, the player's possesions in will be shown in the second quarter depending on which category they are. The third quarter will show shaggy's current stats (down left). The fourth one (down right) will show the current selection in the second quarter with an image and description of the selection. 
 
 - Gandalf stores will be distributed on the map, each store will have unique items that the player can buy.
 
 ## _Level Design_
 
 ### **Themes**
-
-1. Village
+1. House
     1. Mood
-        1. Calm, friendly, cozy, nice
+        1. Cozy, Warm, Safe 
+    2. Objects
+        1. _Ambient_
+            1. Window
+            2. Wall
+            3. House Couch 
+            4. House Bed
+            5. House Table 
+            6. House Cupboard
+            7. Old furniture
+        2. 
+            _Interactive_
+            1. Villager NPC
+            2. Door
+            3. NPC Seth Rogan
+        
+2. Village
+    1. Mood
+        1. Calm, Friendly, Cozy, Safe
     2. Objects
         1. _Ambient_
             1. Houses
             2. Paths
+            3. House Mail box
             4. wooden fences
             
         2. _Interactive_
             1. Villager NPC
             2. Doors
+            3. NPC Hobbit
+3. Gandalf Store
+    1. Mood 
+        1. Commercial, Safe, Calm
+    2. Objects
+        1. _Ambient_
+            1. House Table
+        2. Interactable
+            1. Gandalf NPC
 
-2. Forest
+4. Forest
     1. Mood
         1. Green, Mysterious, adventurous
   2. Objects
@@ -226,23 +251,24 @@ _Other_:
             5. Enemy Wizzard
             7. EnemyZaclon
             8. Golden Coins
-            9. EnemyGiantZanaZana (semi-boss, each semi-boss)
+            9. EnemyGiantZanaZana
 
-2. Castle
+5. Castle
     1. Mood
-        1. Dangerous, tense, Creepy.
+        1. Dangerous, tense, Creepy and Ominous
     2. Objects
         1. _Ambient_
-            1. 
             2. Torches
             3. Suits of armor
+    
         2. _Interactive_
             1. Chest
+            2. Golden Coins
             3. Doors
             4. EnemyZaguards
             5. EnemyZaclon
             6. EnemyLordZAggy
-            7. Golden Coins
+
 
 ### **Game Flow**
 1. Player starts in Village.
@@ -287,13 +313,12 @@ _Other_:
 1. BasePhysics
     1. BasePlayer
     2. BaseEnemy
-    3. BaseObject
-    5. BaseNPC
-
-
-2. BaseObstacle
-3. Visual
-3. BaseInteractable
+    3. BaseNPC
+    4. BaseObject
+2. Weapons
+3. BaseObstacle
+4. Visual
+5. BaseInteractable
 
 ### **Derived Classes / Component Compositions**
 
@@ -304,51 +329,42 @@ _Other_:
         3. Heavy player 
 
 2. BaseEnemy
-    1. EnemyZabush (33% of chances to drop Berries)
-    2. EnemyWizzards 
-    3. EnemyZaclon
-    4. EnemyZaguard
+    1. EnemyZabush (Chance to drop Berries)
+    2. EnemyWizzards (Chance to drop zazza)
+    3. EnemyZaclon 
+    4. EnemyZaguard 
     5. EnemyGiantZanaZana (semi-boss)
     6. EnemyLordZA (final boss)
 
+4. BaseNPC
+    1. NPCVillager (both average NPC women/men)
+    2. NPCGandalf
+    3. NPCSethRogan
+
 3. BaseObject
-    1. House 
-        1. Window
-        2. Wall
-        3. House Couch 
-        4. House Bed
-        5. House Table 
-        6. House Cupboard
-        7. House Mail box
-        8. Old furniture
-        9. Chest (spits random item)
-
-   2. Outside (forest)
-
-        1. Bush
-        2. Tree
-        3. Rock 
-        4. Gate 
-        5. Grass
-        6. Berrie (heals 5% hp each)
-        7. Apple (heals 25% of health)
-        8. Chest (spits random item)
-        9. Gold Coin (dropped by enemies)
-        10. Forest Ground
-        11. bird 
-
-    3. Outside (Castle )
-
-        1. ObstacleCastleRock 
-        2. ObstacleCastlePillar 
-        3. Torches
-        4. Suits of armor
-        5. Locked doors
-        6. Chest (spits random item)
-        7. Gold Coin (dropped by enemies)
-        8. Key (for accesing the final boss (inside the castle))
-        9. Rock 
-        10. Catle Ground
+    1. Window
+    2. Wall
+    3. House Couch 
+    4. House Bed
+    5. House Table 
+    6. House Cupboard
+    7. House Mail box
+    8. Old furniture
+    10. Bush
+    11. Tree
+    12. Rock 
+    13. Gate 
+    14. Grass
+    15. ObstacleCastleRock 
+    16. ObstacleCastlePillar 
+    17. Torches
+    18. Suits of armor
+    19. Locked doors
+    20. Catle Ground
+    21. Berrie (pick-up-able, heals 5% hp each)
+    22. Apple (pick-up-able, heals 25% of health)
+    23. Gold Coin (pick-up-able, dropped by enemies)
+    24. Chest (pick-up-able, spits random item)
 
 
     28. Gandalfs item (Light class)
@@ -383,23 +399,28 @@ _Other_:
             3. AttackPotion 
 
 
-3. BaseNPC
-    1. NPCVillager (both average NPC women/men)
-    2. NPChobbit 
-    3. NPCSethRogan
+5. Weapons
+    1. Satff
+    2. Dagger
+    3. Sword
+    4. Long Sword
+    5. Black shield
+    6. Crusader shield
+    7. Wooden club
+    8. Mace
+    9. Waraxe
+    10. Rapier
+    11. Machete
+    12. Katana
     
 
-4. Visual
+5. Visual
     1. VisualHouseRug
-    1. VisualGrass
-    2. VisualBird
-    4. VisualWind (*NOTA PARA QEUIPO: les gustaria que se vieran como ondas de viento??, en caso de que no quieran borrar el punto 4*)
-    5. VisualForestGround
-    6. VisualCastleGround 
-    
+    2. VisualGrass
+    3. VisualForestGround
+    4. VisualCastleGround 
 
-
-5. BaseInteractable
+6. BaseInteractable
     1. InteractableButton
 
    
@@ -469,12 +490,6 @@ Well-designed feedback, both good (e.g. leveling up) and bad (e.g. being hit), a
     2. Door (matching Stone Bricks)
     3. Gate
     4. Button (matching Weathered Stone Bricks)
-    2. BaseEnemy
-    1. EnemyZabush (33% of chances to drop Berries)
-    2. EnemyWizzards 
-    3. EnemyZaclon
-    4. EnemyGiantZanaZana (semi-boss, drop key for final boss)
-    5. EnemyLordZAggy (final boss)
 
 5. ObjectS
     1. ObjectBerrie (heals 3 hp each)
