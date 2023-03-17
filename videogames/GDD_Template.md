@@ -104,18 +104,12 @@ controls:
 5. "Q" = Interact (open doors, confirm purchases, drink potions)
 6. "I" = Inventory/Bag
 7. "ESC" = Menu.
+
 ### **Mechanics**
+_Combat System_:
 
-General
-
--The player can choose between three classes (light, medium, heavy) that will affect their statistics in combat, 
--The player will be given a random element after selecting its class (fire, water, ground, electric, wind)
--After selecting your class youll have the task of finding a semi-boss in the forest  that is protecting an elemental chest and an NPC storyteller, inside this chest youll be given the correspondent element and the storyteller will give you a fragment of scooby´s mistery. 
--The player will be able to obtain or buy equipment that alters his statistics
--The player will also get consumables to regenerate HP and MP or key items by completing battles or side-quests.
-
-Stats:
-
+ The main mechanic of the game will be the combat system, this system will be based on the following stats:
+ 
 1. -HP (Life Points)
 2. -MP (Magic points to use special attacks)
 3. -STR (How strong the attacks will be)
@@ -123,7 +117,20 @@ Stats:
 5. -LUC (Increases probability of making a critical attack)
 6. -CHR (It will allow you to get discounts in the store and better rewards but enemies have a chance of calling a new mob)
 
-Elements types:
+The combat will have the following rules and characteristics:
+- On a combat you´ll be able to fight between 1 and 5 enemies. 
+.
+- The combat will be in turned base until the main character or the enemies no longer has HP.
+
+- During combat the player can choose to use normal attacks, magic attacks (consumes MP, but are stronger and have special abilities), use a consumable(Item that will afect stats), change element or run away from the battle.
+
+- The equipped weapon will affect the characters stats.
+
+- There is a chance to receive or deal a critical attack that does 200% damage.The luck stat will increase you´re chances of dealing this kind of attacks (remember if enemies have a very high Luck Stat they can deal the critical attack).
+
+- The character will have one of three classes (light, medium, heavy), that will affect their statistics.
+
+- Character will have an element when the combat starts. This elements are the following:
 
 1. Fire 
 2. Electric 
@@ -131,34 +138,56 @@ Elements types:
 4. Water 
 5. Wind
 
-Elements Rules: 
-1. Fire>Wind 
-2. Water>Fire
-3. Electric>Water 
-4. Ground> Electric
+- Elements will have advantage against another element as the following:
+1. Fire > Wind 
+2. Water > Fire
+3. Electric > Water 
+4. Ground > Electric
 5. Wind> Ground
 
+- If the an character attacks a character where it's element has an advantage over the other the attack will deal 2x, and if the element has a disadvantage it will deal 0.5x.
 
-Combat:
+- So the damage an attack does will be calculated, taking into consideration the following: 
+    - The attack stat from the attacker.
+    - The defense stat from the receiver.
+    - The attack power.
+    - If the attack is critical.
+    - If the characters have element weaknesses or strenghs.
 
--The combat will be in turns until the main character or the opponent no longer has HP 
+- The first attack will be decided by who attacks first the other on the map.
 
--During combat you can choose to use normal attacks, magic attacks (consumes MP), use a consumable, change element  or run away from the battle
+- If the match is won the player is rewarded with money.
 
--If the match is won the player is rewarded with money
+- The enemies stats will be determined by the total sum of shaggy's stats. The total sum will be multipled by a number which is unique to each enemy and then will be distributed equally between the enemy's stats. for example: The weakest enemies will have a very low multiplier aproximately of .30, so 30% of Shaggy total sum of stats will be distributed in the foes stats. Next the 25% of Shaggy's total sum will be given to a random stat of the enemy for example: An enemy will get a boost in atack or resistance. This is to make the combat dynamic and non glued to EXP conventions, the boost will be shown in a text For example "Wow, this wizard has a lot of strenght +25 STR".
 
--There is a chance to receive or deal a critical attack that does 200% more damage, dependign of your luck you can have more porcentage of giving this attack (remember if enemies have a very high Luck Stat they can deal the crittical attack)
+- Bosses and Semi-Bosses will have fixed stats, this to make them hard battles for the player.
 
+_Movements and Exploration_:
 
--If enemies notice main character they´ll run forward after him, in case of colappsing (with main character) the battle will begin with enemie´s having the first attack
+The game will be a topdown RPG, where the player will be able to 
+explore to move freely on the designated zone of the map. The movements and exploration mechanics will have the following rules and characteristics:
 
--If main charcater hits enemie´s back, the battle will begin with main character having the first attack
+- The player will be able to interact with objects, characters and enemies.
 
--The enemies stats will be determined by the total sum of shaggys stats. The total sum will be multipled by a number which is unique to each enemy and then will be distributed equally between the enemy's stats. for example: The weakest enemies will have a very low multiplier aproximately of .30, so 30% of Shaggy total sum of stats will be distribuited in the foes stats. Next the 25% of Shaggy's total sum will be given to a random stat of the enemy for example: An enemy will get a boost in atack or resistance. This is to make the combat dynamic and non glued to EXP conventions, the boost will be shown in a text For example "Wow, this wizard has a lot of strenght +25 STR".
+- Some objects such as coins will grant the player benefits when picking them up.
 
--In the overworld the player can see their current health and magic points in the down left corner.
+- Zones in the map will be closed for the player until the necessary tasks to advance are completed.
 
--The pause screen will show resume, quit and backpack. The backpack is the main hub of the game, a menu, showing the screen in four quarters the first one  (upper left) will show three option which will be shown in the second quarter (upper right). SThe options are ITEM, GEAR and MOVES, the player's possesions in will be shown in the second quarter depending on which category they are. The third quarte will show haggy's current stats (down left). The fourth one (down right) will show the current selection in the second quarter with an image and description of the selection. 
+- The player will also get consumables to regenerate HP and MP or key items by completing battles or side-quests.
+
+- If enemies notice main character they´ll run forward after him, in case of colappsing (with main character) the battle will begin with enemies having the first attack.
+
+- If main character hits enemy, the battle will begin with main character having the first attack
+
+- Text Dialogs and story events will be displayed, if certain conditions are satisfied.
+
+- In the overworld the player can see their current health and magic points in the down left corner.
+
+_Other_:
+
+- The pause screen will show resume, quit and backpack. The backpack is the main hub of the game, a menu, showing the screen in four quarters the first one  (upper left) will show three option which will be shown in the second quarter (upper right). SThe options are ITEM, GEAR and MOVES, the player's possesions in will be shown in the second quarter depending on which category they are. The third quarte will show haggy's current stats (down left). The fourth one (down right) will show the current selection in the second quarter with an image and description of the selection. 
+
+- Gandalf stores will be distributed on the map, each store will have unique items that the player can buy.
 
 ## _Level Design_
 
@@ -171,7 +200,6 @@ Combat:
         1. _Ambient_
             1. Houses
             2. Paths
-            3. Street lights
             4. wooden fences
             
         2. _Interactive_
@@ -217,7 +245,6 @@ Combat:
             7. Golden Coins
 
 ### **Game Flow**
-
 1. Player starts in Village.
 
 2. NPC calls shaggy and gives him his first task (Here the user selects class and first element).
@@ -230,7 +257,7 @@ Combat:
 
 6. Shaggy explores forest, having encounters with NPC's as well as having chances of collecting consumables to help the user later on.
 
-7. Shaggy experiences an event where he experiences a flashback of that night.
+7. Shaggy experiences an event where he experiences a flashback of that night. Also he is tasked to go find elements.
 
 8. Shaggy finds semi-bosses protecting the forest; elemental chest are earned in victory, recieving new elements as well as a fragment of what happened with scooby.
 
@@ -240,7 +267,7 @@ Combat:
 
 11. Shaggy must find the castle location, which can be found beyond the forest.
 
-12. Shaggy finds a Story-telling NPC in the outskirts of the castle where he must use & try-out new elements by completing mundane tasks such as freezing a river.
+12. Shaggy finds a Story-telling NPC in the outskirts of the castle where he must use & try-out new elements by completing mundane tasks such as put out fire.
 
 13. Shaggy will then be able to go to the castle and find the castle's main room.
 
@@ -281,7 +308,7 @@ Combat:
     2. EnemyWizzards 
     3. EnemyZaclon
     4. EnemyZaguard
-    5. EnemyGiantZanaZana (semi-boss, drop key for final boss)
+    5. EnemyGiantZanaZana (semi-boss)
     6. EnemyLordZA (final boss)
 
 3. BaseObject
@@ -406,13 +433,13 @@ Well-designed feedback, both good (e.g. leveling up) and bad (e.g. being hit), a
         6. NPC Seth Rogan (idle)
     3. Mobs
         1. Base enemy
-            1. Zabush (Idle, attacking)
-            2. Wizzards (Idle, attacking)
-            3. Zaclon (Idle, attacking)
+            1. Zabush (Idle, attacking, walking)
+            2. Wizzards (Idle, attacking, walking)
+            3. Zaclon (Idle, attacking, walking)
         2. Semi boss
             1. Giant Zana Zana (Idle, attacking)
         3. Final boss
-            1. LordZAggy (Idle, attacking)
+            1. LordZAggy (Idle, attacking, walking)
 
 2. Weapons
    1. Satff
