@@ -22,11 +22,6 @@
     3. [Mechanics](#mechanics)
 4. [Level Design](#level-design)
     1. [Themes](#themes)
-        1. Ambience
-        2. Objects
-            1. Ambient
-            2. Interactive
-        3. Challenges
     2. [Game Flow](#game-flow)
 5. [Development](#development)
     1. [Abstract Classes](#abstract-classes--components)
@@ -197,11 +192,12 @@ _Other_ :
         1. _Ambient_
             1. Window
             2. Wall
-            3. House Couch 
+            3. House Couch
             4. House Bed
-            5. House Table 
+            5. House Table
             6. House Cupboard
-            7. Old furniture
+            7. House Mail box
+            8. Old furniture
         2. 
             _Interactive_
             1. Villager NPC
@@ -236,12 +232,12 @@ _Other_ :
         1. Green, Mysterious, adventurous
   2. Objects
         1. _Ambient_
-            1. Trees
-            2. Bushes
-            3. Tall grass
-            4. Rocks
-            5. River
-            6. Bridge
+            1. Bush
+            2. Tree
+            11. Tree trunk
+            12. Rock
+            13. Gate
+            14. Grass
 
         2. _Interactive_
             1. Chests
@@ -315,10 +311,11 @@ _Other_ :
     2. BaseEnemy
     3. BaseNPC
     4. BaseObject
-2. Weapons
-3. BaseObstacle
-4. Visual
-5. BaseInteractable
+        1. Consumible 
+        2. Weapons
+        3. Other
+2. BaseObstacle
+3. BaseInteractable
 
 ### **Derived Classes / Component Compositions**
 
@@ -329,98 +326,88 @@ _Other_ :
         3. Heavy player 
 
 2. BaseEnemy
-    1. EnemyZabush (Chance to drop Berries)
-    2. EnemyWizzards (Chance to drop zazza)
-    3. EnemyZaclon 
-    4. EnemyZaguard 
-    5. EnemyGiantZanaZana (semi-boss)
-    6. EnemyLordZA (final boss)
+    1. EnemyZabush (Chance to drop Berries, Forest)
+    2. EnemyWizzards (Chance to drop zazza, Forest)
+    3. EnemyZaclon (Castle)
+    4. EnemyZaguard (Castle)
+    5. EnemyGiantZanaZana (semi-boss, Forest)
+    6. EnemyLordZA (final boss, Castle)
 
 4. BaseNPC
     1. NPCVillager (both average NPC women/men)
-    2. NPCGandalf
-    3. NPCSethRogan
+    2. NPCGandalf (Item store)
+    3. NPCSethRogan (First NPC that interacts with Shaggy)
+    4. Storyteller NPC 
 
 3. BaseObject
-    1. Window
-    2. Wall
-    3. House Couch 
-    4. House Bed
-    5. House Table 
-    6. House Cupboard
-    7. House Mail box
-    8. Old furniture
-    10. Bush
-    11. Tree
-    12. Rock 
-    13. Gate 
-    14. Grass
-    15. ObstacleCastleRock 
-    16. ObstacleCastlePillar 
-    17. Torches
-    18. Suits of armor
-    19. Locked doors
-    20. Catle Ground
-    21. Berrie (pick-up-able, heals 5% hp each)
-    22. Apple (pick-up-able, heals 25% of health)
-    23. Gold Coin (pick-up-able, dropped by enemies)
-    24. Chest (pick-up-able, spits random item)
+
+    1. Consumible
+        1. Berries (heals 5% of health)
+        2. Apple (heals 25% of health)
+        3. Fish (heals 50% of health)
+        4. Meat (heals 75% of health)
+        5. Basic zaza (heals small ammount of MP)
+        6. Middle zaza (Heals normal ammount of MP )
+        7. Heavy zaza (Heals a really good ammount of MP)
 
 
-    28. Gandalfs item (Light class)
-        1. Light class
-            1. Middle Staff Upgrade
-            2. Perfect Wizzard Staff Upgrade
-        2. Middle class
-            1. Refined iron sword
-            2. Perfect Santoroyu Sword Upgrade 
-        3. Heavy class  
-            1. Mace/mallot Upgrade  
-            2. Perfect War Axe Upgrade 
-        4. Lucky items 
+    2. Weapons (Classes )
+        1. Satff
+        2. Dagger
+        3. Sword
+        4. Long Sword
+        7. Wooden club
+        8. Mace
+        9. Waraxe
+        10. Rapier
+        11. Machete
+        12. Katana
+
+    3. Others
+        1. Lucky items 
             1. Elden ring 
             2. Rabit foot 
             3. Garlic
-        5. Charimsa items 
+        2. Charimsa items 
             1. Silly jokes book
             2. GetdaRizz
             3. Apples&Bananas
-        6. Consumibles
-            1. Berries (heals 5% of health)
-            2. Apple (heals 25% of health)
-            3. Fish (heals 50% of health)
-            4. Meat (heals 75% of health)
-            5. Basic zaza (heals small ammount of MP)
-            6. Middle zaza (Heals normal ammount of MP )
-            7. Heavy zaza (Heals a really good ammount of MP)
-        7.  Potion 
+        3. Agility Items
+            1. Speed Shoes
+            2. Lord Jesus Sandals 
+            3. Speedy Gonzales Speed.
+        4.  Potion 
             1. HealPotion 
             2. DefensePotion 
             3. AttackPotion 
 
+4. BaseObstacle 
+    1. Window
+    2. Wall
+    3. House Couch
+    4. House Bed
+    5. House Table
+    6. House Cupboard
+    7. House Mail box
+    8. Old furniture
+    9. Bush
+    10. Tree
+    11. Tree trunk
+    12. Rock
+    13. Gate
+    14. Grass
+    15. ObstacleCastleRock
+    16. ObstacleCastlePillar
+    17. Torches
+    18. Suits of armor
+    19. Locked doors
+    20. Catle Ground
+    21. Houses
+    22. Paths
+    23. House Mail box
+    24. wooden fences
 
-5. Weapons
-    1. Satff
-    2. Dagger
-    3. Sword
-    4. Long Sword
-    5. Black shield
-    6. Crusader shield
-    7. Wooden club
-    8. Mace
-    9. Waraxe
-    10. Rapier
-    11. Machete
-    12. Katana
-    
-
-5. Visual
-    1. VisualHouseRug
-    2. VisualGrass
-    3. VisualForestGround
-    4. VisualCastleGround 
-
-6. BaseInteractable
+5. BaseInteractable
     1. InteractableButton
 
    
