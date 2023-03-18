@@ -199,6 +199,14 @@ _Other_ :
 
 - Gandalf stores will be distributed on the map, each store will have unique items that the player can buy.
 
+_Possible results of the game_:
+
+- The player saves Scooby by defeating the final boss. 
+
+- The player respawns in the last saved checkpoint.
+
+- The player finds the golden Zaza.
+
 ## _Level Design_
 
 ### **Themes**
@@ -369,13 +377,15 @@ _Other_ :
 
 ### **Derived Classes / Component Compositions**
 
-1. BasePlayer
+#### *Program scripts required 
+
+1. BasePlayer *(PlayerMovement, PlayerAttacks, PlayerInteractions, PlayerClass, PlayerObjectConsumable, PlayerUptdateStats)
     1. PlayerMain
         1. Light player 
         2. Middle player 
         3. Heavy player 
 
-2. BaseEnemy
+2. BaseEnemy *(EnemyMovement, EnemyAttack, EnemyInteractions, EnemyClass)
     1. EnemyZabush (Chance to drop Berries, Forest)
     2. EnemyWizzards (Chance to drop zazza, Forest)
     3. EnemyZaclon (Chance to drop Berries,Castle)
@@ -383,13 +393,13 @@ _Other_ :
     5. EnemyGiantZanaZana (semi-boss, Forest)
     6. EnemyLordZA (final boss, Castle)
 
-4. BaseNPC
+4. BaseNPC *(NpcMovement, NpcInteractions)
     1. NPCVillager (both average NPC women/men)
     2. NPCGandalf (Item store)
     3. NPCSethRogan (First NPC that interacts with Shaggy)
     4. Storyteller NPC 
 
-3. BaseObject
+3. BaseObject *(PLayerObjectInteraction, ObjectEffects)
 
     1. Consumible
         1. Berries (heals 5% of health)
@@ -457,10 +467,10 @@ _Other_ :
     23. House Mail box
     24. wooden fences
 
-5. BaseInteractable
+5. BaseInteractable *(PlayerItemInteraction)
     1. InteractableButton
 
-   
+*(SceneLoading)   
    
 
 _(example)_
