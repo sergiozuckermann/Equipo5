@@ -612,34 +612,36 @@ _(example: https://youtu.be/ZxRHXC2SB4E Gandalf Pack by Xac)_
 
 ---
 
-_(define the main activities and the expected dates when they should be finished. This is only a reference, and can change as the project is developed)_
+1.- Develop base classes and combat system (March 17- March 25)
+i-base player
+ii-base enemy
+iii-base stats
+iv- base elements
+v- base items
+vi- base attacks
+vii- base classes
 
-1. develop base classes
-    1. base entity
-        1. base player
-        2. base enemy
-        3. base block
-  2. base app state
-        1. game world
-        2. menu world
-2. develop player and basic block classes
-    1. physics / collisions
-3. find some smooth controls/physics
-4. develop other derived classes
-    1. blocks
-        1. moving
-        2. falling
-        3. breaking
-        4. cloud
-    2. enemies
-        1. soldier
-        2. rat
-        3. etc.
-5. design levels
-    1. introduce motion/jumping
-    2. introduce throwing
-    3. mind the pacing, let the player play between lessons
-6. design sounds
-7. design music
+2.- Recover all visuals/sounds used in the game (March 17- March 25)
+	i- All Shaggy’s sprites
+	ii- All NPCs sprites
+	iii- All enemies and boss sprites
+	iv- All menu/narrative/base game sprites
+	v- All Obstacle sprites
+	vi- All item and gear sprites
+	vii- All the game soundtrack
+	viii- All the game sound effects
+	ix- The different scenes world maps
 
-_(example)_
+3.- Implement obstacles, game map, character and intractable properties  (March 26- April 5)
+	i- Implement controls
+	ii- Implement sprites
+	iii- Implement game sounds
+	iv- Implement collision properties for obstacles
+	v- Implement intractable properties for interactables
+	vi- Implement menu
+	vii- Implement backpack
+
+4.- Implement combat (April 5- April 8)
+	i- Testing combat and difficulty feel
+	ii- Balancing the game
+5.- Bug fixes and polishing (April 8- April 12)
