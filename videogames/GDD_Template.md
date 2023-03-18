@@ -7,6 +7,8 @@
     Ian Holender 
     Rafa Blanga
 
+Imagen TEC 
+Imagen Portada Juego
 
 ## _Game Design Document_
 
