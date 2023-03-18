@@ -612,12 +612,10 @@ Regarding the sound effects, these will be reactive to the player&#39;s actions,
     5. Mob sound
     6. NPC gibberish
     7. Hit sound (in battle)
-
-2. Feedback
-    1. Relieved &quot;Ahhhh!&quot; (health)
-    2. Shocked &quot;Ooomph!&quot; (attacked)
-    3. Happy chime (extra life)
-    4. Sad chime (died)
+    8. Relieved &quot;Ahhhh!&quot; (health)
+    9. Shocked &quot;Ooomph!&quot; (attacked)
+    10. Sad chime (died)
+    11. "pip" (picking a coin)
 
 
 ### **Music Needed**
