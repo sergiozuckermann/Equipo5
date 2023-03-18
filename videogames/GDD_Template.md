@@ -1,4 +1,12 @@
 # **The Zazacrifice of Shaggy**
+    Game by: 
+    Franciso Martinez
+    Santiago Tena
+    Sergio Zuckermann
+    Domingo Mora 
+    Ian Holender 
+    Rafa Blanga
+
 
 ## _Game Design Document_
 
@@ -612,36 +620,37 @@ _(example: https://youtu.be/ZxRHXC2SB4E Gandalf Pack by Xac)_
 
 ---
 
-1.- Develop base classes and combat system (March 17- March 25)
-i-base player
-ii-base enemy
-iii-base stats
-iv- base elements
-v- base items
-vi- base attacks
-vii- base classes
+1. Develop base classes and combat system (March 17- March 25)
+    1. base player
+    2. base enemy
+    3. base stats
+    4. base elements
+    5. base items
+    6. base attacks
+    7. base classes
 
-2.- Recover all visuals/sounds used in the game (March 17- March 25)
-	i- All Shaggy’s sprites
-	ii- All NPCs sprites
-	iii- All enemies and boss sprites
-	iv- All menu/narrative/base game sprites
-	v- All Obstacle sprites
-	vi- All item and gear sprites
-	vii- All the game soundtrack
-	viii- All the game sound effects
-	ix- The different scenes world maps
+2. Recover all visuals/sounds used in the game (March 17- March 25)
+	1. All Shaggy’s sprites
+	2. All NPCs sprites
+	3. All enemies and boss sprites
+	4. All menu/narrative/base game sprites
+	5. All Obstacle sprites
+	6. All item and gear sprites
+	7. All the game soundtrack
+	8. All the game sound effects
+	9. The different scenes world maps
 
-3.- Implement obstacles, game map, character and intractable properties  (March 26- April 5)
-	i- Implement controls
-	ii- Implement sprites
-	iii- Implement game sounds
-	iv- Implement collision properties for obstacles
-	v- Implement intractable properties for interactables
-	vi- Implement menu
-	vii- Implement backpack
+3. Implement obstacles, game map, character and intractable properties  (March 26- April 5)
+	1. Implement controls
+	2. Implement sprites
+	3. Implement game sounds
+	4. Implement collision properties for obstacles
+	5. Implement intractable properties for interactables
+	6. Implement menu
+	7. Implement backpack
 
-4.- Implement combat (April 5- April 8)
-	i- Testing combat and difficulty feel
-	ii- Balancing the game
-5.- Bug fixes and polishing (April 8- April 12)
+4. Implement combat (April 5- April 8)
+	1. Testing combat and difficulty feel
+	2. Balancing the game
+
+5. Bug fixes and polishing (April 8- April 12)
