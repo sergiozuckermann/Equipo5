@@ -125,6 +125,8 @@ _Combat System_:
     7. -CHR (It will allow you to get discounts in the store and better rewards but enemies have a chance of calling a new mob)
 
 The combat will have the following rules and characteristics:
+- The goal of the combat is to defeat every enemy by getting their stat all the way to zero.
+
 - On a combat you´ll be able to fight between 1 and 5 enemies. 
 .
 - The combat will be in turned base until the main character or the enemies no longer has HP.
@@ -168,7 +170,7 @@ The combat will have the following rules and characteristics:
 
 - Bosses and Semi-Bosses will have fixed stats, this to make them hard battles for the player.
 
-_Movements and Exploration_:
+_Movements, Exploration and Objectives_:
 
 The game will be a topdown RPG, where the player will be able to 
 explore to move freely on the designated zone of the map. The movements and exploration mechanics will have the following rules and characteristics:
@@ -188,6 +190,8 @@ explore to move freely on the designated zone of the map. The movements and expl
 - Text Dialogs and story events will be displayed, if certain conditions are satisfied.
 
 - In the overworld the player can see their current health and magic points in the down left corner.
+
+- The main objective is to save Scooby by defeating all the semi-bosses in order to acquire the different elements to be able to defeat the final boss.
 
 _Other_ :
 
