@@ -254,16 +254,20 @@ _Other_ :
         1. Dangerous, tense, Creepy and Ominous
     2. Objects
         1. _Ambient_
-            2. Torches
-            3. Suits of armor
+        15. ObstacleCastleRock
+        16. ObstacleCastlePillar
+        17. Torches
+        18. Suits of armor
+        19. Locked doors
+        20. Catle Ground
     
-        2. _Interactive_
-            1. Chest
-            2. Golden Coins
-            3. Doors
-            4. EnemyZaguards
-            5. EnemyZaclon
-            6. EnemyLordZAggy
+    2. _Interactive_
+        1. Chest
+        2. Golden Coins
+        3. Doors
+        4. EnemyZaguards
+        5. EnemyZaclon
+        6. EnemyLordZAggy
 
 
 ### **Game Flow**
@@ -416,8 +420,6 @@ _Other_ :
 _(example)_
 
 ## _Graphics_
-
----
 
 ### **Style Attributes**
 
