@@ -569,6 +569,9 @@ _Examples:_
 ### Main Character and NPC:
 ![Main Characters](Images/Personajes.png)
 
+### Zabush Sprite:
+![Zabush Mob](Images/zabush.png)
+
 ### World Assets:
 ![World Assets](Images/trees-and-bushes.png)
 
