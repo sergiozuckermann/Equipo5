@@ -226,6 +226,35 @@ _Other_ :
             1. House Table
         2. Interactable
             1. Gandalf NPC
+            2. Weapons (Classes )
+                1. Satff
+                2. Dagger
+                3. Sword
+                4. Long Sword
+                7. Wooden club
+                8. Mace
+                9. Waraxe
+                10. Rapier
+                11. Machete
+                12. Katana
+            3. Others
+                1. Lucky items 
+                    1. Elden ring 
+                    2. Rabit foot 
+                    3. Garlic
+                2. Charimsa items 
+                    1. Silly jokes book
+                    2. GetdaRizz
+                    3. Apples&Bananas
+                3. Agility Items
+                    1. Speed Shoes
+                    2. Lord Jesus Sandals 
+                    3. Speedy Gonzales Speed.
+                4.  Potion 
+                    1. HealPotion 
+                    2. DefensePotion 
+                    3. AttackPotion 
+
 
 4. Forest
     1. Mood
@@ -254,12 +283,12 @@ _Other_ :
         1. Dangerous, tense, Creepy and Ominous
     2. Objects
         1. _Ambient_
-        15. ObstacleCastleRock
-        16. ObstacleCastlePillar
-        17. Torches
-        18. Suits of armor
-        19. Locked doors
-        20. Catle Ground
+            1. ObstacleCastleRock
+            16. ObstacleCastlePillar
+            17. Torches
+            18. Suits of armor
+            19. Locked doors
+            20. Catle Ground
     
     2. _Interactive_
         1. Chest
@@ -332,8 +361,8 @@ _Other_ :
 2. BaseEnemy
     1. EnemyZabush (Chance to drop Berries, Forest)
     2. EnemyWizzards (Chance to drop zazza, Forest)
-    3. EnemyZaclon (Castle)
-    4. EnemyZaguard (Castle)
+    3. EnemyZaclon (Chance to drop Berries,Castle)
+    4. EnemyZaguard (Chance to drop zazza,Castle)
     5. EnemyGiantZanaZana (semi-boss, Forest)
     6. EnemyLordZA (final boss, Castle)
 
@@ -432,132 +461,92 @@ Every single intractable object in the game will have a prompt so that the playe
 
 ### **Graphics Needed**
 
-1. Characters
-    1. Playable character
-        1. Shaggy (idle, walking, magic attack, weapon attack)
-    2. NPC's
-        1. Guard (idle, walking, attacking)
-        2. Prisoner (walking, running)
-        3. NPC Villager male (idle)
-        4. NPC Villager female (idle)
-        5. NPC Hobbit (idle)
-        6. NPC Seth Rogan (idle)
-    3. Mobs
-        1. Base enemy
-            1. Zabush (Idle, attacking, walking)
-            2. Wizzards (Idle, attacking, walking)
-            3. Zaclon (Idle, attacking, walking)
-        2. Semi boss
-            1. Giant Zana Zana (Idle, attacking)
-        3. Final boss
-            1. LordZAggy (Idle, attacking, walking)
+(Animations)= (Idle, Walk, Attack, Consuming)
 
-2. Weapons
-   1. Satff
-   2. Dagger
-   3. Sword
-   4. Long Sword
-   5. Black shield
-   6. Crusader shield
-   7. Wooden club
-   8. Mace
-   9. Waraxe
-   10. Rapier
-   12. Machete
-   13. Katana
+1. GraphicsPlayer
+    1. PlayerMain (Animations)
 
-3. Blocks
-    1. Dirt
-    2. Dirt/Grass
-    3. Stone Block
-    4. Stone Bricks
-    5. Tiled Floor
-    6. Weathered Stone Block
-    7. Weathered Stone Bricks
+2. GraphicsEnemy
+    1. EnemyZabush (Animations)
+    2. EnemyWizzards (Animations)
+    3. EnemyZaclon (Animations)
+    4. EnemyZaguard (Animations)
+    5. EnemyGiantZanaZana (Animations)
+    6. EnemyLordZA (Animations)
 
-4. Other
-    1. Chest
-    2. Door (matching Stone Bricks)
-    3. Gate
-    4. Button (matching Weathered Stone Bricks)
+4. GraphicsNPC
+    1. NPCVillager (Idle, Walking)
+    2. NPCGandalf (Idle, Walking)
+    3. NPCSethRogan (Idle, Walking)
+    4. Storyteller NPC (Idle, Walking)
 
-5. ObjectS
-    1. ObjectBerrie (heals 3 hp each)
-    2. ObjectChest (spits random item)
-    3. ObjectGoldCoin (cha-ching!)
-    4. ObjectKey (for accesing the final boss (inside the castle))
-    5. ObjectRock (pickable, throwable)
-    6. ObjectPotion 
-        1. HealPotion (may acces to it in Gandalf´s Zastore)
-        2. DefensePotion (may acces to it in Gandalf´s Zastore)
-        3. AttackPotion (may acces to it in Gandalf´s Zastore)
+3. GraphicsObject
 
-6. Visual
+    1. GraphicsConsumible
+        1. Berries (icon)
+        2. Apple (icon)
+        3. Fish (icon)
+        4. Meat (icon)
+        5. Basic zaza (icon)
+        6. Middle zaza (icon)
+        7. Heavy zaza (icon)
+
+
+    2. GraphicsWeapons
+        1. Satff (Item Grpahic, Attack animation)
+        2. Dagger (Item Grpahic, Attack animation)
+        3. Sword (Item Grpahic, Attack animation)
+        4. Long Sword  (Item Grpahic, Attack animation)
+        7. Wooden club (Item Grpahic, Attack animation)
+        8. Mace (Item Grpahic, Attack animation)
+        9. Waraxe (Item Grpahic, Attack animation)
+        10. Rapier (Item Grpahic, Attack animation)
+        11. Machete (Item Grpahic, Attack animation)
+        12. Katana (Item Grpahic, Attack animation)
+
+    3. GRaphicsOthers
+        1. Lucky items 
+            1. Elden ring (icon)
+            2. Rabit foot (icon)
+            3. Garlic (icon)
+        2. Charimsa items 
+            1. Silly jokes book (icon)
+            2. GetdaRizz (icon)
+            3. Apples&Bananas (icon)
+        3. Agility Items
+            1. Speed Shoes (icon)
+            2. Lord Jesus Sandals  (icon)
+            3. Speedy Gonzales Speed. (icon)
+        4.  Potion 
+            1. HealPotion (icon)
+            2. DefensePotion (icon)
+            3. AttackPotion (icon)
+
+4. VisualsObstacle 
     1. Window
     2. Wall
-    3. House Couch 
+    3. House Couch
     4. House Bed
-    5. House Table 
+    5. House Table
     6. House Cupboard
     7. House Mail box
-    8. Bush
-    9. Tree
-    10. Rock 
-    11. Gate 
-    12. ObstacleCastleRock 
-    13. ObstacleCastlePillar 
-    14. Old furniture
-    15. Torches
-    16. Suits of armor
-    17. Locked doors
-    18. Grass
-    19. ObjectBerrie (heals 3 hp each)
-    20. Chest (spits random item)
-    21. Gold Coin 
-    22. Key (for accesing the final boss (inside the castle))
-    23. Rock 
-    24. ObjectPotion 
-        1. HealPotion (may acces to it in Gandalf´s Zastore)
-        2. DefensePotion (may acces to it in Gandalf´s Zastore)
-        3. AttackPotion (may acces to it in Gandalf´s Zastore)
-    25. Bird
-    26. Forest Ground
-    27. Catle Ground
-    14. Old furniture
-    15. Torches
-    16. Suits of armor
-    17. Locked doors
-    18. Grass
-    19. ObjectBerrie (heals 3 hp each)
-    20. Chest (spits random item)
-    21. Gold Coin 
-    22. Key (for accesing the final boss (inside the castle))
-    23. Rock 
-    24. ObjectPotion 
-        1. HealPotion (may acces to it in Gandalf´s Zastore)
-        2. DefensePotion (may acces to it in Gandalf´s Zastore)
-        3. AttackPotion (may acces to it in Gandalf´s Zastore)
-    25. Bird
-    26. Forest Ground
-    27. Catle Ground
-    14. Old furniture
-    15. Torches
-    16. Suits of armor
-    17. Locked doors
-    18. Grass
-    19. ObjectBerrie (heals 3 hp each)
-    20. Chest (spits random item)
-    21. Gold Coin 
-    22. Key (for accesing the final boss (inside the castle))
-    23. Rock 
-    24. ObjectPotion 
-        1. HealPotion (may acces to it in Gandalf´s Zastore)
-        2. DefensePotion (may acces to it in Gandalf´s Zastore)
-        3. AttackPotion (may acces to it in Gandalf´s Zastore)
-    25. Bird
-    26. Forest Ground
-    27. Catle Ground
-    28: Building assets
+    8. Old furniture
+    9. Bush
+    10. Tree
+    11. Tree trunk
+    12. Rock
+    13. Gate
+    14. Grass
+    15. ObstacleCastleRock
+    16. ObstacleCastlePillar
+    17. Torches
+    18. Suits of armor
+    19. Locked doors
+    20. Catle Ground
+    21. Houses
+    22. Paths
+    23. House Mail box
+    24. wooden fences
 
 _Examples:_
 
