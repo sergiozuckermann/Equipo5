@@ -1,14 +1,17 @@
 # **The Zazacrifice of Shaggy**
     Game by: 
-    Franciso Martinez
-    Santiago Tena
-    Sergio Zuckermann
-    Domingo Mora 
-    Ian Holender 
-    Rafa Blanga
+    Franciso Martinez A01782250
+    Santiago Tena A01781283
+    Sergio Zuckermann A01024831
+    Domingo Mora A01783317
+    Ian Holender A01026295
+    Rafa Blanga A01781442
 
-Imagen TEC 
-Imagen Portada Juego
+
+![LogoTec](Images/teclogo.png)
+
+
+![LogoJuego](Images/logoJuego.png)
 
 ## _Game Design Document_
 
