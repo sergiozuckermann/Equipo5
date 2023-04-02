@@ -1,0 +1,82 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: darkblue;
+    color: #fff;
+    padding: 10px;
+}
+
+.header-left ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.header-left ul li {
+    margin-right: 20px;
+}
+
+.header-left ul li:last-child {
+    margin-right: 0;
+}
+
+.header-left ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.header-left ul li a:hover {
+    text-decoration: underline;
+}
+
+.header-right h1 {
+    margin: 0;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+    padding-top: 50px;
+}
+
+h1 a{
+    text-decoration: none;
+    color: white;
+}
+
+body{
+    background-color: skyblue;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100vh;
+    padding-top: 20px; /* Add padding to move the video down slightly */
+  }
+  
+  .video-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px; /* Increase the margin to move the video down further */
+  }
+  
+  .video-container iframe {
+    width: 90vw; /* Increase the width to make the video larger */
+    height: calc(90vw / 1.77); /* Set the height to maintain the aspect ratio of 16:9 */
+  }
+  
+
+.video-description {
+    color: darkblue;
+    text-align: center;
+    margin-bottom: 20px;
+}
