@@ -11,11 +11,14 @@ public class chasee : MonoBehaviour
     [SerializeField] float returnPositionY; // Serialized field for y position of return position
 
     private float distance;
+    public Animator animator;
+ 
 
     // Update is called once per frame
     void Update()
     {
         distance = Vector2.Distance(transform.position, player.transform.position);
+    
         if (CheckRadiusFromPlayer())
         {
             ChasePlayer();
@@ -24,6 +27,8 @@ public class chasee : MonoBehaviour
         {
             ReturnToPosition();
         }
+        
+        
     }
 
     bool CheckRadiusFromPlayer()
@@ -42,10 +47,23 @@ public class chasee : MonoBehaviour
     {
         Vector2 direction = player.transform.position - transform.position;
         direction.Normalize();
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        
+        animator.SetFloat("VelX", direction.x);
+        animator.SetFloat("VelY", direction.y);
+
+        if(direction.x == 0 && direction.y == 0)
+        {
+            animator.SetInteger("Walk", 0);
+        }
+        else
+        {
+            animator.SetInteger("Walk", 1);
+        }
+        //float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
         transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime);
-        transform.rotation = Quaternion.Euler(Vector3.forward * angle);
+        //transform.rotation = Quaternion.Euler(Vector3.forward * angle);
+        
     }
 
     void ReturnToPosition()
@@ -53,10 +71,20 @@ public class chasee : MonoBehaviour
         Vector2 returnPosition = new Vector2(returnPositionX, returnPositionY);
         Vector2 direction = returnPosition - (Vector2)transform.position;
         direction.Normalize();
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        //float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        animator.SetFloat("VelX", direction.x);
+        animator.SetFloat("VelY", direction.y);
 
+        if(direction.x == 0 && direction.y == 0)
+        {
+            animator.SetInteger("Walk", 0);
+        }
+        else
+        {
+            animator.SetInteger("Walk", 1);
+        }
         transform.position = Vector2.MoveTowards(this.transform.position, returnPosition, speed * Time.deltaTime);
-        transform.rotation = Quaternion.Euler(Vector3.forward * angle);
+        //transform.rotation = Quaternion.Euler(Vector3.forward * angle);
     }
 
     // Method to set the return position from console or another script
@@ -65,4 +93,10 @@ public class chasee : MonoBehaviour
         returnPositionX = x;
         returnPositionY = y;
     }
+
+    
+
+       
+        
+
 }
