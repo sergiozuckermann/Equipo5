@@ -9,13 +9,15 @@ public class Movement : MonoBehaviour
     // Variables for speed and horizontal/vertical axis limits are established
 
     [SerializeField] float speed;
-
+    [SerializeField] float limit;
     Vector3 move;
+
+    Animator animator;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -27,7 +29,7 @@ public class Movement : MonoBehaviour
     {
         move.x=Input.GetAxis("Horizontal");
         move.y=Input.GetAxis("Vertical");
-
+        transform.Translate(move * speed * Time.deltaTime);
        // Debug.Log("H motion: " +move.x);
 
         //en caso de querer poner limites en el mapa desactivar comentarios de esta seccion y escribir limites en unity. 
@@ -46,8 +48,26 @@ public class Movement : MonoBehaviour
         }
         */ 
 
+        
+        animator.SetFloat("VelX", move.x);
+        animator.SetFloat("VelY", move.y);
 
-        transform.Translate(move * speed * Time.deltaTime);
+        if(move.x == 0 && move.y == 0)
+        {
+            animator.SetInteger("Walk", 0);
+        }
+        else
+        {
+            animator.SetInteger("Walk", 1);
+        }
+       
+        
+
+
+
+        
+
+        
 
 
     }
