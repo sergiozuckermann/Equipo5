@@ -4483,7 +4483,7 @@ PrefabInstance:
       objectReference: {fileID: 1040987507}
     - target: {fileID: 2001507141060685577, guid: 2f0442de31b60944c9e84cd219393718, type: 3}
       propertyPath: radius
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2001507141060685577, guid: 2f0442de31b60944c9e84cd219393718, type: 3}
       propertyPath: returnPositionX
