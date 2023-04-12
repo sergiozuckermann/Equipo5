@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 719752860247976641}
   - component: {fileID: 719752860247976642}
   - component: {fileID: 719752860247976643}
+  - component: {fileID: 2001507141060685577}
   - component: {fileID: 719752860247976644}
   m_Layer: 0
   m_Name: DaBull
@@ -124,6 +125,24 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2001507141060685577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 719752860247976645}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebe45b26fb5f3ef4db605565169629d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  speed: 0
+  radius: 0
+  returnPositionX: 0
+  returnPositionY: 0
+  animator: {fileID: 719752860247976644}
 --- !u!95 &719752860247976644
 Animator:
   serializedVersion: 5
