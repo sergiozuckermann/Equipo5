@@ -1,57 +1,55 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class chasee : MonoBehaviour
 {
-    [SerializeField] GameObject player;
+    [SerializeField] string Bosque_Combate; // Serialized field for the name of the battle scene to load
     [SerializeField] float speed;
-    [SerializeField] float radius;
-    [SerializeField] float returnPositionX; // Serialized field for x position of return position
-    [SerializeField] float returnPositionY; // Serialized field for y position of return position
+    [SerializeField] float returnPositionX;
+    [SerializeField] float returnPositionY;
+    [SerializeField] float chaseRadius; // Serialized field for the radius within which the enemy will chase the player
+    private Animator animator;
+    private GameObject player;
+    private Vector3 initialPosition;
+    private bool isChasing = false; // Flag to determine if the enemy is currently chasing the player
 
-    private float distance;
-     [SerializeField]  Animator animator;
-
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        distance = Vector2.Distance(transform.position, player.transform.position);
-        if (CheckRadiusFromPlayer())
-        {
-            ChasePlayer();
-        }
-        else
-        {
-            ReturnToPosition();
-        }
+        animator = GetComponent<Animator>();
+        player = GameObject.FindGameObjectWithTag("Player"); // Find the player object using its tag
+        initialPosition = transform.position;
     }
 
-    bool CheckRadiusFromPlayer()
+    void Update()
     {
-        if (distance < radius)
+        // If the enemy is not chasing the player and is within the chase radius, start chasing
+        if (!isChasing && player != null && Vector2.Distance(transform.position, player.transform.position) <= chaseRadius)
         {
-            return true;
+            isChasing = true;
         }
-        else
+
+        // If the enemy is not chasing the player, return to the initial position
+        if (!isChasing)
         {
-            return false;
+            ReturnToPosition();
+            return;
         }
+
+        // Chase the player
+        ChasePlayer();
     }
 
     void ChasePlayer()
     {
         Vector2 direction = player.transform.position - transform.position;
         direction.Normalize();
-        //float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-
-        transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime);
-        //transform.rotation = Quaternion.Euler(Vector3.forward * angle);
-        
+        transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
         animator.SetFloat("VelX", direction.x);
         animator.SetFloat("VelY", direction.y);
 
-        if(direction.x == 0 && direction.y == 0)
+        if (direction.x == 0 && direction.y == 0)
         {
             animator.SetInteger("Walk", 0);
         }
@@ -66,16 +64,10 @@ public class chasee : MonoBehaviour
         Vector2 returnPosition = new Vector2(returnPositionX, returnPositionY);
         Vector2 direction = returnPosition - (Vector2)transform.position;
         direction.Normalize();
-        
-        
-
-        //float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-
-        transform.position = Vector2.MoveTowards(this.transform.position, returnPosition, speed * Time.deltaTime);
-        //transform.rotation = Quaternion.Euler(Vector3.forward * angle);
+        transform.position = Vector2.MoveTowards(transform.position, returnPosition, speed * Time.deltaTime);
         animator.SetFloat("VelX", direction.x);
         animator.SetFloat("VelY", direction.y);
-        if(direction.x == 0 && direction.y == 0)
+        if (direction.x == 0 && direction.y == 0)
         {
             animator.SetInteger("Walk", 0);
         }
@@ -85,16 +77,19 @@ public class chasee : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        // If the enemy collides with the player, load the battle scene
+        if (collision.CompareTag("Player"))
+        {
+            SceneManager.LoadScene(Bosque_Combate);
+        }
+    }
+
     // Method to set the return position from console or another script
     public void SetReturnPosition(float x, float y)
     {
         returnPositionX = x;
         returnPositionY = y;
     }
-
-    
-
-       
-        
-
 }
