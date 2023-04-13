@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1440
     height: 790
   m_ShowMode: 4
-  m_Title: Scene
+  m_Title: Project
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -687,9 +687,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 3.68814, y: 1.171541, z: 4.778181}
+    m_Target: {x: 17.584198, y: 10.237027, z: 4.5782814}
     speed: 2
-    m_Value: {x: 4.912188, y: 1.6882895, z: 4.7614512}
+    m_Value: {x: 17.584198, y: 10.237027, z: 4.5782814}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -740,9 +740,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 11.073493
+    m_Target: 31.063135
     speed: 2
-    m_Value: 12.746467
+    m_Value: 31.063135
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -798,9 +798,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
+      m_SelectedIDs: 94610000
       m_LastClickedID: 0
-      m_ExpandedIDs: 3ef9ffff98f9ffffecf9ffff10fbffff
+      m_ExpandedIDs: e4f9ffff10fbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
