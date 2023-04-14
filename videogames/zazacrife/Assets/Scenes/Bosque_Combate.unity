@@ -1027,6 +1027,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameText: {fileID: 498329848}
   HPText: {fileID: 58427529}
+--- !u!1 &653575770
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 653575771}
+  m_Layer: 0
+  m_Name: Playerattack
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &653575771
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 653575770}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.22, y: -0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &695270189
 GameObject:
   m_ObjectHideFlags: 0
@@ -1109,7 +1140,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &879106110
 GameObject:
@@ -1312,7 +1343,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1131219699
 GameObject:
@@ -1518,14 +1549,49 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3513f2dd390ec641813292655820b81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  time: 2
+  update: 0.01
   playerPrefab: {fileID: 778339910624247829, guid: 1e483d5bb648bf745b0575e5c03929f1, type: 3}
   enemyPrefab: {fileID: 4767075320649848216, guid: 9f8c06f57733de3449ee653e738bd672, type: 3}
   playerBattleStation: {fileID: 1131219701}
   enemyBattleStation: {fileID: 695270191}
+  playerattack: {fileID: 653575771}
+  enemyattack: {fileID: 1512992604}
   playerHUD: {fileID: 543375579}
   enemyHUD: {fileID: 47492651}
   dialogueText: {fileID: 20195599}
   state: 0
+--- !u!1 &1512992603
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1512992604}
+  m_Layer: 0
+  m_Name: EnemyAttack
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1512992604
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1512992603}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.57, y: -0.26, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1614004005
 GameObject:
   m_ObjectHideFlags: 0
