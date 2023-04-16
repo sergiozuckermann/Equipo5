@@ -49,9 +49,16 @@ MonoBehaviour:
   damage: 4
   maxHP: 30
   currentHP: 28
+  maxMP: 20
+  currentMP: 15
   luck: 8
   agility: 7
   defence: 3
+  charisma: 0
+  accuracy: 0
+  fire: 0
+  ice: 0
+  lightning: 0
 --- !u!1 &4792108282000969397
 GameObject:
   m_ObjectHideFlags: 0
