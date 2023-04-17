@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System;
+using UnityEngine.SceneManagement;
 
 
 public enum BattleState { START, PLAYERTURN, ENEMYTURN, WON, LOST }
@@ -474,5 +475,10 @@ public void OnAttackButton()
         return;
     }
  }
-
+    public void RestartLevel(){
+        SceneManager.LoadScene(2);
+    }
+    public void Escape(){
+        SceneManager.LoadScene(1);
+    }
   }
