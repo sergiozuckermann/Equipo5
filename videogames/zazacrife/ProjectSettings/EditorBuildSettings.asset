@@ -4,5 +4,14 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/MenuPrincipal.unity
+    guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/TileMap.unity
+    guid: 944fdfd10dd4b4e6180558d22a8b7248
+  - enabled: 1
+    path: Assets/Scenes/Bosque_Combate.unity
+    guid: 8c092525344e34d88925fdd4d9ed2d5a
   m_configObjects: {}
