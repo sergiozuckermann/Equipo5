@@ -340,13 +340,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Shaggy
       objectReference: {fileID: 0}
+    - target: {fileID: 6421116075514357798, guid: 4615530937c54fb49ae8d1882de851c0, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 7351448863305945672, guid: 4615530937c54fb49ae8d1882de851c0, type: 3}
       propertyPath: limit
       value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 7351448863305945672, guid: 4615530937c54fb49ae8d1882de851c0, type: 3}
       propertyPath: speed
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7626955531763184352, guid: 4615530937c54fb49ae8d1882de851c0, type: 3}
       propertyPath: m_Size.x
@@ -359,6 +363,10 @@ PrefabInstance:
     - target: {fileID: 7626955531763184352, guid: 4615530937c54fb49ae8d1882de851c0, type: 3}
       propertyPath: m_Offset.y
       value: -0.49676132
+      objectReference: {fileID: 0}
+    - target: {fileID: 7626955531763184352, guid: 4615530937c54fb49ae8d1882de851c0, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9067786356497462285, guid: 4615530937c54fb49ae8d1882de851c0, type: 3}
       propertyPath: m_SortingOrder
@@ -34423,11 +34431,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 719752860247976640, guid: 2f0442de31b60944c9e84cd219393718, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 18.7
+      value: 1.77
       objectReference: {fileID: 0}
     - target: {fileID: 719752860247976640, guid: 2f0442de31b60944c9e84cd219393718, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.3
+      value: -11.06
       objectReference: {fileID: 0}
     - target: {fileID: 719752860247976640, guid: 2f0442de31b60944c9e84cd219393718, type: 3}
       propertyPath: m_LocalPosition.z
@@ -34489,6 +34497,10 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: -0.32863808
       objectReference: {fileID: 0}
+    - target: {fileID: 719752860247976642, guid: 2f0442de31b60944c9e84cd219393718, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 719752860247976643, guid: 2f0442de31b60944c9e84cd219393718, type: 3}
       propertyPath: m_SortingOrder
       value: 1
@@ -34510,12 +34522,20 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2001507141060685577, guid: 2f0442de31b60944c9e84cd219393718, type: 3}
+      propertyPath: chaseRadius
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2001507141060685577, guid: 2f0442de31b60944c9e84cd219393718, type: 3}
+      propertyPath: Bosque_Combate
+      value: Bosque_Combate
+      objectReference: {fileID: 0}
+    - target: {fileID: 2001507141060685577, guid: 2f0442de31b60944c9e84cd219393718, type: 3}
       propertyPath: returnPositionX
-      value: 18.7
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2001507141060685577, guid: 2f0442de31b60944c9e84cd219393718, type: 3}
       propertyPath: returnPositionY
-      value: -2.3
+      value: -10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2f0442de31b60944c9e84cd219393718, type: 3}
