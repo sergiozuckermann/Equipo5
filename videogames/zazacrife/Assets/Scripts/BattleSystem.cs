@@ -83,8 +83,32 @@ IEnumerator SetupBattle()
 
         if (isDead)
         {
+            animators.SetInteger("State", 1);
+            while(etime < time){
+                yield return new WaitForSeconds(update);
+                float interpolationRatio = etime / time;
+                playerUnit.transform.position=  Vector3.Lerp(playerBattleStation.position, playerattack.position, interpolationRatio);
+                etime += update;
+            }
+
+            animators.SetInteger("State", 2);
+            yield return new WaitForSeconds(2f);
+            dialogueText.text = "You deal " + playerUnit.damage + " damage...";
+            enemyHUD.SetHP(enemyUnit.currentHP =0);
+            animators.SetInteger("State", 3);
+            while(etime > 0){
+                yield return new WaitForSeconds(update);
+                float interpolationRatio = etime / time;
+
+                playerUnit.transform.position=  Vector3.Lerp(playerBattleStation.position, playerattack.position, interpolationRatio);
+                etime -= update;
+                
+            }
+
+            animators.SetInteger("State", 0);
+            
+            yield return new WaitForSeconds(1f);
             state = BattleState.WON;
-            enemyHUD.SetHP(enemyUnit.currentHP = 0);
             EndBattle();
         }
         else
@@ -152,8 +176,10 @@ IEnumerator SetupBattle()
      animatore.SetInteger("State", 2);
      dialogueText.text = enemyUnit.unitName + " attacks!";
      yield return new WaitForSeconds(2f);
-     
-     
+     dialogueText.text = "Enemy dealt " + enemyUnit.damage + " damage...";
+     bool isDead = playerUnit.TakeDamage(enemyUnit.damage);
+
+     playerHUD.SetHP(playerUnit.currentHP);
      animatore.SetInteger("State", 3);
      
      while(etime > 0){
@@ -171,9 +197,7 @@ IEnumerator SetupBattle()
 
      
 
-     bool isDead = playerUnit.TakeDamage(enemyUnit.damage);
-
-     playerHUD.SetHP(playerUnit.currentHP);
+     
 
      yield return new WaitForSeconds(1f);
     if (enemyUnit.lightning >0 ){
@@ -362,7 +386,7 @@ IEnumerator SetupBattle()
         System.Random rand = new System.Random();
         int number = rand.Next(0, 100);
         
-        if(number < 50)
+        if(number < 70)
         {   
             enemyUnit.setlightning(1);
             dialogueText.text = "Enemy was hit by lighting, stats buffed";
@@ -372,7 +396,7 @@ IEnumerator SetupBattle()
         else
         {
             playerUnit.setlightning(1);
-            dialogueText.text = "You hit by lighting, stats buffed";
+            dialogueText.text = "You got hit by lighting, stats buffed";
             playerUnit.lightningbuff();
         }
         
