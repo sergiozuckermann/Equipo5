@@ -24,6 +24,14 @@ public Transform playerBattleStation;
 public Transform enemyBattleStation;
 public Transform playerattack;
 public Transform enemyattack;
+public ParticleSystem Fires;
+public ParticleSystem Thunders;
+public ParticleSystem Ices;
+public ParticleSystem Heals;
+public ParticleSystem Recharges;
+public ParticleSystem Firee;
+public ParticleSystem Thundere;
+public ParticleSystem Icee;
 
 
 unit playerUnit;
@@ -41,13 +49,28 @@ public BattleState state;
 // Start is called before the first frame update
 void Start()
 {
+    Fires.Stop(true, ParticleSystemStopBehavior.StopEmitting);
+    Ices.Stop(true, ParticleSystemStopBehavior.StopEmitting);
+    Thunders.Stop(true, ParticleSystemStopBehavior.StopEmitting);
+    Firee.Stop(true, ParticleSystemStopBehavior.StopEmitting);
+    Icee.Stop(true, ParticleSystemStopBehavior.StopEmitting);
+    Thundere.Stop(true, ParticleSystemStopBehavior.StopEmitting);
+    Heals.Stop(true, ParticleSystemStopBehavior.StopEmitting);
+    Recharges.Stop(true, ParticleSystemStopBehavior.StopEmitting);
+
     
     state = BattleState.START;
     StartCoroutine(SetupBattle());
+    
+    
+
 }
 
 IEnumerator SetupBattle()
 {
+    
+    
+
     GameObject playerGO = Instantiate(playerPrefab, playerBattleStation);
     playerUnit = playerGO.GetComponent<unit>();
 
@@ -68,6 +91,7 @@ IEnumerator SetupBattle()
 
      state = BattleState.PLAYERTURN;
      PlayerTurn();
+     
 }
 
  IEnumerator PlayerAttack()
@@ -78,6 +102,8 @@ IEnumerator SetupBattle()
         playerUnit.setlightning(0);
         playerUnit.lightningnerf();
         dialogueText.text = playerUnit.unitName + " Stats returned to normal";
+        Thunders.Stop(true, ParticleSystemStopBehavior.StopEmitting);
+
         yield return new WaitForSeconds(1f);
      }
 
@@ -154,10 +180,15 @@ IEnumerator SetupBattle()
     if (enemyUnit.ice == 0){
          playerUnit.setice(0);
          if (enemyUnit.fire > 0){
-     enemyUnit.TakeDamage(2);
-     enemyUnit.decreasefire();
-     dialogueText.text = enemyUnit.unitName + " Took fire damage " + enemyUnit.fire + " turns remaining";
-     }
+            enemyUnit.TakeDamage(2);
+            enemyUnit.decreasefire();
+            dialogueText.text = enemyUnit.unitName + " Took 2 damage from fire " + enemyUnit.fire + " turns remaining";
+            enemyHUD.SetHUD(enemyUnit);
+            yield return new WaitForSeconds(1f);
+        }
+        else{
+            Firee.Stop(true, ParticleSystemStopBehavior.StopEmitting);
+        }
 
 
     enemyHUD.SetHP(enemyUnit.currentHP);
@@ -204,6 +235,7 @@ IEnumerator SetupBattle()
         enemyUnit.setlightning(0);
         enemyUnit.lightningnerf();
         dialogueText.text = enemyUnit.unitName + " Stats returned to normal";
+        Thundere.Stop(true, ParticleSystemStopBehavior.StopEmitting);
         yield return new WaitForSeconds(1f);
      }
      if(isDead)
@@ -214,14 +246,20 @@ IEnumerator SetupBattle()
      {
          state = BattleState.PLAYERTURN;
          PlayerTurn();
+        if (playerUnit.fire < 0){
+            dialogueText.text = "Took 2 fire damage from fire";
+            yield return new WaitForSeconds(1f);
+        }
+
      }
         }
     
     else
      {
         enemyUnit.decreaseice();
-         state = BattleState.PLAYERTURN;
-         PlayerTurn();
+        state = BattleState.PLAYERTURN;
+        PlayerTurn();
+        Icee.Stop(true, ParticleSystemStopBehavior.StopEmitting);
      }
 
  }
@@ -242,10 +280,15 @@ IEnumerator SetupBattle()
  void PlayerTurn()
  {
      if (playerUnit.fire > 0){
-     playerUnit.TakeDamage(2);
-     playerUnit.decreasefire();
-     dialogueText.text = playerUnit.unitName + " Took fire damage" + playerUnit.fire + "turns remaining";
-     enemyHUD.SetHP(enemyUnit.currentHP);
+        playerUnit.TakeDamage(2);
+        playerUnit.decreasefire();
+        dialogueText.text = playerUnit.unitName + " Took 2 damage from fire" + playerUnit.fire + "turns remaining";
+        playerHUD.SetHP(playerUnit.currentHP);
+        
+     }
+
+     else{
+        Fires.Stop(true, ParticleSystemStopBehavior.StopEmitting);
      }
      
       if (playerUnit.ice > 0){
@@ -253,25 +296,29 @@ IEnumerator SetupBattle()
          state = BattleState.ENEMYTURN;
         StartCoroutine(EnemyTurn());
         }
+     
+     Ices.Stop(true, ParticleSystemStopBehavior.StopEmitting);
 
      playerHUD.SetHP(playerUnit.currentHP);
 
      dialogueText.text = "Choose an action:";
  }
 
+
  IEnumerator PlayerRecharge()
  {
         playerUnit.Recharge(5);
 
         state = BattleState.ENEMYTURN;
-  
+        Recharges.Play();
+
         animators.SetInteger("State", 4);
         yield return new WaitForSeconds(1f);
         playerHUD.SetMP(playerUnit.currentMP);
         dialogueText.text = "You recharged 5 MP.";
         yield return new WaitForSeconds(1f);
         animators.SetInteger("State", 0);
-        
+        Recharges.Stop(true, ParticleSystemStopBehavior.StopEmitting);
 
         yield return new WaitForSeconds(2f);
 
@@ -283,13 +330,15 @@ IEnumerator SetupBattle()
         playerUnit.Heal(5);
 
         state = BattleState.ENEMYTURN;
-  
+        Heals.Play();
         animators.SetInteger("State", 4);
         yield return new WaitForSeconds(1f);
         playerHUD.SetHP(playerUnit.currentHP);
         dialogueText.text = "You healed for 5.";
         yield return new WaitForSeconds(1f);
         animators.SetInteger("State", 0);
+        Heals.Stop(true, ParticleSystemStopBehavior.StopEmitting);
+
         
 
         yield return new WaitForSeconds(2f);
@@ -307,19 +356,26 @@ IEnumerator SetupBattle()
         {
             
             enemyUnit.setfire();
+            Firee.Play();
             dialogueText.text = "Enemy is now burning! Will take damage every turn for " + enemyUnit.fire + " turns";
+           yield return new WaitForSeconds(1f);
+            dialogueText.text = "Enemy 2 damage from fire";
             enemyUnit.TakeDamage(2);
             enemyUnit.decreasefire();
-            playerHUD.SetHP(playerUnit.currentHP);
+            enemyHUD.SetHP(enemyUnit.currentHP);
+            
         }
         else
         {
             playerUnit.setfire();
             dialogueText.text = "You are burning! Will take damage every turn for " + playerUnit.fire + " turns remaining";
-
+            Fires.Play();
             playerUnit.TakeDamage(2);   
             playerUnit.decreasefire();
-            enemyHUD.SetHP(enemyUnit.currentHP);
+            yield return new WaitForSeconds(1f);
+            dialogueText.text = "Took 2 damage from fire";
+
+            playerHUD.SetHP(playerUnit.currentHP);
         }
         
 
@@ -352,12 +408,15 @@ IEnumerator SetupBattle()
         {   
             enemyUnit.setice(2);
             dialogueText.text = "Enemy is now frozen! Will lose next turn";
+            Icee.Play();
+
         }
         else
         {
             playerUnit.setice(1);
             dialogueText.text = "You are frozen! Will lose next turn";
-          
+            Ices.Play();
+
         }
         
 
@@ -389,6 +448,7 @@ IEnumerator SetupBattle()
         if(number < 70)
         {   
             enemyUnit.setlightning(1);
+            Thundere.Play();
             dialogueText.text = "Enemy was hit by lighting, stats buffed";
             enemyUnit.lightningbuff();
 
@@ -396,8 +456,11 @@ IEnumerator SetupBattle()
         else
         {
             playerUnit.setlightning(1);
+            Thunders.Play();
+
             dialogueText.text = "You got hit by lighting, stats buffed";
             playerUnit.lightningbuff();
+
         }
         
 
