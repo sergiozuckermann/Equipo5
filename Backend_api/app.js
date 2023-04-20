@@ -13,7 +13,7 @@ async function connectDB(){
     const connection = await mysql.createConnection({
         host: "localhost",
         user: "root",
-        password: "",
+        password: "Tequila123",
         database: "zazzacrifice",
       });
 
@@ -26,6 +26,7 @@ async function  check_if_user_exists(username)
     const connection = await connectDB();
     // Execute a SELECT query to retrieve all users
     const [rows] = await connection.query("SELECT * FROM users WHERE username = ?", [username]);
+
     // Close the database connection
     await connection.end();
 
@@ -34,6 +35,7 @@ async function  check_if_user_exists(username)
     else
         return false;
 }
+
 
 // Route to get all users
 app.get("/api/users", async (req, res) => {
@@ -66,6 +68,13 @@ app.post("/api/login", async (req, res) => {
         const connection = await connectDB();
         // Execute a SELECT query to retrieve all users
         const [rows] = await connection.query("SELECT * FROM users WHERE username = ? AND password = ?", [req.body.username, req.body.password]);
+        // Close the database connection
+        if (rows.length == 0)
+        {
+            res.status(401).json({ error: "Invalid username or password" });
+            return;
+        }
+    
         res.json(rows[0].user_id);
     } catch (error) {
         res.status(500).json({ error: "Internal server error" });
@@ -92,6 +101,26 @@ app.post("/api/new_user", async (req, res) => {
     }
 
 });
+
+app.post("/api/new_game_session", async (req, res) => {
+    try {
+        //Create a connection to the MySQL database
+        const connection = await connectDB();
+        // Execute a SELECT query to retrieve all users CREATE IN
+        console.log(req.body);
+        const [rows] = await connection.query("INSERT INTO game_sessions (user_id, time_on_seconds, number_of_battles, number_of_damaged_made, elements_obtained, finished) VALUES (?, ?, ?, ?, ?, ?)", [req.body.user_id, 0, 0, 0, 0, 0]);
+        res.json(rows);
+    } catch (error) {
+        res.status(500).json({ error: "Internal server error" });
+    }
+
+});
+
+
+
+
+// Route to get all users
+
 
 // Start the server
 app.listen(port, () => {
