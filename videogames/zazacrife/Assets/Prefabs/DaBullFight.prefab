@@ -150,10 +150,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ee4073bdf1c3d64cbb8daee19162c96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stats:
+    damage: 7
+    maxHP: 30
+    currentHP: 30
+    maxMP: 20
+    currentMP: 20
+    luck: 2
+    agility: 1
+    defence: 10
+    charisma: 8
+    accuracy: 3
+    fire: 0
+    ice: 0
+    lightning: 0
   unitName: DaBull
-  damage: 4
-  maxHP: 30
-  currentHP: 30
-  luck: 3
-  agility: 5
-  defence: 10
