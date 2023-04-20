@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 9067786356497462285}
   - component: {fileID: 1510248785}
   - component: {fileID: 7351448863305945672}
+  - component: {fileID: -1186106306199268431}
   m_Layer: 0
   m_Name: Shaggy
   m_TagString: Untagged
@@ -158,3 +159,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+  limit: 0
+--- !u!114 &-1186106306199268431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6421116075514357798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ee4073bdf1c3d64cbb8daee19162c96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitName: Shaggy
+  damage: 0
+  maxHP: 0
+  currentHP: 0
+  maxMP: 0
+  currentMP: 0
+  luck: 0
+  agility: 0
+  defence: 0
+  charisma: 0
+  accuracy: 0
+  fire: 0
+  ice: 0
+  lightning: 0
