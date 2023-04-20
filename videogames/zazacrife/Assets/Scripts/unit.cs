@@ -22,6 +22,9 @@ public class unit : MonoBehaviour
 	public int ice = 0;
 	public int lightning = 0;
 
+	
+	
+
     public bool TakeDamage(int dmg)
 	{	
 		currentHP -= dmg;
@@ -96,6 +99,45 @@ public class unit : MonoBehaviour
 	accuracy= accuracy/2;
 	}
 	
+	public void Lightclass(){
+	maxHP= 30;
+    currentHP= 25;
+	maxMP= 60;
+    currentMP= 60;
+	damage=5;
+    luck= 5;
+    agility= 5;
+    defence= 3;
+	charisma= 2;
+	accuracy= 6;
+	}
+
+	public void Middleclass(){
+	maxHP= 40;
+    currentHP= 37;
+	maxMP= 50;
+    currentMP= 50;
+	damage=8;
+	luck= 3;
+	agility= 3;
+	defence= 5;
+	charisma= 2;
+	accuracy= 4;
+	}
+
+	public void Heavyclass(){
+	maxHP= 50;
+    currentHP= 50;
+	maxMP= 30;
+    currentMP= 30;
+	damage=10;
+	luck= 2;
+	agility= 1;
+	defence= 7;
+	charisma= 2;
+	accuracy= 2;
+	}
+
 	
 
 
