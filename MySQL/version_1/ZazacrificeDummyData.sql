@@ -1,3 +1,4 @@
+USE zazzacrifice;
 
 #Tablas Users 
 INSERT INTO users (username, password) VALUE ('Ian', 'zazza');
@@ -24,7 +25,7 @@ INSERT INTO classes (name) value ('Mediana');
 INSERT INTO classes (name) value ('Pesada');
 
 #Tablas Consumibles
-INSERT INTO consumable (name, description, stat, value, time_in_second) VALUES 
+INSERT INTO consumable (name, description, stat_id, value, time_in_second) VALUES 
 ('Health Potion', 'Restores 50 HP', 1, 20, 5),
 ('Mana Potion', 'Restores 50 MP', 2, 20, 5),
 ('Elixir of Strength', 'Increases strength by 10%', 3, 30, 10),
@@ -33,7 +34,7 @@ INSERT INTO consumable (name, description, stat, value, time_in_second) VALUES
 ('Elixir of Intelligence', 'Increases intelligence by 10%', 6, 30, 10);
 
 #Tablas Armas
-INSERT INTO weapons (name, description, stat, value, class) VALUES 
+INSERT INTO weapons (name, description, stat_id, value, class_id) VALUES 
 ('Sword', 'A sharp, two-handed blade', 1, 50, 1),
 ('Dagger', 'A small, fast weapon for close combat', 2, 30, 1),
 ('Bow', 'A ranged weapon for precise attacks', 3, 70, 2),
@@ -76,7 +77,7 @@ INSERT INTO attacks (name, description, value) VALUES
 ('Charge Up', 'A charging attack that increases damage on the next attack', 5);
 
 #Tablas Game session 
-INSERT INTO game_sessions (user, time_on_seconds, number_of_battles, number_of_damaged_made, elements_obtained, finished)
+INSERT INTO game_sessions (user_id, time_on_seconds, number_of_battles, number_of_damaged_made, elements_obtained, finished)
 VALUES
 (1, 3600, 10, 5, 20, 1),
 (2, 1800, 5, 2, 2, 0),
@@ -95,63 +96,70 @@ INSERT INTO events (name) VALUES
 ('Final Boss');
 
 #Tabla game events
-INSERT INTO game_events (event, game, is_active) VALUES (1, 1, 0);
-INSERT INTO game_events (event, game, is_active) VALUES (2, 1, 1);
-INSERT INTO game_events (event, game, is_active) VALUES (3, 2, 0);
-INSERT INTO game_events (event, game, is_active) VALUES (1, 3, 1);
-INSERT INTO game_events (event, game, is_active) VALUES (2, 3, 0);
-INSERT INTO game_events (event, game, is_active) VALUES (3, 4, 1);
-INSERT INTO game_events (event, game, is_active) VALUES (1, 5, 0);
-INSERT INTO game_events (event, game, is_active) VALUES (2, 5, 1);
-INSERT INTO game_events (event, game, is_active) VALUES (3, 5,1);
+INSERT INTO game_events (event_id, game_session_id, is_active) VALUES (1, 1, 0),
+(2, 1, 1),
+(3, 2, 0),
+(1, 3, 1),
+(2, 3, 0),
+(3, 4, 1),
+(1, 5, 0),
+(2, 5, 1),
+(3, 5,1);
 
 #Tabla checkpoint 
-INSERT INTO checkpoints (scene, x_postion, y_position) VALUES (1, 100, 200);
-INSERT INTO checkpoints (scene, x_postion, y_position) VALUES (2, 50, 300);
-INSERT INTO checkpoints (scene, x_postion, y_position) VALUES (3, 200, 150);
-INSERT INTO checkpoints (scene, x_postion, y_position) VALUES (1, 300, 50);
-INSERT INTO checkpoints (scene, x_postion, y_position) VALUES (2, 150, 250);
-INSERT INTO checkpoints (scene, x_postion, y_position) VALUES (3, 75, 175);
-INSERT INTO checkpoints (scene, x_postion, y_position) VALUES (1, 200, 300);
-INSERT INTO checkpoints (scene, x_postion, y_position) VALUES (2, 100, 100);
-INSERT INTO checkpoints (scene, x_postion, y_position) VALUES (3, 250, 200);
+INSERT INTO checkpoints (scene_id, x_postion, y_position) 
+VALUES 
+  (1, 100, 200),
+  (2, 50, 300),
+  (3, 200, 150),
+  (1, 300, 50),
+  (2, 150, 250),
+  (3, 75, 175),
+  (1, 200, 300),
+  (2, 100, 100),
+  (3, 250, 200);
+
 
 #Tabla players
-INSERT INTO players (game_session, name, money, checkpoint, class) VALUES (1, 'Alice', 1000, 1, 1);
-INSERT INTO players (game_session, name, money, checkpoint, class) VALUES (2, 'Bob', 500, 2, 1);
-INSERT INTO players (game_session, name, money, checkpoint, class) VALUES (3, 'Charlie', 200, 3, 2);
-INSERT INTO players (game_session, name, money, checkpoint, class) VALUES (4, 'Dave', 800, 4, 2);
-INSERT INTO players (game_session, name, money, checkpoint, class) VALUES (5, 'Eve', 300, 5, 3);
-INSERT INTO players (game_session, name, money, checkpoint, class) VALUES (6, 'Frank', 600, 6, 3);
-INSERT INTO players (game_session, name, money, checkpoint, class) VALUES (7, 'Grace', 400, 7, 1);
-INSERT INTO players (game_session, name, money, checkpoint, class) VALUES (8, 'Henry', 900, 8, 2);
-INSERT INTO players (game_session, name, money, checkpoint, class) VALUES (9, 'Isaac', 700, 9, 3);
+INSERT INTO players (game_session_id, name, money, checkpoint_id, class_id)
+VALUES 
+  (1, 'Alice', 1000, 1, 1),
+  (2, 'Bob', 500, 2, 1),
+  (3, 'Charlie', 200, 3, 2),
+  (4, 'Dave', 800, 4, 2),
+  (5, 'Eve', 300, 5, 3),
+  (6, 'Frank', 600, 6, 3),
+  (7, 'Grace', 400, 7, 1),
+  (8, 'Henry', 900, 8, 2),
+  (9, 'Isaac', 700, 9, 3);
+
 
 
 #Tabla consumibles player
-
-INSERT INTO consumables_players (player, consumable, amount) VALUES (1, 2, 2);
-INSERT INTO consumables_players (player, consumable, amount) VALUES (1, 3, 1);
-INSERT INTO consumables_players (player, consumable, amount) VALUES (1, 5, 4);
-INSERT INTO consumables_players (player, consumable, amount) VALUES (2, 1, 1);
-INSERT INTO consumables_players (player, consumable, amount) VALUES (2, 4, 3);
-INSERT INTO consumables_players (player, consumable, amount) VALUES (2, 6, 2);
-INSERT INTO consumables_players (player, consumable, amount) VALUES (3, 2, 3);
-INSERT INTO consumables_players (player, consumable, amount) VALUES (3, 4, 2);
-INSERT INTO consumables_players (player, consumable, amount) VALUES (4, 1, 2);
-INSERT INTO consumables_players (player, consumable, amount) VALUES (4, 3, 4);
-INSERT INTO consumables_players (player, consumable, amount) VALUES (4, 5, 1);
-INSERT INTO consumables_players (player, consumable, amount) VALUES (5, 2, 1);
-INSERT INTO consumables_players (player, consumable, amount) VALUES (5, 3, 3);
-INSERT INTO consumables_players (player, consumable, amount) VALUES (5, 6, 2);
-INSERT INTO consumables_players (player, consumable, amount) VALUES (7, 2, 2);
-INSERT INTO consumables_players (player, consumable, amount) VALUES (7, 3, 1);
-INSERT INTO consumables_players (player, consumable, amount) VALUES (8, 1, 3);
-INSERT INTO consumables_players (player, consumable, amount) VALUES (8, 5, 4);
-INSERT INTO consumables_players (player, consumable, amount) VALUES (9, 2, 2);
+INSERT INTO consumables_players (player_id, consumable_id, amount)
+VALUES 
+    (1, 2, 2),
+    (1, 3, 1),
+    (1, 5, 4),
+    (2, 1, 1),
+    (2, 4, 3),
+    (2, 6, 2),
+    (3, 2, 3),
+    (3, 4, 2),
+    (4, 1, 2),
+    (4, 3, 4),
+    (4, 5, 1),
+    (5, 2, 1),
+    (5, 3, 3),
+    (5, 6, 2),
+    (7, 2, 2),
+    (7, 3, 1),
+    (8, 1, 3),
+    (8, 5, 4),
+    (9, 2, 2);
 
 #Tabla weapons players
-INSERT INTO weapons_players (weapon, player, equipped)
+INSERT INTO weapons_players (weapon_id, player_id, equipped)
 VALUES
 (1, 1, 1),
 (2, 1, 1),
@@ -165,44 +173,9 @@ VALUES
 (4, 8, 1),
 (5, 9, 1);
 
-#Tabla Stats player
-INSERT INTO stats_players (player, stat, value) VALUES (1, 1, 0);
-INSERT INTO stats_players (player, stat, value) VALUES (1, 2, 0);
-INSERT INTO stats_players (player, stat, value) VALUES (1, 3, 0);
-INSERT INTO stats_players (player, stat, value) VALUES (1, 4, 0);
-INSERT INTO stats_players (player, stat, value) VALUES (1, 5, 0);
-INSERT INTO stats_players (player, stat, value) VALUES (1, 6, 0);
-
-INSERT INTO stats_players (player, stat, value) VALUES (2, 1, 0);
-INSERT INTO stats_players (player, stat, value) VALUES (2, 2, 0);
-INSERT INTO stats_players (player, stat, value) VALUES (2, 3, 0);
-INSERT INTO stats_players (player, stat, value) VALUES (2, 4, 0);
-INSERT INTO stats_players (player, stat, value) VALUES (2, 5, 0);
-INSERT INTO stats_players (player, stat, value) VALUES (2, 6, 0);
-
-INSERT INTO stats_players (player, stat, value) VALUES (3, 1, 0);
-INSERT INTO stats_players (player, stat, value) VALUES (3, 2, 0);
-INSERT INTO stats_players (player, stat, value) VALUES (3, 3, 0);
-INSERT INTO stats_players (player, stat, value) VALUES (3, 4, 0);
-INSERT INTO stats_players (player, stat, value) VALUES (3, 5, 0);
-INSERT INTO stats_players (player, stat, value) VALUES (3, 6, 0);
-
-INSERT INTO stats_players (player, stat, value) VALUES (4, 1, 0);
-INSERT INTO stats_players (player, stat, value) VALUES (4, 2, 0);
-INSERT INTO stats_players (player, stat, value) VALUES (4, 3, 0);
-INSERT INTO stats_players (player, stat, value) VALUES (4, 4, 0);
-INSERT INTO stats_players (player, stat, value) VALUES (4, 5, 0);
-INSERT INTO stats_players (player, stat, value) VALUES (4, 6, 0);
-
-INSERT INTO stats_players (player, stat, value) VALUES (5, 1, 0);
-INSERT INTO stats_players (player, stat, value) VALUES (5, 2, 0);
-INSERT INTO stats_players (player, stat, value) VALUES (5, 3, 0);
-INSERT INTO stats_players (player, stat, value) VALUES (5, 4, 0);
-INSERT INTO stats_players (player, stat, value) VALUES (5, 5, 0);
-INSERT INTO stats_players (player, stat, value) VALUES (5, 6, 0);
 
 #Tabla stats players
-INSERT INTO stats_players (player, stat, value) VALUES
+INSERT INTO stats_players (player_id, stat_id, value) VALUES
 (1, 1, 75), (1, 2, 149), (1, 3, 43), (1, 4, 112), (1, 5, 198), (1, 6, 7), (1, 7, 32),
 (2, 1, 85), (2, 2, 23), (2, 3, 167), (2, 4, 56), (2, 5, 92), (2, 6, 132), (2, 7, 18),
 (3, 1, 129), (3, 2, 76), (3, 3, 89), (3, 4, 1), (3, 5, 52), (3, 6, 187), (3, 7, 150),
@@ -214,29 +187,14 @@ INSERT INTO stats_players (player, stat, value) VALUES
 (9, 1, 142), (9, 2, 19), (9, 3, 165), (9, 4, 87), (9, 5, 123), (9, 6, 37), (9, 7, 193);
 
 #Tablas elements_players
-INSERT INTO elements_players (element, player) VALUES (1, 1);
-INSERT INTO elements_players (element, player) VALUES (2, 2);
-INSERT INTO elements_players (element, player) VALUES (3, 3);
-INSERT INTO elements_players (element, player) VALUES (4, 4);
-INSERT INTO elements_players (element, player) VALUES (5, 5);
-INSERT INTO elements_players (element, player) VALUES (1, 6);
-INSERT INTO elements_players (element, player) VALUES (2, 7);
-INSERT INTO elements_players (element, player) VALUES (3, 8);
-INSERT INTO elements_players (element, player) VALUES (4, 9);
-INSERT INTO elements_players (element, player) VALUES (5, 1);
-INSERT INTO elements_players (element, player) VALUES (1, 2);
-INSERT INTO elements_players (element, player) VALUES (2, 3);
-INSERT INTO elements_players (element, player) VALUES (3, 4);
-INSERT INTO elements_players (element, player) VALUES (4, 5);
-INSERT INTO elements_players (element, player) VALUES (5, 6);
-INSERT INTO elements_players (element, player) VALUES (1, 7);
-INSERT INTO elements_players (element, player) VALUES (2, 8);
-INSERT INTO elements_players (element, player) VALUES (3, 9);
-INSERT INTO elements_players (element, player) VALUES (4, 1);
-INSERT INTO elements_players (element, player) VALUES (5, 2);
+INSERT INTO elements_players (element_id, player_id) VALUES 
+(1, 1), (2, 2), (3, 3), (4, 4), (5, 5), (1, 6), 
+(2, 7), (3, 8), (4, 9), (5, 1), (1, 2), (2, 3), 
+(3, 4), (4, 5), (5, 6), (1, 7), (2, 8), (3, 9), 
+(4, 1), (5, 2);
 
 #Tabla Players attack 
-INSERT INTO players_attacks (player, attack) VALUES
+INSERT INTO players_attacks (player_id, attack_id) VALUES
 (1, 2),
 (1, 4),
 (1, 6),
@@ -268,5 +226,3 @@ INSERT INTO players_attacks (player, attack) VALUES
 (9, 5),
 (9, 10),
 (9, 13);
-
-
