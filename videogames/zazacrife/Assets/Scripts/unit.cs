@@ -2,12 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class unit : MonoBehaviour
-{
-    public string unitName;
-   
+[System.Serializable]
+public class Stats{
 
-    public int damage;
+	public int damage;
     public int maxHP;
     public int currentHP;
 	public int maxMP;
@@ -21,15 +19,33 @@ public class unit : MonoBehaviour
 	public int fire = 0;
 	public int ice = 0;
 	public int lightning = 0;
+	
+	
+
+}
+
+public class unit : MonoBehaviour
+{
+
+	//public static unit Instance;
+    
+   
+
+    public Stats stats;
+
+	public string unitName;
+	
+	
 
 	
-	
+
+
 
     public bool TakeDamage(int dmg)
 	{	
-		currentHP -= dmg;
+		stats.currentHP -= dmg;
 
-		if (currentHP <= 0)
+		if (stats.currentHP <= 0)
 			return true;
 		else
 			return false;
@@ -37,105 +53,105 @@ public class unit : MonoBehaviour
 
 	public void Heal(int amount)
 	{
-		currentHP += amount;
-		if (currentHP > maxHP)
-			currentHP = maxHP;
+		stats.currentHP += amount;
+		if (stats.currentHP > stats.maxHP)
+			stats.currentHP = stats.maxHP;
 	}
 
 	public void Recharge(int amount)
 	{
-		currentMP += amount;
-		if (currentMP > maxMP)
-			currentMP = maxMP;
+		stats.currentMP += amount;
+		if (stats.currentMP > stats.maxMP)
+			stats.currentMP = stats.maxMP;
 	}
 
 	public void setice(int num)
 	{
-		ice = num;
+		stats.ice = num;
 	}
 
 		public void decreaseice()
 	{
-		ice -= 1;
+		stats.ice -= 1;
 	}
 
 	public void decreasefire()
 	{
-		fire -= 1;
+		stats.fire -= 1;
 	}
 
 	public void setfire()
 	{
-		fire = 3;
+		stats.fire = 3;
 	}
 
 
 	public void setlightning(int num)
 	{
-		lightning = num;
+		stats.lightning = num;
 	}
 
 	public void setmp(int num)
 	{
-		currentMP = num;
+		stats.currentMP = num;
 	}
 
 	public void lightningbuff(){
-	damage=damage*2;
-    luck= luck*2;
-    agility= agility*2;
-    defence= defence*2;
-	charisma= charisma*2;
-	accuracy= accuracy*2;
+	stats.damage=stats.damage*2;
+    stats.luck= stats.luck*2;
+    stats.agility= stats.agility*2;
+    stats.defence= stats.defence*2;
+	stats.charisma= stats.charisma*2;
+	stats.accuracy= stats.accuracy*2;
 	}
 
 
 	public void lightningnerf(){
-	damage=damage/2;
-    luck= luck/2;
-    agility= agility/2;
-    defence= defence/2;
-	charisma= charisma/2;
-	accuracy= accuracy/2;
+	stats.damage=stats.damage/2;
+    stats.luck= stats.luck/2;
+    stats.agility= stats.agility/2;
+    stats.defence= stats.defence/2;
+	stats.charisma= stats.charisma/2;
+	stats.accuracy= stats.accuracy/2;
 	}
 	
 	public void Lightclass(){
-	maxHP= 30;
-    currentHP= 25;
-	maxMP= 60;
-    currentMP= 60;
-	damage=5;
-    luck= 5;
-    agility= 5;
-    defence= 3;
-	charisma= 2;
-	accuracy= 6;
+	stats.maxHP= 30;
+    stats.currentHP= 25;
+	stats.maxMP= 60;
+    stats.currentMP= 60;
+	stats.damage=5;
+    stats.luck= 5;
+    stats.agility= 5;
+    stats.defence= 3;
+	stats.charisma= 2;
+	stats.accuracy= 6;
 	}
 
 	public void Middleclass(){
-	maxHP= 40;
-    currentHP= 37;
-	maxMP= 50;
-    currentMP= 50;
-	damage=8;
-	luck= 3;
-	agility= 3;
-	defence= 5;
-	charisma= 2;
-	accuracy= 4;
+	stats.maxHP= 40;
+    stats.currentHP= 37;
+	stats.maxMP= 50;
+    stats.currentMP= 50;
+	stats.damage=8;
+	stats.luck= 3;
+	stats.agility= 3;
+	stats.defence= 5;
+	stats.charisma= 2;
+	stats.accuracy= 4;
 	}
 
 	public void Heavyclass(){
-	maxHP= 50;
-    currentHP= 50;
-	maxMP= 30;
-    currentMP= 30;
-	damage=10;
-	luck= 2;
-	agility= 1;
-	defence= 7;
-	charisma= 2;
-	accuracy= 2;
+	stats.maxHP= 50;
+    stats.currentHP= 50;
+	stats.maxMP= 30;
+    stats.currentMP= 30;
+	stats.damage=10;
+	stats.luck= 2;
+	stats.agility= 1;
+	stats.defence= 7;
+	stats.charisma= 2;
+	stats.accuracy= 2;
 	}
 
 	

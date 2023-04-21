@@ -82,6 +82,9 @@ public class chasee : MonoBehaviour
         // If the enemy collides with the player, load the battle scene
         if (collision.CompareTag("Player"))
         {
+            unit Shaggy = collision.gameObject.GetComponent<unit>();
+            string savedShaggy=JsonUtility.ToJson(Shaggy.stats);
+            PlayerPrefs.SetString("Shaggy", savedShaggy);
             SceneManager.LoadScene(Bosque_Combate);
         }
     }
