@@ -61,11 +61,17 @@ app.get("/api/users", async (req, res) => {
 // Login to Database
 app.post("/api/login", async (req, res) => {
     try {
+        console.log("Hola")
         console.log(req.body);
         //Create a connection to the MySQL database
         const connection = await connectDB();
         // Execute a SELECT query to retrieve all users
         const [rows] = await connection.query("SELECT * FROM users WHERE username = ? AND password = ?", [req.body.username, req.body.password]);
+        if (rows.length == 0)
+        {
+            res.status(401).json({ error: "Invalid username or password" });
+            return;
+        }
         res.json(rows[0].user_id);
     } catch (error) {
         res.status(500).json({ error: "Internal server error" });
