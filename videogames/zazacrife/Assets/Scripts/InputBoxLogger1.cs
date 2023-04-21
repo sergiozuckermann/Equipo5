@@ -15,8 +15,8 @@ public class InputBoxLogger : MonoBehaviour
         string passwordM = password.text;
         Debug.Log("Username: " + usernameM);
         Debug.Log("Password: " + passwordM);
-        
 
         // Here you can add your code to save the username and password to a file or database
     }
+    
 }
