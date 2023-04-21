@@ -93,6 +93,20 @@ app.post("/api/new_user", async (req, res) => {
 
 });
 
+app.post("/api/new_game", async (req, res) => {
+    try {
+        //Create a connection to the MySQL database
+        const connection = await connectDB();
+        // Execute a SELECT query to retrieve all users CREATE IN
+        console.log(req.body);
+        const [insert_data] = await connection.query("INSERT INTO game_sessions (user_id, time_on_seconds, number_of_battles, number_of_damaged_made, elements_obtained, finished) VALUES (?, ?, ?, ?, ?, ?)", [req.body.user_id, 0, 0, 0, 0, 0]);
+        
+    } catch (error) {
+        res.status(500).json({ error: "Internal server error" });
+    }
+});
+
+
 // Start the server
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
