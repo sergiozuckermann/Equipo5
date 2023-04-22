@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.Networking;
+using UnityEngine.SceneManagement;
 
 [System.Serializable]
 public class User
@@ -37,6 +38,16 @@ public class Login : MonoBehaviour
             Debug.Log(www.error);
             Debug.Log(www.responseCode);
             Debug.Log(www.result);
+
+            if (www.responseCode == 200)
+            {
+                Debug.Log("Login successful!");
+                GetComponent<Login>().PlayGame();
+            }
+            else
+            {
+                Debug.Log("Login failed!");
+            }
         }
     }   
 
@@ -53,6 +64,8 @@ public class Login : MonoBehaviour
         // Here you can add your code to save the username and password to a file or database
     }
     
-
+    public void PlayGame(){
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
 
 }

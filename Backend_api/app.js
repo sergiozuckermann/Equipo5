@@ -84,6 +84,7 @@ app.post("/api/new_user", async (req, res) => {
         console.log(req.body);
         //Create a connection to the MySQL database
         const connection = await connectDB();
+        console.log("New user Registerd");
         //Check if user exists
         if (await check_if_user_exists(req.body.username))
         {
