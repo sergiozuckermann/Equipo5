@@ -82,9 +82,9 @@ app.post("/api/login", async (req, res) => {
 app.post("/api/new_user", async (req, res) => {
     try {
         console.log(req.body);
+
         //Create a connection to the MySQL database
         const connection = await connectDB();
-        console.log("New user Registerd");
         //Check if user exists
         if (await check_if_user_exists(req.body.username))
         {
@@ -98,6 +98,20 @@ app.post("/api/new_user", async (req, res) => {
         res.status(500).json({ error: "Internal server error" });
     }
 
+});
+
+
+app.get("/api/game_sessions", async (req, res) => {
+    try {
+
+        //Create a connection to the MySQL database
+        const connection = await connectDB();
+        // Execute a SELECT query to retrieve all users
+        const [rows] = await connection.query("SELECT * FROM session_summary WHERE user_id = ?", [req.query.user_id]);
+        res.json(rows);
+    } catch (error) {
+        res.status(500).json({ error: "Internal server error" });
+    }
 });
 
 app.post("/api/new_game", async (req, res) => {
