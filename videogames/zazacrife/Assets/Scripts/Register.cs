@@ -6,15 +6,9 @@ using TMPro;
 using UnityEngine.Networking;
 
 [System.Serializable]
-public class User
+public class Register : MonoBehaviour
 {
-    public string username;
-    public string password;
-}
-
-
-public class Regiseter : MonoBehaviour
-{
+    public User user;
     public TMP_InputField username;
     public TMP_InputField password;
 
@@ -40,7 +34,7 @@ public class Regiseter : MonoBehaviour
         }
     }   
 
-    public void LogInput()
+    public void RegisterInput()
     {
         User user = new User();
         user.username = username.text;
