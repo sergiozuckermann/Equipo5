@@ -33,16 +33,22 @@ public class Login : MonoBehaviour
             www.method = "POST";
             www.SetRequestHeader("Content-Type", "application/json");
             yield return www.SendWebRequest();
-
+            Debug.Log("Request sent");
             Debug.Log(www.downloadHandler.text);
             Debug.Log(www.error);
             Debug.Log(www.responseCode);
+            Debug.Log("result");
             Debug.Log(www.result);
 
             if (www.responseCode == 200)
             {
+                PlayerPrefs.SetString("User_id", www.downloadHandler.text);
+                string user_id = PlayerPrefs.GetString("User_id");
+                Debug.Log("User_id");
+                Debug.Log(user_id);
                 Debug.Log("Login successful!");
                 GetComponent<Login>().PlayGame();
+
             }
             else
             {
