@@ -13,7 +13,7 @@ async function connectDB(){
     const connection = await mysql.createConnection({
         host: "localhost",
         user: "root",
-        password: "Tequila123",
+        password: "",
         database: "zazzacrifice",
       });
 
@@ -104,10 +104,11 @@ app.post("/api/new_user", async (req, res) => {
 app.get("/api/game_sessions", async (req, res) => {
     try {
         //Create a connection to the MySQL database
+        console.log("REq")
         const connection = await connectDB();
         // Execute a SELECT query to retrieve all users
         const [rows] = await connection.query("SELECT * FROM sessions_summary WHERE user_id = ?", [req.query.user_id]);
-        res.json(rows);
+        res.json(rows[0]);
     } catch (error) {
         res.status(500).json({ error: "Internal server error" });
     }

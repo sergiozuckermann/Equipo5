@@ -44,9 +44,6 @@ public class Login : MonoBehaviour
             {
                 PlayerPrefs.SetString("User_id", www.downloadHandler.text);
                 string user_id = PlayerPrefs.GetString("User_id");
-                Debug.Log("User_id");
-                Debug.Log(user_id);
-                Debug.Log("Login successful!");
                 GetComponent<Login>().PlayGame();
 
             }
