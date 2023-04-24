@@ -160,8 +160,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 27.018, y: 65.006}
-  m_SizeDelta: {x: 126.5147, y: 55}
+  m_AnchoredPosition: {x: 0.75765, y: 70.505}
+  m_SizeDelta: {x: 182.0665, y: 44.003}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &9641928
 MonoBehaviour:
@@ -666,11 +666,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Enter User Name
-
-
-
-'
+  m_text: Username
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -785,8 +781,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -267.79742, y: -65.006256}
-  m_SizeDelta: {x: 180.5512, y: 204.5753}
+  m_AnchoredPosition: {x: -198.18036, y: -65.006}
+  m_SizeDelta: {x: 206.1905, y: 204.5753}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &227838726
 MonoBehaviour:
@@ -1335,8 +1331,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -154, y: -143}
-  m_SizeDelta: {x: 89.7721, y: 42.2814}
+  m_AnchoredPosition: {x: -133.19, y: -143}
+  m_SizeDelta: {x: 109.7138, y: 42.2814}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &400368418
 MonoBehaviour:
@@ -1534,8 +1530,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 39.737007, y: -86}
-  m_SizeDelta: {x: 126.5147, y: 55}
+  m_AnchoredPosition: {x: 0, y: -70.605}
+  m_SizeDelta: {x: 126.5147, y: 45.0292}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &464450525
 MonoBehaviour:
@@ -1744,8 +1740,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -265, y: -143}
-  m_SizeDelta: {x: 76.992, y: 42.281}
+  m_AnchoredPosition: {x: -245.77054, y: -143}
+  m_SizeDelta: {x: 115.4509, y: 42.281}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &484041646
 MonoBehaviour:
@@ -1791,18 +1787,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 582187670}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 582187676}
         m_TargetAssemblyTypeName: Register, Assembly-CSharp
         m_MethodName: RegisterInput
@@ -2713,8 +2697,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 39.737, y: -31}
-  m_SizeDelta: {x: 151.9519, y: 55}
+  m_AnchoredPosition: {x: 0.75765, y: -27}
+  m_SizeDelta: {x: 151.9519, y: 42.1804}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &758245844
 MonoBehaviour:
@@ -3498,7 +3482,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: -17.092873, y: 7.121994, z: 39.88336, w: 1.4243927}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -3635,7 +3619,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -68.162674, w: 0}
+  m_margin: {x: 0, y: 0, z: 1.6331787, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -3702,7 +3686,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -3737,8 +3721,8 @@ MonoBehaviour:
   m_VerticalScrollbarEventHandler: {fileID: 0}
   m_LayoutGroup: {fileID: 0}
   m_ScrollSensitivity: 1
-  m_ContentType: 0
-  m_InputType: 0
+  m_ContentType: 7
+  m_InputType: 2
   m_AsteriskChar: 42
   m_KeyboardType: 0
   m_LineType: 0
@@ -3862,8 +3846,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 27.017996, y: 22.505985}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: -0.00000095367, y: 28}
+  m_SizeDelta: {x: 171.79, y: 41.006}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1170706141
 MonoBehaviour:
@@ -4400,7 +4384,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -267.79742, y: -65.006256}
+  m_AnchoredPosition: {x: -211.00002, y: -65.00599}
   m_SizeDelta: {x: 180.5512, y: 204.5753}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1630541965
@@ -4670,7 +4654,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: 61.249405, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -4807,7 +4791,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -78.18651, w: 0}
+  m_margin: {x: 0, y: 0, z: -1.2686157, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -5532,7 +5516,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -5567,14 +5551,14 @@ MonoBehaviour:
   m_VerticalScrollbarEventHandler: {fileID: 0}
   m_LayoutGroup: {fileID: 0}
   m_ScrollSensitivity: 1
-  m_ContentType: 0
+  m_ContentType: 5
   m_InputType: 0
   m_AsteriskChar: 42
   m_KeyboardType: 0
   m_LineType: 0
   m_HideMobileInput: 0
   m_HideSoftKeyboard: 0
-  m_CharacterValidation: 0
+  m_CharacterValidation: 5
   m_RegexValue: 
   m_GlobalPointSize: 14
   m_CharacterLimit: 0
