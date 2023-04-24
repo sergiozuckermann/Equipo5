@@ -18,12 +18,15 @@ public float update;
 
 public GameObject playerPrefab;
 public GameObject enemyPrefab;
+
 private Animator animatore;
 private Animator animators;
+
 public Transform playerBattleStation;
 public Transform enemyBattleStation;
 public Transform playerattack;
 public Transform enemyattack;
+
 public ParticleSystem Fires;
 public ParticleSystem Thunders;
 public ParticleSystem Ices;
@@ -33,9 +36,17 @@ public ParticleSystem Firee;
 public ParticleSystem Thundere;
 public ParticleSystem Icee;
 
+public Button attackButton;
+public Button elementButton;
+public Button healButton;
+public Button fleeButton;
 
 unit playerUnit;
 unit enemyUnit;
+
+SpriteRenderer playersprite;
+SpriteRenderer enemysprite;
+
 
 
  public BattleHUD playerHUD;
@@ -58,17 +69,17 @@ void Start()
     Heals.Stop(true, ParticleSystemStopBehavior.StopEmitting);
     Recharges.Stop(true, ParticleSystemStopBehavior.StopEmitting);
 
-    
+    attackButton.interactable = false;
+    elementButton.interactable = false;
+    healButton.interactable = false;
+    fleeButton.interactable = false;
+
     state = BattleState.START;
     StartCoroutine(SetupBattle());
-    
-    
-
 }
 
 IEnumerator SetupBattle()
 {
-    
     
 
     GameObject playerGO = Instantiate(playerPrefab, playerBattleStation);
@@ -76,10 +87,12 @@ IEnumerator SetupBattle()
     playerUnit = playerGO.GetComponent<unit>();
     string save=PlayerPrefs.GetString("Shaggy");
     playerUnit.stats= JsonUtility.FromJson<Stats>(save);
+    //playersprite= playerGO.GetComponent<SpriteRenderer>();
      
     
     GameObject enemyGO = Instantiate(enemyPrefab, enemyBattleStation);
     enemyUnit = enemyGO.GetComponent<unit>();
+    //enemysprite= enemyGO.GetComponent<SpriteRenderer>();
 
     animators = playerGO.GetComponentInChildren<Animator>();
     animatore = enemyGO.GetComponentInChildren<Animator>();
@@ -100,56 +113,27 @@ IEnumerator SetupBattle()
 
  IEnumerator PlayerAttack()
  {
-     bool isDead = enemyUnit.TakeDamage(playerUnit.stats.damage);
-     
-     if (playerUnit.stats.lightning>0){
-        playerUnit.setlightning(0);
-        playerUnit.lightningnerf();
-        dialogueText.text = playerUnit.unitName + " Stats returned to normal";
-        Thunders.Stop(true, ParticleSystemStopBehavior.StopEmitting);
+    
 
-        yield return new WaitForSeconds(1f);
-     }
+     bool isDead = enemyUnit.TakeDamage(playerUnit.stats.damage);
+     //enemysprite.color= Color.red;
+     
+        
 
         if (isDead)
         {
-            animators.SetInteger("State", 1);
-            while(etime < time){
-                yield return new WaitForSeconds(update);
-                float interpolationRatio = etime / time;
-                playerUnit.transform.position=  Vector3.Lerp(playerBattleStation.position, playerattack.position, interpolationRatio);
-                etime += update;
-            }
-
-            animators.SetInteger("State", 2);
-            yield return new WaitForSeconds(2f);
-            dialogueText.text = "You deal " + playerUnit.stats.damage + " damage...";
-            enemyHUD.SetHP(enemyUnit.stats.currentHP =0);
-            animators.SetInteger("State", 3);
-            while(etime > 0){
-                yield return new WaitForSeconds(update);
-                float interpolationRatio = etime / time;
-
-                playerUnit.transform.position=  Vector3.Lerp(playerBattleStation.position, playerattack.position, interpolationRatio);
-                etime -= update;
-                
-            }
-
-            animators.SetInteger("State", 0);
-            
-            yield return new WaitForSeconds(1f);
             state = BattleState.WON;
             string savedShaggy=JsonUtility.ToJson(playerUnit.stats);
             PlayerPrefs.SetString("Shaggy", savedShaggy);
-            SceneManager.LoadScene("Bosque_Combate");
+           
             EndBattle();
+            
+            
         }
+        
         else
         {
             state = BattleState.ENEMYTURN;
-
-            
-
             animators.SetInteger("State", 1);
             while(etime < time){
                 yield return new WaitForSeconds(update);
@@ -161,25 +145,32 @@ IEnumerator SetupBattle()
             animators.SetInteger("State", 2);
             yield return new WaitForSeconds(2f);
             dialogueText.text = "You deal " + playerUnit.stats.damage + " damage...";
+            
+            
+
             enemyHUD.SetHP(enemyUnit.stats.currentHP);
             animators.SetInteger("State", 3);
+            
             while(etime > 0){
                 yield return new WaitForSeconds(update);
                 float interpolationRatio = etime / time;
-
                 playerUnit.transform.position=  Vector3.Lerp(playerBattleStation.position, playerattack.position, interpolationRatio);
                 etime -= update;
-                
             }
+
+            if (playerUnit.stats.lightning>0){
+            yield return new WaitForSeconds(1f);
+            playerUnit.setlightning(0);
+            playerUnit.lightningnerf();
+            dialogueText.text = playerUnit.unitName + " Stats returned to normal";
+            Thunders.Stop(true, ParticleSystemStopBehavior.StopEmitting);
+        }
 
             animators.SetInteger("State", 0);
             
             yield return new WaitForSeconds(1f);
-            
-            
             StartCoroutine(EnemyTurn());
         }
-  
  }
 
  IEnumerator EnemyTurn()
@@ -201,6 +192,7 @@ IEnumerator SetupBattle()
     enemyHUD.SetHP(enemyUnit.stats.currentHP);
 
      animatore.SetInteger("State", 1);
+     
      while(etime < time){
                 yield return new WaitForSeconds(update);
                 float interpolationRatio = etime / time;
@@ -217,7 +209,13 @@ IEnumerator SetupBattle()
      dialogueText.text = "Enemy dealt " + enemyUnit.stats.damage + " damage...";
      bool isDead = playerUnit.TakeDamage(enemyUnit.stats.damage);
 
-     playerHUD.SetHP(playerUnit.stats.currentHP);
+    if (playerUnit.stats.currentHP>0){
+        playerHUD.SetHP(playerUnit.stats.currentHP);
+    }
+    else{
+        playerHUD.SetHP(0);
+    }
+     
      animatore.SetInteger("State", 3);
      
      while(etime > 0){
@@ -252,14 +250,15 @@ IEnumerator SetupBattle()
      } else
      {
          state = BattleState.PLAYERTURN;
-         PlayerTurn();
-        if (playerUnit.stats.fire < 0){
+         if (playerUnit.stats.fire < 0){
             dialogueText.text = "Took 2 fire damage from fire";
             yield return new WaitForSeconds(1f);
         }
+         PlayerTurn();
+        
 
      }
-        }
+    }
     
     else
      {
@@ -277,15 +276,26 @@ IEnumerator SetupBattle()
      {
         animatore.SetInteger("State", 4);
          dialogueText.text = "You won the battle!";
+
      } else if (state == BattleState.LOST)
      {
+
         animators.SetInteger("State", 5);
          dialogueText.text = "You were defeated.";
+         attackButton.interactable = false;
+        elementButton.interactable = false;
+        healButton.interactable = false;
+        fleeButton.interactable = false;
      }
  }
 
  void PlayerTurn()
  {
+    attackButton.interactable = true;
+    elementButton.interactable = true;
+    healButton.interactable = true;
+    fleeButton.interactable = true;
+
      if (playerUnit.stats.fire > 0){
         playerUnit.TakeDamage(2);
         playerUnit.decreasefire();
@@ -312,6 +322,7 @@ IEnumerator SetupBattle()
  }
 
 
+
  IEnumerator PlayerRecharge()
  {
         playerUnit.Recharge(5);
@@ -334,14 +345,14 @@ IEnumerator SetupBattle()
 
    IEnumerator PlayerHeal()
  {
-        playerUnit.Heal(5);
+        playerUnit.Heal(10);
 
         state = BattleState.ENEMYTURN;
         Heals.Play();
         animators.SetInteger("State", 4);
         yield return new WaitForSeconds(1f);
         playerHUD.SetHP(playerUnit.stats.currentHP);
-        dialogueText.text = "You healed for 5.";
+        dialogueText.text = "You healed for 10.";
         yield return new WaitForSeconds(1f);
         animators.SetInteger("State", 0);
         Heals.Stop(true, ParticleSystemStopBehavior.StopEmitting);
@@ -452,20 +463,21 @@ IEnumerator SetupBattle()
         System.Random rand = new System.Random();
         int number = rand.Next(0, 100);
         
-        if(number < 70)
+        if(number < 20)
         {   
             enemyUnit.setlightning(1);
             Thundere.Play();
-            dialogueText.text = "Enemy was hit by lighting, stats buffed";
+            dialogueText.text = "Enemy was hit by lighting, double damage next attack";
             enemyUnit.lightningbuff();
 
         }
+
         else
         {
             playerUnit.setlightning(1);
             Thunders.Play();
 
-            dialogueText.text = "You got hit by lighting, stats buffed";
+            dialogueText.text = "You got hit by lighting, double damage next attack";
             playerUnit.lightningbuff();
 
         }
@@ -492,7 +504,10 @@ public void OnAttackButton()
  {
      if (state != BattleState.PLAYERTURN)
          return;
-
+    attackButton.interactable = false;
+    elementButton.interactable = false;
+    healButton.interactable = false;
+    fleeButton.interactable = false;
      StartCoroutine(PlayerAttack());
  }
 
@@ -500,25 +515,49 @@ public void OnAttackButton()
  {
      if (state != BattleState.PLAYERTURN)
          return;
-
-     StartCoroutine(PlayerHeal());
+    attackButton.interactable = false;
+    elementButton.interactable = false;
+    healButton.interactable = false;
+    fleeButton.interactable = false;
+     
+     if (playerUnit.stats.currentMP>=5){
+        attackButton.interactable = false;
+        elementButton.interactable = false;
+        healButton.interactable = false;
+        fleeButton.interactable = false;
+        playerUnit.setmp(playerUnit.stats.currentMP - 5);
+        playerHUD.SetMP(playerUnit.stats.currentMP);
+        StartCoroutine(PlayerHeal());
+        
+    }
+     
+    else{
+        dialogueText.text = "Not enough MP";
+        return;
+    }
  }
 
   public void OnRechargeButton()
  {
      if (state != BattleState.PLAYERTURN)
          return;
-
+    attackButton.interactable = false;
+    elementButton.interactable = false;
+    healButton.interactable = false;
+    fleeButton.interactable = false;
      StartCoroutine(PlayerRecharge());
  }
 
   public void OnFireButton()
- {
+    {
          if (state != BattleState.PLAYERTURN)
          return;
 
     if (playerUnit.stats.currentMP>=10){
-        
+        attackButton.interactable = false;
+        elementButton.interactable = false;
+        healButton.interactable = false;
+        fleeButton.interactable = false;        
         playerUnit.setmp(playerUnit.stats.currentMP - 10);
         playerHUD.SetMP(playerUnit.stats.currentMP);
         StartCoroutine(PlayerFire());
@@ -528,28 +567,28 @@ public void OnAttackButton()
     else{
         dialogueText.text = "Not enough MP";
         return;
-    }
-    
+    } 
  }
 
-   public void OnIceButton()
- {
+    public void OnIceButton()
+    {
      if (state != BattleState.PLAYERTURN)
          return;
 
     if (playerUnit.stats.currentMP>=5){
-        
+        attackButton.interactable = false;
+        elementButton.interactable = false;
+        healButton.interactable = false;
+        fleeButton.interactable = false;
         playerUnit.setmp(playerUnit.stats.currentMP - 5);
         playerHUD.SetMP(playerUnit.stats.currentMP);
-        StartCoroutine(PlayerIce());
-        
+        StartCoroutine(PlayerIce());   
     }
-     
-    else{
-        dialogueText.text = "Not enough MP";
-        return;
+        else{
+            dialogueText.text = "Not enough MP";
+            return;
+        }
     }
- }
  
  public void OnLightButton()
  {
@@ -557,25 +596,28 @@ public void OnAttackButton()
          return;
 
      if (playerUnit.stats.currentMP>=10){
-        
+        attackButton.interactable = false;
+        elementButton.interactable = false;
+        healButton.interactable = false;
+        fleeButton.interactable = false;
         playerUnit.setmp(playerUnit.stats.currentMP - 10);
         playerHUD.SetMP(playerUnit.stats.currentMP);
         StartCoroutine(PlayerLight());
-        
-    }
-     
+    } 
     else{
-        dialogueText.text = "Not enough MP";
-        return;
+            dialogueText.text = "Not enough MP";
+            return;
+        }
     }
- }
+
     public void RestartLevel(){
         SceneManager.LoadScene(2);
     }
+    
     public void Escape(){
         string savedShaggy=JsonUtility.ToJson(playerUnit.stats);
         PlayerPrefs.SetString("Shaggy", savedShaggy);
         SceneManager.LoadScene("Bosque_Combate");
         SceneManager.LoadScene(1);
     }
-  }
+}

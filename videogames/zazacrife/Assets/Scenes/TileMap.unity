@@ -280,6 +280,10 @@ PrefabInstance:
       propertyPath: speed
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 7351448863305945672, guid: 4615530937c54fb49ae8d1882de851c0, type: 3}
+      propertyPath: Shaggy
+      value: 
+      objectReference: {fileID: 1933029664}
     - target: {fileID: 7626955531763184352, guid: 4615530937c54fb49ae8d1882de851c0, type: 3}
       propertyPath: m_Size.x
       value: 2.3

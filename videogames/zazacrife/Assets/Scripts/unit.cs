@@ -126,6 +126,9 @@ public class unit : MonoBehaviour
     stats.defence= 3;
 	stats.charisma= 2;
 	stats.accuracy= 6;
+    string savedShaggy=JsonUtility.ToJson(stats);
+    PlayerPrefs.SetString("Shaggy", savedShaggy);
+    
 	}
 
 	public void Middleclass(){
@@ -139,6 +142,8 @@ public class unit : MonoBehaviour
 	stats.defence= 5;
 	stats.charisma= 2;
 	stats.accuracy= 4;
+	string savedShaggy=JsonUtility.ToJson(stats);
+    PlayerPrefs.SetString("Shaggy", savedShaggy);
 	}
 
 	public void Heavyclass(){
@@ -152,6 +157,8 @@ public class unit : MonoBehaviour
 	stats.defence= 7;
 	stats.charisma= 2;
 	stats.accuracy= 2;
+	string savedShaggy=JsonUtility.ToJson(stats);
+    PlayerPrefs.SetString("Shaggy", savedShaggy);
 	}
 
 	
