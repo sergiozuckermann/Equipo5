@@ -95,4 +95,10 @@ public class chasee : MonoBehaviour
         returnPositionX = x;
         returnPositionY = y;
     }
+
+    public void LoadBattleScene()
+{
+    SceneManager.LoadScene(Bosque_Combate);
+}
+
 }
