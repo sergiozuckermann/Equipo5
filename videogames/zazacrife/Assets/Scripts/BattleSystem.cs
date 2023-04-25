@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using System;
 using UnityEngine.SceneManagement;
+using System.Threading;
 
 
 public enum BattleState { START, PLAYERTURN, ENEMYTURN, WON, LOST }
@@ -111,30 +112,41 @@ IEnumerator SetupBattle()
      
 }
 
- IEnumerator PlayerAttack()
- {
+ IEnumerator PlayerAttack(){
+    state = BattleState.ENEMYTURN;
+    System.Random rand = new System.Random();
+    int number = rand.Next(0, 100);
+    if (number < (25-playerUnit.stats.accuracy+enemyUnit.stats.agility)){
+            dialogueText.text = playerUnit.unitName + " Failed to attack";
+            yield return new WaitForSeconds(1f);
+            if (playerUnit.stats.lightning>0){
+                yield return new WaitForSeconds(1f);
+                playerUnit.setlightning(0);
+                playerUnit.lightningnerf();
+                dialogueText.text = playerUnit.unitName + " Stats returned to normal";
+                Thunders.Stop(true, ParticleSystemStopBehavior.StopEmitting);
+            }
+            StartCoroutine(EnemyTurn());
+        }
     
-
-     bool isDead = enemyUnit.TakeDamage(playerUnit.stats.damage);
-     //enemysprite.color= Color.red;
-     
+    else{
+        int damage=0;
+        int crit=0;
         
-
-        if (isDead)
-        {
+        getAttackplayer(ref damage, ref crit);
+        bool isDead = enemyUnit.TakeDamage(damage);
+    //enemysprite.color= Color.red;
+        if (isDead){
             state = BattleState.WON;
+            enemyHUD.SetHP(enemyUnit.stats.currentHP = 0);
             string savedShaggy=JsonUtility.ToJson(playerUnit.stats);
             PlayerPrefs.SetString("Shaggy", savedShaggy);
-           
             EndBattle();
-            
-            
         }
         
-        else
-        {
-            state = BattleState.ENEMYTURN;
-            animators.SetInteger("State", 1);
+            
+        else{
+        animators.SetInteger("State", 1);
             while(etime < time){
                 yield return new WaitForSeconds(update);
                 float interpolationRatio = etime / time;
@@ -143,11 +155,15 @@ IEnumerator SetupBattle()
             }
 
             animators.SetInteger("State", 2);
-            yield return new WaitForSeconds(2f);
-            dialogueText.text = "You deal " + playerUnit.stats.damage + " damage...";
-            
-            
+            if (crit==1){
+                dialogueText.text = "Critical Hit";
+            }
+            else{
+                dialogueText.text = "Attack Successful";
+            }
 
+            yield return new WaitForSeconds(1f);
+            dialogueText.text = "Shaggy did " + damage + " damage!";
             enemyHUD.SetHP(enemyUnit.stats.currentHP);
             animators.SetInteger("State", 3);
             
@@ -159,130 +175,159 @@ IEnumerator SetupBattle()
             }
 
             if (playerUnit.stats.lightning>0){
-            yield return new WaitForSeconds(1f);
-            playerUnit.setlightning(0);
-            playerUnit.lightningnerf();
-            dialogueText.text = playerUnit.unitName + " Stats returned to normal";
-            Thunders.Stop(true, ParticleSystemStopBehavior.StopEmitting);
-        }
+                yield return new WaitForSeconds(1f);
+                playerUnit.setlightning(0);
+                playerUnit.lightningnerf();
+                dialogueText.text = playerUnit.unitName + " Stats returned to normal";
+                Thunders.Stop(true, ParticleSystemStopBehavior.StopEmitting);
+            }
 
             animators.SetInteger("State", 0);
             
             yield return new WaitForSeconds(1f);
             StartCoroutine(EnemyTurn());
+        
         }
+    }
  }
 
- IEnumerator EnemyTurn()
- {
-    if (enemyUnit.stats.ice == 0){
-         playerUnit.setice(0);
-         if (enemyUnit.stats.fire > 0){
+
+ IEnumerator EnemyTurn(){
+    System.Random rand = new System.Random();
+    int number = rand.Next(0, 100);
+    if (number < (25-enemyUnit.stats.accuracy+playerUnit.stats.agility)){
+        dialogueText.text = enemyUnit.unitName+ " Failed to attack";
+            yield return new WaitForSeconds(1f);
+            if (playerUnit.stats.lightning>0){
+                yield return new WaitForSeconds(1f);
+                playerUnit.setlightning(0);
+                playerUnit.lightningnerf();
+                dialogueText.text = playerUnit.unitName + " Stats returned to normal";
+                Thunders.Stop(true, ParticleSystemStopBehavior.StopEmitting);
+                
+            }
+            
+            if (playerUnit.stats.fire > 0){
             enemyUnit.TakeDamage(2);
             enemyUnit.decreasefire();
-            dialogueText.text = enemyUnit.unitName + " Took 2 damage from fire " + enemyUnit.stats.fire + " turns remaining";
-            enemyHUD.SetHUD(enemyUnit);
+            dialogueText.text = "Took 2 fire damage from fire";
+            enemyHUD.SetHP(enemyUnit.stats.currentHP);
+            yield return new WaitForSeconds(1f);
+            }
+        state = BattleState.PLAYERTURN;
+        PlayerTurn();   
+    }
+
+    else{
+
+    if (playerUnit.stats.fire > 0){
+            enemyUnit.TakeDamage(2);
+            enemyUnit.decreasefire();
+            dialogueText.text = "Took 2 fire damage from fire";
+            enemyHUD.SetHP(enemyUnit.stats.currentHP);
+            yield return new WaitForSeconds(1f);
+            }
+    else{
+        Firee.Stop(true, ParticleSystemStopBehavior.StopEmitting);
+    }
+
+    if (enemyUnit.stats.ice == 0){
+        int damage=0;
+        int crit=0;
+        animatore.SetInteger("State", 1);
+        while(etime < time){
+            yield return new WaitForSeconds(update);
+            float interpolationRatio = etime / time;
+            enemyUnit.transform.position=  Vector3.Lerp(enemyBattleStation.position, enemyattack.position, interpolationRatio);
+            etime += update;
+                
+        }
+       
+        animatore.SetInteger("State", 2);
+        dialogueText.text = enemyUnit.unitName + " attacks!";
+        yield return new WaitForSeconds(1f);
+        getAttackplayer(ref damage, ref crit);
+        if(crit==1){
+            dialogueText.text = "Critical Hit";
             yield return new WaitForSeconds(1f);
         }
         else{
-            Firee.Stop(true, ParticleSystemStopBehavior.StopEmitting);
-        }
-
-
-    enemyHUD.SetHP(enemyUnit.stats.currentHP);
-
-     animatore.SetInteger("State", 1);
-     
-     while(etime < time){
-                yield return new WaitForSeconds(update);
-                float interpolationRatio = etime / time;
-
-                enemyUnit.transform.position=  Vector3.Lerp(enemyBattleStation.position, enemyattack.position, interpolationRatio);
-                etime += update;
-                
-            }
-     
-     
-     animatore.SetInteger("State", 2);
-     dialogueText.text = enemyUnit.unitName + " attacks!";
-     yield return new WaitForSeconds(2f);
-     dialogueText.text = "Enemy dealt " + enemyUnit.stats.damage + " damage...";
-     bool isDead = playerUnit.TakeDamage(enemyUnit.stats.damage);
-
-    if (playerUnit.stats.currentHP>0){
-        playerHUD.SetHP(playerUnit.stats.currentHP);
-    }
-    else{
-        playerHUD.SetHP(0);
-    }
-     
-     animatore.SetInteger("State", 3);
-     
-     while(etime > 0){
-                yield return new WaitForSeconds(update);
-                float interpolationRatio = etime / time;
-
-                enemyUnit.transform.position=  Vector3.Lerp(enemyBattleStation.position, enemyattack.position, interpolationRatio);
-                etime -= update;
-                
-            }
-     
-     
-     animatore.SetInteger("State", 0);
-     yield return new WaitForSeconds(1f);
-
-     
-
-     
-
-     yield return new WaitForSeconds(1f);
-    if (enemyUnit.stats.lightning >0 ){
-        enemyUnit.setlightning(0);
-        enemyUnit.lightningnerf();
-        dialogueText.text = enemyUnit.unitName + " Stats returned to normal";
-        Thundere.Stop(true, ParticleSystemStopBehavior.StopEmitting);
-        yield return new WaitForSeconds(1f);
-     }
-     if(isDead)
-     {
-         state = BattleState.LOST;
-         EndBattle();
-     } else
-     {
-         state = BattleState.PLAYERTURN;
-         if (playerUnit.stats.fire < 0){
-            dialogueText.text = "Took 2 fire damage from fire";
+            dialogueText.text = "Attack Successful";
             yield return new WaitForSeconds(1f);
+        }    
+        dialogueText.text = "Enemy dealt " + damage + " damage!";
+        bool isDead = playerUnit.TakeDamage(damage);
+
+        if (playerUnit.stats.currentHP>0){
+            playerHUD.SetHP(playerUnit.stats.currentHP);
         }
-         PlayerTurn();
+
+        else{
+            playerHUD.SetHP(0);
+        }
+     
+        animatore.SetInteger("State", 3);
+     
+        while(etime > 0){
+            yield return new WaitForSeconds(update);
+            float interpolationRatio = etime / time;
+            enemyUnit.transform.position=  Vector3.Lerp(enemyBattleStation.position, enemyattack.position, interpolationRatio);
+            etime -= update;
+            }
+     
+     
+            animatore.SetInteger("State", 0);
+            yield return new WaitForSeconds(1f);
+
+            if (enemyUnit.stats.lightning >0 ){
+                enemyUnit.setlightning(0);
+                enemyUnit.lightningnerf();
+                dialogueText.text = enemyUnit.unitName + " Stats returned to normal";
+                Thundere.Stop(true, ParticleSystemStopBehavior.StopEmitting);
+                yield return new WaitForSeconds(1f);
+                }
+            
+            if(isDead){
+                state = BattleState.LOST;
+                EndBattle();
+            } 
+
+            else{
+                state = BattleState.PLAYERTURN;
+                PlayerTurn();
+            }
+        }
         
-
-     }
-    }
+        else{
+            enemyUnit.decreaseice();
+            Icee.Stop(true, ParticleSystemStopBehavior.StopEmitting);
+            state = BattleState.PLAYERTURN;
+            PlayerTurn();
+            
+        }
+    }  
+}
     
-    else
-     {
-        enemyUnit.decreaseice();
-        state = BattleState.PLAYERTURN;
-        PlayerTurn();
-        Icee.Stop(true, ParticleSystemStopBehavior.StopEmitting);
-     }
-
- }
-
- void EndBattle()
+    
+ IEnumerator EndBattle()
  {
      if(state == BattleState.WON)
      {
         animatore.SetInteger("State", 4);
-         dialogueText.text = "You won the battle!";
-
-     } else if (state == BattleState.LOST)
-     {
-
+        dialogueText.text = "You won the battle!";
+        yield return new WaitForSeconds(1f);
+        playerUnit.stats.coins=playerUnit.stats.coins+enemyUnit.stats.coins+playerUnit.stats.charisma;
+        attackButton.interactable = false;
+        elementButton.interactable = false;
+        healButton.interactable = false;
+        fleeButton.interactable = false;
+        dialogueText.text = "Coins earned: " + playerUnit.stats.coins;
+     } 
+     else if (state == BattleState.LOST){
+        animators.SetInteger("State", 3);
         animators.SetInteger("State", 5);
-         dialogueText.text = "You were defeated.";
-         attackButton.interactable = false;
+        dialogueText.text = "You were defeated.";
+        attackButton.interactable = false;
         elementButton.interactable = false;
         healButton.interactable = false;
         fleeButton.interactable = false;
@@ -611,13 +656,67 @@ public void OnAttackButton()
     }
 
     public void RestartLevel(){
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene("Bosque_Combate");
     }
     
     public void Escape(){
+        
+        System.Random rand = new System.Random();
+        int lostcoins= rand.Next(0,5);
+        dialogueText.text = "You escaped and lost "+lostcoins+" coins";
+        //FIX SO THAT TEXT SHOWS CORRECTLY
+        playerUnit.stats.coins-=lostcoins;
         string savedShaggy=JsonUtility.ToJson(playerUnit.stats);
         PlayerPrefs.SetString("Shaggy", savedShaggy);
-        SceneManager.LoadScene("Bosque_Combate");
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene("TileMap");
+        
+        
+        
+    }
+
+    public void getAttackplayer(ref int damage, ref int crit){
+        crit=0;
+        System.Random rand = new System.Random();
+        int attack = rand.Next(5, 10)+playerUnit.stats.damage;
+        int defence = rand.Next(-3, 0)+enemyUnit.stats.defence;
+        damage=attack-defence;
+        
+        if (damage<=0){
+            damage=1;
+        }
+        
+        int number = rand.Next(0, 100);
+        
+        if(number < 20 + playerUnit.stats.luck)
+        {   
+
+
+            damage=damage*2;
+            crit=1;
+        }
+
+    }
+
+    public void getAttackenemy(ref int damage, ref int crit){
+        crit=0;
+        System.Random rand = new System.Random();
+        int attack = rand.Next(5, 10)+enemyUnit.stats.damage;
+        int defence = rand.Next(-3, 0)+playerUnit.stats.defence;
+        damage=attack-defence;
+        
+        if (damage<=0){
+            damage=1;
+        }
+        
+        int number = rand.Next(0, 100);
+        
+        if(number < 20 + playerUnit.stats.luck)
+        {   
+
+
+            damage=damage*2;
+            crit=1;
+        }
+
     }
 }
