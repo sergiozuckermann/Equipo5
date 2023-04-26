@@ -86,6 +86,10 @@ public class chasee : MonoBehaviour
             unit Shaggy = collision.gameObject.GetComponent<unit>();
             string savedShaggy=JsonUtility.ToJson(Shaggy.stats);
             PlayerPrefs.SetString("Shaggy", savedShaggy);
+
+            unit stats = GetComponent<unit>();
+            PlayerPrefs.SetInt("Enemy", stats.stats.index);
+
             SceneManager.LoadScene(Bosque_Combate);
         }
     }
@@ -97,15 +101,15 @@ public class chasee : MonoBehaviour
         returnPositionY = y;
     }
 
-    public void LoadBattleScene()
-{
-    unit Shaggy = collision.gameObject.GetComponent<unit>();
-    string savedShaggy=JsonUtility.ToJson(Shaggy.stats);
-    PlayerPrefs.SetString("Shaggy", savedShaggy);
-    unit enemy = enemy.GetComponent<unit>();
-    string savedenemy=JsonUtility.ToJson(enemy.stats);
-    PlayerPrefs.SetString("Enemy", savedenemy);
-    SceneManager.LoadScene(Bosque_Combate);
-}
+//     public void LoadBattleScene()
+// {
+//     unit Shaggy = collision.gameObject.GetComponent<unit>();
+//     string savedShaggy=JsonUtility.ToJson(Shaggy.stats);
+//     PlayerPrefs.SetString("Shaggy", savedShaggy);
+//     unit enemy = enemy.GetComponent<unit>();
+//     string savedenemy=JsonUtility.ToJson(enemy.stats);
+//     PlayerPrefs.SetString("Enemy", savedenemy);
+//     SceneManager.LoadScene(Bosque_Combate);
+// }
 
 }
