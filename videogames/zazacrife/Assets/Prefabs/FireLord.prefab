@@ -60,6 +60,10 @@ MonoBehaviour:
     ice: 0
     lightning: 0
     coins: 0
+    index: 2
+    firea: 0
+    icea: 0
+    lightninga: 0
   unitName: Fire Lord
 --- !u!1 &56576546914886505
 GameObject:

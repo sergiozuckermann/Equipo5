@@ -198,7 +198,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2150426741379067590, guid: 4615530937c54fb49ae8d1882de851c0, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2150426741379067590, guid: 4615530937c54fb49ae8d1882de851c0, type: 3}
       propertyPath: m_LocalScale.x
@@ -214,11 +214,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2150426741379067590, guid: 4615530937c54fb49ae8d1882de851c0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -10.6
+      value: -10.4
       objectReference: {fileID: 0}
     - target: {fileID: 2150426741379067590, guid: 4615530937c54fb49ae8d1882de851c0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.28
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 2150426741379067590, guid: 4615530937c54fb49ae8d1882de851c0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -446,6 +446,7 @@ GameObject:
   - component: {fileID: 108813804}
   - component: {fileID: 108813807}
   - component: {fileID: 108813806}
+  - component: {fileID: 108813808}
   m_Layer: 0
   m_Name: ThunderLord
   m_TagString: Untagged
@@ -551,6 +552,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 958740467}
+--- !u!114 &108813808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 108813803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ee4073bdf1c3d64cbb8daee19162c96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stats:
+    damage: 0
+    maxHP: 0
+    currentHP: 0
+    maxMP: 0
+    currentMP: 0
+    luck: 0
+    agility: 0
+    defence: 0
+    charisma: 0
+    accuracy: 0
+    fire: 0
+    ice: 0
+    lightning: 0
+    coins: 0
+    index: 3
+    firea: 0
+    icea: 0
+    lightninga: 0
+  unitName: 
 --- !u!1 &110976205
 GameObject:
   m_ObjectHideFlags: 0
@@ -1198,6 +1231,7 @@ GameObject:
   - component: {fileID: 161826044}
   - component: {fileID: 161826047}
   - component: {fileID: 161826046}
+  - component: {fileID: 161826048}
   m_Layer: 0
   m_Name: IceLord
   m_TagString: Untagged
@@ -1303,6 +1337,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 1330783408}
+--- !u!114 &161826048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 161826043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ee4073bdf1c3d64cbb8daee19162c96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stats:
+    damage: 0
+    maxHP: 0
+    currentHP: 0
+    maxMP: 0
+    currentMP: 0
+    luck: 0
+    agility: 0
+    defence: 0
+    charisma: 0
+    accuracy: 0
+    fire: 0
+    ice: 0
+    lightning: 0
+    coins: 0
+    index: 2
+    firea: 0
+    icea: 0
+    lightninga: 0
+  unitName: 
 --- !u!1 &173780776
 GameObject:
   m_ObjectHideFlags: 0
@@ -51271,7 +51337,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 175031022}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.6, y: 0.2542601, z: -10}
+  m_LocalPosition: {x: -10.4, y: 1.4742601, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -52274,7 +52340,7 @@ Tilemap:
       - {fileID: -1991354426, guid: e8f67e200b4d84a809445ae59596c2f1, type: 3}
       - {fileID: 93619158, guid: e8f67e200b4d84a809445ae59596c2f1, type: 3}
       - {fileID: 1275356659, guid: e8f67e200b4d84a809445ae59596c2f1, type: 3}
-      m_AnimationSpeed: 5.0000005
+      m_AnimationSpeed: 5
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 55, y: -50, z: 0}
@@ -52490,7 +52556,7 @@ Tilemap:
       - {fileID: -1991354426, guid: e8f67e200b4d84a809445ae59596c2f1, type: 3}
       - {fileID: 93619158, guid: e8f67e200b4d84a809445ae59596c2f1, type: 3}
       - {fileID: 1275356659, guid: e8f67e200b4d84a809445ae59596c2f1, type: 3}
-      m_AnimationSpeed: 5.0000005
+      m_AnimationSpeed: 5
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 67, y: -44, z: 0}
@@ -52526,7 +52592,7 @@ Tilemap:
       - {fileID: -1114166083, guid: e8f67e200b4d84a809445ae59596c2f1, type: 3}
       - {fileID: 531797115, guid: e8f67e200b4d84a809445ae59596c2f1, type: 3}
       - {fileID: -551697929, guid: e8f67e200b4d84a809445ae59596c2f1, type: 3}
-      m_AnimationSpeed: 5
+      m_AnimationSpeed: 5.0000005
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 68, y: -43, z: 0}
@@ -88926,7 +88992,7 @@ Tilemap:
       - {fileID: -1114166083, guid: e8f67e200b4d84a809445ae59596c2f1, type: 3}
       - {fileID: 531797115, guid: e8f67e200b4d84a809445ae59596c2f1, type: 3}
       - {fileID: -551697929, guid: e8f67e200b4d84a809445ae59596c2f1, type: 3}
-      m_AnimationSpeed: 5.0000005
+      m_AnimationSpeed: 5
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 65, y: -41, z: 0}
@@ -88944,7 +89010,7 @@ Tilemap:
       - {fileID: -1114166083, guid: e8f67e200b4d84a809445ae59596c2f1, type: 3}
       - {fileID: 531797115, guid: e8f67e200b4d84a809445ae59596c2f1, type: 3}
       - {fileID: -551697929, guid: e8f67e200b4d84a809445ae59596c2f1, type: 3}
-      m_AnimationSpeed: 5
+      m_AnimationSpeed: 5.0000005
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 65, y: -40, z: 0}
@@ -89221,13 +89287,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1167108802}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.6, y: 0.2542601, z: -10}
+  m_LocalPosition: {x: -10.4, y: 1.4742601, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1638201796}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1296814736
 GameObject:
@@ -89655,7 +89721,7 @@ Transform:
   - {fileID: 110976206}
   - {fileID: 222130112}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1638201795
 GameObject:
@@ -89754,7 +89820,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 719752860247976640, guid: 2f0442de31b60944c9e84cd219393718, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 719752860247976640, guid: 2f0442de31b60944c9e84cd219393718, type: 3}
       propertyPath: m_LocalScale.x
@@ -97246,6 +97312,7 @@ GameObject:
   - component: {fileID: 1941194216}
   - component: {fileID: 1941194219}
   - component: {fileID: 1941194218}
+  - component: {fileID: 1941194220}
   m_Layer: 0
   m_Name: FireLord
   m_TagString: Untagged
@@ -97351,6 +97418,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 301907941}
+--- !u!114 &1941194220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1941194215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ee4073bdf1c3d64cbb8daee19162c96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stats:
+    damage: 0
+    maxHP: 0
+    currentHP: 0
+    maxMP: 0
+    currentMP: 0
+    luck: 0
+    agility: 0
+    defence: 0
+    charisma: 0
+    accuracy: 0
+    fire: 0
+    ice: 0
+    lightning: 0
+    coins: 0
+    index: 1
+    firea: 0
+    icea: 0
+    lightninga: 0
+  unitName: 
 --- !u!1 &1952498196 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 719752860247976645, guid: 2f0442de31b60944c9e84cd219393718, type: 3}
@@ -97383,6 +97482,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebe45b26fb5f3ef4db605565169629d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1952498210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1952498196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ee4073bdf1c3d64cbb8daee19162c96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stats:
+    damage: 0
+    maxHP: 0
+    currentHP: 0
+    maxMP: 0
+    currentMP: 0
+    luck: 0
+    agility: 0
+    defence: 0
+    charisma: 0
+    accuracy: 0
+    fire: 0
+    ice: 0
+    lightning: 0
+    coins: 0
+    index: 0
+    firea: 0
+    icea: 0
+    lightninga: 0
+  unitName: 
 --- !u!1 &1989874216
 GameObject:
   m_ObjectHideFlags: 0

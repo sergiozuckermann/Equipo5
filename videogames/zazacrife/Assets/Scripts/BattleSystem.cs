@@ -18,7 +18,7 @@ private float etime;
 public float update;
 
 public GameObject playerPrefab;
-public GameObject enemyPrefab;
+public GameObject [] enemyPrefabs;
 
 private Animator animatore;
 private Animator animators;
@@ -70,6 +70,7 @@ void Start()
     Heals.Stop(true, ParticleSystemStopBehavior.StopEmitting);
     Recharges.Stop(true, ParticleSystemStopBehavior.StopEmitting);
 
+
     attackButton.interactable = false;
     elementButton.interactable = false;
     healButton.interactable = false;
@@ -91,10 +92,10 @@ IEnumerator SetupBattle()
     //playersprite= playerGO.GetComponent<SpriteRenderer>();
      
     
-    GameObject enemyGO = Instantiate(enemyPrefab, enemyBattleStation);
+    int enemyID=PlayerPrefs.GetInt("Enemy");
+    GameObject enemyGO = Instantiate(enemyPrefabs[enemyID], enemyBattleStation);
    
     enemyUnit= enemyGO.GetComponent<unit>();
-    string save=PlayerPrefs.GetString("Enemy");
     enemyUnit.stats =  JsonUtility.FromJson<Stats>(save);;
     //enemysprite= enemyGO.GetComponent<SpriteRenderer>();
 

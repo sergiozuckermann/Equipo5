@@ -165,4 +165,8 @@ MonoBehaviour:
     ice: 0
     lightning: 0
     coins: 0
+    index: 4
+    firea: 0
+    icea: 0
+    lightninga: 0
   unitName: Slime
