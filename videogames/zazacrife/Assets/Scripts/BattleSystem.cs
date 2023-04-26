@@ -92,7 +92,10 @@ IEnumerator SetupBattle()
      
     
     GameObject enemyGO = Instantiate(enemyPrefab, enemyBattleStation);
-    enemyUnit = enemyGO.GetComponent<unit>();
+   
+    enemyUnit= enemyGO.GetComponent<unit>();
+    string save=PlayerPrefs.GetString("Enemy");
+    enemyUnit.stats =  JsonUtility.FromJson<Stats>(save);;
     //enemysprite= enemyGO.GetComponent<SpriteRenderer>();
 
     animators = playerGO.GetComponentInChildren<Animator>();
