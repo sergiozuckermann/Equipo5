@@ -124,7 +124,7 @@ FOREIGN KEY (player_id) REFERENCES players(player_id) ON UPDATE CASCADE
 
 CREATE TABLE battles(
 battle_id int unsigned PRIMARY KEY AUTO_INCREMENT UNIQUE,
-game_session_id  INT UNSIGNED NOT NULL,
+player_id  INT UNSIGNED NOT NULL,
 enemy VARCHAR(40) NOT NULL,
 total_damage_made INT UNSIGNED DEFAULT 0 NOT NULL,
 total_damage_received INT UNSIGNED DEFAULT 0 NOT NULL,
@@ -133,11 +133,11 @@ battle_result BIT,
 attacks_missed INT UNSIGNED DEFAULT 0 NOT NULL,
 critical_attacks INT UNSIGNED DEFAULT 0 NOT NULL,
 created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-FOREIGN KEY (game_session_id) REFERENCES game_sessions(game_session_id)ON UPDATE CASCADE
+FOREIGN KEY (player_id) REFERENCES players(player_id)ON UPDATE CASCADE
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-CREATE TABLE battle_consumable(
-batle_consumable_id int unsigned PRIMARY KEY AUTO_INCREMENT UNIQUE,
+CREATE TABLE battles_consumables(
+battle_consumable_id int unsigned PRIMARY KEY AUTO_INCREMENT UNIQUE,
 battle_id INT UNSIGNED NOT NULL,
 consumable_id SMALLINT UNSIGNED NOT NULL,
 consumable_taken SMALLINT UNSIGNED NOT NULL, 
@@ -145,12 +145,11 @@ FOREIGN KEY (battle_id) REFERENCES battles(battle_id)ON UPDATE CASCADE,
 FOREIGN KEY (consumable_id) REFERENCES consumables(consumable_id)ON UPDATE CASCADE
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-CREATE TABLE battle_attack(
-batle_attack_id int unsigned PRIMARY KEY AUTO_INCREMENT UNIQUE,
+CREATE TABLE battles_attacks(
+battle_attack_id int unsigned PRIMARY KEY AUTO_INCREMENT UNIQUE,
 battle_id INT UNSIGNED NOT NULL,
 attack_id SMALLINT UNSIGNED NOT NULL,
 times_used SMALLINT UNSIGNED NOT NULL, 
 FOREIGN KEY (battle_id) REFERENCES battles(battle_id)ON UPDATE CASCADE,
 FOREIGN KEY (attack_id) REFERENCES attacks(attack_id)ON UPDATE CASCADE
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-

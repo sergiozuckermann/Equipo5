@@ -13,11 +13,13 @@ INSERT INTO users (username, password) VALUE ('Tena', 'calistena');
 #Tablas estadisticas 
 INSERT INTO stats (name) values ('DEF'); #id 1 
 INSERT INTO stats (name) values ('ATK') ; #id 2 
-INSERT INTO stats (name) values ('MP') ; #id 3 
-INSERT INTO stats (name) values ('AGL'); #id 4 
-INSERT INTO stats (name) values ('LCK') ; #id 5 
-INSERT INTO stats (name) values ('CHAR') ; #id 6 
-INSERT INTO stats (name) values ('HP') ; #id 7 
+INSERT INTO stats (name) values ('AGL'); #id 3 
+INSERT INTO stats (name) values ('LCK') ; #id 4 
+INSERT INTO stats (name) values ('CHAR') ; #id 5 
+INSERT INTO stats (name) values ('Max_HP') ; #id 6 
+INSERT INTO stats (name) values ('Current_HP') ; #id 7 
+INSERT INTO stats (name) values ('Max_MP') ; #id 8
+INSERT INTO stats (name) values ('Current_MP') ; #id 9
 
 #Tablas Clases 
 INSERT INTO classes (name) value ('Ligera');
@@ -25,22 +27,16 @@ INSERT INTO classes (name) value ('Mediana');
 INSERT INTO classes (name) value ('Pesada');
 
 #Tablas Consumibles
-INSERT INTO consumable (name, description, stat_id, value, time_in_second) VALUES 
-('Health Potion', 'Restores 50 HP', 1, 20, 5),
-('Mana Potion', 'Restores 50 MP', 2, 20, 5),
-('Elixir of Strength', 'Increases strength by 10%', 3, 30, 10),
-('Elixir of Defense', 'Increases defense by 10%', 4, 30, 10),
-('Elixir of Agility', 'Increases agility by 10%', 5, 30, 10),
-('Elixir of Intelligence', 'Increases intelligence by 10%', 6, 30, 10);
+INSERT INTO consumables (name, description, stat_id, value) VALUES 
+('ZAggydefence', 'increase 20% of characters defence', 1, 2),
+('ZAttack', 'increase 20% of characters attack', 2, 2),
+('ZAgility', 'increases 20% of characters agility', 3, 2),
+('LuckZAgggy', 'increase 20% of characters lcuk', 4, 2),
+('ZArizma', 'increase 20% of characters charisma', 5, 2),
+('ZAaple', 'increase 40% of characters health', 1, 4),
+('ZAggic', 'increase 40% of characters mana', 1, 4);
 
-#Tablas Armas
-INSERT INTO weapons (name, description, stat_id, value, class_id) VALUES 
-('Sword', 'A sharp, two-handed blade', 1, 50, 1),
-('Dagger', 'A small, fast weapon for close combat', 2, 30, 1),
-('Bow', 'A ranged weapon for precise attacks', 3, 70, 2),
-('Staff', 'A magical weapon used to cast spells', 4, 80, 3),
-('Mace', 'A heavy blunt weapon for crushing armor', 5, 60, 1),
-('Crossbow', 'A powerful ranged weapon for taking down enemies', 6, 90, 2);
+
 
 #Tablas Scenes
 INSERT INTO scenes (name) VALUES 
@@ -48,46 +44,30 @@ INSERT INTO scenes (name) VALUES
 ('The Castle'),
 ('The Village');
 
-#Tablas Elementos
-INSERT INTO elements (name, weakness) VALUES 
-('Earth', NULL),
-('Thunder', 1),
-('Fire', 2),
-('Water', 3),
-('Ice', 4);
 
 #Tablas Ataques
-INSERT INTO attacks (name, description, value) VALUES 
-('Quick Strike', 'A swift and precise attack', 10),
-('Charge', 'A powerful charge attack', 20),
-('Fireball', 'A fiery projectile attack', 15),
+INSERT INTO attacks (name, description, value) VALUES  
+('Melee Attack', 'A swift and precise attack', 4),
+('Fire', 'A fiery spell that deals continious damage', 2),
+('Lightning', 'A powerful bolt of lightning that doubles all stats', 8),
+('Ice', 'A icy spell that freeces the enemys attack turn', 3),
 ('Heal', 'A restorative spell to heal damage', 5),
-('Poison Sting', 'A poisonous attack that weakens enemies over time', 12),
-('Thunderbolt', 'A powerful bolt of lightning that strikes enemies', 18),
-('Ice Shard', 'A sharp shard of ice that deals damage and slows enemies', 13),
-('Flamethrower', 'A continuous stream of flames that damages enemies', 16),
-('Wind Blast', 'A blast of wind that knocks enemies back and deals damage', 14),
-('Earthquake', 'A powerful quake that damages enemies and shakes the ground', 20),
-('Sword Slash', 'A strong and precise slash attack', 12),
-('Magic Missile', 'A guided missile of magical energy that deals damage', 15),
-('Lifesteal', 'An attack that drains the enemy\'s life force and heals the user', 10),
-('Whirlwind', 'A powerful whirlwind that damages and knocks back enemies', 17),
-('Shadow Strike', 'A sneaky attack that deals extra damage from behind', 13),
-('Axe Chop', 'A powerful and heavy axe swing attack', 19),
-('Charge Up', 'A charging attack that increases damage on the next attack', 5);
+('Recharg', 'A restorative spell to recharge mana points', 5 );
+
+
 
 #Tablas Game session 
-INSERT INTO game_sessions (user_id, time_on_seconds, number_of_battles, number_of_damaged_made, elements_obtained, finished)
+INSERT INTO game_sessions (user_id, time_on_seconds, finished)
 VALUES
-(1, 3600, 10, 5, 20, 1),
-(2, 1800, 5, 2, 2, 0),
-(3, 5400, 15, 8, 5, 1),
-(4, 7200, 20, 10, 4, 1),
-(5, 7200, 20, 10, 3, 0),
-(2, 7200, 20, 10, 1, 0),
-(2, 7200, 20, 10, 1, 0),
-(3, 7200, 20, 10, 1, 0),
-(5, 9000, 25, 12, 4, 1);
+(1, 3600, 1),
+(2, 1800, 0),
+(3, 5400, 1),
+(4, 7200, 1),
+(5, 7200,0),
+(2, 7200, 0),
+(2, 7200, 0),
+(3, 7200, 0),
+(5, 9000, 1);
 
 
 INSERT INTO events (name) VALUES 
@@ -158,20 +138,6 @@ VALUES
     (8, 5, 4),
     (9, 2, 2);
 
-#Tabla weapons players
-INSERT INTO weapons_players (weapon_id, player_id, equipped)
-VALUES
-(1, 1, 1),
-(2, 1, 1),
-(3, 2, 1),
-(4, 2, 1),
-(5, 3, 1),
-(6, 4, 1),
-(1, 5, 1),
-(2, 6, 1),
-(3, 7, 1),
-(4, 8, 1),
-(5, 9, 1);
 
 
 #Tabla stats players
@@ -186,47 +152,122 @@ INSERT INTO stats_players (player_id, stat_id, value) VALUES
 (8, 1, 74), (8, 2, 150), (8, 3, 112), (8, 4, 43), (8, 5, 198), (8, 6, 7), (8, 7, 31),
 (9, 1, 142), (9, 2, 19), (9, 3, 165), (9, 4, 87), (9, 5, 123), (9, 6, 37), (9, 7, 193);
 
-#Tablas elements_players
-INSERT INTO elements_players (element_id, player_id) VALUES 
-(1, 1), (2, 2), (3, 3), (4, 4), (5, 5), (1, 6), 
-(2, 7), (3, 8), (4, 9), (5, 1), (1, 2), (2, 3), 
-(3, 4), (4, 5), (5, 6), (1, 7), (2, 8), (3, 9), 
-(4, 1), (5, 2);
+
 
 #Tabla Players attack 
 INSERT INTO players_attacks (player_id, attack_id) VALUES
-(1, 2),
+(1, 1),
 (1, 4),
 (1, 6),
 (2, 1),
 (2, 3),
 (2, 5),
-(2, 7),
+(2, 6),
 (3, 1),
-(3, 8),
-(3, 9),
+(3, 6),
+(3, 3),
 (4, 2),
 (4, 6),
-(4, 10),
+(4, 1),
 (5, 3),
-(5, 11),
-(5, 12),
-(5, 14),
+(5, 2),
+(5, 6),
+(5, 4),
 (6, 4),
-(6, 7),
-(6, 15),
+(6, 6),
+(6, 2),
 (7, 5),
-(7, 8),
-(7, 16),
+(7, 3),
+(7, 2),
 (8, 1),
-(8, 9),
-(8, 12),
-(8, 17),
+(8, 3),
+(8, 2),
+(8, 4),
 (9, 2),
 (9, 5),
-(9, 10),
-(9, 13);
-Footer
-© 2023 GitHub, Inc.
-Footer navigation
-Terms
+(9, 1),
+(9, 3);
+
+#Tablas Battle 
+INSERT INTO battles (player_id, enemy, total_damage_made, total_damage_received, coin_received, battle_result, attacks_missed, critical_attacks) VALUES
+(1, 'Goblin', 120, 60, 15, 1, 5, 2),
+(1, 'Orc', 200, 80, 25, 1, 2, 6),
+(1, 'Troll', 180, 90, 20, 0, 3, 1),
+(1, 'Dragon', 500, 250, 100, 0, 10, 8),
+(2, 'Goblin', 80, 40, 10, 1, 2, 1),
+(2, 'Orc', 250, 120, 35, 1, 5, 4),
+(2, 'Troll', 150, 70, 15, 0, 4, 2),
+(3, 'Goblin', 60, 30, 8, 1, 1, 1),
+(3, 'Orc', 180, 90, 20, 1, 3, 3),
+(3, 'Troll', 200, 100, 25, 0, 6, 2),
+(3, 'Dragon', 600, 300, 120, 0, 8, 10),
+(4, 'Goblin', 40, 20, 5, 1, 3, 0),
+(4, 'Orc', 150, 70, 18, 1, 4, 2),
+(5, 'Goblin', 200, 100, 25, 1, 0, 5),
+(5, 'Orc', 80, 40, 10, 0, 2, 1),
+(5, 'Troll', 300, 150, 50, 1, 4, 5),
+(6, 'Goblin', 100, 50, 12, 1, 1, 3),
+(6, 'Orc', 300, 150, 45, 1, 3, 6),
+(6, 'Troll', 250, 120, 30, 0, 5, 3),
+(6, 'Dragon', 700, 350, 150, 0, 12, 12),
+(7, 'Goblin', 120, 60, 15, 0, 4, 2),
+(7, 'Orc', 100, 50, 12, 1, 2, 2),
+(7, 'Troll', 180, 90, 22, 1, 3, 1),
+(7, 'Dragon', 800, 400, 200, 0, 15, 15),
+(8, 'Goblin', 50, 25, 6, 1, 2, 0),
+(8, 'Orc', 200, 100, 28, 1, 5, 3),
+(8, 'Troll', 150, 70, 18, 0, 4, 2),
+(9, 'Goblin', 70, 35, 9, 0, 1, 1),
+(9, 'Orc', 150, 150, 40, 1, 6, 2),
+(9, 'Goblin', 190, 50, 15, 0, 2, 0),
+(9, 'Troll', 250, 250, 70, 1, 12, 5),
+(9, 'Skeleton', 350, 100, 30, 1, 4, 1),
+(9, 'Orc', 420, 200, 60, 1, 7, 2);
+
+#Tabla battle_consumables
+INSERT INTO battles_consumables (battle_id, consumable_id, consumable_taken) VALUES
+(1, 3, 5),
+(1, 5, 7),
+(1, 1, 3),
+(2, 2, 9),
+(2, 6, 2),
+(2, 4, 5),
+(3, 1, 10),
+(3, 7, 8),
+(4, 5, 4),
+(4, 4, 6),
+(4, 2, 2),
+(4, 3, 3),
+(5, 6, 10),
+(5, 7, 6),
+(6, 1, 8),
+(6, 4, 4),
+(6, 5, 7),
+(6, 6, 1),
+(6, 2, 3),
+(7, 3, 7),
+(7, 7, 4),
+(8, 1, 5),
+(8, 6, 6),
+(8, 3, 8),
+(9, 2, 9),
+(9, 5, 5),
+(10, 4, 2),
+(10, 1, 1),
+(10, 7, 10);
+
+#Tabla Battles_attack
+INSERT INTO battles_attacks (battle_id, attack_id, times_used) VALUES
+(1, 1, 3),
+(1, 2, 2),
+(1, 3, 1),
+(2, 2, 4),
+(2, 4, 1),
+(3, 1, 2),
+(3, 5, 3),
+(4, 3, 5),
+(4, 6, 2),
+(5, 1, 1),
+(5, 4, 4),
+(5, 5, 3);
+
