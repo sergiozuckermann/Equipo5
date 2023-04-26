@@ -795,9 +795,23 @@ section {
   fill: #11dbcf;
 }
 
+.gameplay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 /*--------------------------------------------------------------
 # Features
 --------------------------------------------------------------*/
+
+.chartContainer{
+  border: 0;
+  justify-content: center;
+  display: flex;
+  width: 100%;
+}
+
 .features .icon-box h4 {
   font-size: 20px;
   font-weight: 700;

@@ -13,7 +13,7 @@ async function connectDB() {
     const connection = await mysql.createConnection({
         host: "localhost",
         user: "root",
-        password: "rtx57itachi.",
+        password: "",
         database: "zazzacrifice",
     });
 
