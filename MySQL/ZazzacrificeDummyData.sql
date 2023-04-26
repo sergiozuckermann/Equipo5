@@ -270,4 +270,3 @@ INSERT INTO battles_attacks (battle_id, attack_id, times_used) VALUES
 (5, 1, 1),
 (5, 4, 4),
 (5, 5, 3);
-
