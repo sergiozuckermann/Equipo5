@@ -9,19 +9,18 @@ const port = 3000;
 app.use(express.json());
 
 // Route for creating a new user
-async function connectDB(){
+async function connectDB() {
     const connection = await mysql.createConnection({
         host: "localhost",
         user: "root",
         password: "",
         database: "zazzacrifice",
-      });
+    });
 
-    return connection;  
+    return connection;
 }
 
-async function  check_if_user_exists(username)
-{
+async function check_if_user_exists(username) {
     // Create a connection to the MySQL database
     const connection = await connectDB();
     // Execute a SELECT query to retrieve all users
@@ -37,24 +36,24 @@ async function  check_if_user_exists(username)
 
 // Route to get all users
 app.get("/api/users", async (req, res) => {
-  try {
-    console.log(req.body);
-    // Create a connection to the MySQL database
-    const connection = await connectDB();
-    // Execute a SELECT query to retrieve all users
-    
+    try {
+        console.log(req.body);
+        // Create a connection to the MySQL database
+        const connection = await connectDB();
+        // Execute a SELECT query to retrieve all users
 
-    const [rows] = await connection.query("SELECT * FROM users");
 
-    // Send the users as a JSON response
-    res.json(rows);
+        const [rows] = await connection.query("SELECT * FROM users");
 
-    // Close the database connection
-    await connection.end();
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: "Internal server error" });
-  }
+        // Send the users as a JSON response
+        res.json(rows);
+
+        // Close the database connection
+        await connection.end();
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: "Internal server error" });
+    }
 });
 
 
@@ -67,8 +66,7 @@ app.post("/api/login", async (req, res) => {
         const connection = await connectDB();
         // Execute a SELECT query to retrieve all users
         const [rows] = await connection.query("SELECT * FROM users WHERE username = ? AND password = ?", [req.body.username, req.body.password]);
-        if (rows.length == 0)
-        {
+        if (rows.length == 0) {
             res.status(401).json({ error: "Invalid username or password" });
             return;
         }
@@ -86,8 +84,7 @@ app.post("/api/new_user", async (req, res) => {
         //Create a connection to the MySQL database
         const connection = await connectDB();
         //Check if user exists
-        if (await check_if_user_exists(req.body.username))
-        {
+        if (await check_if_user_exists(req.body.username)) {
             res.status(401).json({ error: "User already exists" });
             return;
         }
@@ -121,14 +118,16 @@ app.post("/api/new_game", async (req, res) => {
         // Execute a SELECT query to retrieve all users CREATE IN
         console.log(req.body);
         const [insert_data] = await connection.query("INSERT INTO game_sessions (user_id, time_on_seconds, number_of_battles, number_of_damaged_made, elements_obtained, finished) VALUES (?, ?, ?, ?, ?, ?)", [req.body.user_id, 0, 0, 0, 0, 0]);
-        
+
     } catch (error) {
         res.status(500).json({ error: "Internal server error" });
     }
 });
 
 
+
+
 // Start the server
 app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}`);
+    console.log(`Server running at http://localhost:${port}`);
 });

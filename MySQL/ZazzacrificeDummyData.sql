@@ -226,3 +226,7 @@ INSERT INTO players_attacks (player_id, attack_id) VALUES
 (9, 5),
 (9, 10),
 (9, 13);
+Footer
+© 2023 GitHub, Inc.
+Footer navigation
+Terms
