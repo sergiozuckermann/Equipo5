@@ -12,6 +12,7 @@ public class chasee : MonoBehaviour
     [SerializeField] float chaseRadius; // Serialized field for the radius within which the enemy will chase the player
     private Animator animator;
     private GameObject player;
+    private GameObject enemy;
     private Vector3 initialPosition;
     private bool isChasing = false; // Flag to determine if the enemy is currently chasing the player
 
@@ -98,6 +99,12 @@ public class chasee : MonoBehaviour
 
     public void LoadBattleScene()
 {
+    unit Shaggy = collision.gameObject.GetComponent<unit>();
+    string savedShaggy=JsonUtility.ToJson(Shaggy.stats);
+    PlayerPrefs.SetString("Shaggy", savedShaggy);
+    unit enemy = enemy.GetComponent<unit>();
+    string savedenemy=JsonUtility.ToJson(enemy.stats);
+    PlayerPrefs.SetString("Enemy", savedenemy);
     SceneManager.LoadScene(Bosque_Combate);
 }
 
