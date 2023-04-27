@@ -59,7 +59,11 @@ MonoBehaviour:
     fire: 0
     ice: 6
     lightning: 0
-    coins: 0
+    coins: 20
+    index: 2
+    firea: 0
+    icea: 1
+    lightninga: 0
   unitName: Ice Lorde
 --- !u!1 &7373028708693591647
 GameObject:

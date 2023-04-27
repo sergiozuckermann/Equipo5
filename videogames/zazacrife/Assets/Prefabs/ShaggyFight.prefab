@@ -60,6 +60,10 @@ MonoBehaviour:
     ice: 0
     lightning: 0
     coins: 0
+    index: 0
+    firea: 0
+    icea: 0
+    lightninga: 0
   unitName: Shaggy
 --- !u!1 &4792108282000969397
 GameObject:
