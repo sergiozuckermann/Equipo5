@@ -165,6 +165,11 @@ MonoBehaviour:
     fire: 0
     ice: 0
     lightning: 0
+    coins: 10
+    index: 0
+    firea: 0
+    icea: 0
+    lightninga: 0
   unitName: DaBull
 --- !u!212 &-4957399324862266191
 SpriteRenderer:

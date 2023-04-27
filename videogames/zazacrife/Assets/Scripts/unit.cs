@@ -15,6 +15,7 @@ public class Stats{
     public int defence;
 	public int charisma;
 	public int accuracy;
+	public int dead;
 	public int fire = 0;
 	public int ice = 0;
 	public int lightning = 0;
@@ -23,6 +24,7 @@ public class Stats{
 	public bool firea;
 	public bool icea;
 	public bool lightninga;
+	
 
 }
 
@@ -119,6 +121,9 @@ public class unit : MonoBehaviour
 	stats.charisma= 2;
 	stats.accuracy= 6;
 	stats.coins=10;
+	stats.firea=false;
+	stats.icea=false;
+	stats.lightninga=false;
     string savedShaggy=JsonUtility.ToJson(stats);
     PlayerPrefs.SetString("Shaggy", savedShaggy);
     
@@ -136,6 +141,9 @@ public class unit : MonoBehaviour
 	stats.charisma= 2;
 	stats.accuracy= 4;
 	stats.coins=10;
+	stats.firea=false;
+	stats.icea=false;
+	stats.lightninga=false;
 	string savedShaggy=JsonUtility.ToJson(stats);
     PlayerPrefs.SetString("Shaggy", savedShaggy);
 	}
@@ -152,6 +160,9 @@ public class unit : MonoBehaviour
 	stats.charisma= 2;
 	stats.accuracy= 2;
 	stats.coins=10;
+	stats.firea=false;
+	stats.icea=false;
+	stats.lightninga=false;
 	string savedShaggy=JsonUtility.ToJson(stats);
     PlayerPrefs.SetString("Shaggy", savedShaggy);
 	}

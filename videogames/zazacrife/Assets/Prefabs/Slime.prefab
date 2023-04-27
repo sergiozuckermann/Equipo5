@@ -164,7 +164,7 @@ MonoBehaviour:
     fire: 0
     ice: 0
     lightning: 0
-    coins: 0
+    coins: 10
     index: 4
     firea: 0
     icea: 0

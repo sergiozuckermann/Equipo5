@@ -61,9 +61,9 @@ MonoBehaviour:
     lightning: 0
     coins: 0
     index: 5
-    firea: 0
-    icea: 0
-    lightninga: 0
+    firea: 1
+    icea: 1
+    lightninga: 1
   unitName: PEJE
 --- !u!1 &2741225725048463420
 GameObject:

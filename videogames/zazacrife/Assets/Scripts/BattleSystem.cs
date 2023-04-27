@@ -13,12 +13,15 @@ public enum BattleState { START, PLAYERTURN, ENEMYTURN, WON, LOST }
 public class BattleSystem : MonoBehaviour
 {
 
+[SerializeField] string TileMap = "TileMap";
+
 public float time;
 private float etime;
 public float update;
 
 public GameObject playerPrefab;
 public GameObject [] enemyPrefabs;
+
 
 private Animator animatore;
 private Animator animators;
@@ -41,6 +44,19 @@ public Button attackButton;
 public Button elementButton;
 public Button healButton;
 public Button fleeButton;
+public Button fire;
+public Button ice;
+public Button thunder;
+
+public Camera cam;
+
+public Color color1 = Color.red;
+public Color color2 = Color.blue;
+public Color color3 = Color.yellow;
+public Color color4 = Color.green;
+public Color color5 = Color.black;
+
+public float duration = 3.0F;
 
 unit playerUnit;
 unit enemyUnit;
@@ -71,10 +87,6 @@ void Start()
     Recharges.Stop(true, ParticleSystemStopBehavior.StopEmitting);
 
 
-    attackButton.interactable = false;
-    elementButton.interactable = false;
-    healButton.interactable = false;
-    fleeButton.interactable = false;
 
     state = BattleState.START;
     StartCoroutine(SetupBattle());
@@ -82,6 +94,11 @@ void Start()
 
 IEnumerator SetupBattle()
 {
+    attackButton.interactable = false;
+    elementButton.interactable = false;
+    healButton.interactable = false;
+    fleeButton.interactable = false;
+
     
 
     GameObject playerGO = Instantiate(playerPrefab, playerBattleStation);
@@ -94,15 +111,34 @@ IEnumerator SetupBattle()
     
     int enemyID=PlayerPrefs.GetInt("Enemy");
     GameObject enemyGO = Instantiate(enemyPrefabs[enemyID], enemyBattleStation);
-   
+    
     enemyUnit= enemyGO.GetComponent<unit>();
-    enemyUnit.stats =  JsonUtility.FromJson<Stats>(save);;
+    
     //enemysprite= enemyGO.GetComponent<SpriteRenderer>();
 
     animators = playerGO.GetComponentInChildren<Animator>();
     animatore = enemyGO.GetComponentInChildren<Animator>();
 
-    
+    if(enemyUnit.stats.index==1){
+        cam.backgroundColor = color1;
+    }
+
+    else if(enemyUnit.stats.index==2){
+        cam.backgroundColor = color2;
+    }
+
+    else if(enemyUnit.stats.index==3){
+        cam.backgroundColor = color3;
+    }
+
+    else if(enemyUnit.stats.index==4){
+        cam.backgroundColor = color4;
+    }
+
+    else if(enemyUnit.stats.index==5){
+        cam.backgroundColor = color5;
+    }
+
     dialogueText.text = "A minion of the ZAZA  " + enemyUnit.unitName + " approaches...";
 
     enemyHUD.SetHUD(enemyUnit);
@@ -142,7 +178,35 @@ IEnumerator SetupBattle()
     //enemysprite.color= Color.red;
         if (isDead){
             state = BattleState.WON;
+
+            if (enemyUnit.stats.index==1){
+                playerUnit.stats.firea=true;
+                dialogueText.text = "You can now use Fire!";
+                yield return new WaitForSeconds(1f);
+            }
+            if (enemyUnit.stats.index==2){
+                playerUnit.stats.icea=true;
+                dialogueText.text = "You can now use Ice!";
+                yield return new WaitForSeconds(1f);
+            }
+            if (enemyUnit.stats.index==3){
+                playerUnit.stats.lightninga=true;
+                dialogueText.text = "You can now use thunder!";
+                yield return new WaitForSeconds(1f);
+            }
+
+   
+
             enemyHUD.SetHP(enemyUnit.stats.currentHP = 0);
+            dialogueText.text = "You have defeated " + enemyUnit.unitName + "!";
+            animatore.SetInteger("State", 4);
+            yield return new WaitForSeconds(1f);
+            playerUnit.stats.coins=playerUnit.stats.coins+enemyUnit.stats.coins+playerUnit.stats.charisma;
+            dialogueText.text = "Coins earned: " + playerUnit.stats.coins;
+            yield return new WaitForSeconds(1f);
+            enemyUnit.stats.dead = 1;
+            PlayerPrefs.SetInt("Dead", enemyUnit.stats.dead);
+
             string savedShaggy=JsonUtility.ToJson(playerUnit.stats);
             PlayerPrefs.SetString("Shaggy", savedShaggy);
             EndBattle();
@@ -299,6 +363,7 @@ IEnumerator SetupBattle()
             else{
                 state = BattleState.PLAYERTURN;
                 PlayerTurn();
+                
             }
         }
         
@@ -313,28 +378,27 @@ IEnumerator SetupBattle()
 }
     
     
- IEnumerator EndBattle()
+ void EndBattle()
  {
      if(state == BattleState.WON)
      {
-        animatore.SetInteger("State", 4);
-        dialogueText.text = "You won the battle!";
-        yield return new WaitForSeconds(1f);
-        playerUnit.stats.coins=playerUnit.stats.coins+enemyUnit.stats.coins+playerUnit.stats.charisma;
+        
         attackButton.interactable = false;
         elementButton.interactable = false;
         healButton.interactable = false;
         fleeButton.interactable = false;
-        dialogueText.text = "Coins earned: " + playerUnit.stats.coins;
+        
+        SceneManager.LoadScene(TileMap);
      } 
      else if (state == BattleState.LOST){
-        animators.SetInteger("State", 3);
+        
         animators.SetInteger("State", 5);
-        dialogueText.text = "You were defeated.";
+        dialogueText.text = "You were defeated. Flee or Restart";
         attackButton.interactable = false;
         elementButton.interactable = false;
         healButton.interactable = false;
-        fleeButton.interactable = false;
+        fleeButton.interactable = true;
+        playerUnit.stats.currentHP=1;
      }
  }
 
@@ -344,6 +408,30 @@ IEnumerator SetupBattle()
     elementButton.interactable = true;
     healButton.interactable = true;
     fleeButton.interactable = true;
+    if(playerUnit.stats.lightninga==false){
+        thunder.interactable = false;
+    }
+
+    else{
+        thunder.interactable = true;
+    }
+
+    if(playerUnit.stats.firea == false){
+        fire.interactable = false;
+    }
+    
+        else{
+            fire.interactable = true;
+        }
+
+    if(playerUnit.stats.icea == false){
+        ice.interactable = false;
+    }
+
+    else{
+        ice.interactable = true;
+    }
+    
 
      if (playerUnit.stats.fire > 0){
         playerUnit.TakeDamage(2);
@@ -643,6 +731,7 @@ public void OnAttackButton()
  {
      if (state != BattleState.PLAYERTURN)
          return;
+    
 
      if (playerUnit.stats.currentMP>=10){
         attackButton.interactable = false;
