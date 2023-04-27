@@ -13,7 +13,7 @@ async function connectDB() {
     const connection = await mysql.createConnection({
         host: "localhost",
         user: "root",
-        password: "",
+        password: "fulito99",
         database: "zazzacrifice",
     });
 
@@ -38,15 +38,16 @@ async function check_if_user_exists(username) {
 app.get("/api/users", async (req, res) => {
     try {
         console.log(req.body);
+        console.log("api accedido");
         // Create a connection to the MySQL database
-        const connection = await connectDB();
+       const connection = await connectDB();
         // Execute a SELECT query to retrieve all users
 
 
         const [rows] = await connection.query("SELECT * FROM users");
 
         // Send the users as a JSON response
-        res.json(rows);
+       res.json(rows);
 
         // Close the database connection
         await connection.end();
