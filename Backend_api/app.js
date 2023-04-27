@@ -1,9 +1,12 @@
 const express = require("express");
 const mysql = require("mysql2/promise");
+const cors = require('cors');
+
 
 
 const app = express();
-const port = 3001;
+app.use(cors());
+const port = 8000;
 
 // Middleware to parse JSON request bodies
 app.use(express.json());
@@ -13,7 +16,7 @@ async function connectDB() {
     const connection = await mysql.createConnection({
         host: "localhost",
         user: "root",
-        password: "fulito99",
+        password: "Zazza123",
         database: "zazzacrifice",
     });
 
@@ -40,14 +43,14 @@ app.get("/api/users", async (req, res) => {
         console.log(req.body);
         console.log("api accedido");
         // Create a connection to the MySQL database
-       const connection = await connectDB();
+        const connection = await connectDB();
         // Execute a SELECT query to retrieve all users
 
 
         const [rows] = await connection.query("SELECT * FROM users");
 
         // Send the users as a JSON response
-       res.json(rows);
+        res.json(rows);
 
         // Close the database connection
         await connection.end();
@@ -136,13 +139,28 @@ app.get("/api/class_election_stats", async (req, res) => {
         const connection = await connectDB();
         // Execute a SELECT query to retrieve all users
         const [rows] = await connection.query("SELECT * FROM class_percentage");
-        res.json(rows);
+
+        [labels, data] = arrange_election_data(rows)
+        console.log(labels)
+        console.log(data)
+
+        res.json({ "labels": labels, "data": data });
     }
     catch (error) {
         console.error(error);
         res.status(500).json({ error: "Internal server error" });
     }
 });
+
+function arrange_election_data(rows) {
+    let labels = []
+    let data = []
+    for (let i = 0; i < rows.length; i++) {
+        labels.push(rows[i].name)
+        data.push(rows[i].percentage)
+    }
+    return [labels, data]
+}
 ///////////////////////// API DAMAGE MADE_VS_RECEIVED  ///////////////////////////
 app.get("/api/damage_made_vs_received", async (req, res) => {
     console.log("Damage_made_vs_received_Api Call")
