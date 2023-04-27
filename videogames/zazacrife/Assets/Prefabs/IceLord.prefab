@@ -56,6 +56,7 @@ MonoBehaviour:
     defence: 6
     charisma: 8
     accuracy: 10
+    dead: 0
     fire: 0
     ice: 6
     lightning: 0
@@ -64,7 +65,7 @@ MonoBehaviour:
     firea: 0
     icea: 1
     lightninga: 0
-  unitName: Ice Lorde
+  unitName: Ice Lord
 --- !u!1 &7373028708693591647
 GameObject:
   m_ObjectHideFlags: 0
