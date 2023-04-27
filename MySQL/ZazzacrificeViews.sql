@@ -21,3 +21,10 @@ CREATE VIEW enemy_win_rate AS
 SELECT enemy, battle_result, COUNT(*) AS count  
 FROM battles 
 GROUP BY enemy, battle_result order by enemy;
+
+
+CREATE VIEW attack_uses AS
+SELECT sum(times_used)as times, attacks.name as attack  FROM battles_attacks
+INNER JOIN attacks
+USING (attack_id)
+group by attack_id;
