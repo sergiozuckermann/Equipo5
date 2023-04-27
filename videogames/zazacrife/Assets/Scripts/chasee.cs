@@ -13,6 +13,7 @@ public class chasee : MonoBehaviour
     private Animator animator;
     private GameObject player;
     private GameObject enemy;
+    public GameObject Enemy;
     private Vector3 initialPosition;
     private bool isChasing = false; // Flag to determine if the enemy is currently chasing the player
 
@@ -21,10 +22,19 @@ public class chasee : MonoBehaviour
         animator = GetComponent<Animator>();
         player = GameObject.FindGameObjectWithTag("Player"); // Find the player object using its tag
         initialPosition = transform.position;
+        
+        
+
     }
 
     void Update()
     {
+        int enemyID=PlayerPrefs.GetInt("Dead");
+        if (enemyID == 1)
+        {
+            Destroy(Enemy);
+        }
+        
         // If the enemy is not chasing the player and is within the chase radius, start chasing
         if (!isChasing && player != null && Vector2.Distance(transform.position, player.transform.position) <= chaseRadius)
         {
@@ -40,6 +50,9 @@ public class chasee : MonoBehaviour
 
         // Chase the player
         ChasePlayer();
+
+        unit enemy = GetComponent<unit>();
+        
     }
 
     void ChasePlayer()
@@ -101,15 +114,6 @@ public class chasee : MonoBehaviour
         returnPositionY = y;
     }
 
-//     public void LoadBattleScene()
-// {
-//     unit Shaggy = collision.gameObject.GetComponent<unit>();
-//     string savedShaggy=JsonUtility.ToJson(Shaggy.stats);
-//     PlayerPrefs.SetString("Shaggy", savedShaggy);
-//     unit enemy = enemy.GetComponent<unit>();
-//     string savedenemy=JsonUtility.ToJson(enemy.stats);
-//     PlayerPrefs.SetString("Enemy", savedenemy);
-//     SceneManager.LoadScene(Bosque_Combate);
-// }
+
 
 }

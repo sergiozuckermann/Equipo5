@@ -59,7 +59,11 @@ MonoBehaviour:
     fire: 0
     ice: 0
     lightning: 2
-    coins: 0
+    coins: 20
+    index: 3
+    firea: 0
+    icea: 0
+    lightninga: 1
   unitName: Thunder Lord
 --- !u!1 &1884152441762135905
 GameObject:

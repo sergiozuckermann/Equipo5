@@ -43403,6 +43403,9 @@ MonoBehaviour:
   elementButton: {fileID: 1687193425}
   healButton: {fileID: 48026491}
   fleeButton: {fileID: 162563420}
+  fire: {fileID: 1423994373}
+  ice: {fileID: 673524644}
+  thunder: {fileID: 41112551}
   playerHUD: {fileID: 543375579}
   enemyHUD: {fileID: 47492651}
   dialogueText: {fileID: 20195599}
