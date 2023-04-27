@@ -16,7 +16,7 @@ async function connectDB() {
     const connection = await mysql.createConnection({
         host: "localhost",
         user: "root",
-        password: "Zazza123",
+        password: "fulito99",
         database: "zazzacrifice",
     });
 
@@ -171,7 +171,7 @@ app.get("/api/damage_made_vs_received", async (req, res) => {
         const [rows] = await connection.query("SELECT * FROM damage_made_vs_received");
         [damage_made, damage_received] = get_average_from_damage_in_batttle(rows)
 
-        res.json({ damage_made: damage_made, damage_received: damage_received });
+        res.json({ "damage_made": damage_made, "damage_received": damage_received });
     }
     catch (error) {
         console.error(error);
