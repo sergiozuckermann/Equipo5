@@ -43377,6 +43377,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3513f2dd390ec641813292655820b81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TileMap: TileMap
   time: 1
   update: 0.01
   playerPrefab: {fileID: 778339910624247829, guid: 1e483d5bb648bf745b0575e5c03929f1, type: 3}
@@ -43406,6 +43407,13 @@ MonoBehaviour:
   fire: {fileID: 1423994373}
   ice: {fileID: 673524644}
   thunder: {fileID: 41112551}
+  cam: {fileID: 519420031}
+  color1: {r: 1, g: 0, b: 0, a: 1}
+  color2: {r: 0, g: 0, b: 1, a: 1}
+  color3: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  color4: {r: 0, g: 1, b: 0, a: 1}
+  color5: {r: 0, g: 0, b: 0, a: 1}
+  duration: 3
   playerHUD: {fileID: 543375579}
   enemyHUD: {fileID: 47492651}
   dialogueText: {fileID: 20195599}
