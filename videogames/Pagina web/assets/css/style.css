@@ -1661,3 +1661,9 @@ section {
   color: #fff;
   text-decoration: none;
 }
+
+.chartContainer canvas{
+  flex-grow: 1;
+  max-width: 30%; 
+  max-height: 600px;
+}
