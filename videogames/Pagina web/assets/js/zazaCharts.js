@@ -1,8 +1,8 @@
 
 
-async function getData() {
+async function getData(url) {
 	try {
-		const response = await fetch('http://127.0.0.1:8000/api/class_election_stats');
+		const response = await fetch(url);
 		const data = await response.json();
 		// Do something with the response data
 		return data;
@@ -11,9 +11,10 @@ async function getData() {
 	}
 }
 
+
 async function classChart() {
 	console.log("Prueba")
-	const data = await getData();
+	const data = await getData("http://127.0.0.1:8000/api/class_election_stats");
 	console.log(data);
 	var ctx = document.getElementById('apiChart1').getContext('2d');
 
@@ -58,4 +59,65 @@ async function classChart() {
 	});
 }
 
+function countToN(n) {
+	const result = [];
+	for (let i = 1; i <= n; i++) {
+	  result.push(i);
+	}
+	return result;
+  }
+
+
+async function classChart2() {
+	console.log("Prueba")
+	const data = await getData("http://127.0.0.1:8000/api/damage_made_vs_received");
+	console.log(data);
+	var ctx = document.getElementById('apiChart2').getContext('2d');
+	var myChart = new Chart(ctx, {
+		type: 'line',
+		data: {
+			labels: countToN(data.damage_made.length),
+			datasets: [{
+				label: 'Damage Made',
+				data: data.damage_made,
+				borderColor: 'rgb(255, 99, 132)',
+				tension: 0.1
+			},
+			{
+				label: 'Damage Received',
+				data: data.damage_received,
+				borderColor: 'rgb(54, 162, 235)',
+				tension: 0.1
+			}]
+		},
+	});
+}
+
+async function classChart3() {
+	console.log("Prueba")
+	const data = await getData("http://127.0.0.1:8000/api/damage_made_vs_received");
+	console.log(data);
+	var ctx = document.getElementById('apiChart3').getContext('2d');
+	var myChart = new Chart(ctx, {
+		type: 'bar',
+		data: {
+			labels: ["Red", "Blue", "Yellow", "Green"],
+			datasets: [{
+				label: 'Player wins',
+				data: [1,2,3,4],
+				//randomize the color for each bar
+				backgroundColor: 'rgb(255, 99, 132)',
+			},
+			{
+				label: 'Enemy wins',
+				data: [1,1.2,3.1,0.8],
+				backgroundColor: 'rgb(54, 162, 235)',
+			}]	
+		},
+	});
+}
+
+
 classChart();
+classChart2();
+classChart3();
