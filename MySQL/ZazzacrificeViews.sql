@@ -16,3 +16,8 @@ GROUP BY class_id;
 CREATE VIEW damage_made_vs_received AS
 SELECT player_id, total_damage_made, total_damage_received FROM battles
 order by player_id, battle_id;
+
+CREATE VIEW enemy_win_rate AS
+SELECT enemy, battle_result, COUNT(*) AS count  
+FROM battles 
+GROUP BY enemy, battle_result order by enemy;

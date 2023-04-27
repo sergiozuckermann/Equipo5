@@ -220,7 +220,36 @@ function get_average_from_damage_in_batttle(rows) {
     return [damage_made, damage_received]
 }
 
-// Start the server
+////////////// API ENEMY WIN RATE //////////////////////
+app.get("/api/enemy_win_rate", async (req, res) => {
+    console.log("Enemy_win_rate_obtained_Api Call")
+    try {
+        //Create a connection to the MySQL database
+        const connection = await connectDB();
+        // Execute a SELECT query to retrieve all users
+        const [rows] = await connection.query("SELECT * FROM enemy_win_rate");
+        [labels, count, result] = arrange_data_for_enemy_win_rate(rows)
+        return res.json({ "labels": labels, "count": count, "result": result });
+    }
+    catch (error) {
+        console.error(error);
+        res.status(500).json({ error: "Internal server error" });
+    }
+});
+
+function arrange_data_for_enemy_win_rate(rows) {
+    let labels = []
+    let count = []
+    let result = []
+    for (let i = 0; i < rows.length; i++) {
+        labels.push(rows[i].enemy)
+        count.push(rows[i].count)
+        result.push(rows[i].battle_result.readUInt8())
+    }
+    return [labels, count, result]
+}
+
+
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);
 });
