@@ -269,13 +269,13 @@ function arrange_data_for_enemy_win_rate(rows) {
 ////////////// ATTACK USES API //////////////////////
 app.get("/api/attack_uses", async (req, res) => {
     try {
+
         //Create a connection to the MySQL database
         const connection = await connectDB();
         // Execute a SELECT query to retrieve all users
         const [rows] = await connection.query("SELECT * FROM attack_uses");
-        [labels, values] = arrange_data_for_attack_uses(rows)
-        console.log("Attack_uses Executed succesfully")
-        return res.json({ "labels": labels, "values": values });
+
+        return res.json(rows);
     }
     catch (error) {
         console.error(error);
@@ -283,15 +283,6 @@ app.get("/api/attack_uses", async (req, res) => {
     }
 });
 
-function arrange_data_for_attack_uses(rows) {
-    let labels = []
-    let values = []
-    for (let i = 0; i < rows.length; i++) {
-        labels.push(rows[i].attack)
-        values.push(rows[i].times)
-    }
-    return [labels, values]
-}
 
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);

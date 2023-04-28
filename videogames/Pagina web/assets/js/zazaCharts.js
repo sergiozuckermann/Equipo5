@@ -101,16 +101,64 @@ async function enemyChart() {
 			labels: data.labels,
 			datasets: [{
 				label: 'Player wins',
-				data: [1, 2, 3, 4],
+				data: data.enemyloses,
 				//randomize the color for each bar
 				backgroundColor: 'rgb(255, 99, 132)',
 			},
 			{
 				label: 'Enemy wins',
-				data: [1, 1.2, 3.1, 0.8],
+				data: data.enemywins,
 				backgroundColor: 'rgb(54, 162, 235)',
 			}]
 		},
+	});
+}
+
+async function attacksChart() {
+	const data = await getData("attack_uses");
+	const timesArray = data.map(({ times }) => times);
+	const attackArray = data.map(({ attack }) => attack);
+
+	var ctx = document.getElementById('apiChart4').getContext('2d');
+
+	var myChart = new Chart(ctx, {
+		type: 'pie',
+		data: {
+			labels: timesArray,
+			datasets: [{
+				data: attackArray,
+				backgroundColor: [
+					'rgba(255, 99, 132, 0.2)',
+					'rgba(54, 162, 235, 0.2)',
+					'rgba(255, 206, 86, 0.2)',
+					'rgba(75, 192, 192, 0.2)',
+					'rgba(153, 102, 255, 0.2)'
+				],
+				borderColor: [
+					'rgba(255, 99, 132, 1)',
+					'rgba(54, 162, 235, 1)',
+					'rgba(255, 206, 86, 1)',
+					'rgba(75, 192, 192, 1)',
+					'rgba(153, 102, 255, 1)'
+				],
+				borderWidth: 1
+			}]
+		},
+		options: {
+			tooltips: {
+				callbacks: {
+					label: function (tooltipItem, data) {
+						var dataset = data.datasets[tooltipItem.datasetIndex];
+						var total = dataset.data.reduce(function (previousValue, currentValue, currentIndex, array) {
+							return previousValue + currentValue;
+						});
+						var currentValue = dataset.data[tooltipItem.index];
+						var percentage = Math.floor(((currentValue / total) * 100) + 0.5);
+						return percentage + "%";
+					}
+				}
+			}
+		}
 	});
 }
 
@@ -118,3 +166,4 @@ async function enemyChart() {
 classChart();
 damageChart();
 enemyChart();
+attacksChart();
