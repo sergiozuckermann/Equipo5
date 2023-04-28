@@ -124,9 +124,9 @@ async function attacksChart() {
 	var myChart = new Chart(ctx, {
 		type: 'pie',
 		data: {
-			labels: timesArray,
+			labels: attackArray,
 			datasets: [{
-				data: attackArray,
+				data: timesArray,
 				backgroundColor: [
 					'rgba(255, 99, 132, 0.2)',
 					'rgba(54, 162, 235, 0.2)',
@@ -162,8 +162,31 @@ async function attacksChart() {
 	});
 }
 
+async function criticalMissChart() {
+	const data = await getData("criticals_vs_missed");
+	var ctx = document.getElementById('apiChart5').getContext('2d');
+	var myChart = new Chart(ctx, {
+		type: 'bar',
+		data: {
+			labels: ["Attack Missed", "Critical Attacks"]
+			,
+			datasets: [{
+				label: 'Player wins',
+				data: [data[0].attacks_missed_lost, data[0].critical_attacks_lost],
+				//randomize the color for each bar
+				backgroundColor: 'rgb(255, 99, 132)',
+			},
+			{
+				label: 'Player losses',
+				data: [data[0].attacks_missed_won, data[0].critical_attacks_won],
+				backgroundColor: 'rgb(54, 162, 235)',
+			}]
+		},
+	});
+}
 
 classChart();
 damageChart();
 enemyChart();
 attacksChart();
+criticalMissChart();
