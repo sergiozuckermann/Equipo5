@@ -25,6 +25,20 @@ public class Movement : MonoBehaviour
     unit ShaggyUnit=Shaggy.GetComponent<unit>(); 
     string save=PlayerPrefs.GetString("Shaggy");
     ShaggyUnit.stats = JsonUtility.FromJson<Stats>(save);
+
+    Transform ShaggyTransform=Shaggy.GetComponent<Transform>();
+    string position=PlayerPrefs.GetString("actual");
+    string outString = position.Substring(1, position.Length - 2);
+
+    string[] components=outString.Split(',');
+    Vector3 actual;
+    actual.x = float.Parse(components[0]);
+    actual.y = float.Parse(components[1]);
+    actual.z = float.Parse(components[2]);
+
+    
+    ShaggyTransform.position = actual;
+    
     }
 
     // Update is called once per frame
@@ -69,15 +83,8 @@ public class Movement : MonoBehaviour
         {
             animator.SetInteger("Walk", 1);
         }
-       
-        
-
-
-
-        
-
-        
-
-
     }
+
+    
 }
+
