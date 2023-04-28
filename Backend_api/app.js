@@ -274,7 +274,7 @@ app.get("/api/attack_uses", async (req, res) => {
         const connection = await connectDB();
         // Execute a SELECT query to retrieve all users
         const [rows] = await connection.query("SELECT * FROM attack_uses");
-
+        console.log("Attack_uses Executed succesfully")
         return res.json(rows);
     }
     catch (error) {
@@ -282,6 +282,25 @@ app.get("/api/attack_uses", async (req, res) => {
         res.status(500).json({ error: "Internal server error" });
     }
 });
+
+////////////// API BATTLE RESULTS //////////////////////
+app.get("/api/criticals_vs_missed", async (req, res) => {
+    try {
+        //Create a connection to the MySQL database
+        const connection = await connectDB();
+        // Execute a SELECT query to retrieve all users
+        const [rows] = await connection.query("SELECT * FROM criticals_vs_missed");
+        console.log("Criticals_vs_missed Executed succesfully")
+        return res.json(rows);
+    }
+    catch (error) {
+        console.error(error);
+        res.status(500).json({ error: "Internal server error" });
+    }
+});
+
+
+
 
 
 app.listen(port, () => {
