@@ -26,18 +26,19 @@ public class Movement : MonoBehaviour, IDataPersistance
     string save=PlayerPrefs.GetString("Shaggy");
     ShaggyUnit.stats = JsonUtility.FromJson<Stats>(save);
 
-    Transform ShaggyTransform=Shaggy.GetComponent<Transform>();
-    string position=PlayerPrefs.GetString("actual");
-    string outString = position.Substring(1, position.Length - 2);
 
-    string[] components=outString.Split(',');
-    Vector3 actual;
-    actual.x = float.Parse(components[0]);
-    actual.y = float.Parse(components[1]);
-    actual.z = float.Parse(components[2]);
+     Transform ShaggyTransform=Shaggy.GetComponent<Transform>();
+     float posx=PlayerPrefs.GetFloat("x", 0f);
+     float posy=PlayerPrefs.GetFloat("y", 0f);
+     PlayerPrefs.Save();
+
+     Vector3 actual;
+     actual.x = posx;
+     actual.y = posy;
+     actual.z = 0;
 
     
-    ShaggyTransform.position = actual;
+     ShaggyTransform.position = actual;
     
     }
 

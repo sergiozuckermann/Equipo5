@@ -21,9 +21,12 @@ public class Stats{
 	public int lightning = 0;
 	public int coins = 0;
 	public int index = 0;
+	public int place;
+	public int number;
 	public bool firea;
 	public bool icea;
 	public bool lightninga;
+
 	
 
 }

@@ -759,6 +759,8 @@ public void OnAttackButton()
         dialogueText.text = "You escaped and lost "+lostcoins+" coins";
         //FIX SO THAT TEXT SHOWS CORRECTLY
         playerUnit.stats.coins-=lostcoins;
+        PlayerPrefs.SetFloat("x", Convert.ToSingle(-10.4));
+        PlayerPrefs.SetFloat("y", Convert.ToSingle(1.5));
         string savedShaggy=JsonUtility.ToJson(playerUnit.stats);
         PlayerPrefs.SetString("Shaggy", savedShaggy);
         SceneManager.LoadScene("TileMap");

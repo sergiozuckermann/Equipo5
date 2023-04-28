@@ -16,6 +16,7 @@ public class Inicio : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         playerUnit = Shaggy.GetComponent<unit>();
 
     }
