@@ -11,7 +11,7 @@ public class chasee : MonoBehaviour
     [SerializeField] float returnPositionY;
     [SerializeField] float chaseRadius; // Serialized field for the radius within which the enemy will chase the player
     private Animator animator;
-    private GameObject player;
+    public GameObject player;
     private GameObject enemy;
     public GameObject Enemy;
     private Vector3 initialPosition;
@@ -20,6 +20,7 @@ public class chasee : MonoBehaviour
     private void Start()
     {
         animator = GetComponent<Animator>();
+        
         player = GameObject.FindGameObjectWithTag("Player"); // Find the player object using its tag
         initialPosition = transform.position;
         
@@ -96,6 +97,11 @@ public class chasee : MonoBehaviour
         // If the enemy collides with the player, load the battle scene
         if (collision.CompareTag("Player"))
         {
+            Transform posicion= player.GetComponent<Transform>();
+            Vector3 actual = posicion.position;
+            string vectorString = actual.x.ToString() + "," + actual.y.ToString() + "," + actual.z.ToString();        
+            PlayerPrefs.SetString("actual", vectorString);
+    
             unit Shaggy = collision.gameObject.GetComponent<unit>();
             string savedShaggy=JsonUtility.ToJson(Shaggy.stats);
             PlayerPrefs.SetString("Shaggy", savedShaggy);
