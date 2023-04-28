@@ -170,7 +170,37 @@ public class unit : MonoBehaviour
     PlayerPrefs.SetString("Shaggy", savedShaggy);
 	}
 
-	
+	public void onDefencebutton(){
+		stats.defence=stats.defence+1;
+	}
+
+	public void onAttackbutton(){
+		stats.damage=stats.damage+1;
+	}
+
+	public void onLuckbutton(){
+		stats.luck=stats.luck+1;
+	}
+
+	public void onAgilitybutton(){
+		stats.agility=stats.agility+1;
+	}
+
+	public void onCharismabutton(){
+		stats.charisma=stats.charisma+1;
+	}
+
+	public void onAccuracybutton(){
+		stats.accuracy=stats.accuracy+1;
+	}
+
+	public void onTotalHPbutton(){
+		stats.maxHP=stats.maxHP+5;
+	}
+
+	public void onTotalMPbutton(){
+		stats.maxMP=stats.maxMP+5;
+	}
 
 
 }
