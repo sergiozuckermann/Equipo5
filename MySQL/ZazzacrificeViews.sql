@@ -20,7 +20,7 @@ order by player_id, battle_id;
 CREATE VIEW enemy_win_rate AS
 SELECT enemy, battle_result, COUNT(*) AS count  
 FROM battles 
-GROUP BY enemy, battle_result order by enemy;
+GROUP BY enemy, battle_result order by enemy, battle_result;
 
 
 CREATE VIEW attack_uses AS
@@ -28,3 +28,13 @@ SELECT sum(times_used)as times, attacks.name as attack  FROM battles_attacks
 INNER JOIN attacks
 USING (attack_id)
 group by attack_id;
+
+
+CREATE VIEW criticals_vs_missed AS
+SELECT 
+    SUM(IF(battle_result=1, critical_attacks, 0)) as critical_attacks_won,
+    SUM(IF(battle_result=1, attacks_missed, 0)) as attacks_missed_won,
+    SUM(IF(battle_result=0, critical_attacks, 0)) as critical_attacks_lost,
+    SUM(IF(battle_result=0, attacks_missed, 0)) as attacks_missed_lost
+FROM battles
+

@@ -11,7 +11,8 @@ public class chasee : MonoBehaviour
     [SerializeField] float returnPositionY;
     [SerializeField] float chaseRadius; // Serialized field for the radius within which the enemy will chase the player
     private Animator animator;
-    private GameObject player;
+    public GameObject player;
+    public unit EnemyUnit;
     private GameObject enemy;
     public GameObject Enemy;
     private Vector3 initialPosition;
@@ -20,8 +21,10 @@ public class chasee : MonoBehaviour
     private void Start()
     {
         animator = GetComponent<Animator>();
+        
         player = GameObject.FindGameObjectWithTag("Player"); // Find the player object using its tag
         initialPosition = transform.position;
+        EnemyUnit=Enemy.GetComponent<unit>();
         
         
 
@@ -30,10 +33,12 @@ public class chasee : MonoBehaviour
     void Update()
     {
         int enemyID=PlayerPrefs.GetInt("Dead");
-        if (enemyID == 1)
-        {
-            Destroy(Enemy);
-        }
+        int Number=PlayerPrefs.GetInt("Number");
+        
+         if (enemyID == 1 && EnemyUnit.stats.number == Number)
+         {
+             Destroy(Enemy);
+         }
         
         // If the enemy is not chasing the player and is within the chase radius, start chasing
         if (!isChasing && player != null && Vector2.Distance(transform.position, player.transform.position) <= chaseRadius)
@@ -96,12 +101,20 @@ public class chasee : MonoBehaviour
         // If the enemy collides with the player, load the battle scene
         if (collision.CompareTag("Player"))
         {
+            Transform posicion= player.GetComponent<Transform>();
+            Vector3 actual = posicion.position;
+
+                   
+            PlayerPrefs.SetFloat("x", actual.x);
+            PlayerPrefs.SetFloat("y", actual.y);
+    
             unit Shaggy = collision.gameObject.GetComponent<unit>();
             string savedShaggy=JsonUtility.ToJson(Shaggy.stats);
             PlayerPrefs.SetString("Shaggy", savedShaggy);
 
             unit stats = GetComponent<unit>();
             PlayerPrefs.SetInt("Enemy", stats.stats.index);
+            PlayerPrefs.SetInt("Number", stats.stats.number);
 
             SceneManager.LoadScene(Bosque_Combate);
         }

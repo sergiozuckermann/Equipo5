@@ -805,12 +805,55 @@ section {
 # Features
 --------------------------------------------------------------*/
 
-.chartContainer{
+.chartContainer1{
   border: 0;
   justify-content: center;
-  display: flex;
+  display: inline-flex;
+  width: 100%;
+  
+}
+
+.chartContainer2{
+  border: 0;
+  justify-content: center;
+  display: inline-flex;
   width: 100%;
 }
+
+.chartContainer3{
+  border: 0;
+  justify-content: center;
+  display: inline-flex;
+  width: 100%;
+}
+
+.chartContainer1 canvas{
+  flex-grow: 1;
+  max-width: 30%; 
+  max-height: 600px;
+  margin-left: 200px;
+  margin-right: 200px;
+  margin-bottom: 150px;
+}
+
+.chartContainer2 canvas{
+  flex-grow: 1;
+  max-width: 30%; 
+  max-height: 600px;
+  margin-left: 200px;
+  margin-right: 200px;
+  margin-bottom: 150px;
+}
+
+.chartContainer3 canvas{
+  flex-grow: 1;
+  max-width: 30%; 
+  max-height: 600px;
+  margin-left: 200px;
+  margin-right: 200px;
+  margin-bottom: 10px;
+}
+
 
 .features .icon-box h4 {
   font-size: 20px;
@@ -1662,10 +1705,4 @@ section {
   text-decoration: none;
 }
 
-.chartContainer canvas{
-  flex-grow: 1;
-  max-width: 30%; 
-  max-height: 600px;
-
-}
 

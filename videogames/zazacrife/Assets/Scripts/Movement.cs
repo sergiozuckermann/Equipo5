@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Movement : MonoBehaviour
+public class Movement : MonoBehaviour, IDataPersistance
 {
      public GameObject Shaggy;
     
@@ -25,6 +25,21 @@ public class Movement : MonoBehaviour
     unit ShaggyUnit=Shaggy.GetComponent<unit>(); 
     string save=PlayerPrefs.GetString("Shaggy");
     ShaggyUnit.stats = JsonUtility.FromJson<Stats>(save);
+
+
+     Transform ShaggyTransform=Shaggy.GetComponent<Transform>();
+     float posx=PlayerPrefs.GetFloat("x", 0f);
+     float posy=PlayerPrefs.GetFloat("y", 0f);
+     PlayerPrefs.Save();
+
+     Vector3 actual;
+     actual.x = posx;
+     actual.y = posy;
+     actual.z = 0;
+
+    
+     ShaggyTransform.position = actual;
+    
     }
 
     // Update is called once per frame
@@ -32,6 +47,16 @@ public class Movement : MonoBehaviour
     //This function gets the player input and moves them on the determined axis.
     //Also it prohibits the player from crossing the game's borders 
 
+    public void LoadData(GameData data)
+    {
+        this.transform.position = data.playerPosition;
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        data.playerPosition = this.transform.position;
+    }
+    
     void Update()
     {
         move.x=Input.GetAxis("Horizontal");
@@ -69,15 +94,8 @@ public class Movement : MonoBehaviour
         {
             animator.SetInteger("Walk", 1);
         }
-       
-        
-
-
-
-        
-
-        
-
-
     }
+
+    
 }
+
