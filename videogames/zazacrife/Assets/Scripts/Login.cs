@@ -13,13 +13,12 @@ public class User
     public string password;
 }
 
-
-public class Login : MonoBehaviour
+public class Login : MonoBehaviour, IDataPersistance
 {
     public TMP_InputField username;
     public TMP_InputField password;
 
-
+    
     IEnumerator SendRequest(User user, string url, string route)
     {
 
@@ -53,7 +52,15 @@ public class Login : MonoBehaviour
             }
         }
     }   
+    public void LoadData(GameData data)
+    {
+        this.username = data.username;
+    }
 
+    public void SaveData(ref GameData data)
+    {
+        data.username = this.username;
+    }
     public void LogInput()
     {
         User user = new User();
