@@ -20,7 +20,7 @@ order by player_id, battle_id;
 CREATE VIEW enemy_win_rate AS
 SELECT enemy, battle_result, COUNT(*) AS count  
 FROM battles 
-GROUP BY enemy, battle_result order by enemy;
+GROUP BY enemy, battle_result order by enemy, battle_result;
 
 
 CREATE VIEW attack_uses AS
