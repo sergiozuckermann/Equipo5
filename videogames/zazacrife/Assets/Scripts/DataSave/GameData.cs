@@ -6,9 +6,14 @@ using UnityEngine;
 public class GameData
 {
     public int deathCount;
-    public string userName;
+    public string username;
+    public Vector3 playerPosition;
+    // public SerialDiccionary<string, bool> elementCollected;
+
     public GameData(){
         this.deathCount = 0;
-        this.userName = "Player";
+        this.username = "";
+        playerPosition = Vector3.zero;
+        // elementCollected = new SerialDiccionary<string, bool>();
     }
 }
