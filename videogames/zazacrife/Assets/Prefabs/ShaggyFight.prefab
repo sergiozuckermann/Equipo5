@@ -45,20 +45,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ee4073bdf1c3d64cbb8daee19162c96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stats:
+    damage: 0
+    maxHP: 0
+    currentHP: 0
+    maxMP: 0
+    currentMP: 0
+    luck: 0
+    agility: 0
+    defence: 0
+    charisma: 0
+    accuracy: 0
+    fire: 0
+    ice: 0
+    lightning: 0
+    coins: 0
+    index: 0
+    firea: 0
+    icea: 0
+    lightninga: 0
   unitName: Shaggy
-  damage: 4
-  maxHP: 30
-  currentHP: 28
-  maxMP: 20
-  currentMP: 15
-  luck: 8
-  agility: 7
-  defence: 3
-  charisma: 0
-  accuracy: 0
-  fire: 0
-  ice: 0
-  lightning: 0
 --- !u!1 &4792108282000969397
 GameObject:
   m_ObjectHideFlags: 0

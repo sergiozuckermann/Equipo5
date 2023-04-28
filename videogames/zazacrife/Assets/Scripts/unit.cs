@@ -15,11 +15,15 @@ public class Stats{
     public int defence;
 	public int charisma;
 	public int accuracy;
-
+	public int dead;
 	public int fire = 0;
 	public int ice = 0;
 	public int lightning = 0;
-	
+	public int coins = 0;
+	public int index = 0;
+	public bool firea;
+	public bool icea;
+	public bool lightninga;
 	
 
 }
@@ -98,21 +102,11 @@ public class unit : MonoBehaviour
 
 	public void lightningbuff(){
 	stats.damage=stats.damage*2;
-    stats.luck= stats.luck*2;
-    stats.agility= stats.agility*2;
-    stats.defence= stats.defence*2;
-	stats.charisma= stats.charisma*2;
-	stats.accuracy= stats.accuracy*2;
 	}
 
 
 	public void lightningnerf(){
 	stats.damage=stats.damage/2;
-    stats.luck= stats.luck/2;
-    stats.agility= stats.agility/2;
-    stats.defence= stats.defence/2;
-	stats.charisma= stats.charisma/2;
-	stats.accuracy= stats.accuracy/2;
 	}
 	
 	public void Lightclass(){
@@ -126,6 +120,13 @@ public class unit : MonoBehaviour
     stats.defence= 3;
 	stats.charisma= 2;
 	stats.accuracy= 6;
+	stats.coins=10;
+	stats.firea=false;
+	stats.icea=false;
+	stats.lightninga=false;
+    string savedShaggy=JsonUtility.ToJson(stats);
+    PlayerPrefs.SetString("Shaggy", savedShaggy);
+    
 	}
 
 	public void Middleclass(){
@@ -139,6 +140,12 @@ public class unit : MonoBehaviour
 	stats.defence= 5;
 	stats.charisma= 2;
 	stats.accuracy= 4;
+	stats.coins=10;
+	stats.firea=false;
+	stats.icea=false;
+	stats.lightninga=false;
+	string savedShaggy=JsonUtility.ToJson(stats);
+    PlayerPrefs.SetString("Shaggy", savedShaggy);
 	}
 
 	public void Heavyclass(){
@@ -152,6 +159,12 @@ public class unit : MonoBehaviour
 	stats.defence= 7;
 	stats.charisma= 2;
 	stats.accuracy= 2;
+	stats.coins=10;
+	stats.firea=false;
+	stats.icea=false;
+	stats.lightninga=false;
+	string savedShaggy=JsonUtility.ToJson(stats);
+    PlayerPrefs.SetString("Shaggy", savedShaggy);
 	}
 
 	
