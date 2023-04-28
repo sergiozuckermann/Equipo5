@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Movement : MonoBehaviour
+public class Movement : MonoBehaviour, IDataPersistance
 {
      public GameObject Shaggy;
     
@@ -46,6 +46,16 @@ public class Movement : MonoBehaviour
     //This function gets the player input and moves them on the determined axis.
     //Also it prohibits the player from crossing the game's borders 
 
+    public void LoadData(GameData data)
+    {
+        this.transform.position = data.playerPosition;
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        data.playerPosition = this.transform.position;
+    }
+    
     void Update()
     {
         move.x=Input.GetAxis("Horizontal");

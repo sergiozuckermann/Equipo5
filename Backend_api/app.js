@@ -16,7 +16,7 @@ async function connectDB() {
     const connection = await mysql.createConnection({
         host: "localhost",
         user: "root",
-        password: "fulito99",
+        password: "Zazza123",
         database: "zazzacrifice",
     });
 
@@ -249,6 +249,33 @@ function arrange_data_for_enemy_win_rate(rows) {
     return [labels, count, result]
 }
 
+
+////////////// ATTACK USES API //////////////////////
+app.get("/api/attack_uses", async (req, res) => {
+    console.log("Attack_uses_Api Call")
+    try {
+        //Create a connection to the MySQL database
+        const connection = await connectDB();
+        // Execute a SELECT query to retrieve all users
+        const [rows] = await connection.query("SELECT * FROM attack_uses");
+        [labels, values] = arrange_data_for_attack_uses(rows)
+        return res.json({ "labels": labels, "values": values });
+    }
+    catch (error) {
+        console.error(error);
+        res.status(500).json({ error: "Internal server error" });
+    }
+});
+
+function arrange_data_for_attack_uses(rows) {
+    let labels = []
+    let values = []
+    for (let i = 0; i < rows.length; i++) {
+        labels.push(rows[i].attack)
+        values.push(rows[i].times)
+    }
+    return [labels, values]
+}
 
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);
