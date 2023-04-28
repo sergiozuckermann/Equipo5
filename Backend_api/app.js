@@ -40,8 +40,7 @@ async function check_if_user_exists(username) {
 // Route to get all users
 app.get("/api/users", async (req, res) => {
     try {
-        console.log(req.body);
-        console.log("api accedido");
+
         // Create a connection to the MySQL database
         const connection = await connectDB();
         // Execute a SELECT query to retrieve all users
@@ -50,6 +49,7 @@ app.get("/api/users", async (req, res) => {
         const [rows] = await connection.query("SELECT * FROM users");
 
         // Send the users as a JSON response
+        console.log("Users retrieved succesfully")
         res.json(rows);
 
         // Close the database connection
@@ -64,8 +64,7 @@ app.get("/api/users", async (req, res) => {
 // Login to Database
 app.post("/api/login", async (req, res) => {
     try {
-        console.log("Hola")
-        console.log(req.body);
+
         //Create a connection to the MySQL database
         const connection = await connectDB();
         // Execute a SELECT query to retrieve all users
@@ -74,6 +73,7 @@ app.post("/api/login", async (req, res) => {
             res.status(401).json({ error: "Invalid username or password" });
             return;
         }
+        console.log("Login Executed succesfully")
         res.json(rows[0].user_id);
     } catch (error) {
         console.error(error);
@@ -84,7 +84,6 @@ app.post("/api/login", async (req, res) => {
 // Route to create a new user
 app.post("/api/new_user", async (req, res) => {
     try {
-        console.log(req.body);
 
         //Create a connection to the MySQL database
         const connection = await connectDB();
@@ -95,6 +94,7 @@ app.post("/api/new_user", async (req, res) => {
         }
         // Execute a SELECT query to retrieve all users
         const [rows] = await connection.query("INSERT INTO users (username, password) VALUES (?, ?)", [req.body.username, req.body.password]);
+        console.log("New user created succesfully")
         res.json(rows);
     } catch (error) {
         console.error(error);
@@ -107,10 +107,10 @@ app.post("/api/new_user", async (req, res) => {
 app.get("/api/game_sessions", async (req, res) => {
     try {
         //Create a connection to the MySQL database
-        console.log("REq")
         const connection = await connectDB();
         // Execute a SELECT query to retrieve all users
         const [rows] = await connection.query("SELECT * FROM sessions_summary WHERE user_id = ?", [req.query.user_id]);
+        console.log("Game_sessions Executed succesfully")
         res.json(rows[0]);
     } catch (error) {
         console.error(error);
@@ -123,8 +123,8 @@ app.post("/api/new_game", async (req, res) => {
         //Create a connection to the MySQL database
         const connection = await connectDB();
         // Execute a SELECT query to retrieve all users CREATE IN
-        console.log(req.body);
         const [insert_data] = await connection.query("INSERT INTO game_sessions (user_id, time_on_seconds, number_of_battles, number_of_damaged_made, elements_obtained, finished) VALUES (?, ?, ?, ?, ?, ?)", [req.body.user_id, 0, 0, 0, 0, 0]);
+        console.log("New game created succesfully")
 
     } catch (error) {
         console.error(error);
@@ -133,7 +133,7 @@ app.post("/api/new_game", async (req, res) => {
 });
 
 app.get("/api/class_election_stats", async (req, res) => {
-    console.log("Class_election_Api Call")
+
     try {
         //Create a connection to the MySQL database
         const connection = await connectDB();
@@ -141,9 +141,8 @@ app.get("/api/class_election_stats", async (req, res) => {
         const [rows] = await connection.query("SELECT * FROM class_percentage");
 
         [labels, data] = arrange_election_data(rows)
-        console.log(labels)
-        console.log(data)
 
+        console.log("Class_election Executed succesfully")
         res.json({ "labels": labels, "data": data });
     }
     catch (error) {
@@ -163,14 +162,13 @@ function arrange_election_data(rows) {
 }
 ///////////////////////// API DAMAGE MADE_VS_RECEIVED  ///////////////////////////
 app.get("/api/damage_made_vs_received", async (req, res) => {
-    console.log("Damage_made_vs_received_Api Call")
     try {
         //Create a connection to the MySQL database
         const connection = await connectDB();
         // Execute a SELECT query to retrieve all users
         const [rows] = await connection.query("SELECT * FROM damage_made_vs_received");
         [damage_made, damage_received] = get_average_from_damage_in_batttle(rows)
-
+        console.log("Damage_made_vs_received Executed succesfully")
         res.json({ "damage_made": damage_made, "damage_received": damage_received });
     }
     catch (error) {
@@ -186,7 +184,6 @@ function arrange_data_for_damage_made_vs_received_chart(rows) {
     damage_received = [];
     times_found = [];
     cont = 0
-    console.log(rows)
     for (let i = 0; i < rows.length; i++) {
         if (!player_ids.includes(rows[i]["player_id"])) {
             cont = 0
@@ -206,7 +203,7 @@ function arrange_data_for_damage_made_vs_received_chart(rows) {
 
         cont += 1
     }
-    console.log([damage_made, damage_received, times_found])
+
     return [damage_made, damage_received, times_found]
 }
 
@@ -222,14 +219,14 @@ function get_average_from_damage_in_batttle(rows) {
 
 ////////////// API ENEMY WIN RATE //////////////////////
 app.get("/api/enemy_win_rate", async (req, res) => {
-    console.log("Enemy_win_rate_obtained_Api Call")
     try {
         //Create a connection to the MySQL database
         const connection = await connectDB();
         // Execute a SELECT query to retrieve all users
         const [rows] = await connection.query("SELECT * FROM enemy_win_rate");
-        [labels, count, result] = arrange_data_for_enemy_win_rate(rows)
-        return res.json({ "labels": labels, "count": count, "result": result });
+        [labels, enemyloses, enemywins] = arrange_data_for_enemy_win_rate(rows)
+        console.log("Enemy_win_rate Executed succesfully")
+        res.json({ "labels": labels, "enemyloses": enemyloses, "enemywins": enemywins });
     }
     catch (error) {
         console.error(error);
@@ -239,26 +236,45 @@ app.get("/api/enemy_win_rate", async (req, res) => {
 
 function arrange_data_for_enemy_win_rate(rows) {
     let labels = []
-    let count = []
-    let result = []
-    for (let i = 0; i < rows.length; i++) {
-        labels.push(rows[i].enemy)
-        count.push(rows[i].count)
-        result.push(rows[i].battle_result.readUInt8())
+    let enemywins = []
+    let enemyloses = []
+    let i = 0
+    while (i < rows.length) {
+        if (rows[i].enemy === rows[i + 1].enemy) {
+            labels.push(rows[i].enemy)
+            enemyloses.push(rows[i].count)
+            enemywins.push(rows[i + 1].count)
+
+            i += 2
+        }
+        else if (rows[i].battle_result.readUInt8() === 0) {
+            labels.push(rows[i].enemy)
+            enemyloses.push(rows[i].count)
+            enemywins.push(0)
+            i += 1
+        }
+        else {
+            labels.push(rows[i].enemy)
+            enemyloses.push(0)
+            enemywins.push(rows[i].count)
+            i += 1
+        }
     }
-    return [labels, count, result]
+
+    //result.push(rows[i].battle_result.readUInt8())
+    return [labels, enemywins, enemyloses]
 }
 
 
 ////////////// ATTACK USES API //////////////////////
 app.get("/api/attack_uses", async (req, res) => {
-    console.log("Attack_uses_Api Call")
     try {
         //Create a connection to the MySQL database
         const connection = await connectDB();
         // Execute a SELECT query to retrieve all users
         const [rows] = await connection.query("SELECT * FROM attack_uses");
         [labels, values] = arrange_data_for_attack_uses(rows)
+        console.log("Attack_uses Executed succesfully")
         return res.json({ "labels": labels, "values": values });
     }
     catch (error) {
