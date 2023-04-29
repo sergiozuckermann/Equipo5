@@ -43377,7 +43377,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3513f2dd390ec641813292655820b81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TileMap: TileMap
   time: 1
   update: 0.01
   playerPrefab: {fileID: 778339910624247829, guid: 1e483d5bb648bf745b0575e5c03929f1, type: 3}
@@ -43387,6 +43386,7 @@ MonoBehaviour:
   - {fileID: 7373028707324206330, guid: 1071d7249adbe4c3fb0644ba2a0073f7, type: 3}
   - {fileID: 1884152440886783041, guid: 99f7502d8404d44c09cc5fb96a74c539, type: 3}
   - {fileID: 5250919767760015142, guid: 2c375fb2d4a7441399ec98d5c2d40119, type: 3}
+  - {fileID: 4767075320649848216, guid: 377a7c3759b294241a875962cebc0ac6, type: 3}
   - {fileID: 2092855467271946673, guid: 68195969281924f27a0901a42cc31975, type: 3}
   playerBattleStation: {fileID: 1131219701}
   enemyBattleStation: {fileID: 695270191}
@@ -43404,6 +43404,7 @@ MonoBehaviour:
   elementButton: {fileID: 1687193425}
   healButton: {fileID: 48026491}
   fleeButton: {fileID: 162563420}
+  Esc: {fileID: 40219023}
   fire: {fileID: 1423994373}
   ice: {fileID: 673524644}
   thunder: {fileID: 41112551}

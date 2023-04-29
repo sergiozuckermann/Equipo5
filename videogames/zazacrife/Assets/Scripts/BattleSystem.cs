@@ -5,15 +5,12 @@ using UnityEngine.UI;
 using TMPro;
 using System;
 using UnityEngine.SceneManagement;
-using System.Threading;
 
 
 public enum BattleState { START, PLAYERTURN, ENEMYTURN, WON, LOST }
 
 public class BattleSystem : MonoBehaviour
 {
-
-[SerializeField] string TileMap = "TileMap";
 
 public float time;
 private float etime;
@@ -44,6 +41,7 @@ public Button attackButton;
 public Button elementButton;
 public Button healButton;
 public Button fleeButton;
+public Button Esc;
 public Button fire;
 public Button ice;
 public Button thunder;
@@ -98,6 +96,7 @@ IEnumerator SetupBattle()
     elementButton.interactable = false;
     healButton.interactable = false;
     fleeButton.interactable = false;
+    PlayerPrefs.SetInt("Dead", 0);
 
     
 
@@ -135,7 +134,7 @@ IEnumerator SetupBattle()
         cam.backgroundColor = color4;
     }
 
-    else if(enemyUnit.stats.index==5){
+    else if(enemyUnit.stats.index==5 || enemyUnit.stats.index==6){
         cam.backgroundColor = color5;
     }
 
@@ -207,8 +206,20 @@ IEnumerator SetupBattle()
             enemyUnit.stats.dead = 1;
             PlayerPrefs.SetInt("Dead", enemyUnit.stats.dead);
 
+
+
             string savedShaggy=JsonUtility.ToJson(playerUnit.stats);
             PlayerPrefs.SetString("Shaggy", savedShaggy);
+
+            if (enemyUnit.stats.index==5)
+                {
+                    cam.backgroundColor = color5;
+                    dialogueText.text = "HAHAHAHAHAHA I HAVE TRICKED YOU";
+                    yield return new WaitForSeconds(1f);
+
+                    
+                }
+
             EndBattle();
         }
         
@@ -387,8 +398,17 @@ IEnumerator SetupBattle()
         elementButton.interactable = false;
         healButton.interactable = false;
         fleeButton.interactable = false;
-        
-        SceneManager.LoadScene(TileMap);
+       if (enemyUnit.stats.index==5){
+            SceneManager.LoadScene("FinalBoss");        
+       }
+
+        else if (enemyUnit.stats.index==6){
+            SceneManager.LoadScene("Final");            
+        }
+
+        else{
+        SceneManager.LoadScene("TileMap");
+        }
      } 
      else if (state == BattleState.LOST){
         
@@ -408,6 +428,11 @@ IEnumerator SetupBattle()
     elementButton.interactable = true;
     healButton.interactable = true;
     fleeButton.interactable = true;
+
+    if(enemyUnit.stats.index==6){
+        Esc.interactable = false;
+    }
+
     if(playerUnit.stats.lightninga==false){
         thunder.interactable = false;
     }
@@ -759,13 +784,26 @@ public void OnAttackButton()
         dialogueText.text = "You escaped and lost "+lostcoins+" coins";
         //FIX SO THAT TEXT SHOWS CORRECTLY
         playerUnit.stats.coins-=lostcoins;
-        PlayerPrefs.SetFloat("x", Convert.ToSingle(-10.4));
-        PlayerPrefs.SetFloat("y", Convert.ToSingle(1.5));
+        
+        
+        int place=PlayerPrefs.GetInt("place");
+        
+
         string savedShaggy=JsonUtility.ToJson(playerUnit.stats);
         PlayerPrefs.SetString("Shaggy", savedShaggy);
+        if(place==1){    
+        PlayerPrefs.SetFloat("x", Convert.ToSingle(-3.9));
+        PlayerPrefs.SetFloat("y", Convert.ToSingle(3.5));
+        SceneManager.LoadScene("Torre");
+
+        }
+
+        else if(place==0){
+        PlayerPrefs.SetFloat("x", Convert.ToSingle(-10.4));
+        PlayerPrefs.SetFloat("y", Convert.ToSingle(1.5));
         SceneManager.LoadScene("TileMap");
         
-        
+        }
         
     }
 
