@@ -41,7 +41,6 @@
          gameObject.SetActive(true);
          StartCoroutine(SendRequest(user, "http://localhost:3010", "/api/new_user"));
 
-
          // Here you can add your code to save the username and password to a file or database
      }
     

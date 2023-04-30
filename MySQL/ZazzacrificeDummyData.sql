@@ -16,10 +16,11 @@ INSERT INTO stats (name) values ('ATK') ; #id 2
 INSERT INTO stats (name) values ('AGL'); #id 3 
 INSERT INTO stats (name) values ('LCK') ; #id 4 
 INSERT INTO stats (name) values ('CHAR') ; #id 5 
-INSERT INTO stats (name) values ('Max_HP') ; #id 6 
-INSERT INTO stats (name) values ('Current_HP') ; #id 7 
-INSERT INTO stats (name) values ('Max_MP') ; #id 8
-INSERT INTO stats (name) values ('Current_MP') ; #id 9
+INSERT INTO stats (name) values ('ACC') ; #id 6
+INSERT INTO stats (name) values ('Max_HP') ; #id 7
+INSERT INTO stats (name) values ('Current_HP') ; #id 8
+INSERT INTO stats (name) values ('Max_MP') ; #id 9
+INSERT INTO stats (name) values ('Current_MP') ; #id 10
 
 #Tablas Clases 
 INSERT INTO classes (name) value ('Ligera');
@@ -28,14 +29,14 @@ INSERT INTO classes (name) value ('Pesada');
 
 #Tablas Consumibles
 INSERT INTO consumables (name, description, stat_id, value) VALUES 
-('ZAggydefence', 'increase 20% of characters defence', 1, 2),
-('ZAttack', 'increase 20% of characters attack', 2, 2),
-('ZAgility', 'increases 20% of characters agility', 3, 2),
-('LuckZAgggy', 'increase 20% of characters lcuk', 4, 2),
-('ZArizma', 'increase 20% of characters charisma', 5, 2),
-('ZAaple', 'increase 40% of characters health', 1, 4),
-('ZAggic', 'increase 40% of characters mana', 1, 4);
-
+('DEFENCE ITEM', 'increase 30% of characters defence', 1, 3),
+('ATTACK ITEM', 'increase 30% of characters attack', 2, 3),
+('AGILITY ITEM', 'increase 30% of characters agility', 3, 3),
+('LUCK ITEM', 'increase 30% of characters luck', 4, 3),
+('CHARISMA ITEM', 'increase 30% of characters charisma', 5, 3),
+('ACCURACY ITEM', 'increase 30% of characters accuracy', 6, 3),
+('TOTAL HP ITEM', 'increase 50% of characters total health points', 7, 5),
+('TOTAL MP ITEM', 'increase 50% of characters total mana points', 9, 5);
 
 
 #Tablas Scenes
@@ -190,7 +191,7 @@ INSERT INTO players_attacks (player_id, attack_id) VALUES
 
 #Tablas Battle 
 INSERT INTO battles (player_id, enemy, total_damage_made, total_damage_received, coin_received, battle_result, attacks_missed, critical_attacks) VALUES
-(1, 'Goblin', 120, 60, 15, 1, 5, 2),
+(1, 'Goblin', 120, 60, 15, 1, 10, 40),
 (1, 'Orc', 200, 80, 25, 1, 2, 6),
 (1, 'Troll', 180, 90, 20, 0, 3, 1),
 (1, 'Dragon', 500, 250, 100, 0, 10, 8),
