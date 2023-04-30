@@ -87,7 +87,22 @@ INSERT INTO game_events (event_id, game_session_id, is_active) VALUES (1, 1, 0),
 (2, 5, 1),
 (3, 5,1);
 
-#Tabla checkpoint 
+
+
+#Tabla players
+INSERT INTO players (game_session_id, name, money, checkpoint_id, class_id)
+VALUES 
+  (1, 'Alice', 1000, 1),
+  (2, 'Bob', 500, 1),
+  (3, 'Charlie', 200, 2),
+  (4, 'Dave', 800, 2),
+  (5, 'Eve', 300, 3),
+  (6, 'Frank', 600, 3),
+  (7, 'Grace', 400, 1),
+  (8, 'Henry', 900, 2),
+  (9, 'Isaac', 700, 3);
+  
+  #Tabla checkpoint 
 INSERT INTO checkpoints (scene_id, x_postion, y_position) 
 VALUES 
   (1, 100, 200),
@@ -100,19 +115,6 @@ VALUES
   (2, 100, 100),
   (3, 250, 200);
 
-
-#Tabla players
-INSERT INTO players (game_session_id, name, money, checkpoint_id, class_id)
-VALUES 
-  (1, 'Alice', 1000, 1, 1),
-  (2, 'Bob', 500, 2, 1),
-  (3, 'Charlie', 200, 3, 2),
-  (4, 'Dave', 800, 4, 2),
-  (5, 'Eve', 300, 5, 3),
-  (6, 'Frank', 600, 6, 3),
-  (7, 'Grace', 400, 7, 1),
-  (8, 'Henry', 900, 8, 2),
-  (9, 'Isaac', 700, 9, 3);
 
 
 
