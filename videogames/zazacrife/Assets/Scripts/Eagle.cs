@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System;
 using TMPro;
 
 public class Eagle : MonoBehaviour
@@ -42,6 +43,9 @@ public class Eagle : MonoBehaviour
         if (Sh.stats.firea == true && Sh.stats.icea == true && Sh.stats.lightninga == true){
             string savedShaggy=JsonUtility.ToJson(Sh.stats);
             PlayerPrefs.SetString("Shaggy", savedShaggy);
+            PlayerPrefs.SetFloat("x", Convert.ToSingle(-3.9));
+            PlayerPrefs.SetFloat("y", Convert.ToSingle(3.5));
+            PlayerPrefs.SetInt("place", 1);
             SceneManager.LoadScene("Torre");
         }
 
