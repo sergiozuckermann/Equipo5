@@ -6,7 +6,7 @@ const cors = require('cors');
 
 const app = express();
 app.use(cors());
-const port = 8000;
+const port = 6000;
 
 // Middleware to parse JSON request bodies
 app.use(express.json());
@@ -16,7 +16,7 @@ async function connectDB() {
     const connection = await mysql.createConnection({
         host: "localhost",
         user: "root",
-        password: "fulito99",
+        password: "rtx57itachi.",
         database: "zazzacrifice",
     });
 
