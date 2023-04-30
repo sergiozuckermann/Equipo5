@@ -184,35 +184,43 @@ public class unit : MonoBehaviour
 	}
 
 	public void onDefencebutton(){
-		stats.defence=stats.defence+1;
+		stats.defence=stats.defence+3;
+		stats.coins=stats.coins -10;
 	}
 
 	public void onAttackbutton(){
-		stats.damage=stats.damage+1;
+		stats.damage=stats.damage+3;
+		stats.coins=stats.coins -10;
 	}
 
 	public void onLuckbutton(){
-		stats.luck=stats.luck+1;
+		stats.luck=stats.luck+3;
+		stats.coins=stats.coins -10;
 	}
 
 	public void onAgilitybutton(){
-		stats.agility=stats.agility+1;
+		stats.agility=stats.agility+3;
+		stats.coins=stats.coins -10;
 	}
 
 	public void onCharismabutton(){
-		stats.charisma=stats.charisma+1;
+		stats.charisma=stats.charisma+3;
+		stats.coins=stats.coins -10;
 	}
 
 	public void onAccuracybutton(){
-		stats.accuracy=stats.accuracy+1;
+		stats.accuracy=stats.accuracy+3;
+		stats.coins=stats.coins -10;
 	}
 
 	public void onTotalHPbutton(){
 		stats.maxHP=stats.maxHP+5;
+		stats.coins=stats.coins -15;
 	}
 
 	public void onTotalMPbutton(){
 		stats.maxMP=stats.maxMP+5;
+		stats.coins=stats.coins -15;
 	}
 
 
