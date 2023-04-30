@@ -15,7 +15,7 @@ public class STATSHUD : MonoBehaviour
     public TextMeshProUGUI ATTText;
 	public TextMeshProUGUI HPText;
 	public TextMeshProUGUI MPText;
-    
+    public TextMeshProUGUI COINSTexts;
 
     
     public void OnDisplayButton()
@@ -27,8 +27,9 @@ public class STATSHUD : MonoBehaviour
     AGIText.text =  playerUnit.stats.agility.ToString();
     CHAText.text =  playerUnit.stats.charisma.ToString();
     ATTText.text =  playerUnit.stats.damage.ToString();
-    HPText.text =   playerUnit.stats.currentHP.ToString();
-    MPText.text =   playerUnit.stats.currentMP.ToString();
+    HPText.text =   playerUnit.stats.maxHP.ToString();
+    MPText.text =   playerUnit.stats.maxMP.ToString();
+    COINSTexts.text= playerUnit.stats.coins.ToString();
     }
 
   
