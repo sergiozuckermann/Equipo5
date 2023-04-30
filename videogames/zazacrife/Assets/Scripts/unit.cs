@@ -223,5 +223,14 @@ public class unit : MonoBehaviour
 		stats.coins=stats.coins -15;
 	}
 
+	public void onMAXHPbutton(){
+		stats.currentHP=stats.maxHP;
+		stats.coins=stats.coins -10;
+	}
+
+	public void onMAXMPbutton(){
+		stats.currentMP=stats.maxMP;
+		stats.coins=stats.coins -10;
+	}
 
 }
