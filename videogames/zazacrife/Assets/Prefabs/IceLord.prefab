@@ -51,11 +51,11 @@ MonoBehaviour:
     currentHP: 60
     maxMP: 70
     currentMP: 70
-    luck: 20
-    agility: 10
+    luck: 5
+    agility: 5
     defence: 6
-    charisma: 8
-    accuracy: 10
+    charisma: 0
+    accuracy: 4
     dead: 0
     fire: 0
     ice: 0

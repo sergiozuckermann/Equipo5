@@ -43639,9 +43639,9 @@ MonoBehaviour:
 
     1 Turns
 
-    Cost: 5 MP
+    Cost: 10 MP
 
-    50% Effective'
+    80% Effective'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

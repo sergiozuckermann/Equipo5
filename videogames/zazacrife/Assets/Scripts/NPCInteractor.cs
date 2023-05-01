@@ -15,6 +15,7 @@ public class NPCInteractor : MonoBehaviour
     public Button button;
     public Animator anim;
     private unit EnemyUnit;
+    public unit playerUnit;
 
     private void Start()
     {
@@ -27,13 +28,14 @@ public class NPCInteractor : MonoBehaviour
 
         int enemyID=PlayerPrefs.GetInt("Dead");
         int Number=PlayerPrefs.GetInt("Number");
+
   
          if (enemyID == 1 && EnemyUnit.stats.number == Number)
          {
                 anim.SetInteger("State", 4);
                 
                 Destroy(button);
-                if (EnemyUnit.stats.number == 5)
+                if (EnemyUnit.stats.number == 5 )
                 {
                     dialogueText.text = "I AIN'T GOT THAT RIZZ NOMORE!";
                     bText.text = "YOU GOT FIRE!";
@@ -67,12 +69,39 @@ public class NPCInteractor : MonoBehaviour
     }
 
    
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
             canvas.SetActive(true);
             
+        }
+
+            if(playerUnit.stats.firea==true){
+            if(EnemyUnit.stats.firea==true){
+            Destroy(button);
+            anim.SetInteger("State", 4);
+            dialogueText.text = "I AIN'T GOT THAT RIZZ NOMORE!";
+            bText.text = "YOU GOT FIRE!";
+            }
+        }
+
+        if(playerUnit.stats.icea==true){
+            if(EnemyUnit.stats.icea==true){
+            Destroy(button);
+            anim.SetInteger("State", 4);
+            dialogueText.text = "IM AS DEAD AS KANYES CAREER";
+            bText.text = "YOU GOT ICE!";
+            }
+        }
+
+        if(playerUnit.stats.lightninga==true){
+            if(EnemyUnit.stats.lightninga==true){
+            Destroy(button);
+            anim.SetInteger("State", 4);
+            dialogueText.text = "YOU CAUGHT ME I'M BARACK OBAMA";
+            bText.text = "YOU GOT THUNDER!";
+            }
         }
     }
 

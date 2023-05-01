@@ -115,6 +115,8 @@ public class chasee : MonoBehaviour
             unit stats = GetComponent<unit>();
             PlayerPrefs.SetInt("Enemy", stats.stats.index);
             PlayerPrefs.SetInt("Number", stats.stats.number);
+            
+            animator.SetInteger("Walk", 0);
 
             SceneManager.LoadScene(Bosque_Combate);
         }
