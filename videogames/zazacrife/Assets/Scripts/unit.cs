@@ -38,6 +38,13 @@ public class Stats{
 
 }
 
+[System.Serializable]
+public class GameSessionData
+{
+    public int game_session_id;
+    public int player_id;
+}
+
 
 public class unit : MonoBehaviour
 {
@@ -255,16 +262,15 @@ public class unit : MonoBehaviour
             www.method = "POST";
             www.SetRequestHeader("Content-Type", "application/json");
             yield return www.SendWebRequest();
-            Debug.Log("Request sent");
-            Debug.Log(www.downloadHandler.text);
-            Debug.Log(www.error);
-            Debug.Log(www.responseCode);
-            Debug.Log("result");
-            Debug.Log(www.result);
 
             if (www.responseCode == 200)
             {
                 Debug.Log("Game saved");
+				GameSessionData data = JsonUtility.FromJson<GameSessionData>(www.downloadHandler.text);
+				PlayerPrefs.SetInt("Game_session_id", data.game_session_id);
+				PlayerPrefs.SetInt("Player_id", data.player_id);
+
+
 
             }
              else

@@ -31,11 +31,11 @@ async function check_if_user_exists(username) {
     const [rows] = await connection.query("SELECT * FROM users WHERE username = ?", [username]);
     // Close the database connection
     await connection.end();
-
     if (rows.length > 0)
         return true;
     else
         return false;
+
 }
 
 // Route to get all users
@@ -51,10 +51,11 @@ app.get("/api/users", async (req, res) => {
 
         // Send the users as a JSON response
         console.log("Users retrieved succesfully")
+        await connection.end();
         res.json(rows);
 
         // Close the database connection
-        await connection.end();
+
     } catch (error) {
         console.error(error);
         res.status(500).json({ error: "Internal server error" });
@@ -76,6 +77,7 @@ app.post("/api/login", async (req, res) => {
             return;
         }
         console.log("Login Executed succesfully")
+        await connection.end();
         res.json(rows[0].user_id);
     } catch (error) {
         console.error(error);
@@ -97,6 +99,7 @@ app.post("/api/new_user", async (req, res) => {
         // Execute a SELECT query to retrieve all users
         const [rows] = await connection.query("INSERT INTO users (username, password) VALUES (?, ?)", [req.body.username, req.body.password]);
         console.log("New user created succesfully")
+        await connection.end();
         res.json(rows);
     } catch (error) {
         console.error(error);
@@ -113,6 +116,7 @@ app.get("/api/game_sessions", async (req, res) => {
         // Execute a SELECT query to retrieve all users
         const [rows] = await connection.query("SELECT * FROM sessions_summary WHERE user_id = ?", [req.query.user_id]);
         console.log("Game_sessions Executed succesfully")
+        await connection.end();
         res.json(rows[0]);
     } catch (error) {
         console.error(error);
@@ -120,19 +124,6 @@ app.get("/api/game_sessions", async (req, res) => {
     }
 });
 
-app.post("/api/new_game", async (req, res) => {
-    try {
-        //Create a connection to the MySQL database
-        const connection = await connectDB();
-        // Execute a SELECT query to retrieve all users CREATE IN
-        const [insert_data] = await connection.query("INSERT INTO game_sessions (user_id, time_on_seconds, number_of_battles, number_of_damaged_made, elements_obtained, finished) VALUES (?, ?, ?, ?, ?, ?)", [req.body.user_id, 0, 0, 0, 0, 0]);
-        console.log("New game created succesfully")
-
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ error: "Internal server error" });
-    }
-});
 
 app.get("/api/class_election_stats", async (req, res) => {
 
@@ -145,6 +136,7 @@ app.get("/api/class_election_stats", async (req, res) => {
         [labels, data] = arrange_election_data(rows)
 
         console.log("Class_election Executed succesfully")
+        await connection.end();
         res.json({ "labels": labels, "data": data });
     }
     catch (error) {
@@ -171,6 +163,7 @@ app.get("/api/damage_made_vs_received", async (req, res) => {
         const [rows] = await connection.query("SELECT * FROM damage_made_vs_received");
         [damage_made, damage_received] = get_average_from_damage_in_batttle(rows)
         console.log("Damage_made_vs_received Executed succesfully")
+        await connection.end();
         res.json({ "damage_made": damage_made, "damage_received": damage_received });
     }
     catch (error) {
@@ -228,6 +221,7 @@ app.get("/api/enemy_win_rate", async (req, res) => {
         const [rows] = await connection.query("SELECT * FROM enemy_win_rate");
         [labels, enemyloses, enemywins] = arrange_data_for_enemy_win_rate(rows)
         console.log("Enemy_win_rate Executed succesfully")
+        await connection.end();
         res.json({ "labels": labels, "enemyloses": enemyloses, "enemywins": enemywins });
     }
     catch (error) {
@@ -277,6 +271,7 @@ app.get("/api/attack_uses", async (req, res) => {
         // Execute a SELECT query to retrieve all users
         const [rows] = await connection.query("SELECT * FROM attack_uses");
         console.log("Attack_uses Executed succesfully")
+        await connection.end();
         return res.json(rows);
     }
     catch (error) {
@@ -308,8 +303,8 @@ app.post("/api/new_game_session", async (req, res) => {
 
         //Create a connection to the MySQL database
         const connection = await connectDB();
-        //INSERT GAME SESSION
 
+        //INSERT GAME SESSION
         const [response_game_session] = (await connection.query("INSERT INTO game_sessions (user_id) VALUES (?)", [req.body.user_id]))
         const game_session_id = response_game_session.insertId
         console.log("Game_session Executed succesfully", game_session_id)
@@ -322,6 +317,7 @@ app.post("/api/new_game_session", async (req, res) => {
         const stats = JSON.parse(req.body.stats)
         insertStats(connection, player_id, stats)
 
+        await connection.end();
         return res.json({ "game_session_id": game_session_id, "player_id": player_id });
 
     }
@@ -345,8 +341,108 @@ async function insertStats(connection, player_id, stats) {
                                                         (${player_id}, 8, ${stats.currentHP}),\
                                                         (${player_id}, 9, ${stats.maxMP}),\
                                                         (${player_id}, 10, ${stats.currentMP})`)
+    await connection.end();
     return res.json({ "game_session_id": game_session_id, "player_id": player_id });
 }
+
+////////////// UPDATE GAME SESSION //////////////////////
+app.post("/api/update_game_session", async (req, res) => {
+    try {
+        console.log("Update Game_session", req.body)
+        // Update Game Session
+        const connection = await connectDB();
+        const response_game_session = await connection.query("UPDATE game_sessions SET finished = ? WHERE id = ?", [req.body.is_finished, req.body.game_session_id])
+        console.log("Game_session Updated succesfully")
+        // Update Player
+        const response_player = await connection.query("UPDATE players SET money = ?  WHERE id = ?", [req.body.stats.coins, req.body.player_id])
+        console.log("Player Updated succesfully")
+        // Update Stats
+        update_stats(connection, req.body.player_id, req.body.stats)
+        console.log("Stats Updated succesfully")
+        // Update Attacks
+        update_attacks(connection, req.body.player_id, req.body.attacks)
+        console.log("Attacks Updated succesfully")
+        // Update Checkpoints 
+        const checkpoint = await connection.query("UPDATE checkpoints SET scene_id = ?, x_position = ?, y_position  WHERE player_id = ?", [req.body.scene, req.body.x, req.body.y, req.body.player_id])
+        console.log("Checkpoint Updated succesfully")
+        await connection.end();
+
+        return res.json({ "Updated": "Success" });
+        //Update 
+
+
+
+
+    }
+    catch (error) {
+        console.error(error);
+        res.status(500).json({ error: "Internal server error" });
+    }
+
+});
+
+async function update_stats(connection, player_id, stats) {
+    // UPDATE STATS
+    const response_stats = await connection.query(`
+      UPDATE stats_players
+      SET value = CASE stat_id
+        WHEN 1 THEN ${stats.defence}
+        WHEN 2 THEN ${stats.damage}
+        WHEN 3 THEN ${stats.agility}
+        WHEN 4 THEN ${stats.luck}
+        WHEN 5 THEN ${stats.charisma}
+        WHEN 6 THEN ${stats.accuracy}
+        WHEN 7 THEN ${stats.maxHP}
+        WHEN 8 THEN ${stats.currentHP}
+        WHEN 9 THEN ${stats.maxMP}
+        WHEN 10 THEN ${stats.currentMP}
+      END
+      WHERE player_id = ${player_id}
+    `);
+
+    return { "player_id": player_id, "updated_rows": response_stats.affectedRows };
+}
+async function update_attacks(connection, player_id) {
+
+    if (stats.firea == true) {
+        const [rows] = await connection.query("SELECT * FROM stats_players WHERE player_id = ? AND attack_id = ?", [player_id, 2])
+        if (rows.length == 0) {
+            return false
+        }
+        else {
+            const [rows] = await connection.query("INSERT INTO stats_players (player_id, attack_id) VALUES (?, ?, ?)", [player_id, 2])
+        }
+    }
+
+    if (stats.icea == true) {
+        const [rows] = await connection.query("SELECT * FROM stats_players WHERE player_id = ? AND attack_id = ?", [player_id, 4])
+        if (rows.length == 0) {
+            return false
+        }
+        else {
+            const [rows] = await connection.query("INSERT INTO stats_players (player_id, attack_id) VALUES (?, ?, ?)", [player_id, 4])
+        }
+    }
+
+    if (stats.lightninga == true) {
+        const [rows] = await connection.query("SELECT * FROM stats_players WHERE player_id = ? AND attack_id = ?", [player_id, 3])
+        if (rows.length == 0) {
+            return false
+        }
+        else {
+            const [rows] = await connection.query("INSERT INTO stats_players (player_id, attack_id) VALUES (?, ?, ?)", [player_id, 3])
+        }
+    }
+
+}
+
+
+async function load_game_session(connection, game_session_id) {
+    const [rows] = await connection.query("SELECT * FROM game_sessions WHERE id = ?", [game_session_id])
+    return rows
+}
+
+
 
 
 app.listen(port, () => {
