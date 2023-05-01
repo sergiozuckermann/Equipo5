@@ -8,3 +8,12 @@ BEGIN
   FROM events;
 END //
 DELIMITER ;
+
+DELIMITER //
+CREATE TRIGGER insert_default_checkpoint AFTER INSERT ON players
+FOR EACH ROW
+BEGIN
+  INSERT INTO checkpoints (player_id) VALUES (NEW.player_id);
+END;
+ //
+DELIMITER ;
