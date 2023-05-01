@@ -45,7 +45,7 @@ public class Eagle : MonoBehaviour
             PlayerPrefs.SetString("Shaggy", savedShaggy);
             PlayerPrefs.SetFloat("x", Convert.ToSingle(-3.9));
             PlayerPrefs.SetFloat("y", Convert.ToSingle(3.5));
-            PlayerPrefs.SetInt("place", 1);
+            PlayerPrefs.SetInt("place", 2);
             SceneManager.LoadScene("Torre");
         }
 

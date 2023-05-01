@@ -133,7 +133,7 @@ public class unit : MonoBehaviour
 	stats.firea=false;
 	stats.icea=false;
 	stats.lightninga=false;
-	PlayerPrefs.SetInt("place", 0);
+	PlayerPrefs.SetInt("place", 1);
 	PlayerPrefs.SetInt("Dead", 0);
 	PlayerPrefs.SetFloat("x", Convert.ToSingle(-10.4));
   PlayerPrefs.SetFloat("y", Convert.ToSingle(1.5));
@@ -159,7 +159,7 @@ public class unit : MonoBehaviour
 	stats.firea=false;
 	stats.icea=false;
 	stats.lightninga=false;
-	PlayerPrefs.SetInt("place", 0);
+	PlayerPrefs.SetInt("place", 1);
 	PlayerPrefs.SetInt("Dead", 0);
 	PlayerPrefs.SetFloat("x", Convert.ToSingle(-10.4));
     PlayerPrefs.SetFloat("y", Convert.ToSingle(1.5));
@@ -184,7 +184,7 @@ public class unit : MonoBehaviour
 	stats.firea=false;
 	stats.icea=false;
 	stats.lightninga=false;
-	PlayerPrefs.SetInt("place", 0);
+	PlayerPrefs.SetInt("place", 1);
 	PlayerPrefs.SetInt("Dead", 0);
 	PlayerPrefs.SetFloat("x", Convert.ToSingle(-10.4));
     PlayerPrefs.SetFloat("y", Convert.ToSingle(1.5));

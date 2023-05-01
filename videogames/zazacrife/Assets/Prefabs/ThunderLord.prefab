@@ -46,21 +46,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats:
-    damage: 50
-    maxHP: 15
-    currentHP: 15
-    maxMP: 5
-    currentMP: 5
+    damage: 3
+    maxHP: 50
+    currentHP: 50
+    maxMP: 0
+    currentMP: 0
     luck: 1
-    agility: 15
-    defence: 20
+    agility: 3
+    defence: 3
     charisma: 1
     accuracy: 5
+    dead: 0
     fire: 0
     ice: 0
-    lightning: 2
+    lightning: 0
     coins: 20
     index: 3
+    place: 0
+    number: 0
     firea: 0
     icea: 0
     lightninga: 1

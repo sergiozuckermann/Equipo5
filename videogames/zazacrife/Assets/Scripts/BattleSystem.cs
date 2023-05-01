@@ -100,6 +100,8 @@ IEnumerator SetupBattle()
 
     
 
+    
+
     GameObject playerGO = Instantiate(playerPrefab, playerBattleStation);
     
     playerUnit = playerGO.GetComponent<unit>();
@@ -117,6 +119,7 @@ IEnumerator SetupBattle()
 
     animators = playerGO.GetComponentInChildren<Animator>();
     animatore = enemyGO.GetComponentInChildren<Animator>();
+    animatore.SetInteger("State", 0);
 
     if(enemyUnit.stats.index==1){
         cam.backgroundColor = color1;
@@ -324,6 +327,41 @@ IEnumerator SetupBattle()
        
         animatore.SetInteger("State", 2);
         dialogueText.text = enemyUnit.unitName + " attacks!";
+        
+        if (enemyUnit.stats.firea==true){
+            System.Random rand1 = new System.Random();
+            int number1 = rand1.Next(0, 100);
+            if (number1 < 50){
+                yield return new WaitForSeconds(1f);
+                playerUnit.setfire();
+                Fires.Play(true);
+                dialogueText.text = "Enemy used fire! you will take 2 damage for 3 turns";
+            }
+        }
+
+        if (enemyUnit.stats.icea==true){
+            System.Random rand2 = new System.Random();
+            int number2 = rand2.Next(0, 100);
+            if (number2 < 35){
+                yield return new WaitForSeconds(1f);
+                playerUnit.setice(2);
+                Ices.Play(true);
+                dialogueText.text = "Enemy used ice! You are now frozen for 1 turn";
+            }
+            
+        }
+
+        if (enemyUnit.stats.lightninga==true){
+            System.Random rand3 = new System.Random();
+            int number3 = rand3.Next(0, 100);
+            if (number3 < 50){
+                yield return new WaitForSeconds(1f);
+                enemyUnit.setlightning(2);
+                Thundere.Play(true);
+                dialogueText.text = "Enemy used lightning! His attack will be buffed next turn";
+            }
+        }
+
         yield return new WaitForSeconds(1f);
         getAttackplayer(ref damage, ref crit);
         if(crit==1){
@@ -358,13 +396,21 @@ IEnumerator SetupBattle()
             animatore.SetInteger("State", 0);
             yield return new WaitForSeconds(1f);
 
-            if (enemyUnit.stats.lightning >0 ){
-                enemyUnit.setlightning(0);
-                enemyUnit.lightningnerf();
+            if(enemyUnit.stats.lightninga==true){
+
+            }
+            
+            if (enemyUnit.stats.lightning > 0 ){
+                enemyUnit.setlightning(enemyUnit.stats.lightning-1);
+                if(enemyUnit.stats.lightning == 0 ){
+                    enemyUnit.lightningnerf();
                 dialogueText.text = enemyUnit.unitName + " Stats returned to normal";
                 Thundere.Stop(true, ParticleSystemStopBehavior.StopEmitting);
                 yield return new WaitForSeconds(1f);
                 }
+            }
+
+            
             
             if(isDead){
                 state = BattleState.LOST;
@@ -424,6 +470,7 @@ IEnumerator SetupBattle()
 
  void PlayerTurn()
  {
+    if(playerUnit.stats.ice==0){
     attackButton.interactable = true;
     elementButton.interactable = true;
     healButton.interactable = true;
@@ -473,6 +520,10 @@ IEnumerator SetupBattle()
       if (playerUnit.stats.ice > 0){
          playerUnit.setice(0);
          state = BattleState.ENEMYTURN;
+        attackButton.interactable = false;
+        elementButton.interactable = false;
+        healButton.interactable = false;
+        fleeButton.interactable = false;
         StartCoroutine(EnemyTurn());
         }
      
@@ -481,6 +532,13 @@ IEnumerator SetupBattle()
      playerHUD.SetHP(playerUnit.stats.currentHP);
 
      dialogueText.text = "Choose an action:";
+    }
+
+    else if (playerUnit.stats.ice>0){
+        playerUnit.setice(0);
+        state = BattleState.ENEMYTURN;
+        StartCoroutine(EnemyTurn());
+    }
  }
 
 
@@ -584,7 +642,7 @@ IEnumerator SetupBattle()
         System.Random rand = new System.Random();
         int number = rand.Next(0, 100);
         
-        if(number < 50)
+        if(number < 20)
         {   
             enemyUnit.setice(2);
             dialogueText.text = "Enemy is now frozen! Will lose next turn";
@@ -737,7 +795,7 @@ public void OnAttackButton()
      if (state != BattleState.PLAYERTURN)
          return;
 
-    if (playerUnit.stats.currentMP>=5){
+    if (playerUnit.stats.currentMP>=10){
         attackButton.interactable = false;
         elementButton.interactable = false;
         healButton.interactable = false;
@@ -791,14 +849,14 @@ public void OnAttackButton()
 
         string savedShaggy=JsonUtility.ToJson(playerUnit.stats);
         PlayerPrefs.SetString("Shaggy", savedShaggy);
-        if(place==1){    
+        if(place==2){    
         PlayerPrefs.SetFloat("x", Convert.ToSingle(-3.9));
         PlayerPrefs.SetFloat("y", Convert.ToSingle(3.5));
         SceneManager.LoadScene("Torre");
 
         }
 
-        else if(place==0){
+        else if(place==1){
         PlayerPrefs.SetFloat("x", Convert.ToSingle(-10.4));
         PlayerPrefs.SetFloat("y", Convert.ToSingle(1.5));
         SceneManager.LoadScene("TileMap");
