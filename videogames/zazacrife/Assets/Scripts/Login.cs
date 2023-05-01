@@ -43,10 +43,9 @@ using UnityEngine.SceneManagement;
 
              if (www.responseCode == 200)
              {
-                 PlayerPrefs.SetString("User_id", www.downloadHandler.text);
-                 string user_id = PlayerPrefs.GetString("User_id");
+                 PlayerPrefs.SetInt("User_id",int.Parse(www.downloadHandler.text));
+                 int user_id = PlayerPrefs.GetInt("User_id");
                  GetComponent<Login>().PlayGame();
-
              }
              else
              {
