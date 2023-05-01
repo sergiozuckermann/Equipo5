@@ -1,8 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
+
+
+using System;
 
 
 [System.Serializable]
@@ -114,23 +118,29 @@ public class unit : MonoBehaviour
 	}
 	
 	public void Lightclass(){
-    stats.maxHP = 30;
-    stats.currentHP = 25;
-    stats.maxMP = 60;
-    stats.currentMP = 60;
-    stats.damage = 5;
-    stats.luck = 5;
-    stats.agility = 5;
-    stats.defence = 3;
-    stats.charisma = 2;
-    stats.accuracy = 6;
-    stats.coins = 10;
-    stats.firea = false;
-    stats.icea = false;
-    stats.lightninga = false;
-    string savedShaggy = JsonUtility.ToJson(stats);
-    PlayerPrefs.SetString("Shaggy", savedShaggy);
-    PlayerPrefs.SetInt("Class_id", 1);
+
+	stats.maxHP= 30;
+  stats.currentHP= 25;
+	stats.maxMP= 60;
+  stats.currentMP= 60;
+	stats.damage=5;
+  stats.luck= 5;
+  stats.agility= 5;
+  stats.defence= 3;
+	stats.charisma= 2;
+	stats.accuracy= 6;
+	stats.coins=10;
+	stats.firea=false;
+	stats.icea=false;
+	stats.lightninga=false;
+	PlayerPrefs.SetInt("place", 0);
+	PlayerPrefs.SetInt("Dead", 0);
+	PlayerPrefs.SetFloat("x", Convert.ToSingle(-10.4));
+  PlayerPrefs.SetFloat("y", Convert.ToSingle(1.5));
+  string savedShaggy=JsonUtility.ToJson(stats);
+
+  PlayerPrefs.SetString("Shaggy", savedShaggy);
+  PlayerPrefs.SetInt("Class_id", 1);
 	SaveData();
 }
 
@@ -149,6 +159,10 @@ public class unit : MonoBehaviour
 	stats.firea=false;
 	stats.icea=false;
 	stats.lightninga=false;
+	PlayerPrefs.SetInt("place", 0);
+	PlayerPrefs.SetInt("Dead", 0);
+	PlayerPrefs.SetFloat("x", Convert.ToSingle(-10.4));
+    PlayerPrefs.SetFloat("y", Convert.ToSingle(1.5));
 	string savedShaggy=JsonUtility.ToJson(stats);
     PlayerPrefs.SetString("Shaggy", savedShaggy);
 	PlayerPrefs.SetInt("Class_id", 2);
@@ -170,6 +184,10 @@ public class unit : MonoBehaviour
 	stats.firea=false;
 	stats.icea=false;
 	stats.lightninga=false;
+	PlayerPrefs.SetInt("place", 0);
+	PlayerPrefs.SetInt("Dead", 0);
+	PlayerPrefs.SetFloat("x", Convert.ToSingle(-10.4));
+    PlayerPrefs.SetFloat("y", Convert.ToSingle(1.5));
 	string savedShaggy=JsonUtility.ToJson(stats);
     PlayerPrefs.SetString("Shaggy", savedShaggy);
 	PlayerPrefs.SetInt("Class_id", 3);
@@ -177,37 +195,54 @@ public class unit : MonoBehaviour
 	}
 
 	public void onDefencebutton(){
-		stats.defence=stats.defence+1;
+		stats.defence=stats.defence+3;
+		stats.coins=stats.coins -10;
 	}
 
 	public void onAttackbutton(){
-		stats.damage=stats.damage+1;
+		stats.damage=stats.damage+3;
+		stats.coins=stats.coins -10;
 	}
 
 	public void onLuckbutton(){
-		stats.luck=stats.luck+1;
+		stats.luck=stats.luck+3;
+		stats.coins=stats.coins -10;
 	}
 
 	public void onAgilitybutton(){
-		stats.agility=stats.agility+1;
+		stats.agility=stats.agility+3;
+		stats.coins=stats.coins -10;
 	}
 
 	public void onCharismabutton(){
-		stats.charisma=stats.charisma+1;
+		stats.charisma=stats.charisma+3;
+		stats.coins=stats.coins -10;
 	}
 
 	public void onAccuracybutton(){
-		stats.accuracy=stats.accuracy+1;
+		stats.accuracy=stats.accuracy+3;
+		stats.coins=stats.coins -10;
 	}
 
 	public void onTotalHPbutton(){
 		stats.maxHP=stats.maxHP+5;
+		stats.coins=stats.coins -15;
 	}
 
 	public void onTotalMPbutton(){
 		stats.maxMP=stats.maxMP+5;
+		stats.coins=stats.coins -15;
 	}
 
+	public void onMAXHPbutton(){
+		stats.currentHP=stats.maxHP;
+		stats.coins=stats.coins -10;
+	}
+
+	public void onMAXMPbutton(){
+		stats.currentMP=stats.maxMP;
+		stats.coins=stats.coins -10;
+	}
 
  IEnumerator SendRequest(NewGame newgame, string url, string route)
     {

@@ -39,6 +39,7 @@ INSERT INTO consumables (name, description, stat_id, value) VALUES
 ('TOTAL MP ITEM', 'increase 50% of characters total mana points', 9, 5);
 
 
+
 #Tablas Scenes
 INSERT INTO scenes (name) VALUES 
 ('The Forest'),

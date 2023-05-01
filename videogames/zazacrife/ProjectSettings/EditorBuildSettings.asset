@@ -20,4 +20,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Torre.unity
     guid: cdb0719f4c6f74e629543f6f7cdfd930
+  - enabled: 1
+    path: Assets/Scenes/FinalBoss.unity
+    guid: 7a38213a0a779417aa484ac2b8e77fd8
+  - enabled: 1
+    path: Assets/Scenes/Final.unity
+    guid: 9dcf4675dbf10ec40b21613e2fc93f84
   m_configObjects: {}
