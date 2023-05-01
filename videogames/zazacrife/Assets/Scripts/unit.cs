@@ -1,7 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
+using UnityEngine.Networking;
+using UnityEngine.SceneManagement;
+
+
 using System;
+
 
 [System.Serializable]
 public class Stats{
@@ -32,15 +38,13 @@ public class Stats{
 
 }
 
+
 public class unit : MonoBehaviour
 {
 
-	//public static unit Instance;
-    
-   
+	
 
     public Stats stats;
-
 	public string unitName;
 	
 	
@@ -114,14 +118,15 @@ public class unit : MonoBehaviour
 	}
 	
 	public void Lightclass(){
+
 	stats.maxHP= 30;
-    stats.currentHP= 25;
+  stats.currentHP= 25;
 	stats.maxMP= 60;
-    stats.currentMP= 60;
+  stats.currentMP= 60;
 	stats.damage=5;
-    stats.luck= 5;
-    stats.agility= 5;
-    stats.defence= 3;
+  stats.luck= 5;
+  stats.agility= 5;
+  stats.defence= 3;
 	stats.charisma= 2;
 	stats.accuracy= 6;
 	stats.coins=10;
@@ -131,11 +136,13 @@ public class unit : MonoBehaviour
 	PlayerPrefs.SetInt("place", 0);
 	PlayerPrefs.SetInt("Dead", 0);
 	PlayerPrefs.SetFloat("x", Convert.ToSingle(-10.4));
-    PlayerPrefs.SetFloat("y", Convert.ToSingle(1.5));
-    string savedShaggy=JsonUtility.ToJson(stats);
-    PlayerPrefs.SetString("Shaggy", savedShaggy);
-    
-	}
+  PlayerPrefs.SetFloat("y", Convert.ToSingle(1.5));
+  string savedShaggy=JsonUtility.ToJson(stats);
+
+  PlayerPrefs.SetString("Shaggy", savedShaggy);
+  PlayerPrefs.SetInt("Class_id", 1);
+	SaveData();
+}
 
 	public void Middleclass(){
 	stats.maxHP= 40;
@@ -158,6 +165,8 @@ public class unit : MonoBehaviour
     PlayerPrefs.SetFloat("y", Convert.ToSingle(1.5));
 	string savedShaggy=JsonUtility.ToJson(stats);
     PlayerPrefs.SetString("Shaggy", savedShaggy);
+	PlayerPrefs.SetInt("Class_id", 2);
+	SaveData();
 	}
 
 	public void Heavyclass(){
@@ -181,6 +190,8 @@ public class unit : MonoBehaviour
     PlayerPrefs.SetFloat("y", Convert.ToSingle(1.5));
 	string savedShaggy=JsonUtility.ToJson(stats);
     PlayerPrefs.SetString("Shaggy", savedShaggy);
+	PlayerPrefs.SetInt("Class_id", 3);
+	SaveData();
 	}
 
 	public void onDefencebutton(){
@@ -233,4 +244,43 @@ public class unit : MonoBehaviour
 		stats.coins=stats.coins -10;
 	}
 
+ IEnumerator SendRequest(NewGame newgame, string url, string route)
+    {
+        string json = JsonUtility.ToJson(newgame);
+          //Here you can add your code to send the username and password to a server
+        using (UnityWebRequest www = UnityWebRequest.Put("http://localhost:3010/api/new_game_session", json))
+        {
+            
+            Debug.Log("Sending request");
+            www.method = "POST";
+            www.SetRequestHeader("Content-Type", "application/json");
+            yield return www.SendWebRequest();
+            Debug.Log("Request sent");
+            Debug.Log(www.downloadHandler.text);
+            Debug.Log(www.error);
+            Debug.Log(www.responseCode);
+            Debug.Log("result");
+            Debug.Log(www.result);
+
+            if (www.responseCode == 200)
+            {
+                Debug.Log("Game saved");
+
+            }
+             else
+            {
+                Debug.Log("failed!");
+            }
+        }
+    }
+    public void SaveData()
+    {
+        Debug.Log("Saving game");
+        NewGame newgame = new NewGame();
+        newgame.stats = PlayerPrefs.GetString("Shaggy");
+        newgame.user_id = PlayerPrefs.GetInt("User_id");
+        newgame.class_id = PlayerPrefs.GetInt("Class_id");
+        StartCoroutine(SendRequest(newgame, "http://localhost:3010/api/new_game_session", "new_game_session"));
+    }
 }
+
