@@ -39,7 +39,6 @@ INSERT INTO consumables (name, description, stat_id, value) VALUES
 ('TOTAL MP ITEM', 'increase 50% of characters total mana points', 9, 5);
 
 
-
 #Tablas Scenes
 INSERT INTO scenes (name) VALUES 
 ('The Forest'),
@@ -48,13 +47,13 @@ INSERT INTO scenes (name) VALUES
 
 
 #Tablas Ataques
-INSERT INTO attacks (name, description, value) VALUES  
-('Melee Attack', 'A swift and precise attack', 4),
-('Fire', 'A fiery spell that deals continious damage', 2),
-('Lightning', 'A powerful bolt of lightning that doubles all stats', 8),
-('Ice', 'A icy spell that freeces the enemys attack turn', 3),
-('Heal', 'A restorative spell to heal damage', 5),
-('Recharg', 'A restorative spell to recharge mana points', 5 );
+INSERT INTO attacks (name, description) VALUES  
+('Melee Attack', 'A swift and precise attack'),
+('Fire', 'A fiery spell that deals continious damage'),
+('Lightning', 'A powerful bolt of lightning that doubles all stats'),
+('Ice', 'A icy spell that freeces the enemys attack turn'),
+('Heal', 'A restorative spell to heal damage'),
+('Recharg', 'A restorative spell to recharge mana points');
 
 
 
@@ -72,49 +71,31 @@ VALUES
 (5, 9000, 1);
 
 
-INSERT INTO events (name) VALUES 
-('Nights at shaggies'),
-('Stroyteller NPC'), 
-('Final Boss');
-
-#Tabla game events
-INSERT INTO game_events (event_id, game_session_id, is_active) VALUES (1, 1, 0),
-(2, 1, 1),
-(3, 2, 0),
-(1, 3, 1),
-(2, 3, 0),
-(3, 4, 1),
-(1, 5, 0),
-(2, 5, 1),
-(3, 5,1);
-
-
-
 #Tabla players
-INSERT INTO players (game_session_id, name, money, checkpoint_id, class_id)
+INSERT INTO players (game_session_id, money,  class_id)
 VALUES 
-  (1, 'Alice', 1000, 1),
-  (2, 'Bob', 500, 1),
-  (3, 'Charlie', 200, 2),
-  (4, 'Dave', 800, 2),
-  (5, 'Eve', 300, 3),
-  (6, 'Frank', 600, 3),
-  (7, 'Grace', 400, 1),
-  (8, 'Henry', 900, 2),
-  (9, 'Isaac', 700, 3);
+  (1,  1000, 1),
+  (2,  500, 1),
+  (3,  200, 2),
+  (4,  800, 2),
+  (5,  300, 3),
+  (6,  600, 3),
+  (7,  400, 1),
+  (8,  900, 2),
+  (9,  700, 3);
   
   #Tabla checkpoint 
-INSERT INTO checkpoints (scene_id, x_postion, y_position) 
+INSERT INTO checkpoints (player_id, scene_id, x_postion, y_position) 
 VALUES 
-  (1, 100, 200),
-  (2, 50, 300),
-  (3, 200, 150),
-  (1, 300, 50),
-  (2, 150, 250),
-  (3, 75, 175),
-  (1, 200, 300),
-  (2, 100, 100),
-  (3, 250, 200);
+  (1, 1, 100, 200),
+  (2, 2, 50, 300),
+  (3, 3, 200, 150),
+  (4, 1, 300, 50),
+  (5, 2, 150, 250),
+  (6, 3, 75, 175),
+  (7, 1, 200, 300),
+  (8, 2, 100, 100),
+  (9, 3, 250, 200);
 
 
 
