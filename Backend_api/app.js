@@ -1,6 +1,7 @@
 const express = require("express");
 const mysql = require("mysql2/promise");
 const cors = require('cors');
+const { stat } = require("fs");
 
 
 
@@ -300,8 +301,52 @@ app.get("/api/criticals_vs_missed", async (req, res) => {
     }
 });
 
+////////////// API POST GAME_ //////////////////////
+app.post("/api/new_game_session", async (req, res) => {
+    try {
+        console.log(req.body)
 
+        //Create a connection to the MySQL database
+        const connection = await connectDB();
+        //INSERT GAME SESSION
 
+        const [response_game_session] = (await connection.query("INSERT INTO game_sessions (user_id) VALUES (?)", [req.body.user_id]))
+        const game_session_id = response_game_session.insertId
+        console.log("Game_session Executed succesfully", game_session_id)
+        // INSERT PLAYER 
+        const [response_player] = await connection.query("INSERT INTO players (game_session_id, class_id) VALUES (?,?)", [game_session_id, req.body.class_id])
+        const player_id = response_player.insertId
+        console.log("Player Executed succesfully", player_id)
+
+        // Parse Stats from body
+        const stats = JSON.parse(req.body.stats)
+        insertStats(connection, player_id, stats)
+
+        return res.json({ "game_session_id": game_session_id, "player_id": player_id });
+
+    }
+    catch (error) {
+        console.error(error);
+        res.status(500).json({ error: "Internal server error" });
+    }
+});
+
+async function insertStats(connection, player_id, stats) {
+    // INSERT STATS
+
+    const [response_stats] = await connection.query(`INSERT INTO stats_players (player_id, stat_id, value)\
+                                                VALUES (${player_id}, 1, ${stats.defence}),\
+                                                        (${player_id}, 2, ${stats.damage}),\
+                                                        (${player_id}, 3, ${stats.agility}),\
+                                                        (${player_id}, 4, ${stats.luck}),\
+                                                        (${player_id}, 5, ${stats.charisma}),\
+                                                        (${player_id}, 6, ${stats.accuracy}),\
+                                                        (${player_id}, 7, ${stats.maxHP}),\
+                                                        (${player_id}, 8, ${stats.currentHP}),\
+                                                        (${player_id}, 9, ${stats.maxMP}),\
+                                                        (${player_id}, 10, ${stats.currentMP})`)
+    return res.json({ "game_session_id": game_session_id, "player_id": player_id });
+}
 
 
 app.listen(port, () => {
