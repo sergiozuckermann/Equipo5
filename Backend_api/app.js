@@ -435,14 +435,72 @@ async function update_attacks(connection, player_id, stats) {
     }
 
 }
+app.get("/api/get_game_session", async (req, res) => {
+
+    try {
+        const connection = await connectDB();
+        console.log("Get Game_session", req.query)
+        finished = await get_if_finished(connection, req.query.game_session_id)
+        const [stats] = await connection.query("SELECT value FROM stats_players WHERE player_id = ? order by stat_id;", [req.query.player_id])
+        const [coins] = await connection.query("SELECT money FROM players WHERE player_id = ?", [req.query.player_id])
+        const [attacks] = await connection.query("SELECT attack_id FROM players_attacks WHERE player_id = ?", [req.query.player_id])
+        const [checkpoint] = await connection.query("SELECT scene_id as place, x_position, y_position FROM checkpoints WHERE player_id = ?", [req.query.player_id])
+        await connection.end();
+        const shaggy = make_shaggy_json(coins, stats, attacks, checkpoint[0].place)
+        final_json = { "shaggy": JSON.stringify(shaggy), "finished": finished, "x": checkpoint[0].x_position, "y": checkpoint[0].y_position }
+        return res.json(final_json);
+    }
+    catch (error) {
+        console.error(error);
+        res.status(500).json({ error: "Internal server error" });
+    }
+});
 
 
-async function load_game_session(connection, game_session_id) {
-    const [rows] = await connection.query("SELECT * FROM game_sessions WHERE id = ?", [game_session_id])
-    return rows
+async function get_if_finished(connection, game_session_id) {
+    const [rows] = await connection.query("SELECT finished FROM game_sessions WHERE game_session_id = ?", [game_session_id])
+    const finished = rows[0].finished
+    const intf = finished.readIntBE(0, finished.length);
+    return intf
 }
 
 
+function make_shaggy_json(coins, stats, attacks, place) {
+    let shaggy = { "dead": 0, "fire": 0, "ice": 0, "lightning": 0, "index": 0, "number": 0 }
+
+    shaggy["defence"] = stats[0].value
+    shaggy["damage"] = stats[1].value
+    shaggy["agility"] = stats[2].value
+    shaggy["luck"] = stats[3].value
+    shaggy["charisma"] = stats[4].value
+    shaggy["accuracy"] = stats[5].value
+    shaggy["maxHP"] = stats[6].value
+    shaggy["currentHP"] = stats[7].value
+    shaggy["maxMP"] = stats[8].value
+    shaggy["currentMP"] = stats[9].value
+
+
+    shaggy["coins"] = coins[0].money
+
+    shaggy["place"] = place - 1
+
+    shaggy["firea"] = false
+    shaggy["lightninga"] = false
+    shaggy["icea"] = false
+
+    for (let i = 0; i < attacks.length; i++) {
+        if (attacks[i].attack_id == 2) {
+            shaggy["firea"] = true
+        }
+        if (attacks[i].attack_id == 3) {
+            shaggy["lightninga"] = true
+        }
+        if (attacks[i].attack_id == 4) {
+            shaggy["icea"] = true
+        }
+    }
+    return shaggy
+}
 
 
 app.listen(port, () => {
