@@ -502,6 +502,20 @@ function make_shaggy_json(coins, stats, attacks, place) {
     return shaggy
 }
 
+app.get("/api/get_game_session_id", async (req, res) => {
+    console.log("Get Game_session_id", req.query)
+    try {
+        const connection = await connectDB();
+        const [rows] = await connection.query("SELECT g.game_session_id, p.player_id FROM game_sessions as g INNER JOIN \
+        players as p using(game_session_id) WHERE user_id = ?", [req.query.user_id])
+        return res.json(rows)
+
+    }
+    catch (error) {
+        console.error(error);
+        res.status(500).json({ error: "Internal server error" });
+    }
+});
 
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);
