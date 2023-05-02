@@ -62,4 +62,36 @@ public class SaveGame : MonoBehaviour
         Debug.Log("Sending Data");
         StartCoroutine(SendRequest(game));
     }
+    IEnumerator LoadGameData() {
+        // Send the GET request to the PHP script to retrieve the saved game data
+        using (UnityWebRequest www = UnityWebRequest.Get(loadDataUrl))
+        {
+            yield return www.SendWebRequest();
+
+            if (www.result == UnityWebRequest.Result.Success)
+            {
+                Debug.Log("Game data loaded successfully!");
+                string jsonResponse = www.downloadHandler.text;
+                // Parse the retrieved JSON string into game data variables
+                JSONObject jsonObject = new JSONObject(jsonResponse);
+                playerName = jsonObject.GetField("playerName").str;
+                float posX = float.Parse(jsonObject.GetField("playerPosX").str);
+                float posY = float.Parse(jsonObject.GetField("playerPosY").str);
+                playerPosition = new Vector2(posX, posY);
+                playerCoins = (int)jsonObject.GetField("playerCoins").n;
+                playerLevel = (int)jsonObject.GetField("playerLevel").n;
+
+                // Update the player object with the loaded game data
+                gameObject.name = playerName;
+                gameObject.transform.position = new Vector3(playerPosition.x, playerPosition.y, 0);
+                // Update other player stats as necessary
+                // ...
+            }
+            else
+            {
+                Debug.Log("Error loading game data: " + www.error);
+            }
+        }
+    }
 }
+
