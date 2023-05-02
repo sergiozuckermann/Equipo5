@@ -1721,9 +1721,24 @@ section {
     margin-right: 0;
   }
   .imgT img {
-    width: 150px;
+    
     height: auto;
     margin-bottom: 10px;
   }
+
+  .copy{
+    background-color: #5846F9;
+    text-decoration: none;
+    color: #fff;
+    padding: 10px;
+  }
+
+  .linkgit{
+    color: white;
+
+
+  }
+  
+  
 
 
