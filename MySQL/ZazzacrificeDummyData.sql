@@ -10,6 +10,8 @@ INSERT INTO users (username, password) VALUE ('Tena', 'calistena');
 
 
 
+
+
 #Tablas estadisticas 
 INSERT INTO stats (name) values ('DEF'); #id 1 
 INSERT INTO stats (name) values ('ATK') ; #id 2 
@@ -42,8 +44,8 @@ INSERT INTO consumables (name, description, stat_id, value) VALUES
 #Tablas Scenes
 INSERT INTO scenes (name) VALUES 
 ('The Forest'),
-('The Castle'),
-('The Village');
+('The Tower');
+
 
 
 #Tablas Ataques
@@ -85,7 +87,7 @@ VALUES
   (9,  700, 3);
   
   #Tabla checkpoint 
-INSERT INTO checkpoints (player_id, scene_id, x_postion, y_position) 
+INSERT INTO checkpoints (player_id, scene_id, x_position, y_position) 
 VALUES 
   (1, 1, 100, 200),
   (2, 2, 50, 300),

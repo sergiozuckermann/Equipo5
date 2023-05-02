@@ -14,8 +14,8 @@ BEGIN
   INSERT INTO players_attacks (player_id, attack_id) 
 	VALUES 
 		(NEW.player_id, 1),
-        (NEW.player_id, 5),
-        (NEW.player_id, 6)
+    (NEW.player_id, 5),
+    (NEW.player_id, 6)
 						;
 END;
  //

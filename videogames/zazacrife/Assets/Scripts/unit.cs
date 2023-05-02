@@ -270,9 +270,7 @@ public class unit : MonoBehaviour
 				GameSessionData data = JsonUtility.FromJson<GameSessionData>(www.downloadHandler.text);
 				PlayerPrefs.SetInt("Game_session_id", data.game_session_id);
 				PlayerPrefs.SetInt("Player_id", data.player_id);
-
-
-
+				PlayerPrefs.SetInt("is_finished", 0);
             }
              else
             {
