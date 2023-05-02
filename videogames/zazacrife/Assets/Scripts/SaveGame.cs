@@ -62,6 +62,7 @@ public class SaveGame : MonoBehaviour
         Debug.Log("Sending Data");
         StartCoroutine(SendRequest(game));
     }
+    /*
     IEnumerator LoadGameData() {
         // Send the GET request to the PHP script to retrieve the saved game data
         using (UnityWebRequest www = UnityWebRequest.Get(loadDataUrl))
@@ -92,6 +93,6 @@ public class SaveGame : MonoBehaviour
                 Debug.Log("Error loading game data: " + www.error);
             }
         }
-    }
+    }*/
 }
 
