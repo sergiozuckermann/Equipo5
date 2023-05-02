@@ -1708,3 +1708,37 @@ section {
 }
 
 
+
+  .imgT {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .imgT div {
+    margin-right: 20px;
+    margin-bottom: 20px;
+  }
+  .imgT div:last-child {
+    margin-right: 0;
+  }
+  .imgT img {
+    
+    height: auto;
+    margin-bottom: 10px;
+  }
+
+  .copy{
+    background-color: #5846F9;
+    text-decoration: none;
+    color: #fff;
+    padding: 10px;
+  }
+
+  .linkgit{
+    color: white;
+
+
+  }
+  
+  
+
+
