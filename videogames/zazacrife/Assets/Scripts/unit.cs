@@ -148,15 +148,18 @@ public class unit : MonoBehaviour
 
   PlayerPrefs.SetString("Shaggy", savedShaggy);
   PlayerPrefs.SetInt("Class_id", 1);
-  	PlayerPrefs.SetInt("Damagemade", 0);
-	PlayerPrefs.SetInt("Damagereceived", 0);
-	PlayerPrefs.SetInt("Coinsmade", 0);
-	PlayerPrefs.SetInt("Misses", 0);
-	PlayerPrefs.SetInt("Crits", 0);
-	PlayerPrefs.SetInt("Ice", 0);
-	PlayerPrefs.SetInt("Fire", 0);
-	PlayerPrefs.SetInt("Lightning", 0);
-	PlayerPrefs.SetInt("Melee", 0);
+  	PlayerPrefs.SetString("Damagemade", "|");
+	PlayerPrefs.SetString("Damagereceived", "|");
+	PlayerPrefs.SetString("Coinsmade", "|");
+	PlayerPrefs.SetString("Misses", "|");
+	PlayerPrefs.SetString("Crits", "|");
+	PlayerPrefs.SetString("Ice", "|");
+	PlayerPrefs.SetString("Fire", "|");
+	PlayerPrefs.SetString("Lightning", "|");
+	PlayerPrefs.SetString("Melee", "|");
+	PlayerPrefs.SetString("Heal", "|");
+	PlayerPrefs.SetString("Recharge", "|");
+	PlayerPrefs.SetString("Result", "|");
 	SaveData();
 }
 

@@ -15,15 +15,30 @@ public class BattleSystem : MonoBehaviour
 public float time;
 private float etime;
 public float update;
-public int damagemade;
-public int damagereceived;
-public int coinsreceived;
-public int misses;
-public int crits;
-public int melee;
-public int iceuses;
-public int fireuses;
-public int thunderuses;
+public int damagemade=0;
+public int damagereceived=0;
+public int coinsreceived=0;
+public int misses=0;
+public int crits=0;
+public int melee=0;
+public int iceuses=0;
+public int fireuses=0;
+public int thunderuses=0;
+public int healuses=0;
+public int rechargeuses=0;
+public int result=0;
+public string damagemades;
+public string damagereceiveds;
+public string coinsreceiveds;
+public string missess;
+public string critss;
+public string melees;
+public string iceusess;
+public string fireusess;
+public string thunderusess;
+public string healusess;
+public string rechargeusess;
+public string results;
 
 public GameObject playerPrefab;
 public GameObject [] enemyPrefabs;
@@ -101,15 +116,7 @@ void Start()
 
 IEnumerator SetupBattle()
 {
-    damagemade=PlayerPrefs.GetInt("Damagemade");
-    damagereceived=PlayerPrefs.GetInt("Damagereceived");
-    coinsreceived=PlayerPrefs.GetInt("Coinsmade");
-    misses=PlayerPrefs.GetInt("Misses");
-    crits=PlayerPrefs.GetInt("Crits");
-    melee=PlayerPrefs.GetInt("Melee");
-    iceuses=PlayerPrefs.GetInt("Ice");
-    fireuses=PlayerPrefs.GetInt("Fire");
-    thunderuses=PlayerPrefs.GetInt("Lightning");
+    
     attackButton.interactable = false;
     elementButton.interactable = false;
     healButton.interactable = false;
@@ -223,8 +230,8 @@ IEnumerator SetupBattle()
             animatore.SetInteger("State", 4);
             yield return new WaitForSeconds(1f);
             playerUnit.stats.coins=enemyUnit.stats.coins+playerUnit.stats.charisma;
-            coinsreceived=enemyUnit.stats.coins+playerUnit.stats.charisma;
-            dialogueText.text = "Now you have: " + playerUnit.stats.coins + "coins";
+            coinsreceived=enemyUnit.stats.coins+playerUnit.stats.charisma+coinsreceived;    
+            dialogueText.text = "Now you have: " + playerUnit.stats.coins + " coins";
             yield return new WaitForSeconds(1f);
             enemyUnit.stats.dead = 1;
             PlayerPrefs.SetInt("Dead", enemyUnit.stats.dead);
@@ -461,20 +468,37 @@ IEnumerator SetupBattle()
  {
      if(state == BattleState.WON)
      {
-        
+        result=1;
         attackButton.interactable = false;
         elementButton.interactable = false;
         healButton.interactable = false;
         fleeButton.interactable = false;
-        PlayerPrefs.SetInt("coinsmade", coinsreceived);
-        PlayerPrefs.SetInt("Damagemade", damagemade);
-        PlayerPrefs.SetInt("Damagereceived", damagereceived);
-        PlayerPrefs.SetInt("Misses", misses);
-        PlayerPrefs.SetInt("Crits", crits);
-        PlayerPrefs.SetInt("Melee", melee);
-        PlayerPrefs.SetInt("Ice", iceuses);
-        PlayerPrefs.SetInt("Fire", fireuses);
-        PlayerPrefs.SetInt("Lightning", thunderuses);
+
+        damagemades=PlayerPrefs.GetString("Damagemade");
+        damagereceiveds=PlayerPrefs.GetString("Damagereceived");
+        coinsreceiveds=PlayerPrefs.GetString("Coinsmade");
+        missess=PlayerPrefs.GetString("Misses");
+        critss=PlayerPrefs.GetString("Crits");
+        melees=PlayerPrefs.GetString("Melee");
+        iceusess=PlayerPrefs.GetString("Ice");
+        fireusess=PlayerPrefs.GetString("Fire");
+        thunderusess=PlayerPrefs.GetString("Lightning");
+        healusess=PlayerPrefs.GetString("Heal");
+        rechargeusess=PlayerPrefs.GetString("Recharge");
+        results=PlayerPrefs.GetString("Result");
+
+        PlayerPrefs.SetString("Coinsmade", coinsreceiveds + "|" + coinsreceived.ToString());
+        PlayerPrefs.SetString("Damagemade", damagemades  + "|" + damagemade.ToString());
+        PlayerPrefs.SetString("Damagereceived", damagereceiveds + "|" + damagereceived.ToString());
+        PlayerPrefs.SetString("Misses", missess + "|" + misses.ToString());
+        PlayerPrefs.SetString("Crits", critss + "|" + crits.ToString());
+        PlayerPrefs.SetString("Melee", melees + "|" + melee.ToString());
+        PlayerPrefs.SetString("Ice",iceusess + "|" + iceuses.ToString());
+        PlayerPrefs.SetString("Fire", fireusess + "|" + fireuses.ToString());
+        PlayerPrefs.SetString("Lightning",thunderusess + "|" + thunderuses.ToString());
+        PlayerPrefs.SetString("Heal", healusess + "|" + healuses.ToString());
+        PlayerPrefs.SetString("Recharge", rechargeusess + "|" + rechargeuses.ToString());
+        PlayerPrefs.SetString("Result", results + "|" + result.ToString());
         PlayerPrefs.Save();
 
 
@@ -583,6 +607,7 @@ IEnumerator SetupBattle()
 
  IEnumerator PlayerRecharge()
  {
+        rechargeuses++;
         playerUnit.Recharge(5);
 
         state = BattleState.ENEMYTURN;
@@ -603,6 +628,7 @@ IEnumerator SetupBattle()
 
    IEnumerator PlayerHeal()
  {
+        healuses++;
         playerUnit.Heal(10);
 
         state = BattleState.ENEMYTURN;
@@ -874,15 +900,33 @@ public void OnAttackButton()
     }
     
     public void Escape(){
-        PlayerPrefs.SetInt("coinsmade", coinsreceived);
-        PlayerPrefs.SetInt("Damagemade", damagemade);
-        PlayerPrefs.SetInt("Damagereceived", damagereceived);
-        PlayerPrefs.SetInt("Misses", misses);
-        PlayerPrefs.SetInt("Crits", crits);
-        PlayerPrefs.SetInt("Melee", melee);
-        PlayerPrefs.SetInt("Ice", iceuses);
-        PlayerPrefs.SetInt("Fire", fireuses);
-        PlayerPrefs.SetInt("Lightning", thunderuses);
+        damagemades=PlayerPrefs.GetString("Damagemade");
+        damagereceiveds=PlayerPrefs.GetString("Damagereceived");
+        coinsreceiveds=PlayerPrefs.GetString("Coinsmade");
+        missess=PlayerPrefs.GetString("Misses");
+        critss=PlayerPrefs.GetString("Crits");
+        melees=PlayerPrefs.GetString("Melee");
+        iceusess=PlayerPrefs.GetString("Ice");
+        fireusess=PlayerPrefs.GetString("Fire");
+        thunderusess=PlayerPrefs.GetString("Lightning");
+        healusess=PlayerPrefs.GetString("Heal");
+        rechargeusess=PlayerPrefs.GetString("Recharge");
+        results=PlayerPrefs.GetString("Result");
+
+
+
+        PlayerPrefs.SetString("Coinsmade", coinsreceiveds + "|" + coinsreceived.ToString());
+        PlayerPrefs.SetString("Damagemade", damagemades  + "|" + damagemade.ToString());
+        PlayerPrefs.SetString("Damagereceived", damagereceiveds + "|" + damagereceived.ToString());
+        PlayerPrefs.SetString("Misses", missess + "|" + misses.ToString());
+        PlayerPrefs.SetString("Crits", critss + "|" + crits.ToString());
+        PlayerPrefs.SetString("Melee", melees + "|" + melee.ToString());
+        PlayerPrefs.SetString("Ice",iceusess + "|" + iceuses.ToString());
+        PlayerPrefs.SetString("Fire", fireusess + "|" + fireuses.ToString());
+        PlayerPrefs.SetString("Lightning",thunderusess + "|" + thunderuses.ToString());
+        PlayerPrefs.SetString("Heal", healusess + "|" + healuses.ToString());
+        PlayerPrefs.SetString("Recharge", rechargeusess + "|" + rechargeuses.ToString());
+        PlayerPrefs.SetString("Result", results + "|" + result.ToString());
         PlayerPrefs.Save();
         System.Random rand = new System.Random();
         int lostcoins= rand.Next(0,5);
