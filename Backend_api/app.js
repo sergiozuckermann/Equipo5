@@ -508,7 +508,9 @@ app.get("/api/get_game_session_id", async (req, res) => {
         const connection = await connectDB();
         const [rows] = await connection.query("SELECT g.game_session_id, p.player_id FROM game_sessions as g INNER JOIN \
         players as p using(game_session_id) WHERE user_id = ?", [req.query.user_id])
-        return res.json(rows)
+        await connection.end();
+        const data = arrange_ids(rows)
+        return res.json(data);
 
     }
     catch (error) {
@@ -516,6 +518,17 @@ app.get("/api/get_game_session_id", async (req, res) => {
         res.status(500).json({ error: "Internal server error" });
     }
 });
+
+function arrange_ids(rows) {
+    let player_ids = []
+    let game_session_id = []
+    for (let i = 0; i < rows.length; i++) {
+        player_ids.push(rows[i].player_id)
+        game_session_id.push(rows[i].game_session_id)
+    }
+    return { "player_ids": player_ids, "game_session_id": game_session_id }
+
+}
 
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);
