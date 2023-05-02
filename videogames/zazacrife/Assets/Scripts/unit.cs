@@ -203,6 +203,7 @@ public class unit : MonoBehaviour
 
 	public void onDefencebutton(){
 		stats.defence=stats.defence+3;
+		
 		stats.coins=stats.coins -10;
 	}
 
