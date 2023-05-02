@@ -312,13 +312,12 @@ app.post("/api/new_game_session", async (req, res) => {
         const [response_player] = await connection.query("INSERT INTO players (game_session_id, class_id) VALUES (?,?)", [game_session_id, req.body.class_id])
         const player_id = response_player.insertId
         console.log("Player Executed succesfully", player_id)
-
         // Parse Stats from body
         const stats = JSON.parse(req.body.stats)
         insertStats(connection, player_id, stats)
 
         await connection.end();
-        return res.json({ "game_session_id": game_session_id, "player_id": player_id });
+        return res.json({ "game_session_id": game_session_id, "player_id": player_id })
 
     }
     catch (error) {
@@ -342,7 +341,6 @@ async function insertStats(connection, player_id, stats) {
                                                         (${player_id}, 9, ${stats.maxMP}),\
                                                         (${player_id}, 10, ${stats.currentMP})`)
     await connection.end();
-    return res.json({ "game_session_id": game_session_id, "player_id": player_id });
 }
 
 ////////////// UPDATE GAME SESSION //////////////////////
@@ -350,20 +348,21 @@ app.post("/api/update_game_session", async (req, res) => {
     try {
         console.log("Update Game_session", req.body)
         // Update Game Session
+        player_info = JSON.parse(req.body.stats)
         const connection = await connectDB();
-        const response_game_session = await connection.query("UPDATE game_sessions SET finished = ? WHERE id = ?", [req.body.is_finished, req.body.game_session_id])
+        const response_game_session = await connection.query("UPDATE game_sessions SET finished = ? WHERE game_session_id = ?", [req.body.is_finished, req.body.game_session_id])
         console.log("Game_session Updated succesfully")
         // Update Player
-        const response_player = await connection.query("UPDATE players SET money = ?  WHERE id = ?", [req.body.stats.coins, req.body.player_id])
+        const response_player = await connection.query("UPDATE players SET money = ?  WHERE player_id = ?", [player_info.coins, req.body.player_id])
         console.log("Player Updated succesfully")
         // Update Stats
-        update_stats(connection, req.body.player_id, req.body.stats)
+        update_stats(connection, req.body.player_id, player_info)
         console.log("Stats Updated succesfully")
         // Update Attacks
-        update_attacks(connection, req.body.player_id, req.body.attacks)
+        update_attacks(connection, req.body.player_id, player_info)
         console.log("Attacks Updated succesfully")
         // Update Checkpoints 
-        const checkpoint = await connection.query("UPDATE checkpoints SET scene_id = ?, x_position = ?, y_position  WHERE player_id = ?", [req.body.scene, req.body.x, req.body.y, req.body.player_id])
+        const checkpoint = await connection.query("UPDATE checkpoints SET scene_id = ?, x_position = ?, y_position = ? WHERE player_id = ?", [player_info.place + 1, req.body.x, req.body.y, req.body.player_id])
         console.log("Checkpoint Updated succesfully")
         await connection.end();
 
@@ -402,7 +401,8 @@ async function update_stats(connection, player_id, stats) {
 
     return { "player_id": player_id, "updated_rows": response_stats.affectedRows };
 }
-async function update_attacks(connection, player_id) {
+
+async function update_attacks(connection, player_id, stats) {
 
     if (stats.firea == true) {
         const [rows] = await connection.query("SELECT * FROM stats_players WHERE player_id = ? AND attack_id = ?", [player_id, 2])
