@@ -6,8 +6,7 @@ INSERT INTO users (username, password) VALUE ('Fran', 'shaggy');
 INSERT INTO users (username, password) VALUE ('Sunday', 'berries');
 INSERT INTO users (username, password) VALUE ('Tuch', 'Master');
 INSERT INTO users (username, password) VALUE ('Tena', 'calistena');
-
-
+INSERT INTO users (username, password) VALUE ('Rafa', 'blanga');
 
 
 
@@ -25,9 +24,9 @@ INSERT INTO stats (name) values ('Max_MP') ; #id 9
 INSERT INTO stats (name) values ('Current_MP') ; #id 10
 
 #Tablas Clases 
-INSERT INTO classes (name) value ('Ligera');
-INSERT INTO classes (name) value ('Mediana');
-INSERT INTO classes (name) value ('Pesada');
+INSERT INTO classes (name) value ('Light');
+INSERT INTO classes (name) value ('Medium');
+INSERT INTO classes (name) value ('Heavy');
 
 #Tablas Consumibles
 INSERT INTO consumables (name, description, stat_id, value) VALUES 
@@ -44,8 +43,8 @@ INSERT INTO consumables (name, description, stat_id, value) VALUES
 #Tablas Scenes
 INSERT INTO scenes (name) VALUES 
 ('The Forest'),
-('The Tower');
-
+('The Castle'),
+('The Village');
 
 
 #Tablas Ataques
@@ -73,6 +72,24 @@ VALUES
 (5, 9000, 1);
 
 
+INSERT INTO events (name) VALUES 
+('Nights at shaggies'),
+('Stroyteller NPC'), 
+('Final Boss');
+
+#Tabla game events
+INSERT INTO game_sessions_events (event_id, game_session_id, is_active) VALUES (1, 1, 0),
+(2, 1, 1),
+(3, 2, 0),
+(1, 3, 1),
+(2, 3, 0),
+(3, 4, 1),
+(1, 5, 0),
+(2, 5, 1),
+(3, 5,1);
+
+
+
 #Tabla players
 INSERT INTO players (game_session_id, money,  class_id)
 VALUES 
@@ -87,7 +104,7 @@ VALUES
   (9,  700, 3);
   
   #Tabla checkpoint 
-INSERT INTO checkpoints (player_id, scene_id, x_position, y_position) 
+INSERT INTO checkpoints (player_id, scene_id, x_postion, y_position) 
 VALUES 
   (1, 1, 100, 200),
   (2, 2, 50, 300),
