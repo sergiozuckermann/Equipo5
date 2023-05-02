@@ -1708,3 +1708,22 @@ section {
 }
 
 
+
+  .imgT {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .imgT div {
+    margin-right: 20px;
+    margin-bottom: 20px;
+  }
+  .imgT div:last-child {
+    margin-right: 0;
+  }
+  .imgT img {
+    width: 150px;
+    height: auto;
+    margin-bottom: 10px;
+  }
+
+
