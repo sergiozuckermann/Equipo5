@@ -486,6 +486,10 @@ IEnumerator SetupBattle()
             SceneManager.LoadScene("Final");            
         }
 
+        else if (enemyUnit.stats.index==4){
+            SceneManager.LoadScene("Torre");
+        }
+
         else{
         SceneManager.LoadScene("TileMap");
         }
