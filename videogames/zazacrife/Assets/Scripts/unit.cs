@@ -148,6 +148,15 @@ public class unit : MonoBehaviour
 
   PlayerPrefs.SetString("Shaggy", savedShaggy);
   PlayerPrefs.SetInt("Class_id", 1);
+  	PlayerPrefs.SetInt("Damagemade", 0);
+	PlayerPrefs.SetInt("Damagereceived", 0);
+	PlayerPrefs.SetInt("Coinsmade", 0);
+	PlayerPrefs.SetInt("Misses", 0);
+	PlayerPrefs.SetInt("Crits", 0);
+	PlayerPrefs.SetInt("Ice", 0);
+	PlayerPrefs.SetInt("Fire", 0);
+	PlayerPrefs.SetInt("Lightning", 0);
+	PlayerPrefs.SetInt("Melee", 0);
 	SaveData();
 }
 
@@ -173,6 +182,15 @@ public class unit : MonoBehaviour
 	string savedShaggy=JsonUtility.ToJson(stats);
     PlayerPrefs.SetString("Shaggy", savedShaggy);
 	PlayerPrefs.SetInt("Class_id", 2);
+	PlayerPrefs.SetInt("Damagemade", 0);
+	PlayerPrefs.SetInt("Damagereceived", 0);
+	PlayerPrefs.SetInt("Coinsmade", 0);
+	PlayerPrefs.SetInt("Misses", 0);
+	PlayerPrefs.SetInt("Crits", 0);
+	PlayerPrefs.SetInt("Ice", 0);
+	PlayerPrefs.SetInt("Fire", 0);
+	PlayerPrefs.SetInt("Lightning", 0);
+	PlayerPrefs.SetInt("Melee", 0);
 	SaveData();
 	}
 
@@ -198,6 +216,15 @@ public class unit : MonoBehaviour
 	string savedShaggy=JsonUtility.ToJson(stats);
     PlayerPrefs.SetString("Shaggy", savedShaggy);
 	PlayerPrefs.SetInt("Class_id", 3);
+	PlayerPrefs.SetInt("Damagemade", 0);
+	PlayerPrefs.SetInt("Damagereceived", 0);
+	PlayerPrefs.SetInt("Coinsmade", 0);
+	PlayerPrefs.SetInt("Misses", 0);
+	PlayerPrefs.SetInt("Crits", 0);
+	PlayerPrefs.SetInt("Ice", 0);
+	PlayerPrefs.SetInt("Fire", 0);
+	PlayerPrefs.SetInt("Lightning", 0);
+	PlayerPrefs.SetInt("Melee", 0);
 	SaveData();
 	}
 

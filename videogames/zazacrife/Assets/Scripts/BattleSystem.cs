@@ -15,6 +15,15 @@ public class BattleSystem : MonoBehaviour
 public float time;
 private float etime;
 public float update;
+public int damagemade;
+public int damagereceived;
+public int coinsreceived;
+public int misses;
+public int crits;
+public int melee;
+public int iceuses;
+public int fireuses;
+public int thunderuses;
 
 public GameObject playerPrefab;
 public GameObject [] enemyPrefabs;
@@ -92,6 +101,15 @@ void Start()
 
 IEnumerator SetupBattle()
 {
+    damagemade=PlayerPrefs.GetInt("Damagemade");
+    damagereceived=PlayerPrefs.GetInt("Damagereceived");
+    coinsreceived=PlayerPrefs.GetInt("Coinsmade");
+    misses=PlayerPrefs.GetInt("Misses");
+    crits=PlayerPrefs.GetInt("Crits");
+    melee=PlayerPrefs.GetInt("Melee");
+    iceuses=PlayerPrefs.GetInt("Ice");
+    fireuses=PlayerPrefs.GetInt("Fire");
+    thunderuses=PlayerPrefs.GetInt("Lightning");
     attackButton.interactable = false;
     elementButton.interactable = false;
     healButton.interactable = false;
@@ -160,6 +178,7 @@ IEnumerator SetupBattle()
     int number = rand.Next(0, 100);
     if (number < (25-playerUnit.stats.accuracy+enemyUnit.stats.agility)){
             dialogueText.text = playerUnit.unitName + " Failed to attack";
+            misses++;
             yield return new WaitForSeconds(1f);
             if (playerUnit.stats.lightning>0){
                 yield return new WaitForSeconds(1f);
@@ -203,8 +222,9 @@ IEnumerator SetupBattle()
             dialogueText.text = "You have defeated " + enemyUnit.unitName + "!";
             animatore.SetInteger("State", 4);
             yield return new WaitForSeconds(1f);
-            playerUnit.stats.coins=playerUnit.stats.coins+enemyUnit.stats.coins+playerUnit.stats.charisma;
-            dialogueText.text = "Coins earned: " + playerUnit.stats.coins;
+            playerUnit.stats.coins=enemyUnit.stats.coins+playerUnit.stats.charisma;
+            coinsreceived=enemyUnit.stats.coins+playerUnit.stats.charisma;
+            dialogueText.text = "Now you have: " + playerUnit.stats.coins + "coins";
             yield return new WaitForSeconds(1f);
             enemyUnit.stats.dead = 1;
             PlayerPrefs.SetInt("Dead", enemyUnit.stats.dead);
@@ -228,6 +248,7 @@ IEnumerator SetupBattle()
         
             
         else{
+        melee++;
         animators.SetInteger("State", 1);
             while(etime < time){
                 yield return new WaitForSeconds(update);
@@ -239,6 +260,7 @@ IEnumerator SetupBattle()
             animators.SetInteger("State", 2);
             if (crit==1){
                 dialogueText.text = "Critical Hit";
+                crits++;
             }
             else{
                 dialogueText.text = "Attack Successful";
@@ -444,6 +466,18 @@ IEnumerator SetupBattle()
         elementButton.interactable = false;
         healButton.interactable = false;
         fleeButton.interactable = false;
+        PlayerPrefs.SetInt("coinsmade", coinsreceived);
+        PlayerPrefs.SetInt("Damagemade", damagemade);
+        PlayerPrefs.SetInt("Damagereceived", damagereceived);
+        PlayerPrefs.SetInt("Misses", misses);
+        PlayerPrefs.SetInt("Crits", crits);
+        PlayerPrefs.SetInt("Melee", melee);
+        PlayerPrefs.SetInt("Ice", iceuses);
+        PlayerPrefs.SetInt("Fire", fireuses);
+        PlayerPrefs.SetInt("Lightning", thunderuses);
+        PlayerPrefs.Save();
+
+
        if (enemyUnit.stats.index==5){
             SceneManager.LoadScene("FinalBoss");        
        }
@@ -586,7 +620,7 @@ IEnumerator SetupBattle()
 
    IEnumerator PlayerFire()
  {
-        
+        fireuses=fireuses+1;
         System.Random rand = new System.Random();
         int number = rand.Next(0, 100);
         
@@ -638,7 +672,7 @@ IEnumerator SetupBattle()
 
    IEnumerator PlayerIce()
  {
-        
+        iceuses=iceuses+1;                  
         System.Random rand = new System.Random();
         int number = rand.Next(0, 100);
         
@@ -679,7 +713,7 @@ IEnumerator SetupBattle()
 
  IEnumerator PlayerLight()
  {
-        
+        thunderuses=thunderuses+1;
         System.Random rand = new System.Random();
         int number = rand.Next(0, 100);
         
@@ -836,7 +870,16 @@ public void OnAttackButton()
     }
     
     public void Escape(){
-        
+        PlayerPrefs.SetInt("coinsmade", coinsreceived);
+        PlayerPrefs.SetInt("Damagemade", damagemade);
+        PlayerPrefs.SetInt("Damagereceived", damagereceived);
+        PlayerPrefs.SetInt("Misses", misses);
+        PlayerPrefs.SetInt("Crits", crits);
+        PlayerPrefs.SetInt("Melee", melee);
+        PlayerPrefs.SetInt("Ice", iceuses);
+        PlayerPrefs.SetInt("Fire", fireuses);
+        PlayerPrefs.SetInt("Lightning", thunderuses);
+        PlayerPrefs.Save();
         System.Random rand = new System.Random();
         int lostcoins= rand.Next(0,5);
         dialogueText.text = "You escaped and lost "+lostcoins+" coins";
@@ -885,6 +928,7 @@ public void OnAttackButton()
             damage=damage*2;
             crit=1;
         }
+        damagemade=damage+damagemade;
 
     }
 
@@ -908,6 +952,6 @@ public void OnAttackButton()
             damage=damage*2;
             crit=1;
         }
-
+        damagereceived=damage+damagereceived;
     }
 }
