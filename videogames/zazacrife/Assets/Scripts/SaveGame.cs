@@ -94,19 +94,18 @@ public class SaveGame : MonoBehaviour
         game.results=PlayerPrefs.GetString("Result");
 
         
-        PlayerPrefs.SetString("Coinsmade", "|");
-        PlayerPrefs.SetString("Damagemade", "|");
-        PlayerPrefs.SetString("Damagereceived", "|");
-        PlayerPrefs.SetString("Misses", "|");
-        PlayerPrefs.SetString("Crits", "|");
-        PlayerPrefs.SetString("Melee", "|");
-        PlayerPrefs.SetString("Ice","|");
-        PlayerPrefs.SetString("Fire", "|");
-        PlayerPrefs.SetString("Lightning","|");
-        PlayerPrefs.SetString("Heal", "|");
-        PlayerPrefs.SetString("Recharge", "|");
-        PlayerPrefs.SetString("Result", "|");
-
+  	PlayerPrefs.SetString("Damagemade", "");
+	PlayerPrefs.SetString("Damagereceived", "");
+	PlayerPrefs.SetString("Coinsmade", "");
+	PlayerPrefs.SetString("Misses", "");
+	PlayerPrefs.SetString("Crits", "");
+	PlayerPrefs.SetString("Ice", "");
+	PlayerPrefs.SetString("Fire", "");
+	PlayerPrefs.SetString("Lightning", "");
+	PlayerPrefs.SetString("Melee", "");
+	PlayerPrefs.SetString("Heal", "");
+	PlayerPrefs.SetString("Recharge", "");
+	PlayerPrefs.SetString("Result", "");
 
         game.is_finished = PlayerPrefs.GetInt("is_finished");
         Debug.Log("Sending Data");
