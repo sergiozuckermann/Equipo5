@@ -152,14 +152,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats:
-    damage: 3
+    damage: 8
     maxHP: 40
     currentHP: 40
     maxMP: 0
     currentMP: 0
     luck: 3
     agility: 3
-    defence: 4
+    defence: 14
     charisma: 0
     accuracy: 4
     dead: 0
