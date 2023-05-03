@@ -8,7 +8,7 @@ using System;
 
 public class LoadGame
 {
-    public Stats stats;
+    public string shaggy;
     public int game_session_id;
     public int player_id;
     public float x;
@@ -95,8 +95,8 @@ public class LoadSession : MonoBehaviour
         PlayerPrefs.SetInt("Game_session_id", data.game_session_id);
 		PlayerPrefs.SetInt("Player_id", data.player_id);
         PlayerPrefs.SetInt("is_finished", data.is_finished);
-        string savedShaggy=JsonUtility.ToJson(data.stats);
-        PlayerPrefs.SetString("Shaggy", savedShaggy);
+        Debug.Log("data.shaggy: " + data.shaggy);
+        PlayerPrefs.SetString("Shaggy", data.shaggy);
         PlayerPrefs.SetInt("Class_id", data.class_id);
     }
 
