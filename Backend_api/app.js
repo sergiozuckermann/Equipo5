@@ -437,12 +437,12 @@ app.get("/api/get_game_session", async (req, res) => {
 
     try {
         const connection = await connectDB();
-        console.log("Get Game_session", req.query)
-        finished = await get_if_finished(connection, req.query.game_session_id)
-        const [stats] = await connection.query("SELECT value FROM stats_players WHERE player_id = ? order by stat_id;", [req.query.player_id])
-        const [coins] = await connection.query("SELECT money FROM players WHERE player_id = ?", [req.query.player_id])
-        const [attacks] = await connection.query("SELECT attack_id FROM players_attacks WHERE player_id = ?", [req.query.player_id])
-        const [checkpoint] = await connection.query("SELECT scene_id as place, x_position, y_position FROM checkpoints WHERE player_id = ?", [req.query.player_id])
+        const [rows] = await connection.query("SELECT player_id, game_session_id FROM players INNER JOIN game_sessions using (game_session_id) INNER JOIN users using (user_id) WHERE user_id = ? order by player_id desc LIMIT 1", [req.query.user_id])
+        finished = await get_if_finished(connection, rows[0].game_session_id)
+        const [stats] = await connection.query("SELECT value FROM stats_players WHERE player_id = ? order by stat_id;", [rows[0].player_id])
+        const [coins] = await connection.query("SELECT money FROM players WHERE player_id = ?", [rows[0].player_id])
+        const [attacks] = await connection.query("SELECT attack_id FROM players_attacks WHERE player_id = ?", [rows[0].player_id])
+        const [checkpoint] = await connection.query("SELECT scene_id as place, x_position, y_position FROM checkpoints WHERE player_id = ?", [rows[0].player_id])
         await connection.end();
         const shaggy = make_shaggy_json(coins, stats, attacks, checkpoint[0].place)
         final_json = { "shaggy": JSON.stringify(shaggy), "finished": finished, "x": checkpoint[0].x_position, "y": checkpoint[0].y_position }
