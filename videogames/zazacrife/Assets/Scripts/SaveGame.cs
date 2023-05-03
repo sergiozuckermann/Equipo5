@@ -27,6 +27,7 @@ public class Game{
     public string healusess;
     public string rechargeusess;
     public string results;
+    public string enemy;
 }
 
 public class SaveGame : MonoBehaviour
@@ -92,6 +93,7 @@ public class SaveGame : MonoBehaviour
         game.healusess=PlayerPrefs.GetString("Heal");
         game.rechargeusess=PlayerPrefs.GetString("Recharge");
         game.results=PlayerPrefs.GetString("Result");
+        game.enemy=PlayerPrefs.GetString("Enemy");
 
         
         PlayerPrefs.SetString("Coinsmade", "|");
@@ -106,6 +108,7 @@ public class SaveGame : MonoBehaviour
         PlayerPrefs.SetString("Heal", "|");
         PlayerPrefs.SetString("Recharge", "|");
         PlayerPrefs.SetString("Result", "|");
+        PlayerPrefs.SetString("Enemy", "|");
 
 
         game.is_finished = PlayerPrefs.GetInt("is_finished");

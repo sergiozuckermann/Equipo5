@@ -27,6 +27,7 @@ public int thunderuses=0;
 public int healuses=0;
 public int rechargeuses=0;
 public int result=0;
+public string enemy;
 public string damagemades;
 public string damagereceiveds;
 public string coinsreceiveds;
@@ -39,6 +40,7 @@ public string thunderusess;
 public string healusess;
 public string rechargeusess;
 public string results;
+public string enemys;
 
 public GameObject playerPrefab;
 public GameObject [] enemyPrefabs;
@@ -176,6 +178,8 @@ IEnumerator SetupBattle()
 
      state = BattleState.PLAYERTURN;
      PlayerTurn();
+
+     enemy=enemyUnit.unitName;
      
 }
 
@@ -486,6 +490,9 @@ IEnumerator SetupBattle()
         healusess=PlayerPrefs.GetString("Heal");
         rechargeusess=PlayerPrefs.GetString("Recharge");
         results=PlayerPrefs.GetString("Result");
+        enemys=PlayerPrefs.GetString("Enemy");
+        
+
 
         PlayerPrefs.SetString("Coinsmade", coinsreceiveds + "|" + coinsreceived.ToString());
         PlayerPrefs.SetString("Damagemade", damagemades  + "|" + damagemade.ToString());
@@ -499,6 +506,7 @@ IEnumerator SetupBattle()
         PlayerPrefs.SetString("Heal", healusess + "|" + healuses.ToString());
         PlayerPrefs.SetString("Recharge", rechargeusess + "|" + rechargeuses.ToString());
         PlayerPrefs.SetString("Result", results + "|" + result.ToString());
+        PlayerPrefs.SetString("Enemy", enemys + "|" + enemy);
         PlayerPrefs.Save();
 
 
@@ -912,6 +920,8 @@ public void OnAttackButton()
         healusess=PlayerPrefs.GetString("Heal");
         rechargeusess=PlayerPrefs.GetString("Recharge");
         results=PlayerPrefs.GetString("Result");
+        enemys=PlayerPrefs.GetString("Enemy");
+        
 
 
 
@@ -927,6 +937,7 @@ public void OnAttackButton()
         PlayerPrefs.SetString("Heal", healusess + "|" + healuses.ToString());
         PlayerPrefs.SetString("Recharge", rechargeusess + "|" + rechargeuses.ToString());
         PlayerPrefs.SetString("Result", results + "|" + result.ToString());
+        PlayerPrefs.SetString("Enemy", enemys + "|" + enemy);
         PlayerPrefs.Save();
         System.Random rand = new System.Random();
         int lostcoins= rand.Next(0,5);

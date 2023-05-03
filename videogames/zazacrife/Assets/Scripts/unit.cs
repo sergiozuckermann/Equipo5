@@ -160,6 +160,7 @@ public class unit : MonoBehaviour
 	PlayerPrefs.SetString("Heal", "|");
 	PlayerPrefs.SetString("Recharge", "|");
 	PlayerPrefs.SetString("Result", "|");
+	PlayerPrefs.SetString("Enemy", "|");
 	SaveData();
 }
 
@@ -210,6 +211,7 @@ public class unit : MonoBehaviour
 	PlayerPrefs.SetString("Heal", "|");
 	PlayerPrefs.SetString("Recharge", "|");
 	PlayerPrefs.SetString("Result", "|");
+	PlayerPrefs.SetString("Enemy", "|");
 	SaveData();
 	}
 
@@ -259,6 +261,7 @@ public class unit : MonoBehaviour
 	PlayerPrefs.SetString("Heal", "|");
 	PlayerPrefs.SetString("Recharge", "|");
 	PlayerPrefs.SetString("Result", "|");
+	PlayerPrefs.SetString("Enemy", "|");
 	SaveData();
 	}
 
