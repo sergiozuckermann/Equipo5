@@ -5,6 +5,7 @@ using UnityEngine.Networking;
 
 
 
+
 public class Game{
     public string stats;
     public int game_session_id;
@@ -12,23 +13,26 @@ public class Game{
     public float x;
     public float y;
     public int is_finished;
+    public int place;
+    //BATTLE STATS
+    public string damagemades;
+    public string damagereceiveds;
+    public string coinsreceiveds;
+    public string missess;
+    public string critss;
+    public string melees;
+    public string iceusess;
+    public string fireusess;
+    public string thunderusess;
+    public string healusess;
+    public string rechargeusess;
+    public string results;
 }
 
 public class SaveGame : MonoBehaviour
 {
     [SerializeField] private GameObject Shaggy;
-        public string damagemades;
-        public string damagereceiveds;
-        public string coinsreceiveds;
-        public string missess;
-        public string critss;
-        public string melees;
-        public string iceusess;
-        public string fireusess;
-        public string thunderusess;
-        public string healusess;
-        public string rechargeusess;
-        public string results;
+
     
     IEnumerator SendRequest(Game game)
     {
@@ -74,32 +78,20 @@ public class SaveGame : MonoBehaviour
         game.game_session_id = PlayerPrefs.GetInt("Game_session_id");
         game.x = Shaggy.transform.position.x;
         game.y = Shaggy.transform.position.y;
+        game.place = PlayerPrefs.GetInt("place");
         
-        damagemades=PlayerPrefs.GetString("Damagemade");
-        damagereceiveds=PlayerPrefs.GetString("Damagereceived");
-        coinsreceiveds=PlayerPrefs.GetString("Coinsmade");
-        missess=PlayerPrefs.GetString("Misses");
-        critss=PlayerPrefs.GetString("Crits");
-        melees=PlayerPrefs.GetString("Melee");
-        iceusess=PlayerPrefs.GetString("Ice");
-        fireusess=PlayerPrefs.GetString("Fire");
-        thunderusess=PlayerPrefs.GetString("Lightning");
-        healusess=PlayerPrefs.GetString("Heal");
-        rechargeusess=PlayerPrefs.GetString("Recharge");
-        results=PlayerPrefs.GetString("Result");
-
-        PlayerPrefs.SetString("Coinsmade", coinsreceiveds);
-        PlayerPrefs.SetString("Damagemade", damagemades);
-        PlayerPrefs.SetString("Damagereceived", damagereceiveds);
-        PlayerPrefs.SetString("Misses", missess);
-        PlayerPrefs.SetString("Crits", critss);
-        PlayerPrefs.SetString("Melee", melees);
-        PlayerPrefs.SetString("Ice",iceusess);
-        PlayerPrefs.SetString("Fire", fireusess);
-        PlayerPrefs.SetString("Lightning",thunderusess);
-        PlayerPrefs.SetString("Heal", healusess);
-        PlayerPrefs.SetString("Recharge", rechargeusess);
-        PlayerPrefs.SetString("Result", results);
+        game.damagemades=PlayerPrefs.GetString("Damagemade");
+        game.damagereceiveds=PlayerPrefs.GetString("Damagereceived");
+        game.coinsreceiveds=PlayerPrefs.GetString("Coinsmade");
+        game.missess=PlayerPrefs.GetString("Misses");
+        game.critss=PlayerPrefs.GetString("Crits");
+        game.melees=PlayerPrefs.GetString("Melee");
+        game.iceusess=PlayerPrefs.GetString("Ice");
+        game.fireusess=PlayerPrefs.GetString("Fire");
+        game.thunderusess=PlayerPrefs.GetString("Lightning");
+        game.healusess=PlayerPrefs.GetString("Heal");
+        game.rechargeusess=PlayerPrefs.GetString("Recharge");
+        game.results=PlayerPrefs.GetString("Result");
 
         
         PlayerPrefs.SetString("Coinsmade", "|");

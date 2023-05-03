@@ -359,14 +359,12 @@ app.post("/api/update_game_session", async (req, res) => {
         update_stats(connection, req.body.player_id, player_info)
         console.log("Stats Updated succesfully")
         // Update Attacks
-        const connection2 = await connectDB();
-        update_attacks(connection2, req.body.player_id, player_info)
+        update_attacks(req.body.player_id, player_info)
         console.log("Attacks Updated succesfully")
         // Update Checkpoints 
-        const checkpoint = await connection2.query("UPDATE checkpoints SET scene_id = ?, x_position = ?, y_position = ? WHERE player_id = ?", [player_info.place + 1, req.body.x, req.body.y, req.body.player_id])
+        const checkpoint = await connection.query("UPDATE checkpoints SET scene_id = ?, x_position = ?, y_position = ? WHERE player_id = ?", [req.body.place, req.body.x, req.body.y, req.body.player_id])
         console.log("Checkpoint Updated succesfully")
         await connection.end();
-        await connection2.end();
 
         return res.json({ "Updated": "Success" });
         //Update 
@@ -404,7 +402,9 @@ async function update_stats(connection, player_id, stats) {
     return { "player_id": player_id, "updated_rows": response_stats.affectedRows };
 }
 
-async function update_attacks(connection, player_id, stats) {
+async function update_attacks(player_id, stats) {
+    // UPDATE ATTACKS
+    const connection = await connectDB();
 
     if (stats.firea == true) {
         console.log("!firea")
