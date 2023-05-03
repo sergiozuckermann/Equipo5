@@ -447,11 +447,11 @@ async function insert_battle_stats(obj)
     const damage_received = obj.damagereceived.split("|")
     let damage_received_num = damage_received.map(Number);
     damage_received_num = damage_received_num.slice(1);
+    console.log(damage_received_num)
 
     const coin_received = obj.coinsreceived.split("|")
     let coin_received_num = coin_received.map(Number);
     coin_received_num = coin_received_num.slice(1);
-
 
     const misses = obj.misses.split("|")
     let misses_num = misses.map(Number);
@@ -490,8 +490,11 @@ async function insert_battle_stats(obj)
     let results_num = results.map(Number);
     results_num = results_num.slice(1);
 
+    let enemies = obj.enemy.split("|")
+    enemies = enemies.slice(1);
+
     for (let i = 0; i < damage_made_num.length; i++) {
-        const [battle_id] = await connection.query("INSERT INTO battles (player_id, enemy, total_damage_made, total_damage_received, coin_received, battle_result, attacks_missed, critical_attacks) VALUES (?, ?, ?, ?, ?, ?, ?, ?)", [obj.player_id, "ZAZZA", damage_made_num[i], damage_received_num[i], coin_received_num[i], results_num[i], misses_num[i], crits_num[i]])
+        const [battle_id] = await connection.query("INSERT INTO battles (player_id, enemy, total_damage_made, total_damage_received, coin_received, battle_result, attacks_missed, critical_attacks) VALUES (?, ?, ?, ?, ?, ?, ?, ?)", [obj.player_id, enemies, damage_made_num[i], damage_received_num[i], coin_received_num[i], results_num[i], misses_num[i], crits_num[i]])
 
         values = [
             battle_id.insertId, 1, melees_num[i],
@@ -515,7 +518,7 @@ app.get("/api/get_game_session", async (req, res) => {
 
     try {
         const connection = await connectDB();
-        const [rows] = await connection.query("SELECT player_id, game_session_id FROM players INNER JOIN game_sessions using (game_session_id) INNER JOIN users using (user_id) WHERE user_id = ? order by player_id desc LIMIT 1", [req.query.user_id])
+        const [rows] = await connection.query("SELECT player_id, game_session_id, class_id FROM players INNER JOIN game_sessions using (game_session_id) INNER JOIN users using (user_id) WHERE user_id = ? order by player_id desc LIMIT 1", [req.query.user_id])
         finished = await get_if_finished(connection, rows[0].game_session_id)
         const [stats] = await connection.query("SELECT value FROM stats_players WHERE player_id = ? order by stat_id;", [rows[0].player_id])
         const [coins] = await connection.query("SELECT money FROM players WHERE player_id = ?", [rows[0].player_id])
@@ -523,7 +526,7 @@ app.get("/api/get_game_session", async (req, res) => {
         const [checkpoint] = await connection.query("SELECT scene_id as place, x_position, y_position FROM checkpoints WHERE player_id = ?", [rows[0].player_id])
         await connection.end();
         const shaggy = make_shaggy_json(coins, stats, attacks, checkpoint[0].place)
-        final_json = { "shaggy": JSON.stringify(shaggy), "finished": finished, "x": checkpoint[0].x_position, "y": checkpoint[0].y_position, "game_session_id": rows[0].game_session_id, "player_id": rows[0].player_id }
+        final_json = { "shaggy": JSON.stringify(shaggy), "finished": finished, "x": checkpoint[0].x_position, "y": checkpoint[0].y_position, "game_session_id": rows[0].game_session_id, "player_id": rows[0].player_id, "place": checkpoint[0].place, "class": rows[0].class_id }
         return res.json(final_json);
     }
     catch (error) {

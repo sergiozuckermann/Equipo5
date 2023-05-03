@@ -106,6 +106,7 @@ public class SaveGame : MonoBehaviour
         PlayerPrefs.SetString("Heal", "");
         PlayerPrefs.SetString("Recharge", "");
         PlayerPrefs.SetString("Result", "");
+        PlayerPrefs.SetString("Enemy", "");
 
 
         game.is_finished = PlayerPrefs.GetInt("is_finished");

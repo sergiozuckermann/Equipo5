@@ -161,6 +161,7 @@ public class unit : MonoBehaviour
 	PlayerPrefs.SetString("Heal", "");
 	PlayerPrefs.SetString("Recharge", "");
 	PlayerPrefs.SetString("Result", "");
+    PlayerPrefs.SetString("Enemy", "");
 
 	SaveData();
 }
@@ -213,6 +214,7 @@ public class unit : MonoBehaviour
 	PlayerPrefs.SetString("Heal", "");
 	PlayerPrefs.SetString("Recharge", "");
 	PlayerPrefs.SetString("Result", "");
+	PlayerPrefs.SetString("Enemy", "");
 
 	SaveData();
 	}
@@ -239,18 +241,7 @@ public class unit : MonoBehaviour
 	string savedShaggy=JsonUtility.ToJson(stats);
     PlayerPrefs.SetString("Shaggy", savedShaggy);
 	PlayerPrefs.SetInt("Class_id", 3);
-	PlayerPrefs.SetInt("Damagemade", 0);
-	PlayerPrefs.SetInt("Damagereceived", 0);
-	PlayerPrefs.SetInt("Coinsmade", 0);
-	PlayerPrefs.SetInt("Misses", 0);
-	PlayerPrefs.SetInt("Crits", 0);
-	PlayerPrefs.SetInt("Ice", 0);
-	PlayerPrefs.SetInt("Fire", 0);
-	PlayerPrefs.SetInt("Lightning", 0);
-	PlayerPrefs.SetInt("Melee", 0);
-	
-  PlayerPrefs.SetString("Shaggy", savedShaggy);
-  PlayerPrefs.SetInt("Class_id", 1);
+
 
   	PlayerPrefs.SetString("Damagemade", "");
 	PlayerPrefs.SetString("Damagereceived", "");
@@ -264,6 +255,7 @@ public class unit : MonoBehaviour
 	PlayerPrefs.SetString("Heal", "");
 	PlayerPrefs.SetString("Recharge", "");
 	PlayerPrefs.SetString("Result", "");
+	PlayerPrefs.SetString("Enemy", "");
 
 	SaveData();
 	}
