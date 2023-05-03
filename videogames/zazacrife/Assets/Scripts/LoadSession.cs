@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
+using UnityEngine.SceneManagement;
+
 
 public class LoadGame
 {
-    public string stats;
+    public Stats stats;
     public int game_session_id;
     public int player_id;
     public float x;
@@ -14,9 +17,14 @@ public class LoadGame
 
 public class LoadSession : MonoBehaviour
 {
+    public LoadGame data;
+    
 
     IEnumerator SendRequest(string url)
     {
+
+
+
 
         Debug.Log(url);
 
@@ -29,7 +37,10 @@ public class LoadSession : MonoBehaviour
                 Debug.Log("Success: " + www.downloadHandler.text);
                 string jsonResponse = www.downloadHandler.text;
                 data = JsonUtility.FromJson<LoadGame>(www.downloadHandler.text);
-                Debug.Log(data.game_session_id);
+                LoadGameScene();
+                LoadGamePosition();
+                
+
             
             }
             else
@@ -44,5 +55,39 @@ public class LoadSession : MonoBehaviour
 
         StartCoroutine(SendRequest("http://localhost:3010/api/get_game_session?user_id=" + PlayerPrefs.GetInt("User_id").ToString()));
     }
+
+    public void LoadGameScene()
+    {
+        if (data.stats.place == 0)
+            {
+            SceneManager.LoadScene("Tilemap");
+            }
+        else
+            {
+            SceneManager.LoadScene("Torre");
+            }
+    }
+
+    public void LoadGamePosition()
+    {
+        GameObject Shaggy = GameObject.Find("Shaggy");
+        Debug.Log("Shaggy");
+        Debug.Log(Shaggy);
+        Transform ShaggyTransform=Shaggy.GetComponent<Transform>();
+        float posx=PlayerPrefs.GetFloat("x", data.x);
+        float posy=PlayerPrefs.GetFloat("y", data.y);
+        PlayerPrefs.Save();
+
+        Vector3 actual;
+        actual.x = posx;
+        actual.y = posy;
+        actual.z = 0;
+
+        
+        ShaggyTransform.position = actual;
+
+    }
+
+
     
 }
