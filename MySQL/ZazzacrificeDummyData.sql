@@ -72,22 +72,6 @@ VALUES
 (5, 9000, 1);
 
 
-INSERT INTO events (name) VALUES 
-('Nights at shaggies'),
-('Stroyteller NPC'), 
-('Final Boss');
-
-#Tabla game events
-INSERT INTO game_sessions_events (event_id, game_session_id, is_active) VALUES (1, 1, 0),
-(2, 1, 1),
-(3, 2, 0),
-(1, 3, 1),
-(2, 3, 0),
-(3, 4, 1),
-(1, 5, 0),
-(2, 5, 1),
-(3, 5,1);
-
 
 
 #Tabla players
@@ -104,7 +88,7 @@ VALUES
   (9,  700, 3);
   
   #Tabla checkpoint 
-INSERT INTO checkpoints (player_id, scene_id, x_postion, y_position) 
+INSERT INTO checkpoints (player_id, scene_id, x_position, y_position) 
 VALUES 
   (1, 1, 100, 200),
   (2, 2, 50, 300),
