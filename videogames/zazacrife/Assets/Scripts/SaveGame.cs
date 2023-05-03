@@ -17,7 +17,18 @@ public class Game{
 public class SaveGame : MonoBehaviour
 {
     [SerializeField] private GameObject Shaggy;
-
+        public string damagemades;
+        public string damagereceiveds;
+        public string coinsreceiveds;
+        public string missess;
+        public string critss;
+        public string melees;
+        public string iceusess;
+        public string fireusess;
+        public string thunderusess;
+        public string healusess;
+        public string rechargeusess;
+        public string results;
     
     IEnumerator SendRequest(Game game)
     {
@@ -54,18 +65,7 @@ public class SaveGame : MonoBehaviour
     {
 
         
-        public string damagemades;
-        public string damagereceiveds;
-        public string coinsreceiveds;
-        public string missess;
-        public string critss;
-        public string melees;
-        public string iceusess;
-        public string fireusess;
-        public string thunderusess;
-        public string healusess;
-        public string rechargeusess;
-        public string results;
+
 
         Debug.Log("Saving data");
         Game game = new Game();
