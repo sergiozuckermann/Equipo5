@@ -2,7 +2,7 @@
 
 async function getData(ep) {
 	try {
-		const response = await fetch("http://127.0.0.1:3010/api/" + ep);
+		const response = await fetch("http://127.0.0.1:3011/api/" + ep);
 		const data = await response.json();
 		// Do something with the response data
 		return data;
