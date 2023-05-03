@@ -229,7 +229,7 @@ IEnumerator SetupBattle()
             dialogueText.text = "You have defeated " + enemyUnit.unitName + "!";
             animatore.SetInteger("State", 4);
             yield return new WaitForSeconds(1f);
-            playerUnit.stats.coins=enemyUnit.stats.coins+playerUnit.stats.charisma;
+            playerUnit.stats.coins= playerUnit.stats.coins+enemyUnit.stats.coins+playerUnit.stats.charisma;
             coinsreceived=enemyUnit.stats.coins+playerUnit.stats.charisma+coinsreceived;    
             dialogueText.text = "Now you have: " + playerUnit.stats.coins + " coins";
             yield return new WaitForSeconds(1f);

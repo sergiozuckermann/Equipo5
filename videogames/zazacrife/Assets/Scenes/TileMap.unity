@@ -1804,8 +1804,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Ice Lord: Don''t you dare to challenge me, im going to freeze you to death
-    and have a delicious dog as dinner. Get ready to feel the power of ice!!!'
+  m_text: 'Ice Lord: Move along Im waiting for Ice Spice, Ice Cube, Brendan Freeazer
+    and Frozono.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
@@ -54972,7 +54972,7 @@ Tilemap:
       - {fileID: -1991354426, guid: e8f67e200b4d84a809445ae59596c2f1, type: 3}
       - {fileID: 93619158, guid: e8f67e200b4d84a809445ae59596c2f1, type: 3}
       - {fileID: 1275356659, guid: e8f67e200b4d84a809445ae59596c2f1, type: 3}
-      m_AnimationSpeed: 5
+      m_AnimationSpeed: 5.0000005
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 59, y: -46, z: 0}
@@ -55098,7 +55098,7 @@ Tilemap:
       - {fileID: -1114166083, guid: e8f67e200b4d84a809445ae59596c2f1, type: 3}
       - {fileID: 531797115, guid: e8f67e200b4d84a809445ae59596c2f1, type: 3}
       - {fileID: -551697929, guid: e8f67e200b4d84a809445ae59596c2f1, type: 3}
-      m_AnimationSpeed: 5
+      m_AnimationSpeed: 5.0000005
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 62, y: -42, z: 0}
@@ -55188,7 +55188,7 @@ Tilemap:
       - {fileID: -1991354426, guid: e8f67e200b4d84a809445ae59596c2f1, type: 3}
       - {fileID: 93619158, guid: e8f67e200b4d84a809445ae59596c2f1, type: 3}
       - {fileID: 1275356659, guid: e8f67e200b4d84a809445ae59596c2f1, type: 3}
-      m_AnimationSpeed: 5.0000005
+      m_AnimationSpeed: 5
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 62, y: -39, z: 0}
@@ -55215,7 +55215,7 @@ Tilemap:
       - {fileID: -1991354426, guid: e8f67e200b4d84a809445ae59596c2f1, type: 3}
       - {fileID: 93619158, guid: e8f67e200b4d84a809445ae59596c2f1, type: 3}
       - {fileID: 1275356659, guid: e8f67e200b4d84a809445ae59596c2f1, type: 3}
-      m_AnimationSpeed: 5.0000005
+      m_AnimationSpeed: 5
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 63, y: -38, z: 0}
@@ -55251,7 +55251,7 @@ Tilemap:
       - {fileID: -1991354426, guid: e8f67e200b4d84a809445ae59596c2f1, type: 3}
       - {fileID: 93619158, guid: e8f67e200b4d84a809445ae59596c2f1, type: 3}
       - {fileID: 1275356659, guid: e8f67e200b4d84a809445ae59596c2f1, type: 3}
-      m_AnimationSpeed: 5
+      m_AnimationSpeed: 5.0000005
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 62, y: -36, z: 0}
@@ -55449,7 +55449,7 @@ Tilemap:
       - {fileID: -1991354426, guid: e8f67e200b4d84a809445ae59596c2f1, type: 3}
       - {fileID: 93619158, guid: e8f67e200b4d84a809445ae59596c2f1, type: 3}
       - {fileID: 1275356659, guid: e8f67e200b4d84a809445ae59596c2f1, type: 3}
-      m_AnimationSpeed: 5
+      m_AnimationSpeed: 5.0000005
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 71, y: -24, z: 0}
@@ -104554,18 +104554,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Shaggy: {fileID: 1933029664}
-  damagemades: 
-  damagereceiveds: 
-  coinsreceiveds: 
-  missess: 
-  critss: 
-  melees: 
-  iceusess: 
-  fireusess: 
-  thunderusess: 
-  healusess: 
-  rechargeusess: 
-  results: 
 --- !u!114 &1200047460
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -118226,8 +118214,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Fire Lord: Shaggy, i have been waiting for you. That little dog of yours
-    is going to die soon HA HA HA, there''s no way for you to stop me!!!'
+  m_text: 'Fire Lord: Shaggy, i have been waiting for you. But not as much as I''m
+    wating for Lava Girl to turn 18!'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
@@ -119432,9 +119420,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Thunder Lord: I guess you''re looking for this little key, you''ll never
-    enter the castle! You must hurry, you''re ugly and nobody loves you except for
-    your stinky pet!!'
+  m_text: 'Thunder Lord: *Hisses* I need some of that zzzazzzza that makes the dark
+    lord unbeatable'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
@@ -119861,8 +119848,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Ice Lord: Frodo?... I mean you look more like Sam, get the three elements
-    for a ride!'
+  m_text: 'Thorondor (King of the Eagles): Frodo?... I mean you look more like Sam,
+    get the three elements for a ride!'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
