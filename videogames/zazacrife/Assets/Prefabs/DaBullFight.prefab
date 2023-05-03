@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3162214327048807994}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.8, z: 0}
+  m_LocalPosition: {x: 0, y: 1.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -162,11 +162,14 @@ MonoBehaviour:
     defence: 10
     charisma: 8
     accuracy: 3
+    dead: 0
     fire: 0
     ice: 0
     lightning: 0
     coins: 10
     index: 0
+    place: 0
+    number: 0
     firea: 0
     icea: 0
     lightninga: 0
