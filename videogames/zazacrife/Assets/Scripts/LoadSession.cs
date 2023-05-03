@@ -14,6 +14,8 @@ public class LoadGame
     public float x;
     public float y;
     public int is_finished;
+    public int place;
+    public int class_id;
 }
 
 public class LoadSession : MonoBehaviour
@@ -39,7 +41,7 @@ public class LoadSession : MonoBehaviour
                 string jsonResponse = www.downloadHandler.text;
                 data = JsonUtility.FromJson<LoadGame>(www.downloadHandler.text);
                 LoadGameScene();
-                LoadGamePosition();
+                SetPlayersAttributes();
                 
 
             
@@ -59,7 +61,7 @@ public class LoadSession : MonoBehaviour
 
     public void LoadGameScene()
     {
-        if (data.stats.place == 0)
+        if (data.place == 1)
             {
             SceneManager.LoadScene("Tilemap");
             }
@@ -69,11 +71,33 @@ public class LoadSession : MonoBehaviour
             }
     }
 
-    public void LoadGamePosition()
+    public void SetPlayersAttributes()
     {
         PlayerPrefs.SetFloat("x", Convert.ToSingle(data.x));
         PlayerPrefs.SetFloat("y", Convert.ToSingle(data.y));
+        PlayerPrefs.SetInt("Dead", 0);
+        PlayerPrefs.SetInt("place", data.place);
 
+
+        PlayerPrefs.SetString("Damagemade", "");
+        PlayerPrefs.SetString("Damagereceived", "");
+        PlayerPrefs.SetString("Coinsmade", "");
+        PlayerPrefs.SetString("Misses", "");
+        PlayerPrefs.SetString("Crits", "");
+        PlayerPrefs.SetString("Ice", "");
+        PlayerPrefs.SetString("Fire", "");
+        PlayerPrefs.SetString("Lightning", "");
+        PlayerPrefs.SetString("Melee", "");
+        PlayerPrefs.SetString("Heal", "");
+        PlayerPrefs.SetString("Recharge", "");
+        PlayerPrefs.SetString("Result", "");
+        PlayerPrefs.SetString("Enemy", "");
+        PlayerPrefs.SetInt("Game_session_id", data.game_session_id);
+		PlayerPrefs.SetInt("Player_id", data.player_id);
+        PlayerPrefs.SetInt("is_finished", data.is_finished);
+        string savedShaggy=JsonUtility.ToJson(data.stats);
+        PlayerPrefs.SetString("Shaggy", savedShaggy);
+        PlayerPrefs.SetInt("Class_id", data.class_id);
     }
 
 
