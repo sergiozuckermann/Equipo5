@@ -148,6 +148,7 @@ public class unit : MonoBehaviour
 
   PlayerPrefs.SetString("Shaggy", savedShaggy);
   PlayerPrefs.SetInt("Class_id", 1);
+
   	PlayerPrefs.SetString("Damagemade", "");
 	PlayerPrefs.SetString("Damagereceived", "");
 	PlayerPrefs.SetString("Coinsmade", "");
@@ -160,6 +161,7 @@ public class unit : MonoBehaviour
 	PlayerPrefs.SetString("Heal", "");
 	PlayerPrefs.SetString("Recharge", "");
 	PlayerPrefs.SetString("Result", "");
+
 	SaveData();
 }
 
@@ -198,6 +200,7 @@ public class unit : MonoBehaviour
 	
   PlayerPrefs.SetString("Shaggy", savedShaggy);
   PlayerPrefs.SetInt("Class_id", 1);
+
   	PlayerPrefs.SetString("Damagemade", "");
 	PlayerPrefs.SetString("Damagereceived", "");
 	PlayerPrefs.SetString("Coinsmade", "");
@@ -210,6 +213,7 @@ public class unit : MonoBehaviour
 	PlayerPrefs.SetString("Heal", "");
 	PlayerPrefs.SetString("Recharge", "");
 	PlayerPrefs.SetString("Result", "");
+
 	SaveData();
 	}
 
@@ -247,6 +251,7 @@ public class unit : MonoBehaviour
 	
   PlayerPrefs.SetString("Shaggy", savedShaggy);
   PlayerPrefs.SetInt("Class_id", 1);
+
   	PlayerPrefs.SetString("Damagemade", "");
 	PlayerPrefs.SetString("Damagereceived", "");
 	PlayerPrefs.SetString("Coinsmade", "");
@@ -259,6 +264,7 @@ public class unit : MonoBehaviour
 	PlayerPrefs.SetString("Heal", "");
 	PlayerPrefs.SetString("Recharge", "");
 	PlayerPrefs.SetString("Result", "");
+
 	SaveData();
 	}
 
