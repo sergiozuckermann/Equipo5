@@ -364,6 +364,8 @@ app.post("/api/update_game_session", async (req, res) => {
         // Update Checkpoints 
         const checkpoint = await connection.query("UPDATE checkpoints SET scene_id = ?, x_position = ?, y_position = ? WHERE player_id = ?", [req.body.place, req.body.x, req.body.y, req.body.player_id])
         console.log("Checkpoint Updated succesfully")
+        insert_battle_stats(req.body)
+        console.log("Battle Stats Updated succesfully")
         await connection.end();
 
         return res.json({ "Updated": "Success" });
@@ -433,6 +435,82 @@ async function update_attacks(player_id, stats) {
     }
 
 }
+
+async function insert_battle_stats(obj)
+{
+    const connection = await connectDB();
+
+    const damage_made = obj.damagemade.split("|")
+    let damage_made_num = damage_made.map(Number);
+    damage_made_num = damage_made_num.slice(1);
+
+    const damage_received = obj.damagereceived.split("|")
+    let damage_received_num = damage_received.map(Number);
+    damage_received_num = damage_received_num.slice(1);
+
+    const coin_received = obj.coinsreceived.split("|")
+    let coin_received_num = coin_received.map(Number);
+    coin_received_num = coin_received_num.slice(1);
+
+
+    const misses = obj.misses.split("|")
+    let misses_num = misses.map(Number);
+    misses_num = misses_num.slice(1);
+
+    const crits = obj.crits.split("|")
+    let crits_num = crits.map(Number);
+    crits_num = crits_num.slice(1);
+
+    const melees = obj.melees.split("|")
+    let melees_num = melees.map(Number);
+    melees_num = melees_num.slice(1);
+    console.log(melees_num)
+
+    const iceuses = obj.iceuses.split("|")
+    let iceuses_num = iceuses.map(Number);
+    iceuses_num = iceuses_num.slice(1);
+
+    const fireuses = obj.fireuses.split("|")
+    let fireuses_num = fireuses.map(Number);
+    fireuses_num = fireuses_num.slice(1);
+
+    const thunderuses = obj.thunderuses.split("|")
+    let thunderuses_num = thunderuses.map(Number);
+    thunderuses_num = thunderuses_num.slice(1);
+
+    const healuses = obj.healuses.split("|")
+    let healuses_num = healuses.map(Number);
+    healuses_num = healuses_num.slice(1);
+
+    const rechargeuses = obj.rechargeuses.split("|")
+    let rechargeuses_num = rechargeuses.map(Number);
+    rechargeuses_num = rechargeuses_num.slice(1);
+
+    const results = obj.results.split("|")
+    let results_num = results.map(Number);
+    results_num = results_num.slice(1);
+
+    for (let i = 0; i < damage_made_num.length; i++) {
+        const [battle_id] = await connection.query("INSERT INTO battles (player_id, enemy, total_damage_made, total_damage_received, coin_received, battle_result, attacks_missed, critical_attacks) VALUES (?, ?, ?, ?, ?, ?, ?, ?)", [obj.player_id, "ZAZZA", damage_made_num[i], damage_received_num[i], coin_received_num[i], results_num[i], misses_num[i], crits_num[i]])
+
+        values = [
+            battle_id.insertId, 1, melees_num[i],
+            battle_id.insertId, 2, iceuses_num[i],
+            battle_id.insertId, 3, thunderuses_num[i],
+            battle_id.insertId, 4, fireuses_num[i],
+            battle_id.insertId, 5, healuses_num[i],
+            battle_id.insertId, 6, rechargeuses_num[i] 
+        ]
+        const [res] = await connection.query("INSERT INTO battles_attacks (battle_id, attack_id, times_used) VALUES (?, ?, ?), (?, ?, ?), (?, ?, ?), (?, ?, ?), (?, ?, ?), (?, ?, ?)", values)
+
+    }
+    connection.end();
+
+
+}
+
+
+////////////// GET GAME SESSION //////////////////////
 app.get("/api/get_game_session", async (req, res) => {
 
     try {
