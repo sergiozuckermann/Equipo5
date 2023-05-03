@@ -817,7 +817,7 @@ public void OnAttackButton()
      
     else{
         dialogueText.text = "Not enough MP";
-        return;
+        
     }
  }
 
@@ -850,7 +850,7 @@ public void OnAttackButton()
      
     else{
         dialogueText.text = "Not enough MP";
-        return;
+        
     } 
  }
 
@@ -870,7 +870,7 @@ public void OnAttackButton()
     }
         else{
             dialogueText.text = "Not enough MP";
-            return;
+            
         }
     }
  
@@ -891,7 +891,7 @@ public void OnAttackButton()
     } 
     else{
             dialogueText.text = "Not enough MP";
-            return;
+            
         }
     }
 

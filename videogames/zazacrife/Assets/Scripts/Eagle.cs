@@ -50,11 +50,6 @@ public class Eagle : MonoBehaviour
             SceneManager.LoadScene("Torre");
         }
 
-        else
-        {
-            button.interactable = false;
-            dialogueText.text = "I SAID GET THE THREE ELEMENTS YOU DINGUS!";
-        }
         
     }
 }
