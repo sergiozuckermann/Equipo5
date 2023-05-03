@@ -194,6 +194,22 @@ public class unit : MonoBehaviour
 	PlayerPrefs.SetInt("Fire", 0);
 	PlayerPrefs.SetInt("Lightning", 0);
 	PlayerPrefs.SetInt("Melee", 0);
+
+	
+  PlayerPrefs.SetString("Shaggy", savedShaggy);
+  PlayerPrefs.SetInt("Class_id", 1);
+  	PlayerPrefs.SetString("Damagemade", "|");
+	PlayerPrefs.SetString("Damagereceived", "|");
+	PlayerPrefs.SetString("Coinsmade", "|");
+	PlayerPrefs.SetString("Misses", "|");
+	PlayerPrefs.SetString("Crits", "|");
+	PlayerPrefs.SetString("Ice", "|");
+	PlayerPrefs.SetString("Fire", "|");
+	PlayerPrefs.SetString("Lightning", "|");
+	PlayerPrefs.SetString("Melee", "|");
+	PlayerPrefs.SetString("Heal", "|");
+	PlayerPrefs.SetString("Recharge", "|");
+	PlayerPrefs.SetString("Result", "|");
 	SaveData();
 	}
 
@@ -228,6 +244,21 @@ public class unit : MonoBehaviour
 	PlayerPrefs.SetInt("Fire", 0);
 	PlayerPrefs.SetInt("Lightning", 0);
 	PlayerPrefs.SetInt("Melee", 0);
+	
+  PlayerPrefs.SetString("Shaggy", savedShaggy);
+  PlayerPrefs.SetInt("Class_id", 1);
+  	PlayerPrefs.SetString("Damagemade", "|");
+	PlayerPrefs.SetString("Damagereceived", "|");
+	PlayerPrefs.SetString("Coinsmade", "|");
+	PlayerPrefs.SetString("Misses", "|");
+	PlayerPrefs.SetString("Crits", "|");
+	PlayerPrefs.SetString("Ice", "|");
+	PlayerPrefs.SetString("Fire", "|");
+	PlayerPrefs.SetString("Lightning", "|");
+	PlayerPrefs.SetString("Melee", "|");
+	PlayerPrefs.SetString("Heal", "|");
+	PlayerPrefs.SetString("Recharge", "|");
+	PlayerPrefs.SetString("Result", "|");
 	SaveData();
 	}
 
