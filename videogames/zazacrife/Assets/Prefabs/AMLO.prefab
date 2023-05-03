@@ -46,16 +46,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats:
-    damage: 10
+    damage: 1
     maxHP: 100
     currentHP: 100
     maxMP: 20
     currentMP: 20
-    luck: 8
-    agility: 8
-    defence: 8
-    charisma: 8
-    accuracy: 8
+    luck: 2
+    agility: 2
+    defence: 2
+    charisma: 2
+    accuracy: 4
     dead: 0
     fire: 0
     ice: 0
@@ -192,7 +192,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4, y: 4.0003257}
+    oldSize: {x: 4, y: 3.9378204}
     newSize: {x: 0.64, y: 0.6400521}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
