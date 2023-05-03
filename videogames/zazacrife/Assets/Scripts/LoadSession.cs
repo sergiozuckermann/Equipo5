@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
+using System;
 
 
 public class LoadGame
@@ -70,21 +71,8 @@ public class LoadSession : MonoBehaviour
 
     public void LoadGamePosition()
     {
-        GameObject Shaggy = GameObject.Find("Shaggy");
-        Debug.Log("Shaggy");
-        Debug.Log(Shaggy);
-        Transform ShaggyTransform=Shaggy.GetComponent<Transform>();
-        float posx=PlayerPrefs.GetFloat("x", data.x);
-        float posy=PlayerPrefs.GetFloat("y", data.y);
-        PlayerPrefs.Save();
-
-        Vector3 actual;
-        actual.x = posx;
-        actual.y = posy;
-        actual.z = 0;
-
-        
-        ShaggyTransform.position = actual;
+        PlayerPrefs.SetFloat("x", Convert.ToSingle(data.x));
+        PlayerPrefs.SetFloat("y", Convert.ToSingle(data.y));
 
     }
 
