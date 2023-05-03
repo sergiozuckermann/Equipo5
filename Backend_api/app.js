@@ -17,7 +17,7 @@ async function connectDB() {
     const connection = await mysql.createConnection({
         host: "localhost",
         user: "root",
-        password: "fulito99",
+        password: "Zazza123",
         database: "zazzacrifice",
     });
 
@@ -359,12 +359,14 @@ app.post("/api/update_game_session", async (req, res) => {
         update_stats(connection, req.body.player_id, player_info)
         console.log("Stats Updated succesfully")
         // Update Attacks
-        update_attacks(connection, req.body.player_id, player_info)
+        const connection2 = await connectDB();
+        update_attacks(connection2, req.body.player_id, player_info)
         console.log("Attacks Updated succesfully")
         // Update Checkpoints 
-        const checkpoint = await connection.query("UPDATE checkpoints SET scene_id = ?, x_position = ?, y_position = ? WHERE player_id = ?", [player_info.place + 1, req.body.x, req.body.y, req.body.player_id])
+        const checkpoint = await connection2.query("UPDATE checkpoints SET scene_id = ?, x_position = ?, y_position = ? WHERE player_id = ?", [player_info.place + 1, req.body.x, req.body.y, req.body.player_id])
         console.log("Checkpoint Updated succesfully")
         await connection.end();
+        await connection2.end();
 
         return res.json({ "Updated": "Success" });
         //Update 
@@ -405,32 +407,28 @@ async function update_stats(connection, player_id, stats) {
 async function update_attacks(connection, player_id, stats) {
 
     if (stats.firea == true) {
-        const [rows] = await connection.query("SELECT * FROM stats_players WHERE player_id = ? AND attack_id = ?", [player_id, 2])
-        if (rows.length == 0) {
-            return false
-        }
-        else {
-            const [rows] = await connection.query("INSERT INTO stats_players (player_id, attack_id) VALUES (?, ?, ?)", [player_id, 2])
+        console.log("!firea")
+        const [rows1] = await connection.query("SELECT * FROM players_attacks WHERE player_id = ? AND attack_id = ?", [player_id, 2])
+        if (rows1.length == 0) {
+            const [res1] = await connection.query("INSERT INTO players_attacks (player_id, attack_id) VALUES (?, ?)", [player_id, 2])
         }
     }
 
     if (stats.icea == true) {
-        const [rows] = await connection.query("SELECT * FROM stats_players WHERE player_id = ? AND attack_id = ?", [player_id, 4])
-        if (rows.length == 0) {
-            return false
-        }
-        else {
-            const [rows] = await connection.query("INSERT INTO stats_players (player_id, attack_id) VALUES (?, ?, ?)", [player_id, 4])
+        console.log("!icea")
+        const [rows2] = await connection.query("SELECT * FROM players_attacks WHERE player_id = ? AND attack_id = ?", [player_id, 4])
+        if (rows2.length == 0) {
+
+            const [res2] = await connection.query("INSERT INTO players_attacks (player_id, attack_id) VALUES (?, ?)", [player_id, 4])
         }
     }
 
     if (stats.lightninga == true) {
-        const [rows] = await connection.query("SELECT * FROM stats_players WHERE player_id = ? AND attack_id = ?", [player_id, 3])
-        if (rows.length == 0) {
-            return false
-        }
-        else {
-            const [rows] = await connection.query("INSERT INTO stats_players (player_id, attack_id) VALUES (?, ?, ?)", [player_id, 3])
+        console.log("!lightninga")
+        const [rows3] = await connection.query("SELECT * FROM players_attacks WHERE player_id = ? AND attack_id = ?", [player_id, 3])
+        if (rows3.length == 0) {
+
+            const [res3] = await connection.query("INSERT INTO players_attacks (player_id, attack_id) VALUES (?, ?)", [player_id, 3])
         }
     }
 
@@ -483,7 +481,6 @@ function make_shaggy_json(coins, stats, attacks, place) {
     shaggy["coins"] = coins[0].money
 
     shaggy["place"] = place - 1
-
     shaggy["firea"] = false
     shaggy["lightninga"] = false
     shaggy["icea"] = false
