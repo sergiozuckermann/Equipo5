@@ -330,6 +330,8 @@ public class unit : MonoBehaviour
 				PlayerPrefs.SetInt("Game_session_id", data.game_session_id);
 				PlayerPrefs.SetInt("Player_id", data.player_id);
 				PlayerPrefs.SetInt("is_finished", 0);
+				Debug.Log("Game session id: " + data.game_session_id);
+				Debug.Log("Player id: " + data.player_id);
             }
              else
             {
