@@ -817,6 +817,10 @@ public void OnAttackButton()
      
     else{
         dialogueText.text = "Not enough MP";
+        attackButton.interactable = true;
+        elementButton.interactable = true;
+        healButton.interactable = true;
+        fleeButton.interactable = true;
         
     }
  }
@@ -850,7 +854,10 @@ public void OnAttackButton()
      
     else{
         dialogueText.text = "Not enough MP";
-        
+        attackButton.interactable = true;
+        elementButton.interactable = true;
+        healButton.interactable = true;
+        fleeButton.interactable = true;
     } 
  }
 
@@ -870,6 +877,10 @@ public void OnAttackButton()
     }
         else{
             dialogueText.text = "Not enough MP";
+            attackButton.interactable = true;
+            elementButton.interactable = true;
+            healButton.interactable = true;
+            fleeButton.interactable = true;
             
         }
     }
@@ -891,6 +902,10 @@ public void OnAttackButton()
     } 
     else{
             dialogueText.text = "Not enough MP";
+            attackButton.interactable = true;
+            elementButton.interactable = true;
+            healButton.interactable = true;
+            fleeButton.interactable = true;
             
         }
     }
