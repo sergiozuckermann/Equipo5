@@ -198,11 +198,11 @@ IEnumerator SetupBattle()
         }
     
     else{
-        int damage=0;
+        int damages=0;
         int crit=0;
         
-        getAttackplayer(ref damage, ref crit);
-        bool isDead = enemyUnit.TakeDamage(damage);
+        getAttackplayer(ref damages, ref crits);
+        bool isDead = enemyUnit.TakeDamage(damages);
     //enemysprite.color= Color.red;
         if (isDead){
             state = BattleState.WON;
@@ -274,7 +274,7 @@ IEnumerator SetupBattle()
             }
 
             yield return new WaitForSeconds(1f);
-            dialogueText.text = "Shaggy did " + damage + " damage!";
+            dialogueText.text = "Shaggy did " + damages + " damage!";
             enemyHUD.SetHP(enemyUnit.stats.currentHP);
             animators.SetInteger("State", 3);
             
@@ -343,8 +343,8 @@ IEnumerator SetupBattle()
     }
 
     if (enemyUnit.stats.ice == 0){
-        int damage=0;
-        int crit=0;
+        int damagee=0;
+        int crite=0;
         animatore.SetInteger("State", 1);
         while(etime < time){
             yield return new WaitForSeconds(update);
@@ -392,8 +392,8 @@ IEnumerator SetupBattle()
         }
 
         yield return new WaitForSeconds(1f);
-        getAttackplayer(ref damage, ref crit);
-        if(crit==1){
+        getAttackenemy(ref damagee, ref crite);
+        if(crite==1){
             dialogueText.text = "Critical Hit";
             yield return new WaitForSeconds(1f);
         }
@@ -401,8 +401,8 @@ IEnumerator SetupBattle()
             dialogueText.text = "Attack Successful";
             yield return new WaitForSeconds(1f);
         }    
-        dialogueText.text = "Enemy dealt " + damage + " damage!";
-        bool isDead = playerUnit.TakeDamage(damage);
+        dialogueText.text = "Enemy dealt " + damagee + " damage!";
+        bool isDead = playerUnit.TakeDamage(damagee);
 
         if (playerUnit.stats.currentHP>0){
             playerHUD.SetHP(playerUnit.stats.currentHP);
@@ -956,15 +956,15 @@ public void OnAttackButton()
         
     }
 
-    public void getAttackplayer(ref int damage, ref int crit){
+    public void getAttackplayer(ref int damages, ref int crit){
         crit=0;
         System.Random rand = new System.Random();
         int attack = rand.Next(5, 10)+playerUnit.stats.damage;
         int defence = rand.Next(-3, 0)+enemyUnit.stats.defence;
-        damage=attack-defence;
+        damages=attack-defence;
         
-        if (damage<=0){
-            damage=1;
+        if (damages<=0){
+            damages=1;
         }
         
         int number = rand.Next(0, 100);
@@ -973,22 +973,22 @@ public void OnAttackButton()
         {   
 
 
-            damage=damage*2;
+            damages=damages*2;
             crit=1;
         }
-        damagemade=damage+damagemade;
+        damagemade=damages+damagemade;
 
     }
 
-    public void getAttackenemy(ref int damage, ref int crit){
-        crit=0;
+    public void getAttackenemy(ref int damagee, ref int crite){
+        crite=0;
         System.Random rand = new System.Random();
         int attack = rand.Next(5, 10)+enemyUnit.stats.damage;
         int defence = rand.Next(-3, 0)+playerUnit.stats.defence;
-        damage=attack-defence;
+        damagee=attack-defence;
         
-        if (damage<=0){
-            damage=1;
+        if (damagee<=0){
+            damagee=1;
         }
         
         int number = rand.Next(0, 100);
@@ -997,9 +997,9 @@ public void OnAttackButton()
         {   
 
 
-            damage=damage*2;
-            crit=1;
+            damagee=damagee*2;
+            crite=1;
         }
-        damagereceived=damage+damagereceived;
+        damagereceived=damagee+damagereceived;
     }
 }
