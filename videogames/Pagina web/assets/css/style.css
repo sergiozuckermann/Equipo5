@@ -1747,4 +1747,13 @@ section {
   
 .video{
   padding-top: 20px;
+  padding-left: 20px;
+}
+
+.videoss{
+  background-color: #5846F9;  
+  color: white;
+  padding-top: 20px;
+  padding-left: 20px;
+  text-align: center;
 }
