@@ -515,7 +515,7 @@ IEnumerator SetupBattle()
        }
 
         else if (enemyUnit.stats.index==6){
-            SceneManager.LoadScene("cutscene2");            
+            SceneManager.LoadScene("Final");            
         }
 
         else if (enemyUnit.stats.index==4){
