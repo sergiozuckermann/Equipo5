@@ -714,7 +714,7 @@ IEnumerator SetupBattle()
         System.Random rand = new System.Random();
         int number = rand.Next(0, 100);
         
-        if(number < 20)
+        if(number > 20)
         {   
             enemyUnit.setice(2);
             dialogueText.text = "Enemy is now frozen! Will lose next turn";
