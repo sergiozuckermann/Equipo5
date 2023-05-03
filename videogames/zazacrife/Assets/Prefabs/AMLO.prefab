@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats:
-    damage: 1
+    damage: 5
     maxHP: 100
     currentHP: 100
     maxMP: 20
