@@ -28,23 +28,12 @@ INSERT INTO classes (name) value ('Light');
 INSERT INTO classes (name) value ('Medium');
 INSERT INTO classes (name) value ('Heavy');
 
-#Tablas Consumibles
-INSERT INTO consumables (name, description, stat_id, value) VALUES 
-('DEFENCE ITEM', 'increase 30% of characters defence', 1, 3),
-('ATTACK ITEM', 'increase 30% of characters attack', 2, 3),
-('AGILITY ITEM', 'increase 30% of characters agility', 3, 3),
-('LUCK ITEM', 'increase 30% of characters luck', 4, 3),
-('CHARISMA ITEM', 'increase 30% of characters charisma', 5, 3),
-('ACCURACY ITEM', 'increase 30% of characters accuracy', 6, 3),
-('TOTAL HP ITEM', 'increase 50% of characters total health points', 7, 5),
-('TOTAL MP ITEM', 'increase 50% of characters total mana points', 9, 5);
 
 
 #Tablas Scenes
 INSERT INTO scenes (name) VALUES 
 ('The Forest'),
-('The Castle'),
-('The Village');
+('The Tower');
 
 
 #Tablas Ataques
@@ -92,39 +81,16 @@ INSERT INTO checkpoints (player_id, scene_id, x_position, y_position)
 VALUES 
   (1, 1, 100, 200),
   (2, 2, 50, 300),
-  (3, 3, 200, 150),
+  (3, 2, 200, 150),
   (4, 1, 300, 50),
   (5, 2, 150, 250),
-  (6, 3, 75, 175),
+  (6, 1, 75, 175),
   (7, 1, 200, 300),
   (8, 2, 100, 100),
-  (9, 3, 250, 200);
+  (9, 2, 250, 200);
 
 
 
-
-#Tabla consumibles player
-INSERT INTO consumables_players (player_id, consumable_id, amount)
-VALUES 
-    (1, 2, 2),
-    (1, 3, 1),
-    (1, 5, 4),
-    (2, 1, 1),
-    (2, 4, 3),
-    (2, 6, 2),
-    (3, 2, 3),
-    (3, 4, 2),
-    (4, 1, 2),
-    (4, 3, 4),
-    (4, 5, 1),
-    (5, 2, 1),
-    (5, 3, 3),
-    (5, 6, 2),
-    (7, 2, 2),
-    (7, 3, 1),
-    (8, 1, 3),
-    (8, 5, 4),
-    (9, 2, 2);
 
 
 
@@ -178,71 +144,40 @@ INSERT INTO players_attacks (player_id, attack_id) VALUES
 
 #Tablas Battle 
 INSERT INTO battles (player_id, enemy, total_damage_made, total_damage_received, coin_received, battle_result, attacks_missed, critical_attacks) VALUES
-(1, 'Zabull', 120, 60, 15, 1, 10, 40),
+(1, 'Dabull', 120, 60, 15, 1, 10, 40),
 (1, 'Fire Lord', 200, 80, 25, 1, 2, 6),
 (1, 'Thunder Lord', 180, 90, 20, 0, 3, 1),
 (1, 'AMLO', 500, 250, 100, 0, 10, 8),
-(2, 'Zabull', 80, 40, 10, 1, 2, 1),
+(2, 'Dabull', 80, 40, 10, 1, 2, 1),
 (2, 'Ice Lord', 250, 120, 35, 1, 5, 4),
 (2, 'Thunder Lord', 150, 70, 15, 0, 4, 2),
-(3, 'Zabull', 60, 30, 8, 1, 1, 1),
+(3, 'Dabull', 60, 30, 8, 1, 1, 1),
 (3, 'Ice Lord', 180, 90, 20, 1, 3, 3),
 (3, 'Thunder Lord', 200, 100, 25, 0, 6, 2),
 (3, 'AMLO', 600, 300, 120, 0, 8, 10),
-(4, 'Zabull', 40, 20, 5, 1, 3, 0),
+(4, 'Dabull', 40, 20, 5, 1, 3, 0),
 (4, 'Ice Lord', 150, 70, 18, 1, 4, 2),
-(5, 'Zabull', 200, 100, 25, 1, 0, 5),
+(5, 'Dabull', 200, 100, 25, 1, 0, 5),
 (5, 'Ice Lord', 80, 40, 10, 0, 2, 1),
 (5, 'Thunder Lord', 300, 150, 50, 1, 4, 5),
-(6, 'Zabull', 100, 50, 12, 1, 1, 3),
+(6, 'Dabull', 100, 50, 12, 1, 1, 3),
 (6, 'Ice Lord', 300, 150, 45, 1, 3, 6),
 (6, 'Thunder Lord', 250, 120, 30, 0, 5, 3),
 (6, 'AMLO', 700, 350, 150, 0, 12, 12),
-(7, 'Zabull', 120, 60, 15, 0, 4, 2),
+(7, 'Dabull', 120, 60, 15, 0, 4, 2),
 (7, 'Ice Lord', 100, 50, 12, 1, 2, 2),
 (7, 'Thunder Lord', 180, 90, 22, 1, 3, 1),
 (7, 'AMLO', 800, 400, 200, 0, 15, 15),
-(8, 'Zabull', 50, 25, 6, 1, 2, 0),
+(8, 'Dabull', 50, 25, 6, 1, 2, 0),
 (8, 'Ice Lord', 200, 100, 28, 1, 5, 3),
 (8, 'Thunder Lord', 150, 70, 18, 0, 4, 2),
-(9, 'Zabull', 70, 35, 9, 0, 1, 1),
+(9, 'Dabull', 70, 35, 9, 0, 1, 1),
 (9, 'Ice Lord', 150, 150, 40, 1, 6, 2),
 (9, 'Fire Lord', 190, 50, 15, 0, 2, 0),
 (9, 'Thunder Lord', 250, 250, 70, 1, 12, 5),
 (9, 'Slime', 350, 100, 30, 1, 4, 1),
 (9, 'AMLO', 420, 200, 60, 1, 7, 2);
 
-#Tabla battle_consumables
-INSERT INTO battles_consumables (battle_id, consumable_id, consumable_taken) VALUES
-(1, 3, 5),
-(1, 5, 7),
-(1, 1, 3),
-(2, 2, 9),
-(2, 6, 2),
-(2, 4, 5),
-(3, 1, 10),
-(3, 7, 8),
-(4, 5, 4),
-(4, 4, 6),
-(4, 2, 2),
-(4, 3, 3),
-(5, 6, 10),
-(5, 7, 6),
-(6, 1, 8),
-(6, 4, 4),
-(6, 5, 7),
-(6, 6, 1),
-(6, 2, 3),
-(7, 3, 7),
-(7, 7, 4),
-(8, 1, 5),
-(8, 6, 6),
-(8, 3, 8),
-(9, 2, 9),
-(9, 5, 5),
-(10, 4, 2),
-(10, 1, 1),
-(10, 7, 10);
 
 #Tabla Battles_attack
 INSERT INTO battles_attacks (battle_id, attack_id, times_used) VALUES
