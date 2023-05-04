@@ -1,3 +1,6 @@
+//Made by Zaza Team
+// Description: This script is used to handle the file data.
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,11 +12,14 @@ public class FileDataHandler
    private string dataDirPath = "";
    private string dataFileName = "";
 
+   //Constructor
    public FileDataHandler(string dataDirPath, string dataFileName)
    {
         this.dataDirPath = dataDirPath;
         this.dataFileName = dataFileName;
    }
+
+    //This function is used to load the data from the file.
    public GameData Load()
    {
         string fullPath = Path.Combine(dataDirPath, dataFileName);
@@ -39,6 +45,8 @@ public class FileDataHandler
         }
         return loadedData;
    }
+
+   //This function is used to save the data to the file.
    public void Save(GameData data){
         string fullPath = Path.Combine(dataDirPath, dataFileName);
         try{

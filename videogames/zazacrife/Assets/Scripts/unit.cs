@@ -1,3 +1,6 @@
+//Code by Zaza Team
+// Description: This code is used to store the stats of the player and the enemy. It also contains the functions that are used to change the stats of the player and the enemy.
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,7 +11,7 @@ using UnityEngine.SceneManagement;
 
 using System;
 
-
+//This class is used to store the stats of the player and the enemy
 [System.Serializable]
 public class Stats{
 
@@ -38,6 +41,8 @@ public class Stats{
 
 }
 
+//This class is used to store the game session data of the player
+
 [System.Serializable]
 public class GameSessionData
 {
@@ -48,18 +53,11 @@ public class GameSessionData
 
 public class unit : MonoBehaviour
 {
-
 	
-
     public Stats stats;
 	public string unitName;
-	
-	
 
-	
-
-
-
+	//This function is used to set the hp of the player and the enemy after taking damage
     public bool TakeDamage(int dmg)
 	{	
 		stats.currentHP -= dmg;
@@ -70,6 +68,7 @@ public class unit : MonoBehaviour
 			return false;
 	}
 
+	//This function is used to set the HP of the player after healing
 	public void Heal(int amount)
 	{
 		stats.currentHP += amount;
@@ -77,6 +76,7 @@ public class unit : MonoBehaviour
 			stats.currentHP = stats.maxHP;
 	}
 
+	//This function is used to set the MP of the player after recharging
 	public void Recharge(int amount)
 	{
 		stats.currentMP += amount;
@@ -84,56 +84,65 @@ public class unit : MonoBehaviour
 			stats.currentMP = stats.maxMP;
 	}
 
+	//This function is used to set the freezing effects (Total turns frozen) of the player or enemy after using the ice element
 	public void setice(int num)
 	{
 		stats.ice = num;
 	}
 
-		public void decreaseice()
+	//This function is used to decrease the freezing effects (Total turns frozen) of the player or enemy after a turn has passed	
+	public void decreaseice()
 	{
 		stats.ice -= 1;
 	}
 
+	//This function is used to decrease the burning effects (Total turns burned) of the player or enemy after a turn has passed
 	public void decreasefire()
 	{
 		stats.fire -= 1;
 	}
 
+	//This function is used to set the burning effects (Total turns burned) of the player or enemy after using the fire element
 	public void setfire()
 	{
 		stats.fire = 3;
 	}
 
-
+	//This function is used to set the lightning effects (Total turns buffed) of the player or enemy after using the lightning element
 	public void setlightning(int num)
 	{
 		stats.lightning = num;
 	}
 
+	//This function is used to set the MP after using a move that consumes MP
 	public void setmp(int num)
 	{
 		stats.currentMP = num;
 	}
 
+	//This function is used to duplicate the strenght stats of the player or enemy after using the lightning element
 	public void lightningbuff(){
 	stats.damage=stats.damage*2;
 	}
 
-
+	//This function is used to decrease the lightning buffed stats of the player or enemy after a turn has passed
 	public void lightningnerf(){
 	stats.damage=stats.damage/2;
 	}
 	
+	//The next 3 functions are used to set the stats of the class that the player has chosen
+	//It initializes the characters unit, position, scene and state of the enemies ("Dead")  in player prefs
+	//It also initializes the Combat counters to store in player prefs
 	public void Lightclass(){
 
 	stats.maxHP= 30;
-  stats.currentHP= 25;
+    stats.currentHP= 25;
 	stats.maxMP= 60;
-  stats.currentMP= 60;
+    stats.currentMP= 60;
 	stats.damage=5;
-  stats.luck= 5;
-  stats.agility= 5;
-  stats.defence= 3;
+    stats.luck= 5;
+    stats.agility= 5;
+    stats.defence= 3;
 	stats.charisma= 2;
 	stats.accuracy= 6;
 	stats.coins=10;
@@ -143,11 +152,11 @@ public class unit : MonoBehaviour
 	PlayerPrefs.SetInt("place", 1);
 	PlayerPrefs.SetInt("Dead", 0);
 	PlayerPrefs.SetFloat("x", Convert.ToSingle(-10.4));
-  PlayerPrefs.SetFloat("y", Convert.ToSingle(1.5));
-  string savedShaggy=JsonUtility.ToJson(stats);
+    PlayerPrefs.SetFloat("y", Convert.ToSingle(1.5));
+    string savedShaggy=JsonUtility.ToJson(stats);
 
-  PlayerPrefs.SetString("Shaggy", savedShaggy);
-  PlayerPrefs.SetInt("Class_id", 1);
+    PlayerPrefs.SetString("Shaggy", savedShaggy);
+    PlayerPrefs.SetInt("Class_id", 1);
 
   	PlayerPrefs.SetString("Damagemade", "");
 	PlayerPrefs.SetString("Damagereceived", "");
@@ -199,8 +208,8 @@ public class unit : MonoBehaviour
 	PlayerPrefs.SetInt("Melee", 0);
 
 	
-  PlayerPrefs.SetString("Shaggy", savedShaggy);
-  PlayerPrefs.SetInt("Class_id", 1);
+    PlayerPrefs.SetString("Shaggy", savedShaggy);
+    PlayerPrefs.SetInt("Class_id", 1);
 
   	PlayerPrefs.SetString("Damagemade", "");
 	PlayerPrefs.SetString("Damagereceived", "");
@@ -260,6 +269,7 @@ public class unit : MonoBehaviour
 	SaveData();
 	}
 
+	//This is the code for when the upgrade buttons are called, it increases the stats by 3 and decrease the coins by 10 or 15 depending on the upgrade
 	public void onDefencebutton(){
 		stats.defence=stats.defence+3;
 		
@@ -311,10 +321,11 @@ public class unit : MonoBehaviour
 		stats.coins=stats.coins -10;
 	}
 
- IEnumerator SendRequest(NewGame newgame, string url, string route)
+	//This is the code for sending a request to the server to save the game
+ 	IEnumerator SendRequest(NewGame newgame, string url, string route)
     {
         string json = JsonUtility.ToJson(newgame);
-          //Here you can add your code to send the username and password to a server
+
         using (UnityWebRequest www = UnityWebRequest.Put("http://localhost:3010/api/new_game_session", json))
         {
             
@@ -339,6 +350,8 @@ public class unit : MonoBehaviour
             }
         }
     }
+
+	//This is the code for saving the game by getting the unit stats, user id and class id and sending them to the server
     public void SaveData()
     {
         Debug.Log("Saving game");

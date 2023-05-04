@@ -1,3 +1,6 @@
+//Code by Zaza Team
+// Description: This script is used to Pause the game.
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,7 +12,7 @@ public class Pause : MonoBehaviour
     public static bool GameIsPaused = false;
     public GameObject pauseMenuUI;
 
-    // Update is called once per frame
+    //If ESQ is pressed, the game will be paused.
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -24,6 +27,7 @@ public class Pause : MonoBehaviour
         }
     }
 
+    //This function is used to resume the game.
     public void Resume()
     {
         pauseMenuUI.SetActive(false);
@@ -31,6 +35,7 @@ public class Pause : MonoBehaviour
         GameIsPaused = false;
     }
 
+    //This function is used to pause the game.
     void PauseGame()
     {
         pauseMenuUI.SetActive(true);

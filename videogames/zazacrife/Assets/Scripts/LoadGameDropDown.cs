@@ -1,3 +1,6 @@
+//Code by Zaza Team
+// Description: This script is used to iniatialize the LoadGameDropDown.
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,7 +9,7 @@ using TMPro;
 using UnityEngine.Networking;
 
 
-
+//This class is used to store the game session ids and player ids.
 public class GameSessionIds
 {
     public int[] game_session_id ;
@@ -20,6 +23,7 @@ public class LoadGameDropDown : MonoBehaviour
     public TMP_Dropdown myDropdown;
     public GameSessionIds wrapper;
 
+    //This function is used to load the game data.
     public void Start()
     {
         GameObject dropdownGameObject = GameObject.FindGameObjectWithTag("dropDown");
@@ -44,6 +48,7 @@ public class LoadGameDropDown : MonoBehaviour
     }
 
 
+    //This function is used to send the request to the server.
     IEnumerator SendRequest(string url)
     {
 
@@ -67,6 +72,7 @@ public class LoadGameDropDown : MonoBehaviour
         }
     }
 
+    //This function is used to load the game data.
     public void LoadGameData()
     {
         int user_id = PlayerPrefs.GetInt("User_id");

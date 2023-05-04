@@ -1,3 +1,6 @@
+//Code by Zaza Team
+// Description: This script is used to load the game session data from the database.
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,7 +8,7 @@ using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
 using System;
 
-
+//This class is used to store the game session data.
 public class LoadGame
 {
     public string shaggy;
@@ -22,13 +25,9 @@ public class LoadSession : MonoBehaviour
 {
     public LoadGame data;
     
-
+    //This function is used to send the request of the game session data to the API.
     IEnumerator SendRequest(string url)
     {
-
-
-
-
         Debug.Log(url);
 
         using (UnityWebRequest www = UnityWebRequest.Get(url))
@@ -42,9 +41,6 @@ public class LoadSession : MonoBehaviour
                 data = JsonUtility.FromJson<LoadGame>(www.downloadHandler.text);
                 LoadGameScene();
                 SetPlayersAttributes();
-                
-
-            
             }
             else
             {
@@ -53,6 +49,7 @@ public class LoadSession : MonoBehaviour
         }
     }
 
+    //This function is used to load the game session data.
     public void LoadGameData()
     {
 
@@ -71,6 +68,7 @@ public class LoadSession : MonoBehaviour
             }
     }
 
+    //This function is used to set and clean the players attributes.
     public void SetPlayersAttributes()
     {
         PlayerPrefs.SetFloat("x", Convert.ToSingle(data.x));

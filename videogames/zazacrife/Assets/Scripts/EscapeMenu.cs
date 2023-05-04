@@ -1,3 +1,6 @@
+//Code by Zaza Team
+// Description: This script is used to Pause the game in combat.
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,7 +12,7 @@ public class EscapeMenu : MonoBehaviour
    public Button restart;
    public bool EscapeMenuOpen;
 
-    // Update is called once per frame
+    // Update will check if the Escape key is pressed. If it is, the Escape Menu will be opened. If it is pressed again, the Escape Menu will be closed.
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape)){
@@ -25,11 +28,14 @@ public class EscapeMenu : MonoBehaviour
                 restart.gameObject.SetActive(false);
             }
         }
-    
     }
+
+    //This function is used to restart the level.
     public void RestartLevel(){
         SceneManager.LoadScene(2);
     }
+
+    //This function is used to flee battle.
     public void Escape(){
         SceneManager.LoadScene(1);
     }

@@ -1,3 +1,5 @@
+// Code by Zaza team
+// Description: This script is used to save the new game data to the database.
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,8 +14,8 @@ public class NewGame{
 
 public class SaveNewGame : MonoBehaviour
 {
-    
-        IEnumerator SendRequest(NewGame newgame, string url, string route)
+    //This function is used to send the request of the new game data to the API.
+    IEnumerator SendRequest(NewGame newgame, string url, string route)
     {
         string json = JsonUtility.ToJson(newgame);
           //Here you can add your code to send the username and password to a server
@@ -42,6 +44,8 @@ public class SaveNewGame : MonoBehaviour
             }
         }
     }
+
+    //This function is used to save the new game data to the database.      
     public void SaveData()
     {
         Debug.Log("Saving game");
@@ -51,6 +55,4 @@ public class SaveNewGame : MonoBehaviour
         newgame.class_id = PlayerPrefs.GetInt("Class_id");
         StartCoroutine(SendRequest(newgame, "http://localhost:3010/api/new_game_session", "new_game_session"));
     }
-
-
 }
