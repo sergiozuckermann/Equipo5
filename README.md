@@ -1,5 +1,6 @@
 # Proyecto equipo 5
-
+Trello: https://trello.com/b/Pejn5V4R/the-zazzacrifirce-of-shaggy
+Gameplay: https://youtu.be/sfRnqMZ50DU
 
 ## Description
 
