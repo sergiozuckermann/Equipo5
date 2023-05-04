@@ -71,12 +71,22 @@ Rafael Blanga
 Ian Holander
   </p>
 
-## Version History
 
 
 ## License
 
-This project is licensed under the [NAME HERE] License - see the LICENSE.md file for details
+Tecnológico de Monterrey
+
+TC2005 © Copyright 2023
+
+Permission is hereby granted, free of charge, to any student or employee of Tecnológico de Monterrey University to use and modify this software, subject to the following conditions:
+
+1. Any modifications must be submitted to the original author for approval before distribution.
+2. This software may not be sold or used for commercial purposes.
+3. Any distribution of this software must include the original copyright notice and this license.
+
+In no event shall Tecnológico de Monterrey University be liable for any claim, damages, or liability arising from the use of this software.
+
 
 ## Acknowledgments
 
