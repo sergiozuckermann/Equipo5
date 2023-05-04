@@ -1,3 +1,5 @@
+// Description: Class to serialize a dictionary.
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +8,8 @@ public class SerialDiccionary<TKey, TValue>: Dictionary<TKey,TValue>, ISerializa
 {
     [SerializeField] private List<TKey> keys = new List<TKey>();
     [SerializeField] private List<TValue> values = new List<TValue>();
+    
+    //Save the dictionary to lists
     public void OnBeforeSerialize()
     {
         keys.Clear();
@@ -15,6 +19,8 @@ public class SerialDiccionary<TKey, TValue>: Dictionary<TKey,TValue>, ISerializa
             values.Add(pair.Value);
         }
     }
+
+    //Load dictionary from lists
     public void OnAfterDeserialize()
     {
         this.Clear();

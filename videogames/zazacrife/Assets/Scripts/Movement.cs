@@ -1,5 +1,5 @@
-//Zazacrifice of shaggy Team
-
+//Made by Zaza Team
+// Description: This script is used to manage the main player movement and load the player's unit data.
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,7 +16,7 @@ public class Movement : MonoBehaviour, IDataPersistance
 
     Animator animator;
 
-    // Start is called before the first frame update
+    // Start is used to initialize the animator component, the unit data and position
     void Start()
     {
     
@@ -47,40 +47,24 @@ public class Movement : MonoBehaviour, IDataPersistance
     //This function gets the player input and moves them on the determined axis.
     //Also it prohibits the player from crossing the game's borders 
 
+    //This function is used to load the player's position data.
     public void LoadData(GameData data)
     {
         this.transform.position = data.playerPosition;
     }
 
+    //This function is used to save the player's position data.
     public void SaveData(ref GameData data)
     {
         data.playerPosition = this.transform.position;
     }
     
+    //This function is used to manage the player's movement and walking animation.
     void Update()
     {
         move.x=Input.GetAxis("Horizontal");
         move.y=Input.GetAxis("Vertical");
         transform.Translate(move * speed * Time.deltaTime);
-       
-       
-       // Debug.Log("H motion: " +move.x);
-
-        //en caso de querer poner limites en el mapa desactivar comentarios de esta seccion y escribir limites en unity. 
-        //Limit the movement to a specific range of coordinates 
-        /*
-        if(transform.position.x < -limitX && move.x < 0){
-            move.x = 0;
-        } else if (transform.position.x > limitX && move.x > 0){
-            move.x = 0;
-        }
-
-         if(transform.position.y < -limitY && move.y < 0){
-            move.y = 0;
-        } else if (transform.position.y > limitY && move.y > 0){
-            move.y = 0;
-        }
-        */ 
 
         
         animator.SetFloat("VelX", move.x);

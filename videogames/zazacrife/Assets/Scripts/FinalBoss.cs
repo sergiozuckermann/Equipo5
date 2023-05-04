@@ -1,3 +1,6 @@
+//Code by Zaza Team
+// Description: This script is used to send the player unit to the final boss encounter if the Fight button is pressed.
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

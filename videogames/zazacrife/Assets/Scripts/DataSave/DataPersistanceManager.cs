@@ -1,3 +1,6 @@
+//Made by Zaza Team
+// Description: This script is used to manage the data persistance.
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,6 +17,7 @@ public class DataPersistanceManager : MonoBehaviour
     public static DataPersistanceManager instance { get; private set;}
     private FileDataHandler dataHandler;
 
+    
     private void Awake(){
         if(instance != null)
         {
@@ -21,6 +25,8 @@ public class DataPersistanceManager : MonoBehaviour
         }
         instance = this;
     }
+
+    // Start will serve as the constructor
     private void Start(){
         this.dataHandler = new FileDataHandler(Application.persistentDataPath, fileName);
         this.dataPersistanceObjects = FindAllDataPersistanceObjects();
@@ -30,6 +36,8 @@ public class DataPersistanceManager : MonoBehaviour
     public void NewGame(){
 
     }
+
+    //This function is used to load the game.
     public void LoadGame(){
         this.gameData = dataHandler.Load();
         if(this.gameData == null){
@@ -41,6 +49,8 @@ public class DataPersistanceManager : MonoBehaviour
         }
 
     }
+
+    //This function is used to save the game.
     public void SaveGame(){
         foreach(IDataPersistance dataPersistanceObj in dataPersistanceObjects){
             dataPersistanceObj.SaveData(ref gameData);
@@ -49,10 +59,10 @@ public class DataPersistanceManager : MonoBehaviour
         
         dataHandler.Save(gameData);
     }
-    private void OnApplicationQuit(){
+        private void OnApplicationQuit(){
         SaveGame();
     }
-    private List<IDataPersistance> FindAllDataPersistanceObjects(){
+        private List<IDataPersistance> FindAllDataPersistanceObjects(){
         IEnumerable<IDataPersistance> dataPersistanceObjects = FindObjectsOfType<MonoBehaviour>().OfType<IDataPersistance>();
         return new List<IDataPersistance>(dataPersistanceObjects);
     }

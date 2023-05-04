@@ -1,3 +1,6 @@
+//Made by Zaza Team
+// Description: This script is used the same as NPC interactor (to manage NPC interactions with SemiBosses) but with the Eagle to send the player to the tower if the three elements are active.
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

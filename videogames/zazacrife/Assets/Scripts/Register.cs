@@ -1,3 +1,6 @@
+ //Code by Zaza Team
+ // Description: This script is used to register a user.
+ 
  using System.Collections;
  using System.Collections.Generic;
  using UnityEngine;
@@ -11,7 +14,7 @@
      public TMP_InputField username;
      public TMP_InputField password;
 
-
+    //This function is used to send the request of the new user to the API.
      IEnumerator SendRequest(User user, string url, string route)
      {
         
@@ -33,17 +36,15 @@
          }
      }   
 
-     public void RegisterInput()
-     {
+    //This function is used to register a user.
+    public void RegisterInput()
+    {
         User user = new User();
         user.username = username.text;
         user.password  = password.text;      
-         gameObject.SetActive(true);
-         StartCoroutine(SendRequest(user, "http://localhost:3010", "/api/new_user"));
+        gameObject.SetActive(true);
+        StartCoroutine(SendRequest(user, "http://localhost:3010", "/api/new_user"));
 
          // Here you can add your code to save the username and password to a file or database
-     }
-    
-
-
- }
+    }
+}

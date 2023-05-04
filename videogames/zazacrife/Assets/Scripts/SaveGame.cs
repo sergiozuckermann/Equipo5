@@ -1,3 +1,6 @@
+//Code by Zaza team
+// Description: This script is used to save the game data to the database.
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,7 +8,7 @@ using UnityEngine.Networking;
 
 
 
-
+//This class is used to store the game data.
 public class Game{
     public string stats;
     public int game_session_id;
@@ -30,15 +33,14 @@ public class Game{
     public string enemy;
 }
 
+
 public class SaveGame : MonoBehaviour
 {
     [SerializeField] private GameObject Shaggy;
 
-    
+    //This function is used to send the request of the game data to the API.
     IEnumerator SendRequest(Game game)
     {
-        
-
         string json = JsonUtility.ToJson(game);
           //Here you can add your code to send the username and password to a server
         using (UnityWebRequest www = UnityWebRequest.Put("http://localhost:3010/api/update_game_session", json))
@@ -66,6 +68,8 @@ public class SaveGame : MonoBehaviour
             }
         }
     }
+
+    //This function is used to save the game data to the database.
     public void SaveData()
     {
 

@@ -1,3 +1,6 @@
+//Made by Zaza Team
+// Description: Script for the enemy that chases the player and manager for the enemies state
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,6 +21,7 @@ public class chasee : MonoBehaviour
     private Vector3 initialPosition;
     private bool isChasing = false; // Flag to determine if the enemy is currently chasing the player
 
+    //Start will initialize the animator component and find the player object using its tag
     private void Start()
     {
         animator = GetComponent<Animator>();
@@ -30,6 +34,7 @@ public class chasee : MonoBehaviour
 
     }
 
+    //Update will check if the enemy is chasing the player and if it is, it will chase it
     void Update()
     {
         int enemyID=PlayerPrefs.GetInt("Dead");
@@ -60,6 +65,8 @@ public class chasee : MonoBehaviour
         
     }
 
+
+    // This function will move the enemy towards the player and change the animation
     void ChasePlayer()
     {
         Vector2 direction = player.transform.position - transform.position;
@@ -78,6 +85,7 @@ public class chasee : MonoBehaviour
         }
     }
 
+    // This function will move the enemy towards the initial position and change the animation
     void ReturnToPosition()
     {
         Vector2 returnPosition = new Vector2(returnPositionX, returnPositionY);
@@ -96,6 +104,7 @@ public class chasee : MonoBehaviour
         }
     }
 
+    // This function will load the battle scene when the enemy collides with the player and save the player position, stats, enemy name and enemy number
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // If the enemy collides with the player, load the battle scene
@@ -128,7 +137,4 @@ public class chasee : MonoBehaviour
         returnPositionX = x;
         returnPositionY = y;
     }
-
-
-
 }

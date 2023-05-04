@@ -1,3 +1,6 @@
+//Made by Zaza Team
+// Description: This script is used to manage NPC interactions with SemiBosses.
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,12 +20,14 @@ public class NPCInteractor : MonoBehaviour
     private unit EnemyUnit;
     public unit playerUnit;
 
+    // Start will initialize the canvas and the enemy unit.
     private void Start()
     {
         canvas.SetActive(false);
         EnemyUnit=Enemy.GetComponent<unit>();
     }
 
+    // Update will check if the enemy is dead to change the animation and destroy the button.
     void Update(){
         
 
@@ -68,7 +73,7 @@ public class NPCInteractor : MonoBehaviour
          }
     }
 
-   
+   // OnTriggerEnter2D will check if the player is colliding with the NPC and will activate the canvas.
     public void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
@@ -105,6 +110,7 @@ public class NPCInteractor : MonoBehaviour
         }
     }
 
+    // OnTriggerExit2D will check if the player is not colliding with the NPC and will deactivate the canvas.
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
@@ -113,6 +119,7 @@ public class NPCInteractor : MonoBehaviour
         }
     }
     
+    // onstartbattlebutton will save the player's position, the player's stats and the enemy's stats and will send the player to the battle scene.
     public void onstartbattlebutton(){
         Transform posicion= Shaggy.GetComponent<Transform>();
         Vector3 actual = posicion.position;
