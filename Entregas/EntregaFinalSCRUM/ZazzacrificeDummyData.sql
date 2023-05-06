@@ -1,0 +1,195 @@
+USE zazzacrifice;
+
+#Tablas Users 
+INSERT INTO users (username, password) VALUE ('Ian', 'zazza');
+INSERT INTO users (username, password) VALUE ('Fran', 'shaggy');
+INSERT INTO users (username, password) VALUE ('Sunday', 'berries');
+INSERT INTO users (username, password) VALUE ('Tuch', 'Master');
+INSERT INTO users (username, password) VALUE ('Tena', 'calistena');
+INSERT INTO users (username, password) VALUE ('Rafa', 'blanga');
+
+
+
+
+#Tablas estadisticas 
+INSERT INTO stats (name) values ('DEF'); #id 1 
+INSERT INTO stats (name) values ('ATK') ; #id 2 
+INSERT INTO stats (name) values ('AGL'); #id 3 
+INSERT INTO stats (name) values ('LCK') ; #id 4 
+INSERT INTO stats (name) values ('CHAR') ; #id 5 
+INSERT INTO stats (name) values ('ACC') ; #id 6
+INSERT INTO stats (name) values ('Max_HP') ; #id 7
+INSERT INTO stats (name) values ('Current_HP') ; #id 8
+INSERT INTO stats (name) values ('Max_MP') ; #id 9
+INSERT INTO stats (name) values ('Current_MP') ; #id 10
+
+#Tablas Clases 
+INSERT INTO classes (name) value ('Light');
+INSERT INTO classes (name) value ('Medium');
+INSERT INTO classes (name) value ('Heavy');
+
+
+
+#Tablas Scenes
+INSERT INTO scenes (name) VALUES 
+('The Forest'),
+('The Tower');
+
+
+#Tablas Ataques
+INSERT INTO attacks (name, description) VALUES  
+('Melee Attack', 'A swift and precise attack'),
+('Fire', 'A fiery spell that deals continious damage'),
+('Lightning', 'A powerful bolt of lightning that doubles all stats'),
+('Ice', 'A icy spell that freeces the enemys attack turn'),
+('Heal', 'A restorative spell to heal damage'),
+('Recharg', 'A restorative spell to recharge mana points');
+
+
+
+#Tablas Game session 
+INSERT INTO game_sessions (user_id, time_on_seconds, finished)
+VALUES
+(1, 3600, 1),
+(2, 1800, 0),
+(3, 5400, 1),
+(4, 7200, 1),
+(5, 7200,0),
+(2, 7200, 0),
+(2, 7200, 0),
+(3, 7200, 0),
+(5, 9000, 1);
+
+
+
+
+#Tabla players
+INSERT INTO players (game_session_id, money,  class_id)
+VALUES 
+  (1,  1000, 1),
+  (2,  500, 1),
+  (3,  200, 2),
+  (4,  800, 2),
+  (5,  300, 3),
+  (6,  600, 3),
+  (7,  400, 1),
+  (8,  900, 2),
+  (9,  700, 3);
+  
+  #Tabla checkpoint 
+INSERT INTO checkpoints (player_id, scene_id, x_position, y_position) 
+VALUES 
+  (1, 1, 100, 200),
+  (2, 2, 50, 300),
+  (3, 2, 200, 150),
+  (4, 1, 300, 50),
+  (5, 2, 150, 250),
+  (6, 1, 75, 175),
+  (7, 1, 200, 300),
+  (8, 2, 100, 100),
+  (9, 2, 250, 200);
+
+
+
+
+
+
+#Tabla stats players
+INSERT INTO stats_players (player_id, stat_id, value) VALUES
+(1, 1, 75), (1, 2, 149), (1, 3, 43), (1, 4, 112), (1, 5, 198), (1, 6, 7), (1, 7, 32),
+(2, 1, 85), (2, 2, 23), (2, 3, 167), (2, 4, 56), (2, 5, 92), (2, 6, 132), (2, 7, 18),
+(3, 1, 129), (3, 2, 76), (3, 3, 89), (3, 4, 1), (3, 5, 52), (3, 6, 187), (3, 7, 150),
+(4, 1, 26), (4, 2, 82), (4, 3, 135), (4, 4, 116), (4, 5, 67), (4, 6, 40), (4, 7, 97),
+(5, 1, 121), (5, 2, 165), (5, 3, 19), (5, 4, 53), (5, 5, 8), (5, 6, 162), (5, 7, 142),
+(6, 1, 52), (6, 2, 29), (6, 3, 86), (6, 4, 44), (6, 5, 127), (6, 6, 183), (6, 7, 91),
+(7, 1, 168), (7, 2, 38), (7, 3, 117), (7, 4, 9), (7, 5, 50), (7, 6, 3), (7, 7, 165),
+(8, 1, 74), (8, 2, 150), (8, 3, 112), (8, 4, 43), (8, 5, 198), (8, 6, 7), (8, 7, 31),
+(9, 1, 142), (9, 2, 19), (9, 3, 165), (9, 4, 87), (9, 5, 123), (9, 6, 37), (9, 7, 193);
+
+
+
+#Tabla Players attack 
+INSERT INTO players_attacks (player_id, attack_id) VALUES
+(1, 1),
+(1, 4),
+(1, 6),
+(2, 1),
+(2, 3),
+(2, 5),
+(2, 6),
+(3, 1),
+(3, 6),
+(3, 3),
+(4, 2),
+(4, 6),
+(4, 1),
+(5, 3),
+(5, 2),
+(5, 6),
+(5, 4),
+(6, 4),
+(6, 6),
+(6, 2),
+(7, 5),
+(7, 3),
+(7, 2),
+(8, 1),
+(8, 3),
+(8, 2),
+(8, 4),
+(9, 2),
+(9, 5),
+(9, 1),
+(9, 3);
+
+#Tablas Battle 
+INSERT INTO battles (player_id, enemy, total_damage_made, total_damage_received, coin_received, battle_result, attacks_missed, critical_attacks) VALUES
+(1, 'Dabull', 120, 60, 15, 1, 10, 40),
+(1, 'Fire Lord', 200, 80, 25, 1, 2, 6),
+(1, 'Thunder Lord', 180, 90, 20, 0, 3, 1),
+(1, 'AMLO', 500, 250, 100, 0, 10, 8),
+(2, 'Dabull', 80, 40, 10, 1, 2, 1),
+(2, 'Ice Lord', 250, 120, 35, 1, 5, 4),
+(2, 'Thunder Lord', 150, 70, 15, 0, 4, 2),
+(3, 'Dabull', 60, 30, 8, 1, 1, 1),
+(3, 'Ice Lord', 180, 90, 20, 1, 3, 3),
+(3, 'Thunder Lord', 200, 100, 25, 0, 6, 2),
+(3, 'AMLO', 600, 300, 120, 0, 8, 10),
+(4, 'Dabull', 40, 20, 5, 1, 3, 0),
+(4, 'Ice Lord', 150, 70, 18, 1, 4, 2),
+(5, 'Dabull', 200, 100, 25, 1, 0, 5),
+(5, 'Ice Lord', 80, 40, 10, 0, 2, 1),
+(5, 'Thunder Lord', 300, 150, 50, 1, 4, 5),
+(6, 'Dabull', 100, 50, 12, 1, 1, 3),
+(6, 'Ice Lord', 300, 150, 45, 1, 3, 6),
+(6, 'Thunder Lord', 250, 120, 30, 0, 5, 3),
+(6, 'AMLO', 700, 350, 150, 0, 12, 12),
+(7, 'Dabull', 120, 60, 15, 0, 4, 2),
+(7, 'Ice Lord', 100, 50, 12, 1, 2, 2),
+(7, 'Thunder Lord', 180, 90, 22, 1, 3, 1),
+(7, 'AMLO', 800, 400, 200, 0, 15, 15),
+(8, 'Dabull', 50, 25, 6, 1, 2, 0),
+(8, 'Ice Lord', 200, 100, 28, 1, 5, 3),
+(8, 'Thunder Lord', 150, 70, 18, 0, 4, 2),
+(9, 'Dabull', 70, 35, 9, 0, 1, 1),
+(9, 'Ice Lord', 150, 150, 40, 1, 6, 2),
+(9, 'Fire Lord', 190, 50, 15, 0, 2, 0),
+(9, 'Thunder Lord', 250, 250, 70, 1, 12, 5),
+(9, 'Slime', 350, 100, 30, 1, 4, 1),
+(9, 'AMLO', 420, 200, 60, 1, 7, 2);
+
+
+#Tabla Battles_attack
+INSERT INTO battles_attacks (battle_id, attack_id, times_used) VALUES
+(1, 1, 3),
+(1, 2, 2),
+(1, 3, 1),
+(2, 2, 4),
+(2, 4, 1),
+(3, 1, 2),
+(3, 5, 3),
+(4, 3, 5),
+(4, 6, 2),
+(5, 1, 1),
+(5, 4, 4),
+(5, 5, 3);
